@@ -19,16 +19,21 @@ libertine
     \cooltooltip{#1}{}{#3}{}{#4\strut}
   };
 }
-
+\title{A short overview of \TeX\ and its children\dots}
+\author{Arno Trautmann\thanks{arno.trautmann@gmx.de -- send me any suggestions and comments!}}
+\date{}
 \begin{document}
+\maketitle
+
+This paper tries to give a short overview over the development of \TeX. So far, most of the information is from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in \textsf{EuroBacho\TeX 2007}.
 
 \begin{tikzpicture}
 \mynode{tex}{7,2}{born in 1978}{\TeX}
 
-\mynode{xet-tex}{3,1}{the first extension to \TeX, 1987. It was able to typeset in two directions, but only with a mark in the dvi to change the direction.}{\TeX-\XeT}
+\mynode{xet-tex}{3,1}{The first extension to TeX, 1987. It was able to typeset in two directions, but only with a mark in the dvi to change the direction.}{\TeX-\XeT}
 \draw (tex) to (xet-tex);
 
-\mynode{xet--tex}{3,0}{\TeX-\relax-\XeT\ was able to really put the glyphs on the right place in the dvi.}{\TeX-\relax{}-\XeT}
+\mynode{xet--tex}{3,0}{TeX--XeT was able to really put the glyphs on the right place in the dvi.}{\TeX-\relax{}-\XeT}
 \draw (xet-tex) to (xet--tex);
 
 \mynode{tex3}{7,0}{Now handling 8-bit input. 1989}{\TeX3};
@@ -49,7 +54,7 @@ libertine
 \mynode{nts}{10,-2}{}{\NTS};
 \draw (tex3) to (nts);
 
-\mynode{aleph}{3,-4}{}{\Aleph};
+\mynode{aleph}{3,-4}{originally named epsilon-Omega, an attempt to stabilize Omega whil merging epsilon extensions.}{\Aleph};
 \draw (omega) to (aleph);
 \draw (etex) to (aleph);
 
@@ -57,7 +62,7 @@ libertine
 \draw (texgx) to (xetex);
 \draw (etex) to (xetex);
 
-\mynode{extex}{10,-4}{}{εχ\TeX};
+\mynode{extex}{10,-4}{}{$\epsilon\chi$\TeX};
 \draw (nts) to (extex);
 
 \mynode{pdfetex}{5,-4}{}{pdf($\epsilon$)-\TeX};
@@ -69,29 +74,38 @@ libertine
 \draw (pdfetex) to (luatex);
 
 \end{tikzpicture}
-
-\vspace*{3cm}
+\newpage
+\vspace{3cm}
 
 \begin{tikzpicture}
-\node (latex209) at (0,0) {\LaTeX\ 2.09};
+\mynode{latex209}{0,0}{}{\LaTeX\ 2.09};
 
-\node (latex2ε) at (0,-2) {\LaTeXe};
+\mynode{latex2ε}{0,-2}{}{\LaTeXe};
 \draw (latex209) to (latex2ε);
 
-\node (pdflatex) at (2,-4) {pdf\LaTeXe};
+\mynode{pdflatex}{2,-4}{}{pdf\LaTeXe};
 \draw (latex2ε) to (pdflatex);
 
-\node (xelatex) at (4,-4) {\XeLaTeX};
+\mynode{xelatex}{4,-4}{}{\XeLaTeX};
 \draw (latex2ε) to (xelatex);
 
-\node (lualatex) at (6,-4) {Lua\LaTeX};
+\mynode{lualatex}{6,-4}{LaTeX auf LuaTeX basierend}{Lua\LaTeX};
 \draw (latex2ε) to (lualatex);
 
 \mynode{lambda}{8,-4}{A LaTeX-package for omega.}{$\Lambda$}
 \draw (latex209) to (lambda);
 
-\node (latex3) at (0,-6) {\LaTeX{}3};
+\mynode{latex3}{0,-6}{}{\LaTeX{}3};
 \draw (latex2ε) to (latex3);
 \end{tikzpicture}
+\newpage
+
+\begin{tikzpicture}
+\mynode{mkii}{0,0}{}{Con\TeX{}t Mk ii};
+
+\mynode{mkiv}{0,0}{}{Con\TeX{}t Mk iv};
+\draw (mkii) to (mkiv);
+\end{tikzpicture}
+
 
 \end{document}
