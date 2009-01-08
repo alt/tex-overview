@@ -11,7 +11,8 @@ libertine
 
 \def\XeT{XET}
 \def\Aleph{Aleph}
-\def\XeLaTeX{XeLa\TeX}
+\def\XeLaTeX{Xe\LaTeX}
+\def\ConTeXt{Con\TeX{}t}
 %\setmainfont{Linux Libertine}
 
 \def\mynode#1#2#3#4{
@@ -20,13 +21,14 @@ libertine
   };
 }
 \title{A short overview of \TeX\ and its children\dots}
-\author{Arno Trautmann\thanks{arno.trautmann@gmx.de -- send me any suggestions and comments!}}
+\author{Arno Trautmann\thanks{arno.trautmann@gmx.de -- Please feel free to mail me any suggestions and comments!}}
 \date{}
 \begin{document}
 \maketitle
 
 This paper tries to give a short overview of the development of \TeX. So far, most of the information is from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in \textsf{EuroBacho\TeX 2007}.
 
+\section*{\TeX\ -- the program}
 \begin{tikzpicture}
 \mynode{tex}{7,2}{born in 1978}{\TeX}
 
@@ -42,69 +44,86 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \mynode{omega}{2,-2}{Support for unicode-input. Still constrained on the output}{$\Omega$};
 \draw (tex3) to (omega);
 
-\mynode{etex}{4,-2}{„The“}{$\varepsilon$-\TeX};
+\mynode{etex}{4,-2}{*the* extension to TeX.}{$\varepsilon$-\TeX};
 \draw (xet--tex) to (etex);
 
-\mynode{pdftex}{6,-2}{}{pdf\TeX};
+\mynode{pdftex}{6,-2}{A new engine to directly produce pdf-files from TeX, without the need of dvi-ps-pdf. This allows to use microtypographic extensions and many other features of the pdf format.}{pdf\TeX};
 \draw (tex3) to (pdftex);
 
-\mynode{texgx}{8,-2}{}{\TeX{}GX};
+\mynode{texgx}{8,-2}{?}{\TeX{}GX};
 \draw (tex3) to (texgx);
 
-\mynode{nts}{10,-2}{}{\NTS};
+\mynode{nts}{10,-2}{A project to completely reimplement TeX in Java. Now NTS is officially declared dead.}{\NTS};
 \draw (tex3) to (nts);
 
-\mynode{aleph}{3,-4}{originally named epsilon-Omega, an attempt to stabilize Omega whil merging epsilon extensions.}{\Aleph};
+\mynode{aleph}{3,-4}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{\Aleph};
 \draw (omega) to (aleph);
 \draw (etex) to (aleph);
 
-\mynode{xetex}{8,-4}{}{\XeTeX};
+\mynode{xetex}{8,-4}{Originally started as a project for Mac OS, this quite young extension enables extremely multilingual support for left-to-right typesetting, right-to-left and almost any other possible directio. XeTeX also features support for OpenType and AAT-fonts.}{\XeTeX};
 \draw (texgx) to (xetex);
 \draw (etex) to (xetex);
 
-\mynode{extex}{10,-4}{}{$\epsilon\chi$\TeX};
+\mynode{extex}{10,-4}{?!}{$\epsilon\chi$\TeX};
 \draw (nts) to (extex);
 
-\mynode{pdfetex}{5,-4}{}{pdf($\epsilon$)-\TeX};
+\mynode{pdfetex}{5,-4}{Merging the pdfTeX engine with the eTeX-extensions. This engine can produce dvi (with or without the eTeX-extensions) as well as pdf (again, with or without extensions).}{pdf($\epsilon$)-\TeX};
 \draw (etex) to (pdfetex);
 \draw (pdftex) to (pdfetex);
 
-\mynode{luatex}{4,-6}{}{Lua\TeX};
+\mynode{luatex}{4,-6}{Still in heavy active development, LuaTeX will support unicode, OpenType and totally everything. It features an embedded scripting language, lua, making it easy to extend.}{Lua\TeX};
 \draw (aleph) to (luatex);
 \draw (pdfetex) to (luatex);
 
+\mynode{vtex}{0,-8}{Please insert information here...}{V\TeX};
+\mynode{revtex}{2,-8}{Please insert information here...}{REV\TeX};
+
 \end{tikzpicture}
 \newpage
-\vspace{3cm}
 
+\section*{\LaTeX\ -- a large macro package for \TeX}
 \begin{tikzpicture}
-\mynode{latex209}{0,0}{}{\LaTeX\ 2.09};
+\mynode{latex209}{0,0}{The first official version by Leslie Lamport, 1985. It's called "Lamport's TeX".}{\LaTeX\ 2.09};
 
-\mynode{latex2ε}{0,-2}{}{\LaTeXe};
+\mynode{amslatex}{2,-2}{A variation of LaTeX2.09}{\AMS\LaTeX};
+\draw (latex209) to (amslatex);
+
+\mynode{slitex}{4,-2}{A variation of LaTeX2.09}{SLI\TeX};
+\draw (latex209) to (slitex);
+
+\mynode{latex2ε}{0,-4}{New release of LaTeX to avoid incompatible dialects of LaTeX 2.09.}{\LaTeXe};
 \draw (latex209) to (latex2ε);
+\draw (amslatex) to (latex2ε);
+\draw (slitex) to (latex2ε);
 
-\mynode{pdflatex}{2,-4}{}{pdf\LaTeXe};
+\mynode{pdflatex}{2,-6}{}{pdf\LaTeXe};
 \draw (latex2ε) to (pdflatex);
 
-\mynode{xelatex}{4,-4}{}{\XeLaTeX};
+\mynode{xelatex}{4.5,-6}{Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.}{\XeLaTeX};
 \draw (latex2ε) to (xelatex);
 
-\mynode{lualatex}{6,-4}{LaTeX auf LuaTeX basierend}{Lua\LaTeX};
+\mynode{lualatex}{7,-6}{LaTeX based on LuaTeX with dvi or pdf output.}{(pdf)Lua\LaTeX};
 \draw (latex2ε) to (lualatex);
 
-\mynode{lambda}{8,-4}{A LaTeX-package for omega.}{$\Lambda$}
+\mynode{lambda}{-2,-6}{A LaTeX-package for omega.}{$\Lambda$}
 \draw (latex209) to (lambda);
 
-\mynode{latex3}{0,-6}{}{\LaTeX{}3};
+\mynode{latex3}{0,-8}{}{\LaTeX{}3};
 \draw (latex2ε) to (latex3);
 \end{tikzpicture}
 \newpage
 
+\section*{\ConTeXt\ -- the other major \TeX\ macro package}
 \begin{tikzpicture}
-\mynode{mkii}{0,0}{}{Con\TeX{}t Mk ii};
+\mynode{mki}{0,0}{Original ConTeXt with Dutch low level interface.}{\ConTeXt MkI};
+\mynode{mkii}{0,-2}{ConTeXt with English low level interface. Works with any TeX-engine, like LaTeX: TeX, e-TeX, pdfTeX, Aleph, XeTeX, ...}{\ConTeXt MkII};
+\draw (mki) to (mkii);
 
-\mynode{mkiv}{0,0}{}{Con\TeX{}t Mk iv};
-\draw (mkii) to (mkiv);
+\mynode{mkiii}{0,-4}{Reserved for future use for files supporting XeTeX.}{\ConTeXt\ MkIII};
+\draw (mkii) to (mkiii);
+
+\mynode{mkiv}{0,-6}{Specially designed for LuaTeX.}{\ConTeXt MkIV};
+\draw (mkiii) to (mkiv);
 \end{tikzpicture}
 
 
