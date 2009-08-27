@@ -5,7 +5,7 @@ graphicx,
 cooltooltips,
 dtklogos,
 tikz,
-libertine
+libertine,
 %xltxtra
 }
 
@@ -20,6 +20,8 @@ libertine
     \cooltooltip{#1}{#3}{#3}{}{#4\strut}
   };
 }
+\def\setlayer#1{\def\layer{#1}}
+
 \title{A short overview of \TeX\ and its children\dots}
 \author{Arno Trautmann\thanks{arno.trautmann@gmx.de -- Please feel free to mail me any suggestions and comments!}}
 \date{}
@@ -30,54 +32,67 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 
 \section*{\TeX\ -- the program}
 \begin{tikzpicture}
-\mynode{tex}{7,2}{born in 1978}{\TeX}
+\setlayer2
+\mynode{tex}{7,\layer}{born in 1978}{\TeX}
 
-\mynode{xet-tex}{3,1}{The first extension to TeX, 1987. It was able to typeset in two directions, but only with a mark in the dvi to change the direction.}{\TeX-\XeT}
+\setlayer1
+\mynode{xet-tex}{3,\layer}{The first extension to TeX, 1987. It was able to typeset in two directions, but only with a mark in the dvi to change the direction.}{\TeX-\XeT}
 \draw (tex) to (xet-tex);
 
-\mynode{xet--tex}{3,0}{TeX--XeT was able to really put the glyphs on the right place in the dvi.}{\TeX-\relax{}-\XeT}
+\setlayer0
+\mynode{xet--tex}{3,\layer}{TeX--XeT was able to really put the glyphs on the right place in the dvi.}{\TeX-\relax{}-\XeT}
 \draw (xet-tex) to (xet--tex);
 
-\mynode{tex3}{7,0}{Now handling 8-bit input. 1989}{\TeX3};
+\mynode{tex3}{7,\layer}{Now handling 8-bit input. 1989}{\TeX3};
 \draw (tex) to (tex3);
 
-\mynode{omega}{2,-2}{Support for unicode-input. Still constrained on the output}{$\Omega$};
+\setlayer{-2}
+\mynode{enctex}{6,\layer}{A small extension to TeX, started 1997. Adds 10 new primitives relating input re-encoding}{enc\TeX};
+\draw (tex3) to (enctex);
+
+\mynode{mltex}{7.5,\layer}{Extension to TeX, addressing font encoding.}{ML\TeX};
+\draw (tex3) to (mltex);
+
+\setlayer{-4}
+\mynode{omega}{2,\layer}{Support for unicode-input. Still constrained on the output}{$\Omega$};
 \draw (tex3) to (omega);
 
-\mynode{etex}{4,-2}{*the* extension to TeX.}{$\varepsilon$-\TeX};
+\mynode{etex}{4,\layer}{*the* extension to TeX.}{$\varepsilon$-\TeX};
 \draw (xet--tex) to (etex);
 
-\mynode{pdftex}{6,-2}{A new engine to directly produce pdf-files from TeX, without the need of dvi-ps-pdf. This allows to use microtypographic extensions and many other features of the pdf format.}{pdf\TeX};
-\draw (tex3) to (pdftex);
+\mynode{pdftex}{6,\layer}{A new engine to directly produce pdf-files from TeX, without the need of dvi-ps-pdf. This allows to use microtypographic extensions and many other features of the pdf format.}{pdf\TeX};
+\draw (enctex) to (pdftex);
+\draw (mltex) to (pdftex);
 
-\mynode{texgx}{8,-2}{?}{\TeX{}GX};
+\mynode{texgx}{10,\layer}{?}{\TeX{}GX};
 \draw (tex3) to (texgx);
 
-\mynode{nts}{10,-2}{A project to completely reimplement TeX in Java. Now NTS is officially declared dead.}{\NTS};
+\mynode{nts}{12,\layer}{A project to completely reimplement TeX in Java. Now NTS is officially declared dead.}{\NTS};
 \draw (tex3) to (nts);
 
-\mynode{aleph}{3,-4}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{\Aleph};
+\setlayer{-6}
+\mynode{aleph}{3,\layer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{\Aleph};
 \draw (omega) to (aleph);
 \draw (etex) to (aleph);
 
-\mynode{xetex}{8,-4}{Originally started as a project for Mac OS, this quite young extension enables extremely multilingual support for left-to-right typesetting, right-to-left and almost any other possible directio. XeTeX also features support for OpenType and AAT-fonts.}{\XeTeX};
+\mynode{xetex}{8,\layer}{This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. XeTeX also features support for OpenType and AAT-fonts.}{\XeTeX};
 \draw (texgx) to (xetex);
 \draw (etex) to (xetex);
 
-\mynode{extex}{10,-4}{?!}{$\epsilon\chi$\TeX};
+\mynode{extex}{10,\layer}{?!}{$\epsilon\chi$\TeX};
 \draw (nts) to (extex);
 
-\mynode{pdfetex}{5,-4}{Merging the pdfTeX engine with the eTeX-extensions. This engine can produce dvi (with or without the eTeX-extensions) as well as pdf (again, with or without extensions).}{pdf($\epsilon$)-\TeX};
+\mynode{pdfetex}{5,\layer}{Merging the pdfTeX engine with the eTeX-extensions. This engine can produce dvi (with or without the eTeX-extensions) as well as pdf (again, with or without extensions).}{pdf($\epsilon$)-\TeX};
 \draw (etex) to (pdfetex);
 \draw (pdftex) to (pdfetex);
 
-\mynode{luatex}{4,-6}{Still in heavy active development, LuaTeX will support unicode, OpenType and totally everything. It features an embedded scripting language, lua, making it easy to extend.}{Lua\TeX};
+\setlayer{-8}
+\mynode{luatex}{4,\layer}{Still in heavy active development, LuaTeX will support unicode, OpenType and totally everything. It features an embedded scripting language, lua, making it easy to extend.}{Lua\TeX};
 \draw (aleph) to (luatex);
 \draw (pdfetex) to (luatex);
 
-\mynode{vtex}{0,-8}{Please insert information here...}{V\TeX};
-\mynode{revtex}{2,-8}{Please insert information here...}{REV\TeX};
-\mynode{vtex}{4,-8}{Please insert information here...}{enc\TeX};
+\setlayer{-14}
+\mynode{vtex}{0,\layer}{Please insert information here...}{V\TeX};
 
 \end{tikzpicture}
 \newpage
@@ -97,7 +112,7 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \draw (amslatex) to (latex2ε);
 \draw (slitex) to (latex2ε);
 
-\mynode{pdflatex}{2,-6}{}{pdf\LaTeXe};
+\mynode{pdflatex}{2,-6}{The standard LaTeX. If anyone talks about "LaTeX" it is nearly shure to be this package. pdfLaTeX2e produces pdf or dvi output.}{pdf\LaTeXe};
 \draw (latex2ε) to (pdflatex);
 
 \mynode{xelatex}{4.5,-6}{Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.}{\XeLaTeX};
@@ -106,10 +121,10 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \mynode{lualatex}{7,-6}{LaTeX based on LuaTeX with dvi or pdf output.}{(pdf)Lua\LaTeX};
 \draw (latex2ε) to (lualatex);
 
-\mynode{lambda}{-2,-6}{A LaTeX-package for omega.}{$\Lambda$}
+\mynode{lambda}{-2,-6}{A LaTeX-package for the omega-engine.}{$\Lambda$}
 \draw (latex209) to (lambda);
 
-\mynode{latex3}{0,-8}{}{\LaTeX{}3};
+\mynode{latex3}{0,-8}{The planned successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. The expl3-package provides a test-implemantation that can be used in LaTeX2e.}{\LaTeX{}3};
 \draw (latex2ε) to (latex3);
 \end{tikzpicture}
 \newpage
