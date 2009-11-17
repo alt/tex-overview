@@ -1,13 +1,16 @@
-\documentclass{scrartcl}
+\documentclass[landscape]{scrartcl}
 
 \usepackage{
-graphicx,
-cooltooltips,
-dtklogos,
-tikz,
-libertine,
+  geometry,
+  graphicx,
+  cooltooltips,
+  dtklogos,
+  tikz,
+  libertine
 %xltxtra
 }
+
+\geometry{landscape}
 
 \def\XeT{XET}
 \def\Aleph{Aleph}
@@ -21,16 +24,17 @@ libertine,
   };
 }
 \def\setlayer#1{\def\layer{#1}}
+\pagestyle{empty}
 
 \title{A short overview of \TeX\ and its children\dots}
 \author{Arno Trautmann\thanks{arno.trautmann@gmx.de -- Please feel free to mail me any suggestions and comments!}}
 \date{}
 \begin{document}
+\LARGE
 \maketitle
-
 This paper tries to give a short overview of the development of \TeX. So far, most of the information is from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in \textsf{EuroBacho\TeX 2007}.
 
-\section*{\TeX\ -- the program}
+%\section*{\TeX\ -- the program}
 \begin{tikzpicture}
 \setlayer2
 \mynode{tex}{7,\layer}{born in 1978}{\TeX}
@@ -39,21 +43,21 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \mynode{xet-tex}{3,\layer}{The first extension to TeX, 1987. It was able to typeset in two directions, but only with a mark in the dvi to change the direction.}{\TeX-\XeT}
 \draw (tex) to (xet-tex);
 
-\setlayer0
+\setlayer{-1}
 \mynode{xet--tex}{3,\layer}{TeX--XeT was able to really put the glyphs on the right place in the dvi.}{\TeX-\relax{}-\XeT}
 \draw (xet-tex) to (xet--tex);
 
 \mynode{tex3}{7,\layer}{Now handling 8-bit input. 1989}{\TeX3};
 \draw (tex) to (tex3);
 
-\setlayer{-2}
-\mynode{enctex}{6,\layer}{A small extension to TeX, started 1997. Adds 10 new primitives relating input re-encoding}{enc\TeX};
+\setlayer{-4}
+\mynode{enctex}{5.6,\layer}{A small extension to TeX, started 1997. Adds 10 new primitives relating input re-encoding}{enc\TeX};
 \draw (tex3) to (enctex);
 
 \mynode{mltex}{7.5,\layer}{Extension to TeX, addressing font encoding.}{ML\TeX};
 \draw (tex3) to (mltex);
 
-\setlayer{-4}
+\setlayer{-6}
 \mynode{omega}{2,\layer}{Support for unicode-input. Still constrained on the output}{$\Omega$};
 \draw (tex3) to (omega);
 
@@ -70,7 +74,7 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \mynode{nts}{12,\layer}{A project to completely reimplement TeX in Java. Now NTS is officially declared dead.}{\NTS};
 \draw (tex3) to (nts);
 
-\setlayer{-6}
+\setlayer{-8}
 \mynode{aleph}{3,\layer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{\Aleph};
 \draw (omega) to (aleph);
 \draw (etex) to (aleph);
@@ -86,12 +90,12 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \draw (etex) to (pdfetex);
 \draw (pdftex) to (pdfetex);
 
-\setlayer{-8}
+\setlayer{-10}
 \mynode{luatex}{4,\layer}{Still in heavy active development, LuaTeX will support unicode, OpenType and totally everything. It features an embedded scripting language, lua, making it easy to extend.}{Lua\TeX};
 \draw (aleph) to (luatex);
 \draw (pdfetex) to (luatex);
 
-\setlayer{-14}
+\setlayer{-12}
 \mynode{vtex}{0,\layer}{Please insert information here...}{V\TeX};
 
 \end{tikzpicture}
