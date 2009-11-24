@@ -64,7 +64,7 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \mynode{etex}{4,\layer}{*the* extension to TeX.}{$\varepsilon$-\TeX};
 \draw (xet--tex) to (etex);
 
-\mynode{pdftex}{6,\layer}{A new engine to directly produce pdf-files from TeX, without the need of dvi-ps-pdf. This allows to use microtypographic extensions and many other features of the pdf format.}{pdf\TeX};
+\mynode{pdftex}{7,\layer}{A new engine to directly produce pdf-files from TeX, without the need of dvi-ps-pdf. This allows to use microtypographic extensions and many other features of the pdf format.}{pdf\TeX};
 \draw (enctex) to (pdftex);
 \draw (mltex) to (pdftex);
 
@@ -74,8 +74,8 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \mynode{nts}{12,\layer}{A project to completely reimplement TeX in Java. Now NTS is officially declared dead.}{\NTS};
 \draw (tex3) to (nts);
 
-\setlayer{-8}
-\mynode{aleph}{3,\layer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{\Aleph};
+\setlayer{-9}
+\mynode{aleph}{2,\layer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{\Aleph};
 \draw (omega) to (aleph);
 \draw (etex) to (aleph);
 
@@ -83,19 +83,22 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \draw (texgx) to (xetex);
 \draw (etex) to (xetex);
 
-\mynode{extex}{10,\layer}{?!}{$\epsilon\chi$\TeX};
+\mynode{extex}{12,\layer}{Merger of all machines but XeTeX. Still in pre-alpha}{$\epsilon\chi$\TeX};
 \draw (nts) to (extex);
+\draw (omega) to (extex);
+\draw (etex) to (extex);
+\draw (pdftex) to (extex);
 
 \mynode{pdfetex}{5,\layer}{Merging the pdfTeX engine with the eTeX-extensions. This engine can produce dvi (with or without the eTeX-extensions) as well as pdf (again, with or without extensions).}{pdf($\epsilon$)-\TeX};
 \draw (etex) to (pdfetex);
 \draw (pdftex) to (pdfetex);
 
-\setlayer{-10}
+\setlayer{-11}
 \mynode{luatex}{4,\layer}{Still in heavy active development, LuaTeX will support unicode, OpenType and totally everything. It features an embedded scripting language, lua, making it easy to extend.}{Lua\TeX};
 \draw (aleph) to (luatex);
 \draw (pdfetex) to (luatex);
 
-\setlayer{-12}
+\setlayer{-13}
 \mynode{vtex}{0,\layer}{Please insert information here...}{V\TeX};
 
 \end{tikzpicture}
