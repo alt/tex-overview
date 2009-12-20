@@ -1,16 +1,27 @@
-\documentclass[landscape]{scrartcl}
+\documentclass{scrartcl}
 
 \usepackage{
-  geometry,
-  graphicx,
   cooltooltips,
   dtklogos,
-  tikz,
-  libertine
-%xltxtra
+  filecontents,
+  geometry,
+  graphicx,
+  hyperref,
+  lmodern,
+  natbib,
+  tikz
 }
 
-\geometry{landscape}
+\geometry{
+%  landscape,
+  margin=1cm
+}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  pdfborder=0 0 0
+}
 
 \def\XeT{XET}
 \def\Aleph{Aleph}
@@ -29,12 +40,19 @@
 \title{A short overview of \TeX\ and its children\dots}
 \author{Arno Trautmann\thanks{arno.trautmann@gmx.de -- Please feel free to mail me any suggestions and comments!}}
 \date{}
-\begin{document}
-\LARGE
-\maketitle
-This paper tries to give a short overview of the development of \TeX. So far, most of the information is from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in \textsf{EuroBacho\TeX 2007}.
 
-%\section*{\TeX\ -- the program}
+\begin{document}
+\maketitle
+
+
+\begin{abstract}
+This paper tries to give a short overview of the development of \TeX. So far, most of the information is taken from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007}. Additional information is taken from documentations (see references). Everything here is without guarantee -- this is just to get an overview. Consult the manuals for further (and/or correct) information!
+\end{abstract}
+
+\newpage
+\section*{\TeX\ -- the program}
+\Large
+\centering
 \begin{tikzpicture}
 \setlayer2
 \mynode{tex}{7,\layer}{born in 1978}{\TeX}
@@ -44,14 +62,14 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \draw (tex) to (xet-tex);
 
 \setlayer{-1}
-\mynode{xet--tex}{3,\layer}{TeX--XeT was able to really put the glyphs on the right place in the dvi.}{\TeX-\relax{}-\XeT}
+\mynode{xet--tex}{3,\layer}{TeX--XeT was able to really put the glyphs on the right place in the dvi.}{\TeX-{}-\XeT}
 \draw (xet-tex) to (xet--tex);
 
 \mynode{tex3}{7,\layer}{Now handling 8-bit input. 1989}{\TeX3};
 \draw (tex) to (tex3);
 
 \setlayer{-4}
-\mynode{enctex}{5.6,\layer}{A small extension to TeX, started 1997. Adds 10 new primitives relating input re-encoding}{enc\TeX};
+\mynode{enctex}{5.4,\layer}{A small extension to TeX, started 1997. Adds 10 new primitives relating input re-encoding}{enc\TeX};
 \draw (tex3) to (enctex);
 
 \mynode{mltex}{7.5,\layer}{Extension to TeX, addressing font encoding.}{ML\TeX};
@@ -102,16 +120,21 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \mynode{vtex}{0,\layer}{Please insert information here...}{V\TeX};
 
 \end{tikzpicture}
+
+
+
 \newpage
-
-\section*{\LaTeX\ -- a large macro package for \TeX}
+\section*{\LaTeX\ (Lamport's \TeX) -- a format and large macro package for \TeX}
 \begin{tikzpicture}
-\mynode{latex209}{0,0}{The first official version by Leslie Lamport, 1985. It's called "Lamport's TeX".}{\LaTeX\ 2.09};
+\mynode{latex}{0,2}{Inofficial versions? …}{\LaTeX};
 
-\mynode{amslatex}{2,-2}{A variation of LaTeX2.09}{\AMS\LaTeX};
+\mynode{latex209}{0,0}{The first official version by Leslie Lamport, 1985.}{\LaTeX\ 2.09};
+\draw (latex) to (latex209);
+
+\mynode{amslatex}{2,-2}{A variation of LaTeX2.09 aiming for high quality math typesetting.}{\AMS\LaTeX};
 \draw (latex209) to (amslatex);
 
-\mynode{slitex}{4,-2}{A variation of LaTeX2.09}{SLI\TeX};
+\mynode{slitex}{5,-2}{A variation of LaTeX2.09 to provide an easy way for producing presentations.}{SLI\TeX};
 \draw (latex209) to (slitex);
 
 \mynode{latex2ε}{0,-4}{New release of LaTeX to avoid incompatible dialects of LaTeX 2.09.}{\LaTeXe};
@@ -122,35 +145,60 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \mynode{pdflatex}{2,-6}{The standard LaTeX. If anyone talks about "LaTeX" it is nearly shure to be this package. pdfLaTeX2e produces pdf or dvi output.}{pdf\LaTeXe};
 \draw (latex2ε) to (pdflatex);
 
-\mynode{xelatex}{4.5,-6}{Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.}{\XeLaTeX};
+\mynode{xelatex}{5,-6}{Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.}{\XeLaTeX};
 \draw (latex2ε) to (xelatex);
 
-\mynode{lualatex}{7,-6}{LaTeX based on LuaTeX with pdf (standard) or dvi (dviLuaLaTeX) output.}{(dvi)Lua\LaTeX};
+\mynode{lualatex}{8.5,-6}{LaTeX based on LuaTeX with pdf (standard) or dvi (dviLuaLaTeX) output.}{(dvi)Lua\LaTeX};
 \draw (latex2ε) to (lualatex);
 
-\mynode{lambda}{-2,-6}{A LaTeX-package for the omega-engine.}{$\Lambda$}
+\mynode{lambda}{-3,-6}{A LaTeX-package for the omega-engine.}{$\Lambda$}
 \draw (latex209) to (lambda);
 
 \mynode{latex3}{0,-8}{The planned successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. The expl3-package provides a test-implemantation that can be used in LaTeX2e.}{\LaTeX{}3};
 \draw (latex2ε) to (latex3);
 \end{tikzpicture}
-\newpage
 
-\section*{\ConTeXt\ -- the other major \TeX\ macro package}
+
+\newpage
+\section*{\ConTeXt\ -- the other major format and \TeX\ macro package}
 \begin{tikzpicture}
 \mynode{mki}{0,0}{Original ConTeXt with Dutch low level interface.}{\ConTeXt MkI};
-\mynode{mkii}{0,-2}{ConTeXt with English low level interface. Works with any TeX-engine, like LaTeX: TeX, e-TeX, pdfTeX, Aleph, XeTeX, ...}{\ConTeXt MkII};
+\mynode{mkii}{0,-3}{ConTeXt with English low level interface. Works with any TeX-engine, like LaTeX: TeX, e-TeX, pdfTeX, Aleph, XeTeX, ...}{\ConTeXt MkII};
 \draw (mki) to (mkii);
 
-\mynode{mkiii}{3,-3}{Reserved for future use for files supporting XeTeX. Has not been used yet.}{\ConTeXt\ MkIII};
+\mynode{mkiii}{4,-4.5}{Reserved for future use for files supporting XeTeX. Has not been used yet.}{\ConTeXt\ MkIII};
 \draw (mkii) to (mkiii);
 
-\mynode{mkiv}{0,-4}{Specially designed for LuaTeX.}{\ConTeXt MkIV};
+\mynode{mkiv}{0,-6}{Specially designed for LuaTeX.}{\ConTeXt MkIV};
 \draw (mkii) to (mkiv);
 \end{tikzpicture}
 
 \newpage
-\section*{References}
-missing so far, sorry!
 
+\begin{filecontents}{overview.bib}
+@book{knuth1986texbook,
+  title={{The TEXbook}},
+  author={Knuth, D.E. and Bibby, D. and Makai, I.},
+  year={1986},
+  publisher={Addison-Wesley Reading, MA}
+}
+@misc{latexproject,
+  title={\url{http://www.latex-project.org}}
+}
+@misc{latexprojectiii,
+  title={\url{http://www.latex-project.org/latex3.html}}
+}
+@misc{nts,
+  title={\url{http://nts.tug.org}}
+}
+@misc{contextgarden,
+  title={\url{http://wiki.contextgarden.net}}
+}
+
+\end{filecontents}
+
+\normalsize
+\bibliographystyle{plainnat}
+\nocite{knuth1986texbook,latexproject,latexproject3,nts,contextgarden}
+\bibliography{overview.bib}
 \end{document}
