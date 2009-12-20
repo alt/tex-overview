@@ -37,7 +37,7 @@
 \def\setlayer#1{\def\layer{#1}}
 \pagestyle{empty}
 
-\title{A short overview of \TeX\ and its children\dots}
+\title{A short overview of \TeX\ and its children \dots}
 \author{Arno Trautmann\thanks{arno.trautmann@gmx.de -- Please feel free to mail me any suggestions and comments!}}
 \date{}
 
@@ -50,7 +50,7 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \end{abstract}
 
 \newpage
-\section*{\TeX\ -- the program}
+\section*{\TeX\ -- the program, and extensions/derivatives}
 \Large
 \centering
 \begin{tikzpicture}
@@ -65,7 +65,7 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \mynode{xet--tex}{3,\layer}{TeX--XeT was able to really put the glyphs on the right place in the dvi.}{\TeX-{}-\XeT}
 \draw (xet-tex) to (xet--tex);
 
-\mynode{tex3}{7,\layer}{Now handling 8-bit input. 1989}{\TeX3};
+\mynode{tex3}{7,\layer}{Ability to handle 8-bit input. 1989}{\TeX3};
 \draw (tex) to (tex3);
 
 \setlayer{-4}
@@ -93,7 +93,7 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \draw (tex3) to (nts);
 
 \setlayer{-9}
-\mynode{aleph}{2,\layer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{\Aleph};
+\mynode{aleph}{2,\layer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{$\aleph$ (\Aleph)};
 \draw (omega) to (aleph);
 \draw (etex) to (aleph);
 
@@ -111,13 +111,20 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \draw (etex) to (pdfetex);
 \draw (pdftex) to (pdfetex);
 
-\setlayer{-11}
+\setlayer{-10.5}
+\mynode{eetex}{6,\layer}{Experimental extension to pdfeTeX by Taco Hoekwater.}{ee\TeX};
+\draw (pdfetex) to (eetex);
+
+\setlayer{-12}
+\mynode{lua}{0,\layer}{Script language; has nothing to do with TeX!}{Lua};
+
 \mynode{luatex}{4,\layer}{Still in heavy active development, LuaTeX will support unicode, OpenType and totally everything. It features an embedded scripting language, lua, making it easy to extend.}{Lua\TeX};
 \draw (aleph) to (luatex);
 \draw (pdfetex) to (luatex);
+\draw[dashed] (lua) to (luatex);
 
-\setlayer{-13}
-\mynode{vtex}{0,\layer}{Please insert information here...}{V\TeX};
+\setlayer{-15}
+\mynode{vtex}{0,\layer}{Please insert information here ...}{V\TeX};
 
 \end{tikzpicture}
 
@@ -156,6 +163,9 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 
 \mynode{latex3}{0,-8}{The planned successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. The expl3-package provides a test-implemantation that can be used in LaTeX2e.}{\LaTeX{}3};
 \draw (latex2ε) to (latex3);
+\draw[dotted] (xelatex) to (latex3);
+\draw[dotted] (pdflatex) to (latex3);
+\draw[dotted] (lualatex) to (latex3);
 \end{tikzpicture}
 
 
@@ -177,21 +187,49 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 
 \begin{filecontents}{overview.bib}
 @book{knuth1986texbook,
-  title={{The TEXbook}},
+  title={{The \TeX book}},
   author={Knuth, D.E. and Bibby, D. and Makai, I.},
   year={1986},
   publisher={Addison-Wesley Reading, MA}
 }
+@book{mittelbach2004latex,
+  title={{The \LaTeX\ companion}},
+  author={Mittelbach, F. and Goossens, M. and Braams, J. and Carlisle, D. and Rowley, C. and Detig, C. and Schrod, J.},
+  year={2004},
+  publisher={Addison-Wesley}
+}
+
 @misc{latexproject,
+  author={{\LaTeX\ project page}},
   title={\url{http://www.latex-project.org}}
 }
 @misc{latexprojectiii,
+  author={{\LaTeX3 project}},
   title={\url{http://www.latex-project.org/latex3.html}}
 }
+
+@misc{enctex,
+  author={{enc\TeX\ page}},
+  title={\url{http://www.olsak.net/enctex.html}}
+}
+
 @misc{nts,
+  author={{\NTS\ project page}},
   title={\url{http://nts.tug.org}}
 }
+
+@misc{eetex,
+  author={{}},
+  title={\url{http://www.luatex.org}}
+}
+
+@misc{luatex,
+  author={{Lua\TeX\ project page}},
+  title={\url{http://www.luatex.org}}
+}
+
 @misc{contextgarden,
+  author={\ConTeXt\ wiki},
   title={\url{http://wiki.contextgarden.net}}
 }
 
@@ -199,6 +237,6 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 
 \normalsize
 \bibliographystyle{plainnat}
-\nocite{knuth1986texbook,latexproject,latexproject3,nts,contextgarden}
+\nocite{knuth1986texbook,latexproject,latexprojectiii,enctex,nts,luatex,contextgarden,mittelbach2004latex}
 \bibliography{overview.bib}
 \end{document}
