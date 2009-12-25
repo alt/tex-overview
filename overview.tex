@@ -46,11 +46,13 @@
 
 
 \begin{abstract}
-This paper tries to give a short overview of the development of \TeX. So far, most of the information is taken from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007}. Additional information is taken from documentations (see references). All information is up to the date of the generated pdf. Everything here is without guarantee -- this is just to get an overview. Consult the references for further (and/or correct) information!
+This paper tries to give a short overview of the development of \TeX. So far, most of the information is taken from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007}. Additional information is taken from documentations (see references on page \pageref{sec:refs}). All information is up to the date of the generated pdf. Everything here is without guarantee -- this is just to get an overview. Consult the references for further (and/or correct) information!
 \end{abstract}
 
+\tableofcontents
+
 \newpage
-\section*{\TeX\ -- the program, and extensions/derivatives}
+\section{\TeX\ -- the program, and extensions/derivatives}
 \Large
 \centering
 \begin{tikzpicture}
@@ -135,40 +137,43 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 
 
 \newpage
-\section*{\LaTeX\ (Lamport's \TeX) -- a format and large macro package for \TeX}
+\section{\LaTeX\ (Lamport's \TeX) -- a format and large macro package for \TeX}
 \begin{tikzpicture}
 \mynode{latex}{0,2}{Inofficial versions? …}{\LaTeX};
 
-\mynode{latex209}{0,0}{The first official version by Leslie Lamport, 1985.}{\LaTeX\ 2.09};
-\draw (latex) to (latex209);
+\mynode{latex205}{0,0}{? …}{\LaTeX\ 2.05};
+\draw (latex) to (latex205);
 
-\mynode{amslatex}{2,-2}{A variation of LaTeX2.09 aiming for high quality math typesetting.}{\AMS\LaTeX};
+\mynode{latex209}{0,-2}{The first official version by Leslie Lamport, 1985.}{\LaTeX\ 2.09};
+\draw (latex205) to (latex209);
+
+\mynode{amslatex}{2,-4}{A variation of LaTeX2.09 aiming for high quality math typesetting.}{\AMS\LaTeX};
 \draw (latex209) to (amslatex);
 
-\mynode{slitex}{5,-2}{A variation of LaTeX2.09 to provide an easy way for producing presentations.}{SLI\TeX};
+\mynode{slitex}{5,-4}{A variation of LaTeX2.09 to provide an easy way for producing presentations.}{SLI\TeX};
 \draw (latex209) to (slitex);
 
-\mynode{latex2ε}{0,-4}{New release of LaTeX to avoid incompatible dialects of LaTeX 2.09.}{\LaTeXe};
+\mynode{latex2ε}{0,-6}{New release of LaTeX to avoid incompatible dialects of LaTeX 2.09.}{\LaTeXe};
 \draw (latex209) to (latex2ε);
 \draw (amslatex) to (latex2ε);
 \draw (slitex) to (latex2ε);
 
-\mynode{pdflatex}{2,-6}{The standard LaTeX. If anyone talks about "LaTeX" it is nearly shure to be this package. pdfLaTeX2e produces pdf or dvi output.}{pdf\LaTeXe};
+\mynode{pdflatex}{2,-8}{The standard LaTeX. If anyone talks about "LaTeX" it is nearly shure to be this package. pdfLaTeX2e produces pdf or dvi output.}{pdf\LaTeXe};
 \draw (latex2ε) to (pdflatex);
 
-\mynode{xelatex}{5,-6}{Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.}{\XeLaTeX};
+\mynode{xelatex}{5,-8}{Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.}{\XeLaTeX};
 \draw (latex2ε) to (xelatex);
 
-\mynode{lualatex}{8.5,-6}{LaTeX based on LuaTeX with pdf (standard) or dvi (dviLuaLaTeX) output.}{(dvi)Lua\LaTeX};
+\mynode{lualatex}{8.5,-8}{LaTeX based on LuaTeX with pdf (standard) or dvi (dviLuaLaTeX) output.}{(dvi)Lua\LaTeX};
 \draw (latex2ε) to (lualatex);
 
-\mynode{lambda}{-3,-6}{A LaTeX-package for the omega-engine.}{$\Lambda$}
+\mynode{lambda}{-3,-8}{A LaTeX-package for the omega-engine.}{$\Lambda$}
 \draw (latex209) to (lambda);
 
-\mynode{lamed}{-5,-7}{A LaTeX-package for the aleph-engine.}{Lamed}
+\mynode{lamed}{-5,-9}{A LaTeX-package for the aleph-engine.}{Lamed}
 \draw (lambda) to (lamed);
 
-\mynode{latex3}{0,-8}{The planned successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. The expl3-package provides a test-implemantation that can be used in LaTeX2e.}{\LaTeX{}3};
+\mynode{latex3}{0,-10}{The planned successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. The expl3-package provides a test-implemantation that can be used in LaTeX2e.}{\LaTeX{}3};
 \draw (latex2ε) to (latex3);
 \draw[dotted] (xelatex) to (latex3);
 \draw[dotted] (pdflatex) to (latex3);
@@ -177,7 +182,7 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 
 
 \newpage
-\section*{\ConTeXt\ -- the other major format and \TeX\ macro package}
+\section{\ConTeXt\ -- the other major format and \TeX\ macro package}
 \begin{tikzpicture}
 \mynode{mki}{0,0}{Original ConTeXt with Dutch low level interface.}{\ConTeXt MkI};
 \mynode{mkii}{0,-3}{ConTeXt with English low level interface. Works with any TeX-engine, like LaTeX: TeX, e-TeX, pdfTeX, Aleph, XeTeX, ...}{\ConTeXt MkII};
@@ -191,24 +196,21 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \end{tikzpicture}
 
 \newpage
-\section*{\TeX's "little" helpers}
+\section{\TeX's "little" helpers}
 \parbox{\textwidth}{This is a small section to mention programs that are very helpful and specially designed to support the work with \TeX.}\vspace{3ex}
 
 \begin{tikzpicture}
 \mynode{mki}{0,0}{Very helpful and important tool for creating bibliographies.}{\BibTeX};
 \end{tikzpicture}
-
 %%
 %% I've chosen to typeset the bibliography "by hand" as to avoid problems regarding formatting. And this way I only need one file.
 %%
 \newpage
 \normalsize
 \begin{thebibliography}{10}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+\refstepcounter{section}
+\label{sec:refs}
+\bibitem[{Annotations}()]{}{\quad The references are in order of occurance in the above document. I.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX.}
 
 \bibitem[{Books}()]{}{\large\textbf{\textsf{Books}}}
 
