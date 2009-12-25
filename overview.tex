@@ -46,7 +46,7 @@
 
 
 \begin{abstract}
-This paper tries to give a short overview of the development of \TeX. So far, most of the information is taken from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007}. Additional information is taken from documentations (see references). Everything here is without guarantee -- this is just to get an overview. Consult the manuals for further (and/or correct) information!
+This paper tries to give a short overview of the development of \TeX. So far, most of the information is taken from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007}. Additional information is taken from documentations (see references). All information is up to the date of the generated pdf. Everything here is without guarantee -- this is just to get an overview. Consult the references for further (and/or correct) information!
 \end{abstract}
 
 \newpage
@@ -65,14 +65,14 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \mynode{xet--tex}{3,\layer}{TeX--XeT was able to really put the glyphs on the right place in the dvi.}{\TeX-{}-\XeT}
 \draw (xet-tex) to (xet--tex);
 
-\mynode{tex3}{7,\layer}{Ability to handle 8-bit input. 1989}{\TeX3};
+\mynode{tex3}{7,\layer}{Ability to handle 8-bit input. 1989. TeX development was frozen in 1991.}{\TeX3};
 \draw (tex) to (tex3);
 
 \setlayer{-4}
 \mynode{enctex}{5.4,\layer}{A small extension to TeX, started 1997. Adds 10 new primitives relating input re-encoding}{enc\TeX};
 \draw (tex3) to (enctex);
 
-\mynode{mltex}{7.5,\layer}{Extension to TeX, addressing font encoding.}{ML\TeX};
+\mynode{mltex}{7.5,\layer}{Extension (started 1990) to TeX that allows hyphenation of words with accented letters. Distributed as a change file to the original WEB sources of TeX.}{ML\TeX};
 \draw (tex3) to (mltex);
 
 \setlayer{-6}
@@ -92,6 +92,10 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \mynode{nts}{12,\layer}{A project to completely reimplement TeX in Java. Now NTS is officially declared dead.}{\NTS};
 \draw (tex3) to (nts);
 
+\setlayer{-7.5}
+\mynode{omega2}{1,\layer}{A short-time try to pick up the development of Omega again in 2006. Seemed more like a good plan and is now regarded as obsolete. LuaTeX is kind of a successor.}{$\Omega_2$};
+\draw (omega) to (omega2);
+
 \setlayer{-9}
 \mynode{aleph}{2,\layer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{$\aleph$ (\Aleph)};
 \draw (omega) to (aleph);
@@ -101,7 +105,7 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \draw (texgx) to (xetex);
 \draw (etex) to (xetex);
 
-\mynode{extex}{12,\layer}{Merger of all machines but XeTeX. Still in pre-alpha}{$\epsilon\chi$\TeX};
+\mynode{extex}{12,\layer}{Planned implementation of a high-quality typesetting system, written in Java. Based on experiences in NTS, eTeX, pdfTeX and Omega. Started in 2003, current version in repository is 0.0. (i. e. not very far ...)}{$\epsilon\chi$\TeX};
 \draw (nts) to (extex);
 \draw (omega) to (extex);
 \draw (etex) to (extex);
@@ -112,7 +116,7 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \draw (pdftex) to (pdfetex);
 
 \setlayer{-10.5}
-\mynode{eetex}{6,\layer}{Experimental extension to pdfeTeX by Taco Hoekwater.}{ee\TeX};
+\mynode{eetex}{6,\layer}{Experimental extension to pdfeTeX by Taco Hoekwater, created 2000. Distributed as change file.}{ee\TeX};
 \draw (pdfetex) to (eetex);
 
 \setlayer{-12}
@@ -161,6 +165,9 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \mynode{lambda}{-3,-6}{A LaTeX-package for the omega-engine.}{$\Lambda$}
 \draw (latex209) to (lambda);
 
+\mynode{lamed}{-5,-7}{A LaTeX-package for the aleph-engine.}{Lamed}
+\draw (lambda) to (lamed);
+
 \mynode{latex3}{0,-8}{The planned successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. The expl3-package provides a test-implemantation that can be used in LaTeX2e.}{\LaTeX{}3};
 \draw (latex2ε) to (latex3);
 \draw[dotted] (xelatex) to (latex3);
@@ -184,59 +191,84 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \end{tikzpicture}
 
 \newpage
+\section*{\TeX's "little" helpers}
+\parbox{\textwidth}{This is a small section to mention programs that are very helpful and specially designed to support the work with \TeX.}\vspace{3ex}
 
-\begin{filecontents}{overview.bib}
-@book{knuth1986texbook,
-  title={{The \TeX book}},
-  author={Knuth, D.E. and Bibby, D. and Makai, I.},
-  year={1986},
-  publisher={Addison-Wesley Reading, MA}
-}
-@book{mittelbach2004latex,
-  title={{The \LaTeX\ companion}},
-  author={Mittelbach, F. and Goossens, M. and Braams, J. and Carlisle, D. and Rowley, C. and Detig, C. and Schrod, J.},
-  year={2004},
-  publisher={Addison-Wesley}
-}
+\begin{tikzpicture}
+\mynode{mki}{0,0}{Very helpful and important tool for creating bibliographies.}{\BibTeX};
+\end{tikzpicture}
 
-@misc{latexproject,
-  author={{\LaTeX\ project page}},
-  title={\url{http://www.latex-project.org}}
-}
-@misc{latexprojectiii,
-  author={{\LaTeX3 project}},
-  title={\url{http://www.latex-project.org/latex3.html}}
-}
-
-@misc{enctex,
-  author={{enc\TeX\ page}},
-  title={\url{http://www.olsak.net/enctex.html}}
-}
-
-@misc{nts,
-  author={{\NTS\ project page}},
-  title={\url{http://nts.tug.org}}
-}
-
-@misc{eetex,
-  author={{}},
-  title={\url{http://www.luatex.org}}
-}
-
-@misc{luatex,
-  author={{Lua\TeX\ project page}},
-  title={\url{http://www.luatex.org}}
-}
-
-@misc{contextgarden,
-  author={\ConTeXt\ wiki},
-  title={\url{http://wiki.contextgarden.net}}
-}
-
-\end{filecontents}
-
+%%
+%% I've chosen to typeset the bibliography "by hand" as to avoid problems regarding formatting. And this way I only need one file.
+%%
+\newpage
 \normalsize
-\bibliographystyle{plainnat}
-\nocite{knuth1986texbook,latexproject,latexprojectiii,enctex,nts,luatex,contextgarden,mittelbach2004latex}
-\bibliography{overview.bib}
+\begin{thebibliography}{10}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{Books}()]{}{\large\textbf{\textsf{Books}}}
+
+\bibitem[Knuth et~al.(1986)Knuth, Bibby, and Makai]{knuth1986texbook}
+D.E. Knuth, D.~Bibby, and I.~Makai.
+\newblock \emph{{The \TeX book}}.
+\newblock Addison-Wesley Reading, MA, 1986.
+
+\bibitem[Mittelbach et~al.(2004)Mittelbach, Goossens, Braams, Carlisle, Rowley,
+  Detig, and Schrod]{mittelbach2004latex}
+F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
+  J.~Schrod.
+\newblock \emph{{The \LaTeX\ companion}}.
+\newblock Addison-Wesley, 2004.
+
+\bibitem[{WebEngines}()]{}{\large\textbf{\textsf{Web Sources (Engines)}}}
+
+\bibitem[{ML\TeX\ source}()]{mltex}{ML\TeX\ source (CH file)}
+\newblock \url{http://www.tex.ac.uk/tex-archive/systems/generic/mltex/mltex.ch}
+
+\bibitem[{enc\TeX\ page}()]{enctex}
+{enc\TeX\ page}
+\newblock \url{http://www.olsak.net/enctex.html}
+
+\bibitem[{\NTS\ project page}()]{nts}
+{\NTS\ project page}
+\newblock \url{http://nts.tug.org}
+
+\bibitem[{$\epsilon\chi$\TeX\ project page}()]{extex}
+{$\epsilon\chi$\TeX\ project page}
+\newblock \url{http://www.extex.org}
+
+\bibitem[{ee\TeX\ project page}()]{eetex}
+{ee\TeX\ project page}
+\newblock \url{http://tex.aanhet.net/eetex}
+
+\bibitem[{omega and aleph}()]{omegaleph}
+{short article about omega and aleph}
+\newblock \url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=omegaleph}
+
+\bibitem[{Lua\TeX\ project page}()]{luatex}
+{Lua\TeX\ project page}
+\newblock \url{http://www.luatex.org}
+
+
+
+\bibitem[{WebMakro}()]{}{\large\textbf{\textsf{Web Sources (Makro Packages/Formats)}}}
+\bibitem[wiki()]{contextgarden}
+\ConTeXt\ wiki
+\newblock \url{http://wiki.contextgarden.net}
+
+\bibitem[{\LaTeX\ project page}()]{latexproject}
+{\LaTeX\ project page}
+\newblock \url{http://www.latex-project.org}
+
+\bibitem[{\LaTeX3 project}()]{latexprojectiii}
+{\LaTeX3 project}
+\newblock \url{http://www.latex-project.org/latex3.html}
+
+\end{thebibliography}
+
+
 \end{document}
