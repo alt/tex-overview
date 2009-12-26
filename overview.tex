@@ -1,6 +1,7 @@
 \documentclass{scrartcl}
 
 \usepackage{
+  calc,
   cooltooltips,
   dtklogos,
   filecontents,
@@ -33,148 +34,172 @@
   \node (#1) at (#2) {
     \cooltooltip{#1}{#3}{#3}{}{#4\strut}
   };
+  \expandafter\def\csname texname#1\endcsname{#3}
+  \AtEndDocument{\subsubsection*{\color{blue}#4}\parbox{\textwidth}{#3}}
 }
-\newcounter{layer}\setcounter{layer}{0}
-\def\setlayer#1{\setcounter{layer}{#1}}
-\newcommand\steplayer[1][-1]{\addtocounter{layer}{#1}}
-\pagestyle{empty}
+
+\newlength{\layer}\setlength{\layer}{0cm}
+\def\setlayer#1{\setlength{\layer}{#1cm}}
+\newcommand\steplayer[1][-1]{\addtolength{\layer}{#1cm}}%\addtocounter{layer}{#1}}
 
 \title{A short overview of \TeX\ and its children \dots}
 \author{Arno Trautmann\thanks{arno.trautmann@gmx.de -- Please feel free to mail me any suggestions and comments!}}
 \date{}
+\pagestyle{empty}
+
+\def\overviewsection#1{\section{#1}\AtEndDocument{\section*{#1}}}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-This paper tries to give a short overview of the development of \TeX. So far, most of the information is taken from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007}. Additional information is taken from documentations (see references on page \pageref{sec:refs}). All information is up to the date of the generated pdf. Everything here is without guarantee -- this is just to get an overview. Consult the references for further (and/or correct) information!
+This paper tries to give a short overview of the development of \TeX. The base frame is taken from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007} and his talk there (see references). Additional information is taken from documentations (see references on page \pageref{sec:refs}). All information is up to the date of the generated pdf. Everything here is without guarantee -- this is just to get an overview. Consult the references for further (and/or correct) information!
 \end{abstract}
 
 \tableofcontents
 
 \newpage
-\section{\TeX\ -- the program, and extensions/derivatives}
+\overviewsection{\TeX\ -- the program, and extensions/derivatives}
 \Large
 \centering
 \begin{tikzpicture}
 \setlayer2
-\mynode{tex}{7,\thelayer}{born in 1978}{\TeX}
+\mynode{tex}{7,\layer}{born in 1978}{\TeX}
 
 \steplayer
-\mynode{xet-tex}{3,\thelayer}{The first extension to TeX, 1987. It was able to typeset in two directions, but only with a mark in the dvi to change the direction.}{\TeX-\XeT}
+\mynode{xet-tex}{3,\layer}{The first extension to TeX, 1987. It was able to typeset in two directions, but only with a mark in the dvi to change the direction.}{\TeX-\XeT}
 \draw (tex) to (xet-tex);
 
 \steplayer[-2]
-\mynode{xet--tex}{3,\thelayer}{TeX--XeT was able to really put the glyphs on the right place in the dvi.}{\TeX-{}-\XeT}
+\mynode{xet--tex}{3,\layer}{TeX--XeT was able to really put the glyphs on the right place in the dvi.}{\TeX-{}-\XeT}
 \draw (xet-tex) to (xet--tex);
 
-\mynode{tex3}{7,\thelayer}{Ability to handle 8-bit input. 1989. TeX development was frozen in 1991.}{\TeX3};
+\mynode{tex3}{7,\layer}{Ability to handle 8-bit input. 1989. TeX development was frozen in 1991.}{\TeX3};
 \draw (tex) to (tex3);
 
-\steplayer[-3]
-\mynode{enctex}{5.4,\thelayer}{A small extension to TeX, started 1997. Adds 10 new primitives relating input re-encoding}{enc\TeX};
+\steplayer[-2]
+\mynode{enctex}{5.4,\layer}{A small extension to TeX, started 1997. Adds 10 new primitives relating input re-encoding}{enc\TeX};
 \draw (tex3) to (enctex);
 
-\mynode{mltex}{7.5,\thelayer}{Extension (started 1990) to TeX that allows hyphenation of words with accented letters. Distributed as a change file to the original WEB sources of TeX.}{ML\TeX};
+\mynode{mltex}{7.5,\layer}{Extension (started 1990) to TeX that allows hyphenation of words with accented letters. Distributed as a change file to the original WEB sources of TeX.}{ML\TeX};
 \draw (tex3) to (mltex);
 
 \steplayer[-2]
-\mynode{omega}{1,\thelayer}{Support for unicode-input. Still constrained on the output}{$\Omega$};
+\mynode{tex2pdf}{7,\layer}{Early name for pdfTeX.}{\TeX2PDF};
+\draw (enctex) to (tex2pdf);
+\draw (mltex) to (tex2pdf);
+
+\steplayer[-2]
+\mynode{omega}{1,\layer}{Support for unicode-input. Still constrained on the output}{$\Omega$};
 \draw (tex3) to (omega);
 
-\mynode{etex}{4,\thelayer}{*the* extension to TeX.}{$\varepsilon$-\TeX};
+\mynode{etex}{4,\layer}{*the* extension to TeX.}{$\varepsilon$-\TeX};
 \draw (xet--tex) to (etex);
 
-\mynode{pdftex}{7,\thelayer}{A new engine to directly produce pdf-files from TeX, without the need of dvi-ps-pdf. This allows to use microtypographic extensions and many other features of the pdf format.}{pdf\TeX};
-\draw (enctex) to (pdftex);
-\draw (mltex) to (pdftex);
+\mynode{pdftex}{7,\layer}{A new engine to directly produce pdf-files from TeX, without the need of dvi-ps-pdf. This allows to use microtypographic extensions and many other features of the pdf format.}{pdf\TeX};
+\draw (tex2pdf) to (pdftex);
 
-\mynode{texgx}{10,\thelayer}{?}{\TeX{}GX};
+\mynode{texgx}{10,\layer}{?}{\TeX{}gX};
 \draw (tex3) to (texgx);
 
-\mynode{nts}{12,\thelayer}{A project to completely reimplement TeX in Java. Now NTS is officially declared dead.}{\NTS};
+\mynode{nts}{12,\layer}{A project to completely reimplement TeX in Java. Now NTS is officially declared dead.}{\NTS};
 \draw (tex3) to (nts);
 
 \steplayer[-2]
-\mynode{omega2}{0,\thelayer}{A short-time try to pick up the development of Omega again in 2006. Seemed more like a good plan and is now regarded as obsolete. LuaTeX is kind of a successor.}{$\Omega_2$};
+\mynode{omega2}{0,\layer}{A short-time try to pick up the development of Omega again in 2006. Seemed more like a good plan and is now regarded as obsolete. LuaTeX is kind of a successor.}{$\Omega_2$};
 \draw (omega) to (omega2);
 
 \steplayer[-2]
-\mynode{aleph}{2,\thelayer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{$\aleph$ (\Aleph)};
+\mynode{aleph}{2,\layer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{$\aleph$ (\Aleph)};
 \draw (omega) to (aleph);
 \draw (etex) to (aleph);
 
-\mynode{xetex}{8,\thelayer}{This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. XeTeX also features support for OpenType and AAT-fonts.}{\XeTeX};
+\mynode{xetex}{8,\layer}{This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. XeTeX also features support for OpenType and AAT-fonts.}{\XeTeX};
 \draw (texgx) to (xetex);
 \draw (etex) to (xetex);
 
-\mynode{extex}{12,\thelayer}{Planned implementation of a high-quality typesetting system, written in Java. Based on experiences in NTS, eTeX, pdfTeX and Omega. Started in 2003, current version in repository is 0.0. (i. e. not very far ...)}{$\epsilon\chi$\TeX};
+\mynode{extex}{12,\layer}{Planned implementation of a high-quality typesetting system, written in Java. Based on experiences in NTS, eTeX, pdfTeX and Omega. Started in 2003, current version in repository is 0.0. (i. e. not very far ...)}{$\epsilon\chi$\TeX};
 \draw (nts) to (extex);
 \draw (omega) to (extex);
 \draw (etex) to (extex);
 \draw (pdftex) to (extex);
 
-\mynode{pdfetex}{5,\thelayer}{Merging the pdfTeX engine with the eTeX-extensions. This engine can produce dvi (with or without the eTeX-extensions) as well as pdf (again, with or without extensions).}{pdf($\epsilon$)-\TeX};
+\mynode{pdfetex}{5,\layer}{Merging the pdfTeX engine with the eTeX-extensions. This engine can produce dvi (with or without the eTeX-extensions) as well as pdf (again, with or without extensions).}{pdf($\epsilon$)-\TeX};
 \draw (etex) to (pdfetex);
 \draw (pdftex) to (pdfetex);
 
 \steplayer[-2]
-\mynode{eetex}{6,\thelayer}{Experimental extension to pdfeTeX by Taco Hoekwater, created 2000. Distributed as change file.}{ee\TeX};
+\mynode{eetex}{6,\layer}{Experimental extension to pdfeTeX by Taco Hoekwater, created 2000. Distributed as change file.}{ee\TeX};
 \draw (pdfetex) to (eetex);
 
 \steplayer[-2]
-\mynode{lua}{0,\thelayer}{Script language; has nothing to do with TeX!}{Lua};
+\mynode{lua}{0,\layer}{Script language; has nothing to do with TeX!}{Lua};
 
-\mynode{luatex}{4,\thelayer}{Still in heavy active development, LuaTeX will support unicode, OpenType and totally everything. It features an embedded scripting language, lua, making it easy to extend.}{Lua\TeX};
+\mynode{luatex}{4,\layer}{Still in heavy active development, LuaTeX will support unicode, OpenType and totally everything. It features an embedded scripting language, lua, making it easy to extend.}{Lua\TeX};
 \draw (aleph) to (luatex);
 \draw (pdfetex) to (luatex);
 \draw[dashed] (lua) to (luatex);
 
 \steplayer[-3]
-\mynode{vtex}{0,\thelayer}{Please insert information here ...}{V\TeX};
-
+\mynode{vtex}{0,\layer}{Please insert information here ...}{V\TeX};
 \end{tikzpicture}
 
 
-
 \newpage
-\section{\LaTeX\ (Lamport's \TeX) -- a format and large macro package for \TeX}
+\overviewsection{\LaTeX\ (Lamport's \TeX) -- a format and large macro package for \TeX}
 \begin{tikzpicture}
-\mynode{latex}{0,2}{Inofficial versions? …}{\LaTeX};
+\setlayer{2}
+\mynode{latex}{0,2cm}{First mention (I found) is on p. 14f. TUGboat vol 4, Nr. 1, 1983}{\LaTeX};
 
-\mynode{latex205}{0,0}{? …}{\LaTeX\ 2.05};
+\steplayer[-1.3]
+\mynode{latex205}{0,\layer}{? …}{\LaTeX\ 2.05};
 \draw (latex) to (latex205);
 
-\mynode{latex209}{0,-2}{The first official version by Leslie Lamport, 1985.}{\LaTeX\ 2.09};
-\draw (latex205) to (latex209);
+\steplayer[-1.3]
+\mynode{latex206a}{0,\layer}{Release of version 2.06a of the LaTeX macros. September 1984.}{\LaTeX\ 2.06a};
+\draw (latex205) to (latex206a);
 
-\mynode{amslatex}{2,-4}{A variation of LaTeX2.09 aiming for high quality math typesetting.}{\AMS\LaTeX};
-\draw (latex209) to (amslatex);
+\steplayer[-1.3]
+\mynode{latex209}{0,\layer}{The first official version by Leslie Lamport, 1985.}{\LaTeX\ 2.09};
+\draw (latex206a) to (latex209);
 
-\mynode{slitex}{5,-4}{A variation of LaTeX2.09 to provide an easy way for producing presentations.}{SLI\TeX};
+\steplayer[-2]
+\mynode{slitex}{2,\layer}{A variation of LaTeX2.09 to provide an easy way for producing presentations. In LaTeX2e absorbed as a documentclass (slides).}{SLI\TeX};
 \draw (latex209) to (slitex);
 
-\mynode{latex2ε}{0,-6}{New release of LaTeX to avoid incompatible dialects of LaTeX 2.09.}{\LaTeXe};
-\draw (latex209) to (latex2ε);
-\draw (amslatex) to (latex2ε);
-\draw (slitex) to (latex2ε);
+\mynode{amslatex}{6,\layer}{A port of Spivak’s AMS-\TeX to LaTeX 2.09, released 1990}{\AMS\LaTeX\ 1.1};
+\draw (latex209) to (amslatex);
 
-\mynode{pdflatex}{2,-8}{The standard LaTeX. If anyone talks about "LaTeX" it is nearly shure to be this package. pdfLaTeX2e produces pdf or dvi output.}{pdf\LaTeXe};
+\steplayer[-1.7]
+\mynode{latex2ε}{0,\layer}{June 1994: New release of LaTeX to avoid incompatible dialects of LaTeX 2.09. Introduced by the LaTeX3-Team.}{\LaTeXe};
+\draw (latex209) to (latex2ε);
+\draw[dashed] (slitex) to (latex2ε);
+\draw[dashed] (amslatex) to (latex2ε);
+
+\steplayer[-1.3]
+\mynode{amslatex12}{6,\layer}{A port of version 1.1 to LaTeX 2e by Downes and Jones.}{AMS-\LaTeX 1.2}
+\draw (amslatex) to (amslatex12);
+\draw (latex2ε) to (amslatex12);
+
+\steplayer[-1.5]
+\mynode{pdflatex}{2,\layer}{The standard LaTeX. If anyone talks about "LaTeX" it is nearly shure to be this package. pdfLaTeX2e produces pdf or dvi output.}{pdf\LaTeXe};
 \draw (latex2ε) to (pdflatex);
 
-\mynode{xelatex}{5,-8}{Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.}{\XeLaTeX};
+\mynode{xelatex}{5,\layer}{Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.}{\XeLaTeX};
 \draw (latex2ε) to (xelatex);
 
-\mynode{lualatex}{8.5,-8}{LaTeX based on LuaTeX with pdf (standard) or dvi (dviLuaLaTeX) output.}{(dvi)Lua\LaTeX};
+\mynode{lualatex}{-2,\layer}{LaTeX based on LuaTeX with pdf (standard) or dvi (dviLuaLaTeX) output. So far, LaTeX support for LuaTeX is not very elaborate.}{(dvi)Lua\LaTeX};
 \draw (latex2ε) to (lualatex);
 
-\mynode{lambda}{-3,-8}{A LaTeX-package for the omega-engine.}{$\Lambda$}
+\mynode{lambda}{-5,\layer}{A LaTeX-package for the omega-engine.}{$\Lambda$}
 \draw (latex209) to (lambda);
 
-\mynode{lamed}{-5,-9}{A LaTeX-package for the aleph-engine.}{Lamed}
+\steplayer[-1]
+\mynode{lamed}{-6,\layer}{A LaTeX-package for the aleph-engine.}{Lamed}
 \draw (lambda) to (lamed);
 
-\mynode{latex3}{0,-10}{The planned successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. The expl3-package provides a test-implemantation that can be used in LaTeX2e.}{\LaTeX{}3};
+\steplayer[-2]
+\mynode{latex3}{0,\layer}{The planned successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. The expl3-package provides a test-implemantation that can be used in LaTeX2e.}{\LaTeX{}3};
 \draw (latex2ε) to (latex3);
 \draw[dotted] (xelatex) to (latex3);
 \draw[dotted] (pdflatex) to (latex3);
@@ -183,7 +208,7 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 
 
 \newpage
-\section{\ConTeXt\ -- the other major format and \TeX\ macro package}
+\overviewsection{\ConTeXt\ -- the other major format and \TeX\ macro package}
 \begin{tikzpicture}
 \mynode{mki}{0,0}{Original ConTeXt with Dutch low level interface.}{\ConTeXt MkI};
 \mynode{mkii}{0,-3}{ConTeXt with English low level interface. Works with any TeX-engine, like LaTeX: TeX, e-TeX, pdfTeX, Aleph, XeTeX, ...}{\ConTeXt MkII};
@@ -197,7 +222,7 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \end{tikzpicture}
 
 \newpage
-\section{\TeX's "little" helpers}
+\overviewsection{\TeX's "little" helpers}
 \parbox{\textwidth}{This is a small section to mention programs that are very helpful and specially designed to support the work with \TeX.}\vspace{3ex}
 
 \begin{tikzpicture}
@@ -212,9 +237,9 @@ This paper tries to give a short overview of the development of \TeX. So far, mo
 \refstepcounter{section}
 \label{sec:refs}
 \bibitem[{Annotations}()]{}{\quad The references are in order of occurance in the above document. I.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX.}
-
-\bibitem[{Books}()]{}{\large\textbf{\textsf{Books}}}
-
+\vspace{2ex}
+\bibitem[{Books}()]{}{\LARGE\textbf{\textsf{Books}}}
+\vspace{1ex}
 \bibitem[Knuth et~al.(1986)Knuth, Bibby, and Makai]{knuth1986texbook}
 D.E. Knuth, D.~Bibby, and I.~Makai.
 \newblock \emph{{The \TeX book}}.
@@ -227,7 +252,11 @@ F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
 \newblock \emph{{The \LaTeX\ companion}}.
 \newblock Addison-Wesley, 2004.
 
-\bibitem[{WebEngines}()]{}{\large\textbf{\textsf{Web Sources (Engines)}}}
+\vspace{2ex}
+\bibitem[{WebEngines}()]{}{\LARGE\textbf{\textsf{Web Sources}}}
+\vspace{1ex}
+\bibitem[{OrigDoc}()]{}{\Large\textbf{\textsf{Original Documentation -- Engines}}}
+\vspace{1ex}
 
 \bibitem[{ML\TeX\ source}()]{mltex}{ML\TeX\ source (CH file)}
 \newblock \url{http://www.tex.ac.uk/tex-archive/systems/generic/mltex/mltex.ch}
@@ -248,17 +277,13 @@ F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
 {ee\TeX\ project page}
 \newblock \url{http://tex.aanhet.net/eetex}
 
-\bibitem[{omega and aleph}()]{omegaleph}
-{short article about omega and aleph}
-\newblock \url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=omegaleph}
-
 \bibitem[{Lua\TeX\ project page}()]{luatex}
 {Lua\TeX\ project page}
 \newblock \url{http://www.luatex.org}
 
-
-
-\bibitem[{WebMakro}()]{}{\large\textbf{\textsf{Web Sources (Makro Packages/Formats)}}}
+\vspace{2ex}
+\bibitem[{WebMakro}()]{}{\Large\textbf{\textsf{Original Documentation -- Makro Packages/Formats}}}
+\vspace{1ex}
 \bibitem[wiki()]{contextgarden}
 \ConTeXt\ wiki
 \newblock \url{http://wiki.contextgarden.net}
@@ -271,7 +296,19 @@ F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
 {\LaTeX3 project}
 \newblock \url{http://www.latex-project.org/latex3.html}
 
+\vspace{2ex}
+\bibitem[{WebMakro}()]{}{\Large\textbf{\textsf{Overview Articles}}}
+\vspace{1ex}
+\bibitem[{A Brief History of TeX}()]{mltex}{ Arthur Reutenauer. A Brief History of \TeX.}
+\newblock Talk at EuroBacho\TeX\ 2007.\\
+\newblock \url{http://www.gust.org.pl/bachotex/EuroBachoTeX2007/presentations/bhot.pdf/view}
+
+\bibitem[{A Brief History of \LaTeX}()]{abriefhistoflatex}
+{A Brief History of \LaTeX}
+\newblock \url{http://www.xent.com/FoRK-archive/feb98/0307.html}
+
+\bibitem[{omega and aleph}()]{omegaleph}
+{Short Article About Omega And Aleph}
+\newblock \url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=omegaleph}
 \end{thebibliography}
-
-
 \end{document}
