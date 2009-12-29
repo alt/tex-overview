@@ -11,4 +11,4 @@ This work may be distributed and/or modified under the conditions of the LaTeX P
 
 This work has the LPPL maintenance status “*maintained*” and the Current Maintainer of this work is Arno Trautmann.
 
-This work consists of the file overview.tex
+This work consists of the file overview.tex and the derived file overview.pdf.
