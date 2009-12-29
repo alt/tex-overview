@@ -1,12 +1,9 @@
 \documentclass{scrartcl}
 
 \usepackage{
-  calc,
   cooltooltips,
   dtklogos,
-  filecontents,
   geometry,
-  graphicx,
   hyperref,
   lmodern,
   natbib,
@@ -14,7 +11,6 @@
 }
 
 \geometry{
-%  landscape,
   margin=1cm
 }
 \hypersetup{
@@ -28,7 +24,6 @@
 \def\Aleph{Aleph}
 \def\XeLaTeX{Xe\LaTeX}
 \def\ConTeXt{Con\TeX{}t}
-%\setmainfont{Linux Libertine}
 
 \def\mynode#1#2#3#4{
   \node (#1) at (#2) {
@@ -47,26 +42,35 @@
 \date{}
 \pagestyle{empty}
 
-\def\overviewsection#1{\section{#1}\AtEndDocument{\section{#1}}}
+\def\overviewsubsection#1{\subsection{#1}\AtEndDocument{\subsection{#1}}}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-This paper tries to give a short overview of the development of \TeX. The base frame is taken from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007} and his talk there (see references). Additional information is taken from documentations (see references on page \pageref{sec:refs}). All information is up to the date of the generated pdf. Everything here is without guarantee -- this is just to get an overview. Consult the references for further (and/or correct) information!
+This paper tries to give a short overview of the development of \TeX. The base frame is taken from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007} and his talk there (see references). Additional information is taken from original documentations (see references on page \pageref{sec:refs}) and some review articles. For old, historic information, the \textsf{historic archive} maintained by Ulrik Vieth and hosted on ftp.tug.org (see refs) was very useful. Many thanks for that great archive!
+
+All information is up to the date of the generated pdf. Everything here is without guarantee -- this is just to get an overview. Consult the references for further (and/or correct) information!
+
+In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows up when you hover the mouse over it. If your pdf viewer does not support this, go to the end of the document, where every tooltip is written in normal text. (page \pageref{sec:text})
 \end{abstract}
 
 \tableofcontents
 
 \clearpage
-\part{Tree Views}
+\section{Tree View}
 \newpage
-\overviewsection{\TeX\ -- the program, and extensions/derivatives}
+\overviewsubsection{\TeX\ -- the program, and extensions/derivatives}
+\label{sec:tree}
 \Large
 \centering
 \begin{tikzpicture}
 \setlayer2
 \mynode{tex}{7,\layer}{born in 1978}{\TeX}
+
+\steplayer[-0.5]
+\mynode{ant}{13,\layer}{Ant is Not TeX. A typesetting system inspired by TeX. Only *inspired*, so it has nothing to do with TeX in terms of common code.}{ANT};
+\draw[dotted] (tex) to (ant);
 
 \steplayer
 \mynode{xet-tex}{3,\layer}{The first extension to TeX, 1987. It was able to typeset in two directions, but only with a mark in the dvi to change the direction.}{\TeX-\XeT}
@@ -111,8 +115,11 @@ This paper tries to give a short overview of the development of \TeX. The base f
 \mynode{omega2}{0,\layer}{A short-time try to pick up the development of Omega again in 2006. Seemed more like a good plan and is now regarded as obsolete. LuaTeX is kind of a successor.}{$\Omega_2$};
 \draw (omega) to (omega2);
 
+\mynode{vtex}{3.6,\layer}{VTeX (only for linux/OS 2) can produce pdf directly from input. In contrast to pdfTeX, it includes a full PostScript interpreter, thus capable to include EPS figures, PStricks etc.}{V\TeX};
+\draw (etex) to (vtex);
+
 \steplayer[-2]
-\mynode{aleph}{2,\layer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{$\aleph$ (\Aleph)};
+\mynode{aleph}{1,\layer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{$\aleph$ (\Aleph)};
 \draw (omega) to (aleph);
 \draw (etex) to (aleph);
 
@@ -142,36 +149,34 @@ This paper tries to give a short overview of the development of \TeX. The base f
 \draw (pdfetex) to (luatex);
 \draw[dashed] (lua) to (luatex);
 
-\steplayer[-3]
-\mynode{vtex}{0,\layer}{Please insert information here ...}{V\TeX};
 \end{tikzpicture}
 
 
 \newpage
-\overviewsection{\LaTeX\ (Lamport's \TeX) -- a format and large macro package for \TeX}
+\overviewsubsection{\LaTeX\ (Lamport's \TeX) -- a format and large macro package for \TeX}
 \begin{tikzpicture}
 \setlayer{2}
 \mynode{latex090}{0,\layer}{First version still on web (historic archive, see refs) is 0.9, for use with TeX 0.95. No installation help found. Apparently one needs the files lplain.tex and latex.tex to create the format.}{\LaTeX\ 0.9};
 
 \steplayer[-1.5]
-\mynode{latex091}{-7,\layer}{Version 0.91 for use with TeX 0.97 (C) 1983 by Leslie Lamport. Most changes to previous version are in the file lplain.tex.}{\LaTeX\ 0.91};
+\mynode{latex091}{-3.5,\layer}{Version 0.91 for use with TeX 0.97 (C) 1983 by Leslie Lamport. Most changes to previous version are in the file lplain.tex.}{\LaTeX\ 0.91};
 \draw (latex090) to (latex091);
 
-\mynode{latex092}{-3.5,\layer}{First version with the @ as letter for internal names. Seemlingy first version with a manual. For use with TeX Version 0.999999. (no joke, that's the version number given in the latex.tex file!) (C) 1983 by Leslie Lamport, conversion to 0.92 from 0.91 by Arthur Keller.}{\LaTeX\ 0.92};
+\steplayer[-0.3]
+\mynode{latex092}{0,\layer}{First version with the @ as letter for internal names. Seemlingy first version with a manual. For use with TeX Version 0.999999. (no joke, that's the version number given in the latex.tex file!) (C) 1983 by Leslie Lamport, conversion to 0.92 from 0.91 by Arthur Keller.}{\LaTeX\ 0.92};
 \draw (latex091) to (latex092);
 
-\mynode{latex09210}{0,\layer}{}{\LaTeX\ 0.92-1.0};
+\steplayer[-0.3]
+\mynode{latex09210}{4,\layer}{Adaption of 0.92 for TeX version 1.0. (C) 1983 by Leslie Lamport, conversion to 0.92 from 0.91 by Arthur Keller.}{\LaTeX\ 0.92 - 1.0};
 \draw (latex092) to (latex09210);
 
-\mynode{latex2010}{3.5,\layer}{
-}{\LaTeX\ 2.0};
+\steplayer[-1.5]
+\mynode{latex2010}{0,\layer}{Seemingly heavy changes compared to 0.92. Version for TeX 1.0. Release of 11 Dec 1983. No official version 1.x }{\LaTeX\ 2.0 - 1.0};
 \draw (latex09210) to (latex2010);
 
 
-%First mention (I found) is on p. 14f. TUGboat vol 4, Nr. 1, 1983}{\LaTeX};
-
 \steplayer[-1.3]
-\mynode{latex205}{0,\layer}{? …}{\LaTeX\ 2.05};
+\mynode{latex205}{0,\layer}{???}{\LaTeX\ 2.05};
 \draw (latex2010) to (latex205);
 
 \steplayer[-1.3]
@@ -227,7 +232,7 @@ This paper tries to give a short overview of the development of \TeX. The base f
 
 
 \newpage
-\overviewsection{\ConTeXt\ -- the other major format and \TeX\ macro package}
+\overviewsubsection{\ConTeXt\ -- the other major format and \TeX\ macro package}
 \begin{tikzpicture}
 \mynode{mki}{0,0}{Original ConTeXt with Dutch low level interface.}{\ConTeXt MkI};
 \mynode{mkii}{0,-3}{ConTeXt with English low level interface. Works with any TeX-engine, like LaTeX: TeX, e-TeX, pdfTeX, Aleph, XeTeX, ...}{\ConTeXt MkII};
@@ -241,7 +246,7 @@ This paper tries to give a short overview of the development of \TeX. The base f
 \end{tikzpicture}
 
 \newpage
-\overviewsection{\TeX's "little" helpers}
+\overviewsubsection{\TeX's "little" helpers}
 \parbox{\textwidth}{This is a small section to mention programs that are very helpful and specially designed to support the work with \TeX.}\vspace{3ex}
 
 \begin{tikzpicture}
@@ -251,12 +256,12 @@ This paper tries to give a short overview of the development of \TeX. The base f
 %% I've chosen to typeset the bibliography "by hand" as to avoid problems regarding formatting. And this way I only need one file.
 %%
 \clearpage
-\part{\color{blue}References}
+\section{\color{blue}References}
 \newpage
 \normalsize
 \begin{thebibliography}{10}
-\refstepcounter{section}
 \label{sec:refs}
+
 \bibitem[{Annotations}()]{}{\quad The references are in order of occurance in the above document. I.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX.}
 \vspace{2ex}
 \bibitem[{Books}()]{}{\LARGE\textbf{\textsf{Books}}}
@@ -279,6 +284,9 @@ F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
 \bibitem[{OrigDoc}()]{}{\Large\textbf{\textsf{Original Documentation -- Engines}}}
 \vspace{1ex}
 
+\bibitem[{ANT project page}()]{ant}{ANT project page}
+\newblock \url{http://ant.berlios.de}
+
 \bibitem[{ML\TeX\ source}()]{mltex}{ML\TeX\ source (CH file)}
 \newblock \url{http://www.tex.ac.uk/tex-archive/systems/generic/mltex/mltex.ch}
 
@@ -289,6 +297,10 @@ F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
 \bibitem[{\NTS\ project page}()]{nts}
 {\NTS\ project page}
 \newblock \url{http://nts.tug.org}
+
+\bibitem[{v\TeX\ reference}()]{vtex}
+{V\TeX\ -- the only reference I found.}
+\newblock \url{http://www.tex.ac.uk/tex-archive/systems/vtex}
 
 \bibitem[{$\epsilon\chi$\TeX\ project page}()]{extex}
 {$\epsilon\chi$\TeX\ project page}
@@ -320,7 +332,7 @@ F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
 \vspace{2ex}
 \bibitem[{WebMakro}()]{}{\Large\textbf{\textsf{Overview Articles}}}
 \vspace{1ex}
-\bibitem[{A Brief History of TeX}()]{mltex}{ Arthur Reutenauer. A Brief History of \TeX.}
+\bibitem[{A Brief History of TeX}()]{abriefhistoftex}{Arthur Reutenauer. A Brief History of \TeX.}
 \newblock Talk at EuroBacho\TeX\ 2007.\\
 \newblock \url{http://www.gust.org.pl/bachotex/EuroBachoTeX2007/presentations/bhot.pdf/view}
 
@@ -331,10 +343,19 @@ F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
 \bibitem[{omega and aleph}()]{omegaleph}
 {Short Article About Omega And Aleph}
 \newblock \url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=omegaleph}
+
+\vspace{2ex}
+\bibitem[{WebArchive}()]{}{\Large\textbf{\textsf{Web Archives}}}
+\vspace{1ex}
+
+\bibitem[{CTAN}()]{ctan}{Comprehensive TeX Archive Network}
+\newblock \url{http://www.ctan.org}
+
+\bibitem[{historic archive}()]{histarch}{Historic Archive of TeX Distributions}
+\newblock \url{ftp://ftp.tug.org/historic}
 \end{thebibliography}
 
 \clearpage
-\part{\color{blue}Text Overview}
-\newpage
-\setcounter{section}{0}
+\section{Text View}
+\label{sec:text}
 \end{document}
