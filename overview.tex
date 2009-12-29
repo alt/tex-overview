@@ -25,13 +25,19 @@
 \def\XeLaTeX{Xe\LaTeX}
 \def\ConTeXt{Con\TeX{}t}
 
-\def\mynode#1#2#3#4{
-  \node (#1) at (#2) {
-    \cooltooltip{#1}{#3}{#3}{}{#4\strut}
+\def\vip{1 0 0}
+\def\other{0 0 0}
+\def\normalimportant{0 0.5 0}
+\def\experimental{0 .7 .7}
+
+\newcommand\mynode[5][\normalimportant]{
+  \node (#2) at (#3) {
+    \cooltooltip[#1]{#2}{#4}{#4}{}{#5\strut}
   };
-  \expandafter\def\csname texname#1\endcsname{#3}
-  \AtEndDocument{\subsubsection*{\color{blue}#4}\parbox{\textwidth}{#3}}
+  \expandafter\def\csname texname#2\endcsname{#4}
+  \AtEndDocument{\subsubsection*{\color{blue}#5}\parbox{\textwidth}{#4}}
 }
+
 
 \newlength{\layer}\setlength{\layer}{0cm}
 \def\setlayer#1{\setlength{\layer}{#1cm}}
@@ -52,7 +58,13 @@ This paper tries to give a short overview of the development of \TeX. The base f
 
 All information is up to the date of the generated pdf. Everything here is without guarantee -- this is just to get an overview. Consult the references for further (and/or correct) information!
 
-In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows up when you hover the mouse over it. If your pdf viewer does not support this, go to the end of the document, where every tooltip is written in normal text. (page \pageref{sec:text})
+In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows up when you hover the mouse over it. If your pdf viewer does not support this, go to the end of the document, where every tooltip is written in normal text. (page \pageref{sec:text}) I tried to make the graph more readable by using colors:
+
+\begin{description}
+\item[{\color[rgb]{\normalimportant} normal}] (whatever that means)
+\item[{\color[rgb]{\vip} important}] developments (only in my opinion) -- i.\,e. engines or distributions that had or have a great impact on (everyday) typesetting for a large community
+\item[{\color[rgb]{\experimental} experimental}] developments that might still be under construction or were never used by a large community. Nevertheless, these might be very important to the development of other enginges or for use of special typesetting. \item[{\color[rgb]{\other} other}] programs that are not directly connected to \TeX\ but are interesting in the overview, are given in black.
+\end{description}
 \end{abstract}
 
 \tableofcontents
@@ -66,10 +78,10 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 \centering
 \begin{tikzpicture}
 \setlayer2
-\mynode{tex}{7,\layer}{born in 1978}{\TeX}
+\mynode[\vip]{tex}{7,\layer}{born in 1978}{\TeX}
 
 \steplayer[-0.5]
-\mynode{ant}{13,\layer}{Ant is Not TeX. A typesetting system inspired by TeX. Only *inspired*, so it has nothing to do with TeX in terms of common code.}{ANT};
+\mynode[\other]{ant}{13,\layer}{Ant is Not TeX. A typesetting system inspired by TeX. Only *inspired*, so it has nothing to do with TeX in terms of common code.}{ANT};
 \draw[dotted] (tex) to (ant);
 
 \steplayer
@@ -80,7 +92,7 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 \mynode{xet--tex}{3,\layer}{TeX--XeT was able to really put the glyphs on the right place in the dvi.}{\TeX-{}-\XeT}
 \draw (xet-tex) to (xet--tex);
 
-\mynode{tex3}{7,\layer}{Ability to handle 8-bit input. 1989. TeX development was frozen in 1991.}{\TeX3};
+\mynode[\vip]{tex3}{7,\layer}{Ability to handle 8-bit input. 1989. TeX development was frozen in 1991.}{\TeX3};
 \draw (tex) to (tex3);
 
 \steplayer[-2]
@@ -99,10 +111,10 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 \mynode{omega}{1,\layer}{Support for unicode-input. Still constrained on the output}{$\Omega$};
 \draw (tex3) to (omega);
 
-\mynode{etex}{4,\layer}{*the* extension to TeX.}{$\varepsilon$-\TeX};
+\mynode[\vip]{etex}{4,\layer}{*the* extension to TeX.}{$\varepsilon$-\TeX};
 \draw (xet--tex) to (etex);
 
-\mynode{pdftex}{7,\layer}{A new engine to directly produce pdf-files from TeX, without the need of dvi-ps-pdf. This allows to use microtypographic extensions and many other features of the pdf format.}{pdf\TeX};
+\mynode[\vip]{pdftex}{7,\layer}{A new engine to directly produce pdf-files from TeX, without the need of dvi-ps-pdf. This allows to use microtypographic extensions and many other features of the pdf format.}{pdf\TeX};
 \draw (tex2pdf) to (pdftex);
 
 \mynode{texgx}{10,\layer}{?}{\TeX{}gX};
@@ -112,39 +124,39 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 \draw (tex3) to (nts);
 
 \steplayer[-2]
-\mynode{omega2}{0,\layer}{A short-time try to pick up the development of Omega again in 2006. Seemed more like a good plan and is now regarded as obsolete. LuaTeX is kind of a successor.}{$\Omega_2$};
+\mynode[\experimental]{omega2}{0,\layer}{A short-time try to pick up the development of Omega again in 2006. Seemed more like a good plan and is now regarded as obsolete. LuaTeX is kind of a successor.}{$\Omega_2$};
 \draw (omega) to (omega2);
 
-\mynode{vtex}{3.6,\layer}{VTeX (only for linux/OS 2) can produce pdf directly from input. In contrast to pdfTeX, it includes a full PostScript interpreter, thus capable to include EPS figures, PStricks etc.}{V\TeX};
+\mynode[\experimental]{vtex}{3.6,\layer}{VTeX (only for linux/OS 2) can produce pdf directly from input. In contrast to pdfTeX, it includes a full PostScript interpreter, thus capable to include EPS figures, PStricks etc.}{V\TeX};
 \draw (etex) to (vtex);
 
 \steplayer[-2]
-\mynode{aleph}{1,\layer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{$\aleph$ (\Aleph)};
+\mynode[\experimental]{aleph}{1,\layer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{$\aleph$ (\Aleph)};
 \draw (omega) to (aleph);
 \draw (etex) to (aleph);
 
-\mynode{xetex}{8,\layer}{This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. XeTeX also features support for OpenType and AAT-fonts.}{\XeTeX};
+\mynode[\vip]{xetex}{8,\layer}{This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. XeTeX also features support for OpenType and AAT-fonts.}{\XeTeX};
 \draw (texgx) to (xetex);
 \draw (etex) to (xetex);
 
-\mynode{extex}{12,\layer}{Planned implementation of a high-quality typesetting system, written in Java. Based on experiences in NTS, eTeX, pdfTeX and Omega. Started in 2003, current version in repository is 0.0. (i. e. not very far ...)}{$\epsilon\chi$\TeX};
+\mynode[\experimental]{extex}{12,\layer}{Planned implementation of a high-quality typesetting system, written in Java. Based on experiences in NTS, eTeX, pdfTeX and Omega. Started in 2003, current version in repository is 0.0. (i. e. not very far ...)}{$\epsilon\chi$\TeX};
 \draw (nts) to (extex);
 \draw (omega) to (extex);
 \draw (etex) to (extex);
 \draw (pdftex) to (extex);
 
-\mynode{pdfetex}{5,\layer}{Merging the pdfTeX engine with the eTeX-extensions. This engine can produce dvi (with or without the eTeX-extensions) as well as pdf (again, with or without extensions).}{pdf($\epsilon$)-\TeX};
+\mynode[\vip]{pdfetex}{5,\layer}{Merging the pdfTeX engine with the eTeX-extensions. This engine can produce dvi (with or without the eTeX-extensions) as well as pdf (again, with or without extensions).}{pdf($\epsilon$)-\TeX};
 \draw (etex) to (pdfetex);
 \draw (pdftex) to (pdfetex);
 
 \steplayer[-2]
-\mynode{eetex}{6,\layer}{Experimental extension to pdfeTeX by Taco Hoekwater, created 2000. Distributed as change file.}{ee\TeX};
+\mynode[\experimental]{eetex}{6,\layer}{Experimental extension to pdfeTeX by Taco Hoekwater, created 2000. Distributed as change file.}{ee\TeX};
 \draw (pdfetex) to (eetex);
 
 \steplayer[-2]
-\mynode{lua}{0,\layer}{Script language; has nothing to do with TeX!}{Lua};
+\mynode[\other]{lua}{0,\layer}{Script language; has nothing to do with TeX!}{Lua};
 
-\mynode{luatex}{4,\layer}{Still in heavy active development, LuaTeX will support unicode, OpenType and totally everything. It features an embedded scripting language, lua, making it easy to extend.}{Lua\TeX};
+\mynode[\vip]{luatex}{4,\layer}{Still in heavy active development, LuaTeX will support unicode, OpenType and totally everything. It features an embedded scripting language, lua, making it easy to extend.}{Lua\TeX};
 \draw (aleph) to (luatex);
 \draw (pdfetex) to (luatex);
 \draw[dashed] (lua) to (luatex);
