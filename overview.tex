@@ -166,37 +166,37 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 
 \newpage
 \overviewsubsection{\LaTeX\ (Lamport's \TeX) -- a format and large macro package for \TeX}
+\vspace*{2em}
 \begin{tikzpicture}
 \setlayer{2}
-\mynode{latex090}{0,\layer}{First version still on web (historic archive, see refs) is 0.9, for use with TeX 0.95. No installation help found. Apparently one needs the files lplain.tex and latex.tex to create the format.}{\LaTeX\ 0.9};
+\mynode{latex090}{-5.5,\layer}{First version still on web (historic archive, see refs) is 0.9, for use with TeX 0.95. No installation help found. Apparently one needs the files lplain.tex and latex.tex to create the format.}{\LaTeX\ 0.9};
 
-\steplayer[-1.5]
-\mynode{latex091}{-3.5,\layer}{Version 0.91 for use with TeX 0.97 (C) 1983 by Leslie Lamport. Most changes to previous version are in the file lplain.tex.}{\LaTeX\ 0.91};
+\steplayer[-0.4]
+\mynode{latex091}{-2,\layer}{Version 0.91 for use with TeX 0.97 (C) 1983 by Leslie Lamport. Most changes to previous version are in the file lplain.tex.}{\LaTeX\ 0.91};
 \draw (latex090) to (latex091);
 
-\steplayer[-0.3]
-\mynode{latex092}{0,\layer}{First version with the @ as letter for internal names. Seemlingy first version with a manual. For use with TeX Version 0.999999. (no joke, that's the version number given in the latex.tex file!) (C) 1983 by Leslie Lamport, conversion to 0.92 from 0.91 by Arthur Keller.}{\LaTeX\ 0.92};
+\steplayer[-0.4]
+\mynode{latex092}{2,\layer}{First version with the @ as letter for internal names. Seemlingy first version with a manual. For use with TeX Version 0.999999. (no joke, that's the version number given in the latex.tex file!) (C) 1983 by Leslie Lamport, conversion to 0.92 from 0.91 by Arthur Keller.}{\LaTeX\ 0.92};
 \draw (latex091) to (latex092);
 
-\steplayer[-0.3]
-\mynode{latex09210}{4,\layer}{Adaption of 0.92 for TeX version 1.0. (C) 1983 by Leslie Lamport, conversion to 0.92 from 0.91 by Arthur Keller.}{\LaTeX\ 0.92 - 1.0};
+\steplayer[-0.4]
+\mynode{latex09210}{6,\layer}{Adaption of 0.92 for TeX version 1.0. (C) 1983 by Leslie Lamport, conversion to 0.92 from 0.91 by Arthur Keller.}{\LaTeX\ 0.92 - 1.0};
 \draw (latex092) to (latex09210);
 
 \steplayer[-1.5]
-\mynode{latex2010}{0,\layer}{Seemingly heavy changes compared to 0.92. Version for TeX 1.0. Release of 11 Dec 1983. No official version 1.x }{\LaTeX\ 2.0 - 1.0};
+\mynode{latex2010}{-5,\layer}{Seemingly heavy changes compared to 0.92. Version for TeX 1.0. Release of 11 Dec 1983. No official version 1.x }{\LaTeX\ 2.0 - 1.0};
 \draw (latex09210) to (latex2010);
 
-
-\steplayer[-1.3]
+\steplayer[-.4]
 \mynode{latex205}{0,\layer}{???}{\LaTeX\ 2.05};
 \draw (latex2010) to (latex205);
 
-\steplayer[-1.3]
-\mynode{latex206a}{0,\layer}{Release of version 2.06a of the LaTeX macros. September 1984.}{\LaTeX\ 2.06a};
+\steplayer[-.4]
+\mynode{latex206a}{5,\layer}{Release of version 2.06a of the LaTeX macros. September 1984.}{\LaTeX\ 2.06a};
 \draw (latex205) to (latex206a);
 
-\steplayer[-1.3]
-\mynode{latex209}{0,\layer}{The first official version by Leslie Lamport, 1985.}{\LaTeX\ 2.09};
+\steplayer[-2.3]
+\mynode[\vip]{latex209}{0,\layer}{The first official version by Leslie Lamport, 1985.}{\LaTeX\ 2.09};
 \draw (latex206a) to (latex209);
 
 \steplayer[-2]
@@ -207,7 +207,7 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 \draw (latex209) to (amslatex11);
 
 \steplayer[-1.7]
-\mynode{latex2ε}{0,\layer}{June 1994: New release of LaTeX to avoid incompatible dialects of LaTeX 2.09. Introduced by the LaTeX3-Team.}{\LaTeXe};
+\mynode[\vip]{latex2ε}{0,\layer}{June 1994: New release of LaTeX to avoid incompatible dialects of LaTeX 2.09. Introduced by the LaTeX3-Team.}{\LaTeXe};
 \draw (latex209) to (latex2ε);
 \draw[dashed] (slitex) to (latex2ε);
 \draw[dashed] (amslatex11) to (latex2ε);
@@ -218,10 +218,10 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 \draw (latex2ε) to (amslatex12);
 
 \steplayer[-1.5]
-\mynode{pdflatex}{2,\layer}{The standard LaTeX. If anyone talks about "LaTeX" it is nearly shure to be this package. pdfLaTeX2e produces pdf or dvi output.}{pdf\LaTeXe};
+\mynode[\vip]{pdflatex}{2,\layer}{The standard LaTeX. If anyone talks about "LaTeX" it is nearly shure to be this package. pdfLaTeX2e produces pdf or dvi output.}{pdf\LaTeXe};
 \draw (latex2ε) to (pdflatex);
 
-\mynode{xelatex}{5,\layer}{Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.}{\XeLaTeX};
+\mynode[\vip]{xelatex}{5,\layer}{Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.}{\XeLaTeX};
 \draw (latex2ε) to (xelatex);
 
 \mynode{lualatex}{-2,\layer}{LaTeX based on LuaTeX with pdf (standard) or dvi (dviLuaLaTeX) output. So far, LaTeX support for LuaTeX is not very elaborate.}{(dvi)Lua\LaTeX};
@@ -234,9 +234,13 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 \mynode{lamed}{-6,\layer}{A LaTeX-package for the aleph-engine.}{Lamed}
 \draw (lambda) to (lamed);
 
+\steplayer[-1]
+\mynode{latex25}{0,\layer}{Will Robertson suggested in an interview (see refs) an interim unstable version on the way to LaTeX3 with version number 2.5 that should bring package authors towards using LaTeX3 syntax. This version should be backwards incompatible to LaTeX2e. (This version does not exist in any official plannings, but I liked the idea, so it is mentioned here :) )}{\LaTeX2.5};
+\draw (latex2ε) to (latex25);
+
 \steplayer[-2]
 \mynode{latex3}{0,\layer}{The planned successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. The expl3-package provides a test-implemantation that can be used in LaTeX2e.}{\LaTeX{}3};
-\draw (latex2ε) to (latex3);
+\draw (latex25) to (latex3);
 \draw[dotted] (xelatex) to (latex3);
 \draw[dotted] (pdflatex) to (latex3);
 \draw[dotted] (lualatex) to (latex3);
@@ -247,7 +251,7 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 \overviewsubsection{\ConTeXt\ -- the other major format and \TeX\ macro package}
 \begin{tikzpicture}
 \mynode{mki}{0,0}{Original ConTeXt with Dutch low level interface.}{\ConTeXt MkI};
-\mynode{mkii}{0,-3}{ConTeXt with English low level interface. Works with any TeX-engine, like LaTeX: TeX, e-TeX, pdfTeX, Aleph, XeTeX, ...}{\ConTeXt MkII};
+\mynode[\vip]{mkii}{0,-3}{ConTeXt with English low level interface. Works with any TeX-engine, like LaTeX: TeX, e-TeX, pdfTeX, Aleph, XeTeX, ...}{\ConTeXt MkII};
 \draw (mki) to (mkii);
 
 \mynode{mkiii}{4,-4.5}{Reserved for future use for files supporting XeTeX. Has not been used yet.}{\ConTeXt\ MkIII};
@@ -355,6 +359,10 @@ F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
 \bibitem[{omega and aleph}()]{omegaleph}
 {Short Article About Omega And Aleph}
 \newblock \url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=omegaleph}
+
+\bibitem[{interview with will robertson}()]{interview with will robertson}
+{Interview with Will Robertson}
+\newblock \url{http://www.tug.org/interviews/robertson.html}
 
 \vspace{2ex}
 \bibitem[{WebArchive}()]{}{\Large\textbf{\textsf{Web Archives}}}
