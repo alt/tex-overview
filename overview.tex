@@ -45,10 +45,10 @@
 
 \title{A short overview of \TeX\ and its children \dots}
 \author{Arno Trautmann\thanks{arno.trautmann@gmx.de -- Please feel free to mail me any suggestions and comments!}}
-\date{}
+\date{\today}
 \pagestyle{empty}
 
-\def\overviewsubsection#1{\subsection{#1}\AtEndDocument{\subsection{#1}}}
+\newcommand\overviewsubsection[2][]{\subsection[#1]{#2}\AtEndDocument{\subsection[#1]{#2}}}
 
 \begin{document}
 \maketitle
@@ -58,7 +58,7 @@ This paper tries to give a short overview of the development of \TeX. The base f
 
 All information is up to the date of the generated pdf. Everything here is without guarantee -- this is just to get an overview. Consult the references for further (and/or correct) information!
 
-In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows up when you hover the mouse over it. If your pdf viewer does not support this, go to the end of the document, where every tooltip is written in normal text. (page \pageref{sec:text}) I tried to make the graph more readable by using colors:
+In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows up when you hover the mouse over it. If your pdf viewer does not support this, go to the end of the document, where every tooltip is written in normal text (page \pageref{sec:text}). I tried to make the graph more readable by using colors:
 
 \begin{description}
 \item[{\color[rgb]{\normalimportant} normal}] (whatever that means)
@@ -72,7 +72,7 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 \clearpage
 \section{Tree View}
 \newpage
-\overviewsubsection{\TeX\ -- the program, and extensions/derivatives}
+\overviewsubsection[\TeX]{\TeX\ -- the program, and extensions/derivatives}
 \label{sec:tree}
 \Large
 \centering
@@ -165,7 +165,7 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 
 
 \newpage
-\overviewsubsection{\LaTeX\ (Lamport's \TeX) -- a format and large macro package for \TeX}
+\overviewsubsection[\LaTeX]{\LaTeX\ (Lamport's \TeX) -- a format and large macro package for \TeX}
 \vspace*{2em}
 \begin{tikzpicture}
 \setlayer{2}
@@ -184,11 +184,11 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 \draw (latex092) to (latex09210);
 
 \steplayer[-1.5]
-\mynode{latex2010}{-5,\layer}{Seemingly heavy changes compared to 0.92. Version for TeX 1.0. Release of 11 Dec 1983. No official version 1.x }{\LaTeX\ 2.0 - 1.0};
+  \mynode{latex2010}{-5,\layer}{Seemingly heavy changes compared to 0.92. Version for TeX 1.0. Release of 11 Dec 1983. There were never official versions 1.x }{\LaTeX\ 2.0 - 1.0};
 \draw (latex09210) to (latex2010);
 
 \steplayer[-.4]
-\mynode{latex205}{0,\layer}{???}{\LaTeX\ 2.05};
+\mynode{latex205}{0,\layer}{No sure information found so far.}{\LaTeX\ 2.05};
 \draw (latex2010) to (latex205);
 
 \steplayer[-.4]
@@ -248,32 +248,22 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 
 
 \newpage
-\overviewsubsection{\ConTeXt\ -- the other major format and \TeX\ macro package}
+\overviewsubsection[\ConTeXt]{\ConTeXt\ (Context = con tex t -- text with tex; formerly pragmatex) -- the other major format and \TeX\ macro package}
 \begin{tikzpicture}
 \mynode{mki}{0,0}{Original ConTeXt with Dutch low level interface.}{\ConTeXt MkI};
 \mynode[\vip]{mkii}{0,-3}{ConTeXt with English low level interface. Works with any TeX-engine, like LaTeX: TeX, e-TeX, pdfTeX, Aleph, XeTeX, ...}{\ConTeXt MkII};
 \draw (mki) to (mkii);
 
-\mynode{mkiii}{4,-4.5}{Reserved for future use for files supporting XeTeX. Has not been used yet.}{\ConTeXt\ MkIII};
+\mynode{mkiii}{4,-4.5}{Reserved for future use for files supporting XeTeX. Was "skipped" for "practical reasons" (Hans Hagen)}{\ConTeXt\ MkIII};
 \draw (mkii) to (mkiii);
 
 \mynode{mkiv}{0,-6}{Specially designed for LuaTeX.}{\ConTeXt MkIV};
 \draw (mkii) to (mkiv);
 \end{tikzpicture}
-
-\newpage
-\overviewsubsection{\TeX's "little" helpers}
-\parbox{\textwidth}{This is a small section to mention programs that are very helpful and specially designed to support the work with \TeX.}\vspace{3ex}
-
-\begin{tikzpicture}
-\mynode{mki}{0,0}{Very helpful and important tool for creating bibliographies.}{\BibTeX};
-\end{tikzpicture}
 %%
 %% I've chosen to typeset the bibliography "by hand" as to avoid problems regarding formatting. And this way I only need one file.
 %%
 \clearpage
-\section{\color{blue}References}
-\newpage
 \normalsize
 \begin{thebibliography}{10}
 \label{sec:refs}
@@ -360,9 +350,9 @@ F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
 {Short Article About Omega And Aleph}
 \newblock \url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=omegaleph}
 
-\bibitem[{interview with will robertson}()]{interview with will robertson}
-{Interview with Will Robertson}
-\newblock \url{http://www.tug.org/interviews/robertson.html}
+\bibitem[{interview}()]{interviews}
+{Interviews with Will Robertson, Hans Hagen et. al.}
+\newblock \url{http://www.tug.org/interviews}
 
 \vspace{2ex}
 \bibitem[{WebArchive}()]{}{\Large\textbf{\textsf{Web Archives}}}
