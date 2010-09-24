@@ -81,7 +81,7 @@
   \clearpage
   \dim_set:Nn\pdfpagewidth{9cm}       %% make a small paper so the header won’t be lost on the big, big paper
   \dim_set:Nn\pdfpageheight{2.5cm}
-  \section{#1\bool_if:NTF\short{ – short view}{ – full view}}
+  \section{#1\bool_if:NT\short{ – short view}}
   \clearpage
   \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
   \dim_set:Nn\pdfpageheight{29.7cm}
@@ -103,7 +103,7 @@
 \begin{abstract}
 This paper tries to give a short overview of the development of \TeX. The base frame is taken from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007} and his talk there (see references). Additional information is taken from original documentations (see references on page \pageref{sec:refs}) and some review articles. For old, historic information, the \textsf{historic archive} maintained by Ulrik Vieth and hosted on ftp.tug.org (see refs) was very useful. Many thanks for that great archive!
 
-All information is up to the date of the generated pdf. Everything here is without guarantee – this is just to get an overview. Consult the references for further (and/or correct) information!
+All information is up to the date of the generated pdf. Everything here is without guarantee – this is just to get an overview. Consult the references for further (and/or correct) information! 
 
 In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows up when you hover the mouse over it. If your pdf viewer does not support this, go to the end of the document, where every tooltip is written in normal text (page \pageref{sec:text}). I tried to make the graph more readable by using colors:
 
@@ -115,6 +115,9 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 \end{abstract}
 
 Furthermore, there are two versions of each graph: A short version mentioning only the most important things and a full one with everything I could find.
+
+In most cases I did not mention the authors of the programs/packages. This is not to diminish ther effort but only for clarity (long names make things harder to read). I did not write any of the below-mentioned programs or packages. The authors are given in the documents linked in the references.
+
 \clearpage
 \tableofcontents
 \clearpage
@@ -128,6 +131,8 @@ Furthermore, there are two versions of each graph: A short version mentioning on
 \label{sec:tree}
 \Large
 \centering
+
+%%% TEX  %%%
 \begin{tikzpicture}
 	\setlayer2
 	\mynode[\vip]{tex}{7,\layer}{born in 1978}{\TeX}
@@ -228,6 +233,7 @@ Furthermore, there are two versions of each graph: A short version mentioning on
 \newpage
 \overviewsubsection[\LaTeX]{\LaTeX\ (Lamport's \TeX) – a format and large macro package for \TeX}
 \vspace*{2em}
+%%% LATEX %%%
 \begin{tikzpicture}
 	\setlayer{2}
 	\mynode{latex090}{-5.5,\layer}{First version still on web (historic archive, see refs) is 0.9, for use with TeX 0.95. No installation help found. Apparently one needs the files lplain.tex and latex.tex to create the format.}{\LaTeX\ 0.9};
@@ -313,6 +319,7 @@ Furthermore, there are two versions of each graph: A short version mentioning on
 
 \newpage
 \overviewsubsection[\ConTeXt]{\ConTeXt\ (Context = con tex t – text with tex; formerly pragmatex) – the other major format and \TeX\ macro package}
+%%% CONTEXT %%%
 \begin{tikzpicture}
 	\mynode{mki}{0,0}{Original ConTeXt with Dutch low level interface.}{\ConTeXt MkI};
 	\mynode[\vip]{mkii}{0,-3}{ConTeXt with English low level interface. Works with any TeX-engine, like LaTeX: TeX, e-TeX, pdfTeX, Aleph, XeTeX, ...}{\ConTeXt MkII};
@@ -339,7 +346,9 @@ Furthermore, there are two versions of each graph: A short version mentioning on
 {\normalsize
 The following pages will be a hodge-podge of many things that are related to \TeX\ and used in the process of generating documents in different file formats, i.\,e. conversion tools, bibliography tools etc. Feel free to contribute, I’ll choose case-by-case if I’ll add something or won’t include it. Text editors or viewers will \emph{not} be included!
 }
+
 \overviewsubsection[Bib\TeX]{Bib\TeX}
+%%% BIBTEX %%%
 \begin{tikzpicture}
 	\mynode{bibtex}{0,0}{A helper program to generate a bibliography list.}{\BibTeX};
 	
@@ -357,13 +366,19 @@ The following pages will be a hodge-podge of many things that are related to \Te
 	\draw (bibtexu) to (biblatex);
 \end{tikzpicture}
 
-\overviewsubsection[dvipdfm]{dvipdfm}
+%%% dvipdfm %%%
+\overviewsubsection[(x)dvipdf(m)(x)]{(x)dvipdf(m)(x)}
 \begin{tikzpicture}
-	\mynode{dvipdfm}{0,0}{Converts dvi files to pdf files. So far no idea what the „x“ is good for.}{dvipdfm(x)};
+	\mynode{dvipdf}{0,0}{Converts dvi files to pdf files.}{dvipdf};
+
+	\mynode{dvipdfm}{0,-2}{Converts dvi files to pdf files. Does not build on dvipdf, but is an independent implementation.}{dvipdfm};
+
+	\mynode{dvipdfmx}{0,-4}{Extended version of dvipdfm. Support for multi-byte encodings and more pdfTeX features. Still active. Combined work of dvipdfm-jpn and dvipdfm-kor.}{dvipdfmx};
+	\draw (dvipdfm) to (dvipdfmx);
 	
-	\mynode{xdvipdfmx}{0,-2}{Converts xdvi files produced by XeTeX to pdf files. Normally always executed after a XeTeX run, so the user won’t notice that an xdvi document was created in between.}{xdvipdfmx};
+	\mynode{xdvipdfmx}{0,-6}{Converts xdvi files produced by XeTeX to pdf files. Normally always executed after a XeTeX run, so the user won’t notice that an xdvi document was created in between.}{xdvipdfmx};
 	
-	\draw (dvipdfm) to (xdvipdfmx);
+	\draw (dvipdfmx) to (xdvipdfmx);
 \end{tikzpicture}
 
 
@@ -376,101 +391,108 @@ The following pages will be a hodge-podge of many things that are related to \Te
 \begin{thebibliography}{10}
 \label{sec:refs}
 
-\bibitem[{Annotations}()]{}{\quad The references are in order of occurance in the above document. I.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX.}
-\vspace{2ex}
-\bibitem[{Books}()]{}{\LARGE\textbf{\textsf{Books}}}
-\vspace{1ex}
-\bibitem[Knuth et~al.(1986)Knuth, Bibby, and Makai]{knuth1986texbook}
-D.E. Knuth, D.~Bibby, and I.~Makai.
-\newblock \emph{{The \TeX book}}.
-\newblock Addison-Wesley Reading, MA, 1986.
-
-\bibitem[Mittelbach et~al.(2004)Mittelbach, Goossens, Braams, Carlisle, Rowley,
-  Detig, and Schrod]{mittelbach2004latex}
-F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
-  J.~Schrod.
-\newblock \emph{{The \LaTeX\ companion}}.
-\newblock Addison-Wesley, 2004.
-
-\vspace{2ex}
-\bibitem[{WebEngines}()]{}{\LARGE\textbf{\textsf{Web Sources}}}
-\vspace{1ex}
-\bibitem[{OrigDoc}()]{}{\Large\textbf{\textsf{Original Documentation – Engines}}}
-\vspace{1ex}
-
-\bibitem[{ANT project page}()]{ant}{ANT project page}
-\newblock \url{http://ant.berlios.de}
-
-\bibitem[{ML\TeX\ source}()]{mltex}{ML\TeX\ source (CH file)}
-\newblock \url{http://www.tex.ac.uk/tex-archive/systems/generic/mltex/mltex.ch}
-
-\bibitem[{enc\TeX\ page}()]{enctex}
-{enc\TeX\ page}
-\newblock \url{http://www.olsak.net/enctex.html}
-
-\bibitem[{\NTS\ project page}()]{nts}
-{\NTS\ project page}
-\newblock \url{http://nts.tug.org}
-
-\bibitem[{v\TeX}()]{vtex official}
-{V\TeX\ – official homepage of micropress-inc}
-\newblock \url{http://www.micropress-inc.com/}
-
-\bibitem[{$\epsilon\chi$\TeX\ project page}()]{extex}
-{$\epsilon\chi$\TeX\ project page}
-\newblock \url{http://www.extex.org}
-
-\bibitem[{ee\TeX\ project page}()]{eetex}
-{ee\TeX\ project page}
-\newblock \url{http://tex.aanhet.net/eetex}
-
-\bibitem[{Lua\TeX\ project page}()]{luatex}
-{Lua\TeX\ project page}
-\newblock \url{http://www.luatex.org}
-
-\vspace{2ex}
-\bibitem[{WebMakro}()]{}{\Large\textbf{\textsf{Original Documentation – Makro Packages/Formats}}}
-\vspace{1ex}
-\bibitem[wiki()]{contextgarden}
-\ConTeXt\ wiki
-\newblock \url{http://wiki.contextgarden.net}
-
-\bibitem[{\LaTeX\ project page}()]{latexproject}
-{\LaTeX\ project page}
-\newblock \url{http://www.latex-project.org}
-
-\bibitem[{\LaTeX3 project}()]{latexprojectiii}
-{\LaTeX3 project}
-\newblock \url{http://www.latex-project.org/latex3.html}
-
-\vspace{2ex}
-\bibitem[{WebMakro}()]{}{\Large\textbf{\textsf{Overview Articles}}}
-\vspace{1ex}
-\bibitem[{A Brief History of TeX}()]{abriefhistoftex}{Arthur Reutenauer. A Brief History of \TeX.}
-\newblock Talk at EuroBacho\TeX\ 2007.\\
-\newblock \url{http://www.gust.org.pl/bachotex/EuroBachoTeX2007/presentations/bhot.pdf/view}
-
-\bibitem[{A Brief History of \LaTeX}()]{abriefhistoflatex}
-{A Brief History of \LaTeX}
-\newblock \url{http://www.xent.com/FoRK-archive/feb98/0307.html}
-
-\bibitem[{omega and aleph}()]{omegaleph}
-{Short Article About Omega And Aleph}
-\newblock \url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=omegaleph}
-
-\bibitem[{interview}()]{interviews}
-{Interviews with Will Robertson, Hans Hagen et. al.}
-\newblock \url{http://www.tug.org/interviews}
-
-\vspace{2ex}
-\bibitem[{WebArchive}()]{}{\Large\textbf{\textsf{Web Archives}}}
-\vspace{1ex}
-
-\bibitem[{CTAN}()]{ctan}{Comprehensive TeX Archive Network}
-\newblock \url{http://www.ctan.org}
-
-\bibitem[{historic archive}()]{histarch}{Historic Archive of TeX Distributions}
-\newblock \url{ftp://ftp.tug.org/historic}
+	\bibitem[{Annotations}()]{}{\quad The references are in order of occurance in the above document. I.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX.}
+	\vspace{2ex}
+	\bibitem[{Books}()]{}{\LARGE\textbf{\textsf{Books}}}
+	\vspace{1ex}
+	\bibitem[Knuth et~al.(1986)Knuth, Bibby, and Makai]{knuth1986texbook}
+	D.E. Knuth, D.~Bibby, and I.~Makai.
+	\newblock \emph{{The \TeX book}}.
+	\newblock Addison-Wesley Reading, MA, 1986.
+	
+	\bibitem[Mittelbach et~al.(2004)Mittelbach, Goossens, Braams, Carlisle, Rowley,
+	  Detig, and Schrod]{mittelbach2004latex}
+	F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
+	  J.~Schrod.
+	\newblock \emph{{The \LaTeX\ companion}}.
+	\newblock Addison-Wesley, 2004.
+	
+	\vspace{2ex}
+	\bibitem[{WebEngines}()]{}{\LARGE\textbf{\textsf{Web Sources}}}
+	\vspace{1ex}
+	\bibitem[{OrigDoc}()]{}{\Large\textbf{\textsf{Original Documentation – Engines}}}
+	\vspace{1ex}
+	
+	\bibitem[{ANT project page}()]{ant}{ANT project page}
+	\newblock \url{http://ant.berlios.de}
+	
+	\bibitem[{ML\TeX\ source}()]{mltex}{ML\TeX\ source (CH file)}
+	\newblock \url{http://www.tex.ac.uk/tex-archive/systems/generic/mltex/mltex.ch}
+	
+	\bibitem[{enc\TeX\ page}()]{enctex}
+	{enc\TeX\ page}
+	\newblock \url{http://www.olsak.net/enctex.html}
+	
+	\bibitem[{\NTS\ project page}()]{nts}
+	{\NTS\ project page}
+	\newblock \url{http://nts.tug.org}
+	
+	\bibitem[{v\TeX}()]{vtex official}
+	{V\TeX\ – official homepage of micropress-inc}
+	\newblock \url{http://www.micropress-inc.com/}
+	
+	\bibitem[{$\epsilon\chi$\TeX\ project page}()]{extex}
+	{$\epsilon\chi$\TeX\ project page}
+	\newblock \url{http://www.extex.org}
+	
+	\bibitem[{ee\TeX\ project page}()]{eetex}
+	{ee\TeX\ project page}
+	\newblock \url{http://tex.aanhet.net/eetex}
+	
+	\bibitem[{Lua\TeX\ project page}()]{luatex}
+	{Lua\TeX\ project page}
+	\newblock \url{http://www.luatex.org}
+	
+	\vspace{2ex}
+	\bibitem[{WebMakro}()]{}{\Large\textbf{\textsf{Original Documentation – Makro Packages/Formats}}}
+	\vspace{1ex}
+	\bibitem[wiki()]{contextgarden}
+	\ConTeXt\ wiki
+	\newblock \url{http://wiki.contextgarden.net}
+	
+	\bibitem[{\LaTeX\ project page}()]{latexproject}
+	{\LaTeX\ project page}
+	\newblock \url{http://www.latex-project.org}
+	
+	\bibitem[{\LaTeX3 project}()]{latexprojectiii}
+	{\LaTeX3 project}
+	\newblock \url{http://www.latex-project.org/latex3.html}
+	
+	\vspace{2ex}
+	\bibitem[{WebMakro}()]{}{\Large\textbf{\textsf{Original Documentation – Everything Else}}}
+	\vspace{1ex}
+	\bibitem[{dvipdfmx}()]{dvipdfmx}
+	{dvipdfmx project page}
+	\newblock \url{http://project.ktug.or.kr/dvipdfmx/}
+	
+	\vspace{2ex}
+	\bibitem[{WebMakro}()]{}{\Large\textbf{\textsf{Overview Articles}}}
+	\vspace{1ex}
+	\bibitem[{A Brief History of TeX}()]{abriefhistoftex}{Arthur Reutenauer. A Brief History of \TeX.}
+	\newblock Talk at EuroBacho\TeX\ 2007.\\
+	\newblock \url{http://www.gust.org.pl/bachotex/EuroBachoTeX2007/presentations/bhot.pdf/view}
+	
+	\bibitem[{A Brief History of \LaTeX}()]{abriefhistoflatex}
+	{A Brief History of \LaTeX}
+	\newblock \url{http://www.xent.com/FoRK-archive/feb98/0307.html}
+	
+	\bibitem[{omega and aleph}()]{omegaleph}
+	{Short Article About Omega And Aleph}
+	\newblock \url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=omegaleph}
+	
+	\bibitem[{interview}()]{interviews}
+	{Interviews with Will Robertson, Hans Hagen et.\,al.}
+	\newblock \url{http://www.tug.org/interviews}
+	
+	\vspace{2ex}
+	\bibitem[{WebArchive}()]{}{\Large\textbf{\textsf{Web Archives}}}
+	\vspace{1ex}
+	
+	\bibitem[{CTAN}()]{ctan}{Comprehensive TeX Archive Network}
+	\newblock \url{http://www.ctan.org}
+	
+	\bibitem[{historic archive}()]{histarch}{Historic Archive of TeX Distributions}
+	\newblock \url{ftp://ftp.tug.org/historic}
 \end{thebibliography}
 
 \overviewsection{Text Views}  %% these are generated automatically by the code above.
