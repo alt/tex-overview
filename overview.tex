@@ -38,6 +38,9 @@
 \tl_set:Nn\normalimportant{0 0.5 0}
 \tl_set:Nn\experimental{0 .7 .7}
 
+\tl_set:Nn\program{0 0 0}
+\tl_set:Nn\package{0 .5 0}
+
 \dim_new:N\layer
 \dim_set:Nn\layer{0cm}
 
@@ -131,7 +134,6 @@ In most cases I did not mention the authors of the programs/packages. This is no
 \label{sec:tree}
 \Large
 \centering
-
 %%% TEX  %%%
 \begin{tikzpicture}
 	\setlayer2
@@ -343,25 +345,31 @@ In most cases I did not mention the authors of the programs/packages. This is no
 
 \newpage
 \overviewsection{Pandora’s Box}
-{\normalsize
+\parbox{\textwidth}{\normalsize
 The following pages will be a hodge-podge of many things that are related to \TeX\ and used in the process of generating documents in different file formats, i.\,e. conversion tools, bibliography tools etc. Feel free to contribute, I’ll choose case-by-case if I’ll add something or won’t include it. Text editors or viewers will \emph{not} be included!
 }
 
 \overviewsubsection[Bib\TeX]{Bib\TeX}
 %%% BIBTEX %%%
 \begin{tikzpicture}
-	\mynode{bibtex}{0,0}{A helper program to generate a bibliography list.}{\BibTeX};
-	
-	\mynode{bibtex8}{0,-2}{The documentation says: „An 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity“}{\BibTeX8};
+	\mynode[\program]{bibtex}{0,0}{A helper program to generate a bibliography list.}{\BibTeX};
+
+	\mynode[\program]{nbibtex}{4,-1}{"NbibTeX helps authors take better advantage of BibTeX data" says the homepage.}{NbibTeX};
+	\draw (nbibtex) to (bibtex);
+
+	\mynode[\program]{bibtex8}{0,-2}{The documentation says: „An 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity“}{\BibTeX8};
 	\draw (bibtex8) to (bibtex);
 	
-	\mynode{bibtexu}{0,-4}{A unicode-aware version of BibTeX}{\BibTeX u};
+	\mynode[\program]{bibtexu}{0,-4}{A unicode-aware version of BibTeX}{\BibTeX u};
 	\draw (bibtex8) to (bibtexu);
+
+	\mynode[\program]{pybtex}{3,-4}{A python implementation of BibTeX.}{Pybtex};
+	\draw (pybtex) to (bibtexu);
 	
-	\mynode{biber}{0,-6}{A cooler version of unicode-aware BibTeX, designed for (?) use with BibLaTeX}{biber};
+	\mynode[\program]{biber}{0,-6}{A cooler version of unicode-aware BibTeX, designed for (?) use with BibLaTeX}{biber};
 	\draw (bibtexu) to (biber);
 	
-	\mynode{biblatex}{3,-6}{A LaTeX package as frontend for biber.}{Bib\LaTeX};
+	\mynode[\package]{biblatex}{3,-6}{A LaTeX package as frontend for biber.}{Bib\LaTeX};
 	\draw (biber) to (biblatex);
 	\draw (bibtexu) to (biblatex);
 \end{tikzpicture}
@@ -369,16 +377,17 @@ The following pages will be a hodge-podge of many things that are related to \Te
 %%% dvipdfm %%%
 \overviewsubsection[(x)dvipdf(m)(x)]{(x)dvipdf(m)(x)}
 \begin{tikzpicture}
-	\mynode{dvipdf}{0,0}{Converts dvi files to pdf files.}{dvipdf};
+	\mynode[\program]{dvipdf}{0,0}{Converts dvi files to pdf files.}{dvipdf};
 
-	\mynode{dvipdfm}{0,-2}{Converts dvi files to pdf files. Does not build on dvipdf, but is an independent implementation.}{dvipdfm};
+	\mynode[\program]{dvipdfm}{0,-2}{Converts dvi files to pdf files. Does not build on dvipdf, but is an independent implementation.}{dvipdfm};
 
-	\mynode{dvipdfmx}{0,-4}{Extended version of dvipdfm. Support for multi-byte encodings and more pdfTeX features. Still active. Combined work of dvipdfm-jpn and dvipdfm-kor.}{dvipdfmx};
+	\mynode[\program]{dvipdfmx}{0,-4}{Extended version of dvipdfm. Support for multi-byte encodings and more pdfTeX features. Still active. Combined work of dvipdfm-jpn and dvipdfm-kor.}{dvipdfmx};
 	\draw (dvipdfm) to (dvipdfmx);
 	
-	\mynode{xdvipdfmx}{0,-6}{Converts xdvi files produced by XeTeX to pdf files. Normally always executed after a XeTeX run, so the user won’t notice that an xdvi document was created in between.}{xdvipdfmx};
+	\mynode[\program]{xdvipdfmx}{0,-6}{Converts xdvi files produced by XeTeX to pdf files. Normally always executed after a XeTeX run, so the user won’t notice that an xdvi document was created in between.}{xdvipdfmx};
 	
 	\draw (dvipdfmx) to (xdvipdfmx);
+
 \end{tikzpicture}
 
 
