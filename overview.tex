@@ -349,6 +349,18 @@ In most cases I did not mention the authors of the programs/packages. This is no
 The following pages will be a hodge-podge of many things that are related to \TeX\ and used in the process of generating documents in different file formats, i.\,e. conversion tools, bibliography tools etc. Feel free to contribute, I’ll choose case-by-case if I’ll add something or won’t include it. Text editors or viewers will \emph{not} be included!
 }
 
+\overviewsubsection[META*]{META*}
+%%% META* %%%
+\begin{tikzpicture}
+	\mynode[\program]{metafont}{0,0}{The program for creating the fonts originally used by TeX.}{METAFONT};
+
+	\mynode[\program]{metapost}{0,-2}{A graphic generating program inspired by METAFONT. MetaPost can produce PostScript graphics as well as SVG.}{MetaPost};
+	\draw (metapost) to (metafont);
+
+	\mynode[\program]{metafun}{0,-4}{"MetaFun is Hans Hagen's extension to (or module for) the MetaPost language."}{MetaFun};
+	\draw (metafun) to (metapost);
+\end{tikzpicture}
+
 \overviewsubsection[Bib\TeX]{Bib\TeX}
 %%% BIBTEX %%%
 \begin{tikzpicture}
