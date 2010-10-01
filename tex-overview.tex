@@ -17,9 +17,6 @@
   xparse
 }
 
-\geometry{
-  margin=1cm
-}
 \hypersetup{
   colorlinks=true,
   linkcolor=blue,
@@ -98,8 +95,8 @@
 }
 
 \ExplSyntaxNamesOff
-\title{A short overview of \TeX, its children and their friends \dots}
-\author{Arno Trautmann\thanks{arno.trautmann@gmx.de – Please feel free to mail me any suggestions and comments!}}
+\title{A short overview of \TeX, its children and their friends~\dots}
+\author{Arno Trautmann \thanks{arno.trautmann@gmx.de}}
 \date{\today}
 \pagestyle{empty}
 
@@ -107,7 +104,10 @@
 \maketitle
 
 \begin{abstract}
-This paper tries to give a short overview of the development of \TeX. The base frame is taken from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007} and his talk there (see references). Additional information is taken from original documentations (see references on page \pageref{sec:refs}) and some review articles. For old, historic information, the \textsf{historic archive} maintained by Ulrik Vieth and hosted on ftp.tug.org (see refs) was very useful. Many thanks for that great archive!
+In the world of \TeX, there are many developments and ambiguos names. This paper tries to give an overview of the development of \TeX\ and related programs. Contributions are welcome!\footnote{The current source of this document is availble at \url{http://github.com/alt/tex-overview}. Please feel free to patch there or mail me any suggestions and comments. I’ll be happy to extend and correct this document!}
+\end{abstract}
+
+The base frame of this document is taken from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007} and his talk there (see references). Additional information is taken from original documentations (see references on page \pageref{sec:refs}) and some review articles. For old, historic information, the \textsf{historic archive} maintained by Ulrik Vieth and hosted on ftp.tug.org (see refs) was very useful. Many thanks for that great archive!
 
 All information is up to the date of the generated pdf. Everything here is without guarantee – this is just to get an overview. Consult the references for further (and/or correct) information! 
 
@@ -118,17 +118,16 @@ In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows
 \item[{\color[rgb]{\vip} important}] developments (only in my opinion) – i.\,e. engines or distributions that had or have a great impact on (everyday) typesetting for a large community
 \item[{\color[rgb]{\experimental} experimental}] developments that might still be under construction or were never used by a large community. Nevertheless, these might be very important to the development of other enginges or for use of special typesetting. \item[{\color[rgb]{\other} other}] programs that are not directly connected to \TeX\ but are interesting in the overview, are given in black.
 \end{description}
-\end{abstract}
 
-Furthermore, there are two versions of each graph: A short version mentioning only the most important things and a full one with everything I could find.
+Furthermore, there are two versions of the important graphs: A short version mentioning only the most important things and a full one with everything I could find.
 
-In most cases I did not mention the authors of the programs/packages. This is not to diminish ther effort but only for clarity (long names make things harder to read). I did not write any of the below-mentioned programs or packages. The authors are given in the documents linked in the references.
+In most cases I did not mention the authors of the programs/packages. This is not to diminish their effort but only for clarity (long names make things harder to read). I did not write any of the below-mentioned programs or packages. The authors are given in the documents linked in the references.
 
 \clearpage
 \tableofcontents
 \clearpage
 
-
+\newgeometry{margin=1cm}  %% to save space
 \NewDocumentCommand{\typesetwholecontent}{}{  %% begin all stuff
 
 \overviewsection{Tree Views}
@@ -470,10 +469,14 @@ The following pages will be a hodge-podge of many things that are related to \Te
 	\newblock Addison-Wesley, 2004.
 	
 	\vspace{2ex}
-	\bibitem[{WebEngines}()]{}{\LARGE\textbf{\textsf{Web Sources}}}
+	\bibitem[{Web}()]{}{\LARGE\textbf{\textsf{Web Sources}}}
+	\bibitem[{this document}()]{tex-overview}{This document on github}
+	\newblock \url{http://github.com/alt/tex-overview}
+
 	\vspace{1ex}
 	\bibitem[{OrigDoc}()]{}{\Large\textbf{\textsf{Original Documentation – Engines}}}
 	\vspace{1ex}
+
 	
 	\bibitem[{ANT project page}()]{ant}{ANT project page}
 	\newblock \url{http://ant.berlios.de}
