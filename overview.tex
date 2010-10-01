@@ -40,9 +40,12 @@
 
 \tl_set:Nn\program{0 0 0}
 \tl_set:Nn\package{0 .5 0}
+\tl_set:Nn\distro{0 .5 0}
 
 \dim_new:N\layer
+\dim_new:N\layerdist
 \dim_set:Nn\layer{0cm}
+\dim_set:Nn\layerdist{1cm}
 
 \bool_new:N\short
 \bool_gset_true:N\short
@@ -70,7 +73,7 @@
   \dim_set:Nn\layer{#1cm}
 }
 \NewDocumentCommand{\steplayer}{O{-1}}{
- \dim_add:Nn\layer{#1cm}
+ \dim_add:Nn\layer{\layerdist}
 }
 
 \NewDocumentCommand{\drawfull}{u{;}}{
@@ -89,8 +92,8 @@
   \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
   \dim_set:Nn\pdfpageheight{29.7cm}
 }
-\NewDocumentCommand{\overviewsubsection}{O{}m}{
- \subsection[#1]{#2}
+\NewDocumentCommand{\overviewsubsection}{om}{
+\IfNoValueTF{#1}{\subsection{#2}}{\subsection[#1]{#2}}
   \bool_if:NF\short{\AtEndDocument{\subsection[#1]{#2}}}
 }
 
@@ -344,6 +347,44 @@ In most cases I did not mention the authors of the programs/packages. This is no
 \typesetwholecontent
 
 \newpage
+\overviewsection{Distributions}
+\parbox{\textwidth}{\normalsize
+This section will feature the main distributions of \TeX\ and related programs. Of course, not every Linux Distribution’s \TeX\ package can be listed here, but only official upstream distributions. So far, only \TeX live and Mik\TeX\ are listed, but I’ll add others if they are/were important.
+}
+\ExplSyntaxOn
+\dim_set:Nn\layerdist{-1.5cm}
+\ExplSyntaxOff
+\overviewsubsection{\TeX live}
+\begin{tikzpicture}
+	\mynode[\distro]{teTeX}{2,\layer}{The (vague) past ... (?)}{te\TeX};
+	\mynode[\distro]{4AllTeX CD}{-2,\layer}{The (vague) past ... (?)}{4All\TeX CD };
+	\steplayer
+	\mynode[\distro]{tlpre2009}{0,\layer}{First version 1996, and then a long story of ongoing work -- see documentation for a detailed history.}{\TeX live 1996 – 2008};
+	\draw(teTeX) to (tlpre2009);
+	\draw(4AllTeX CD) to (tlpre2009);
+	\steplayer
+	\mynode[\distro]{tl2009}{0,\layer}{TeXlive now features package updating like MikTeX!}{\TeX live2009};
+	\draw(tl2009) to (tlpre2009);
+	\steplayer
+	\mynode[\distro]{tl2010}{0,\layer}{Up to now, latest release of TeXlive.}{\TeX live2010};
+	\draw(tl2010) to (tl2009);
+\end{tikzpicture}
+
+\overviewsubsection{Mik\TeX}
+\begin{tikzpicture}
+	\mynode[\distro]{mt26}{0,\layer}{featuring  pdftex 1.40.4, mpost 1.000  }{Mik\TeX\ 2.6};
+	\steplayer
+	\mynode[\distro]{mt27}{0,\layer}{featuring  xetex 0.999.6, pdftex 1.40.9, mpost 1.005  }{Mik\TeX\ 2.7};
+	\draw(mt27) to (mt26);
+	\steplayer
+	\mynode[\distro]{mt28}{0,\layer}{featuring  xetex 0.9995.1, pdftex 1.40.10, mpost 1.005  }{Mik\TeX\ 2.8};
+	\draw(mt28) to (mt27);
+	\steplayer
+	\mynode[\distro]{mt29}{0,\layer}{featuring xetex 0.9997.4, pdftex 1.40.11, LuaTeX 0.60.2, mpost 1.211}{Mik\TeX\ 2.9};
+	\draw(mt29) to (mt28);
+\end{tikzpicture}
+
+\newpage
 \overviewsection{Pandora’s Box}
 \parbox{\textwidth}{\normalsize
 The following pages will be a hodge-podge of many things that are related to \TeX\ and used in the process of generating documents in different file formats, i.\,e. conversion tools, bibliography tools etc. Feel free to contribute, I’ll choose case-by-case if I’ll add something or won’t include it. Text editors or viewers will \emph{not} be included!
@@ -479,6 +520,17 @@ The following pages will be a hodge-podge of many things that are related to \Te
 	{\LaTeX3 project}
 	\newblock \url{http://www.latex-project.org/latex3.html}
 	
+	\vspace{2ex}
+	\bibitem[{WebDistro}()]{}{\Large\textbf{\textsf{Original Documentation – Distributions}}}
+	\vspace{1ex}
+	\bibitem[{TeXlive}()]{TeXlive}
+	{TeXlive development history}
+	\newblock \url{http://tug.org/texlive/doc/texlive-en/texlive-en.html#}
+
+	\bibitem[{MikTeX}()]{MikTeX}
+	{MikTeX project site}
+	\newblock \url{http://miktex.org/}
+
 	\vspace{2ex}
 	\bibitem[{WebMakro}()]{}{\Large\textbf{\textsf{Original Documentation – Everything Else}}}
 	\vspace{1ex}
