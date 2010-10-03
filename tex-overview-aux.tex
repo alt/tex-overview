@@ -1,0 +1,100 @@
+% !TeX root = tex-overview.tex
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  pdfborder=0 0 0
+}
+
+\ExplSyntaxNamesOn
+
+\tl_set:Nn\XeT{XET}
+\tl_set:Nn\Aleph{Aleph}
+\tl_set:Nn\ConTeXt{Con\TeX{}t}
+
+\tl_set:Nn\vip{red}%{1 0 0}
+\tl_set:Nn\other{black}%{0 0 0}
+\tl_set:Nn\normalimportant{blue}%{0 0.5 0}
+\tl_set:Nn\experimental{yellow}%{0 .7 .7}
+
+\tl_set:Nn\program{black}%{0 0 0}
+\tl_set:Nn\package{black}%{0 .5 0}
+\tl_set:Nn\distro{black}%{0 .5 0}
+
+\fp_new:N\layer
+\fp_new:N\layerdist
+\fp_set:Nn\layer{0}
+\fp_set:Nn\layerdist{-1}
+
+\bool_new:N\short
+\bool_gset_true:N\short
+\tikzstyle{coolnode} = [
+%ball color=\nodecolor!80!black,
+draw=\nodecolor!50!black!70,
+top color=\nodecolor!10!white!105,
+bottom color= \nodecolor!50!black!50
+]
+\dim_set:Nn\fboxrule{-1mm}
+%% tonode ⇒ tex-overview node
+\NewDocumentCommand\tonode{O{\normalimportant}mmmm}{
+%% test if we are in the short or full view
+  \gdef\nodecolor{#1}
+  \bool_if:NTF\short{
+  %% short view
+    \tl_if_eq:NNT#1{\vip}{   %% then check if this is an important node
+      \node[coolnode]
+	(#2) at (#3) {
+        \cooltooltip{#2}{#4}{#4}{}{#5\strut}
+      };
+    }
+  }{
+  %% long view
+    \node[coolnode] (#2) at (#3) {
+      \cooltooltip{#2}{#4}{#4}{}{#5\strut}
+    };
+  %% and the text view, to be added only once!
+  \AtEndDocument{\subsubsection*{\color{blue}#5}\parbox{\textwidth}{#4}}
+  }
+}
+
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\NewDocumentCommand{\todraw}{sO{}d()d()}{
+  \begin{pgfonlayer}{background}  %% draw the lines at the background so they won’t disturb our nodes
+  \bool_if:NTF\short  %% are we in short or full view?
+    {\IfBooleanT{#1}{\draw [thick,gray,#2] (#3) to (#4);}}  % if in short, is star given? ⇒ then draw
+    {\IfBooleanF{#1}{\draw [thick, gray,#2](#3) to (#4);}}  %% if in full, only if no star is given
+  \end{pgfonlayer}
+}
+
+\NewDocumentCommand{\setlayer}{m}{
+  \fp_set:Nn\layer{#1}
+}
+\NewDocumentCommand{\steplayer}{O{\layerdist}}{
+  \fp_add:Nn\layer{#1}
+}
+
+\NewDocumentCommand{\drawfull}{u{;}}{
+  \bool_if:NF\short{\draw #1;}
+}
+\NewDocumentCommand{\drawshort}{u{;}}{
+  \bool_if:NT\short{\draw #1;}
+}
+
+\NewDocumentCommand{\overviewsection}{m}{
+  \clearpage
+  \dim_set:Nn\pdfpagewidth{9cm}       %% make a smaller paper so the header won’t feel so alone on the big, big paper
+  \dim_set:Nn\pdfpageheight{2.5cm}
+  \section{#1\bool_if:NT\short{ – short view}}
+  \clearpage
+  \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
+  \dim_set:Nn\pdfpageheight{29.7cm}
+}
+\NewDocumentCommand{\overviewsubsection}{om}{
+\IfNoValueTF{#1}{\subsection{#2}}{\subsection[#1]{#2}}
+  \bool_if:NF\short{\AtEndDocument{\IfNoValueTF{#1}{\subsection{#2}}{\subsection[#1]{#2}}}}
+}
+
+\ExplSyntaxNamesOff
