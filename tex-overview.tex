@@ -3,7 +3,7 @@
 %% Packages needed: see list below …
 %% just use an up-to-date TeXlive2010 and the lualatex program to typeset
 
-% this document has version number 0.1
+% this document has version number 0.1a
 
 \documentclass{scrartcl}
 
@@ -31,8 +31,8 @@
 \maketitle
 
 \begin{abstract}
-In the world of \TeX, there are many developments and ambiguos names. This paper tries to give an overview of the development of \TeX\ and related programs. Contributions are welcome!\footnote{The current source of this document is availble at \url{http://github.com/alt/tex-overview}. Please feel free to patch there or mail me any suggestions and comments. I’ll be happy to extend and correct this document!}
-\hyperref[textextview]{Link for the impatient.}
+\centerline{\hyperref[textextview]{Link for the impatient.}}
+In the world of \TeX, there are many developments and ambiguos names. This paper tries to give an overview of the development of \TeX\ and related programs. Contributions are welcome!\footnote{The current source of this document is availble at \url{http://github.com/alt/tex-overview}. Please feel free to patch there or mail me any suggestions and comments. I’ll be happy to extend and correct this document!}\\
 \end{abstract}
 
 \section*{Introduction}
@@ -78,22 +78,33 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 \label{sec:tree}
 \Large
 \centering
+
 %%% TEX  %%%
 \begin{tikzpicture}
 \label{textextview}
-	\setlayer2
-	\tonode[\vip]{tex}{7,\layer}{born in 1978}{\TeX}
+	\setlayer0
+	\TOnode[\vip](tex)(7,\layer)<born in 1978>{\TeX}
 	
 	\tonode[\other]{ant}{13,\layer}{Ant is Not TeX. A typesetting system inspired by TeX. Only *inspired*, so it has nothing to do with TeX in terms of common code.}{ANT};
 	\drawfull[dotted] (tex) to (ant);
 	
-	\steplayer
-	\tonode{xet-tex}{3,\layer}{The first extension to TeX, 1987. It was able to typeset in two directions, but only with a mark in the dvi to change the direction.}{\TeX-\XeT}
-	\todraw(tex)(xet-tex)
+	\steplayer[-1.5]
+	\tonode{tex-xet}{3,\layer}{The first extension to TeX, 1987. It was able to typeset in two directions, but only with a mark in the dvi to change the direction.}{\TeX-\XeT}
+	\todraw(tex)(tex-xet)
+
+	\TOnode(nihongo)(10,\layer)<A true multibyte extension of TeX. Could handle all Japanese characters in one font.>{Nihongo \TeX}
+	\todraw(tex)(nihongo)
 	
-	\steplayer[-2]
-	\tonode{xet--tex}{3,\layer}{TeX--XeT was able to really put the glyphs on the right place in the dvi.}{\TeX-{}-\XeT}
-	\todraw(xet-tex)(xet--tex)
+	\TOnode(jtex)(15,\layer)<An extension of TeX for typesetting Japanese. (1987, Yasuki Saito)>{J\TeX}
+	\todraw(tex)(jtex)
+
+	\steplayer[-1.5]
+	\TOnode(ptex)(10,\layer)<Extension of Nihongo TeX to enable vertical typesetting. ("p" for "publishing")>{p\TeX}
+	\todraw(nihongo)(ptex)
+
+	\steplayer[-1.5]
+	\tonode{tex--xet}{3,\layer}{TeX--XeT was able to really put the glyphs on the right place in the dvi.}{\TeX-{}-\XeT}
+	\todraw(tex-xet)(tex--xet)
 	
 	\tonode[\vip]{tex3}{7,\layer}{Ability to handle 8-bit input. 1989. TeX development was frozen in 1991 and only bugfixes were made. Now it in version 3.1415926, getting closer to pi with every bugfix ...}{\TeX3};
 	\todraw*(tex)(tex3)
@@ -106,6 +117,10 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\tonode{mltex}{7.5,\layer}{Extension (started 1990) to TeX that allows hyphenation of words with accented letters. (Therefore the name: MultiLingual TeX.) Distributed as a change file to the original WEB sources of TeX.}{ML\TeX};
 	\todraw(tex3)(mltex)
 	
+	\TOnode[\experimental](uptex)(11,\layer)<Unicode-aware version of pTeX ("unicode-publishing"-TeX) also modernized from TeX3.>{up\TeX}
+	\todraw(tex3)(uptex)
+	\todraw(ptex)(uptex)
+
 	\steplayer[-2]
 	\tonode{tex2pdf}{7,\layer}{Early name for pdfTeX.}{\TeX2PDF};
 	\todraw(enctex)(tex2pdf)
@@ -116,7 +131,7 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\todraw(tex3)(omega)
 	
 	\tonode[\vip]{etex}{4,\layer}{*the* extension to TeX.}{$\varepsilon$-\TeX};
-	\todraw(xet--tex)(etex)
+	\todraw(tex--xet)(etex)
 	\todraw*(tex3)(etex)
 	
 	\tonode[\vip]{pdftex}{7,\layer}{A new engine to directly produce pdf-files from TeX, without the need of dvi-ps-pdf. This allows to use microtypographic extensions and many other features of the pdf format.}{pdf\TeX};
@@ -198,7 +213,7 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\tonode{latex09210}{6,\layer}{Adaption of 0.92 for TeX version 1.0. (C) 1983 by Leslie Lamport, conversion to 0.92 from 0.91 by Arthur Keller.}{\LaTeX\ 0.92 - 1.0};
 	\todraw(latex092)(latex09210)
 	
-	\steplayer[-1.5]
+	\steplayer[-1.8]
 	  \tonode{latex2010}{-5,\layer}{Seemingly heavy changes compared to 0.92. Version for TeX 1.0. Release of 11 Dec 1983. There were never official versions 1.x }{\LaTeX\ 2.0 - 1.0};
 	\todraw(latex09210)(latex2010)
 	
@@ -242,14 +257,17 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\todraw(latex2ε)(xelatex)
 	\todraw*(latex2ε)(xelatex)
 	
-	\tonode{lualatex}{-2,\layer}{LaTeX based on LuaTeX with pdf (standard) or dvi (dviLuaLaTeX) output. LaTeX support for luaTeX is under heavy development to make this machine usable with the format. Work in progress, but already well useable!}{(dvi)Lua\LaTeX};
+	\tonode{lualatex}{-1.8,\layer}{LaTeX based on LuaTeX with pdf (standard) or dvi (dviLuaLaTeX) output. LaTeX support for luaTeX is under heavy development to make this machine usable with the format. Work in progress, but already well useable!}{Lua\LaTeX};
 	\todraw(latex2ε)(lualatex)
 	
-	\tonode[\experimental]{lambda}{-5,\layer}{A LaTeX-package for the omega-engine.}{$\Lambda$}
+	\TOnode(platex)(-4.6,\layer)<A LaTeX-bundle for the pTeX engine.>{p\LaTeXe}
+	\todraw(latex2ε)(platex)
+
+	\tonode[\experimental]{lambda}{-6.5,\layer}{A LaTeX-package for the omega-engine.}{$\Lambda$}
 	\todraw(latex209)(lambda)
-	
+
 	\steplayer[-1.5]
-	\tonode[\experimental]{lamed}{-6,\layer}{A LaTeX-package for the aleph-engine.}{Lamed}
+	\tonode[\experimental]{lamed}{-7,\layer}{A LaTeX-package for the aleph-engine.}{Lamed}
 	\todraw(lambda)(lamed)
 	
 	\steplayer[-1]
@@ -445,10 +463,15 @@ This section tries to cover the development of font technologies – the most im
 	\bibitem[{OrigDoc}()]{}{\Large\textbf{\textsf{Original Documentation – Engines}}}
 	\vspace{1ex}
 
-	
 	\bibitem[{ANT project page}()]{ant}{ANT project page}
 	\newblock \url{http://ant.berlios.de}
 	
+	\bibitem[{JTEX}()]{jtex}{A TUGboat report on JTeX}
+	\newblock Yasuki S AITO, Report on JTEX: A Japanese TEX, TUGboat 8 (1987), no. 2, 103-116.
+
+	\bibitem[{pTeX}()]{ptex}{p\TeX: sources and documentation}
+	\newblock\url{http://dante.ctan.org/tex-archive/help/Catalogue/entries/ptex.html}
+
 	\bibitem[{ML\TeX\ source}()]{mltex}{ML\TeX\ source (CH file)}
 	\newblock \url{http://www.tex.ac.uk/tex-archive/systems/generic/mltex/mltex.ch}
 	

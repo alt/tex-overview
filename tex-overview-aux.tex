@@ -8,8 +8,7 @@
 }
 
 \ExplSyntaxNamesOn
-
-\tl_set:Nn\XeT{XET}
+\tl_set:Nn\XeT{X\kern -.1667em\lower .5ex\hbox {E}\kern -.125emT\@}
 \tl_set:Nn\Aleph{Aleph}
 \tl_set:Nn\ConTeXt{Con\TeX{}t}
 
@@ -36,8 +35,9 @@ top color=\nodecolor!10!white!105,
 bottom color= \nodecolor!50!black!50
 ]
 \dim_set:Nn\fboxrule{-1mm}
-%% tonode ⇒ tex-overview node
-\NewDocumentCommand\tonode{O{\normalimportant}mmmm}{
+
+%% tonode ⇒ tex-overview node, now with better argument specifier
+\NewDocumentCommand\TOnode{O{\normalimportant}D(){no label given}D(){no position given}D<>{no description given}m}{
 %% test if we are in the short or full view
   \gdef\nodecolor{#1}
   \bool_if:NTF\short{
@@ -56,6 +56,15 @@ bottom color= \nodecolor!50!black!50
   %% and the text view, to be added only once!
   \AtEndDocument{\subsubsection*{\color{blue}#5}\parbox{\textwidth}{#4}}
   }
+}
+
+% the old command.
+\NewDocumentCommand\tonode{O{\normalimportant}mmmm}{
+  \TOnode[#1](#2)(#3)<#4>{#5}
+}
+
+\NewDocumentCommand\tobib{mmD<>{}O{}}{
+#1: #2 \url{#3} #4
 }
 
 \pgfdeclarelayer{background}
