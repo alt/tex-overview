@@ -6,35 +6,41 @@
   urlcolor=blue,
   pdfborder=0 0 0
 }
-
+\let\bfseries\scshape
 \ExplSyntaxNamesOn
+%% some missing definitions for \TeX-like things
 \tl_set:Nn\XeT{X\kern -.1667em\lower .5ex\hbox {E}\kern -.125emT\@}
-\tl_set:Nn\Aleph{Aleph}
 \tl_set:Nn\ConTeXt{Con\TeX{}t}
 
-\tl_set:Nn\vip{red}%{1 0 0}
-\tl_set:Nn\other{black}%{0 0 0}
-\tl_set:Nn\normalimportant{blue}%{0 0.5 0}
-\tl_set:Nn\experimental{yellow}%{0 .7 .7}
+%% constants for the colors. Might change from time to time …
+\tl_set:Nn\vip{red}
+\tl_set:Nn\other{black}
+\tl_set:Nn\normalimportant{blue}
+\tl_set:Nn\experimental{yellow}
 
-\tl_set:Nn\program{black}%{0 0 0}
-\tl_set:Nn\package{black}%{0 .5 0}
-\tl_set:Nn\distro{black}%{0 .5 0}
+\tl_set:Nn\program{black}
+\tl_set:Nn\package{green}
+\tl_set:Nn\distro{gray}
 
+%% shorthand to keep a good structure of the node positions
 \fp_new:N\layer
 \fp_new:N\layerdist
 \fp_set:Nn\layer{0}
 \fp_set:Nn\layerdist{-1}
 
+%% to separate important from not-so-important nodes
 \bool_new:N\short
 \bool_gset_true:N\short
-\tikzstyle{coolnode} = [
-%ball color=\nodecolor!80!black,
-draw=\nodecolor!50!black!70,
-top color=\nodecolor!10!white!105,
-bottom color= \nodecolor!50!black!50
-]
+
+%% width of the tooltip-boxes (negative value to make them disappear)
 \dim_set:Nn\fboxrule{-1mm}
+
+%% Style of the nodes
+\tikzstyle{coolnode} = [
+	draw=\nodecolor!50!black!70,
+	top color=\nodecolor!10!white!105,
+	bottom color= \nodecolor!50!black!50
+]
 
 %% tonode ⇒ tex-overview node, now with better argument specifier
 \NewDocumentCommand\TOnode{O{\normalimportant}D(){no label given}D(){no position given}D<>{no description given}m}{
@@ -63,18 +69,28 @@ bottom color= \nodecolor!50!black!50
   \TOnode[#1](#2)(#3)<#4>{#5}
 }
 
-\NewDocumentCommand\tobib{mmD<>{}O{}}{
-#1: #2 \url{#3} #4
+%% a command for creation of bib-items.
+\NewDocumentCommand\tobibsection{m}{
+  \section*{#1}
+}
+\NewDocumentCommand\tobib{mD<>{}O{}}{
+  \vspace*{1.5ex}
+\begin{minipage}{\textwidth}  %% to prevent page breaks
+  #1\\ \quad \url{#2} #3
+\end{minipage}
 }
 
+%% we want to make use of two pdf layers: the upper (main) one for the nodes
+%% and the lower (background) one for the lines. That way, the lines will not cross the nodes
 \pgfdeclarelayer{background}
 \pgfsetlayers{background,main}
 
-\NewDocumentCommand{\todraw}{sO{}d()d()}{
-  \begin{pgfonlayer}{background}  %% draw the lines at the background so they won’t disturb our nodes
-  \bool_if:NTF\short  %% are we in short or full view?
-    {\IfBooleanT{#1}{\draw [thick,gray,#2] (#3) to (#4);}}  % if in short, is star given? ⇒ then draw
-    {\IfBooleanF{#1}{\draw [thick, gray,#2](#3) to (#4);}}  %% if in full, only if no star is given
+%% the command to draw from one node to the other one. Fine tuning is possible via optional argument #3
+\NewDocumentCommand{\todraw}{st{'}O{}d()d()}{
+  \begin{pgfonlayer}{background}
+    %% draw in the case that: either a * is given (always draw) or (' is given and \short) or nothing is given
+    \bool_if:nT{#1 || (#2 && \short) || !(#2 || \short)}
+      {\draw [thick,gray,#3] (#4) to (#5);}  %% I’m just loooving expl3!
   \end{pgfonlayer}
 }
 
@@ -83,13 +99,6 @@ bottom color= \nodecolor!50!black!50
 }
 \NewDocumentCommand{\steplayer}{O{\layerdist}}{
   \fp_add:Nn\layer{#1}
-}
-
-\NewDocumentCommand{\drawfull}{u{;}}{
-  \bool_if:NF\short{\draw #1;}
-}
-\NewDocumentCommand{\drawshort}{u{;}}{
-  \bool_if:NT\short{\draw #1;}
 }
 
 \NewDocumentCommand{\overviewsection}{m}{

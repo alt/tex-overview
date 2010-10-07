@@ -36,20 +36,20 @@ In the world of \TeX, there are many developments and ambiguos names. This paper
 \end{abstract}
 
 \section*{Introduction}
-The base frame of this document is taken from the article \textsf{A brief history of \TeX, volume II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007} and his talk there (see references). Additional information is taken from original documentations (see references on page \pageref{sec:refs}) and some review articles. For old, historic information, the \textsf{historic archive} maintained by Ulrik Vieth and hosted on ftp.tug.org (see refs) was very useful. Many thanks for that great archive!
+The base frame of this document is taken from the article \textsf{A brief history of \TeX,~volume~II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007} and his talk there (see references). Additional information is taken from original documentations (see references on page \pageref{sec:refs}) and some review articles. For old, historic information, the \textsf{historic archive} maintained by Ulrik Vieth and hosted on \url{ftp.tug.org} (see refs) was very useful. Many thanks for that great archive!
 
-All information is up to the date of the generated pdf. Everything here is without guarantee – this is just to get an overview. Consult the references for further (and/or correct) information! 
+All information is up to the date of this generated pdf. Everything here is without guarantee – this is just to get an overview. Consult the references for further (and/or correct) information! 
 
 In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows up when you hover the mouse over it. If your pdf viewer does not support this, go to the end of the document, where every tooltip is written in normal text (page \pageref{sec:text}). I tried to make the graph more readable by using colors:
 
 \begin{description}
-\item[{\color{\normalimportant!70!black} normal}] (whatever that means)
-\item[{\color{\vip!70!black} important}] developments (only in my opinion) – i.\,e. engines or distributions that had or have a great impact on (everyday) typesetting for a large community
+\item[{\color{\normalimportant!70!black} normal}] That is, not very important in my opinion, no huge user group, but still maybe important for special needs. Was in use at least some time back, but is not of great impact nowadays.
+\item[{\color{\vip!70!black} important}] developments (only in my opinion) – i.\,e. engines or distributions that had or have a great impact on (everyday) typesetting for a large community.
 \item[{\color{\experimental!70!black} experimental}] developments that might still be under construction or were never used by a large community. Nevertheless, these might be very important to the development of other enginges or for use of special typesetting.
-\item[{\color{\other!70!black} other}] programs that are not directly connected to \TeX\ but are interesting in the overview, are given in black.
+\item[{\color{\other!70!black} other}] Programs that are not directly connected to \TeX\ but are interesting in the overview, are given in black.
 \end{description}
 
-Furthermore, there are two versions of the important graphs: A short version mentioning only the most important things and a full one with everything I could find.
+Furthermore, there are two versions of some graphs: A short version mentioning only the most important things and a full one with everything I could find.
 
 In most cases I did not mention the authors of the programs/packages. This is not to diminish their effort but only for clarity (long names make things harder to read). I did not write any of the below-mentioned programs or packages. The authors are given in the documents linked in the references.
 
@@ -85,11 +85,11 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\setlayer0
 	\TOnode[\vip](tex)(7,\layer)<born in 1978>{\TeX}
 	
-	\tonode[\other]{ant}{13,\layer}{Ant is Not TeX. A typesetting system inspired by TeX. Only *inspired*, so it has nothing to do with TeX in terms of common code.}{ANT};
-	\drawfull[dotted] (tex) to (ant);
+	\TOnode[\other](ant)(13,\layer)<Ant is Not TeX. A typesetting system inspired by TeX. Only *inspired*, so it has nothing to do with TeX in terms of common code.>{ANT};
+	\todraw[dotted](tex)(ant)
 	
 	\steplayer[-1.5]
-	\tonode{tex-xet}{3,\layer}{The first extension to TeX, 1987. It was able to typeset in two directions, but only with a mark in the dvi to change the direction.}{\TeX-\XeT}
+	\TOnode(tex-xet)(3,\layer)<The first extension to TeX, 1987. It was able to typeset in two directions, but only with a mark in the dvi to change the direction.>{\TeX-\XeT}
 	\todraw(tex)(tex-xet)
 
 	\TOnode(nihongo)(10,\layer)<A true multibyte extension of TeX. Could handle all Japanese characters in one font.>{Nihongo \TeX}
@@ -108,7 +108,6 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	
 	\tonode[\vip]{tex3}{7,\layer}{Ability to handle 8-bit input. 1989. TeX development was frozen in 1991 and only bugfixes were made. Now it in version 3.1415926, getting closer to pi with every bugfix ...}{\TeX3};
 	\todraw*(tex)(tex3)
-	\todraw(tex)(tex3)
 	
 	\steplayer[-2]
 	\tonode{enctex}{5.4,\layer}{A small extension to TeX, started 1997. Adds 10 new primitives relating input re-encoding}{enc\TeX};
@@ -132,11 +131,11 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	
 	\tonode[\vip]{etex}{4,\layer}{*the* extension to TeX.}{$\varepsilon$-\TeX};
 	\todraw(tex--xet)(etex)
-	\todraw*(tex3)(etex)
+	\todraw'(tex3)(etex)
 	
 	\tonode[\vip]{pdftex}{7,\layer}{A new engine to directly produce pdf-files from TeX, without the need of dvi-ps-pdf. This allows to use microtypographic extensions and many other features of the pdf format.}{pdf\TeX};
 	\todraw(tex2pdf)(pdftex)
-	\todraw*(tex3)(pdftex)
+	\todraw'(tex3)(pdftex)
 	
 	\tonode{texgx}{10,\layer}{GX stands for Graphic eXtension, a font technologie TeXGX was able to handle. Only on Mac OS.}{\TeX{}gX};
 	\todraw(tex3)(texgx)
@@ -152,13 +151,12 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\todraw(etex)(vtex)
 	
 	\steplayer[-2]
-	\tonode[\experimental]{aleph}{1,\layer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{$\aleph$ (\Aleph)};
+	\tonode[\experimental]{aleph}{1,\layer}{originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions.}{$\aleph$ (Aleph)};
 	\todraw(omega)(aleph)
 	\todraw(etex)(aleph)
 	
 	\tonode[\vip]{xetex}{8,\layer}{This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. XeTeX also features support for OpenType and AAT-fonts. In newest versions, character protrusion is possible -- hence the connection to pdfTeX.}{\XeTeX};
 	\todraw(texgx)(xetex)
-	\todraw(etex)(xetex)
 	\todraw*(etex)(xetex)
 	
 	\tonode[\experimental]{extex}{12,\layer}{Planned implementation of a high-quality typesetting system, written in Java. Based on experiences in NTS, eTeX, pdfTeX and Omega. Started in 2003, current version in repository is 0.0. (i. e. not very far ...)}{$\epsilon\chi$\TeX};
@@ -168,12 +166,9 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\todraw(pdftex)(extex)
 	
 	\tonode[\vip]{pdfetex}{5,\layer}{Merging the pdfTeX engine with the eTeX-extensions. This engine can produce dvi (with or without the eTeX-extensions) as well as pdf (again, with or without extensions).}{pdf($\epsilon$)-\TeX};
-	\todraw(etex)(pdfetex)
-	\todraw(pdftex)(pdfetex)
 	\todraw*(etex)(pdfetex)
 	\todraw*(pdftex)(pdfetex)
 	\todraw*[dotted](pdfetex)(xetex)
-	\todraw[dotted](pdfetex)(xetex)
 	
 	\steplayer[-2]
 	\tonode[\experimental]{eetex}{6,\layer}{Experimental extension to pdfeTeX by Taco Hoekwater, created 2000. Distributed as change file. Now dead due to his development of luaTeX.}{ee\TeX};
@@ -182,11 +177,10 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\steplayer[-2]
 	\tonode[\other]{lua}{0,\layer}{Script language; has nothing to do with TeX!}{Lua};
 	
-	\tonode[\vip]{luatex}{4,\layer}{LuaTeX will support unicode, OpenType and totally everything. TeXlive 2010 ships version 0.60.2. luaTeX features an embedded scripting language, lua, making it easy to extend so most of the programming can be done in lua instead of TeX-hackery.}{lua\TeX};
+	\tonode[\vip]{luatex}{4,\layer}{LuaTeX supports utf8, OpenType and totally everything. TeXlive 2010 ships version 0.60.2. luaTeX features an embedded scripting language, lua, making it easy to extend, so most of the programming can be done in lua instead of TeX-hackery.}{lua\TeX};
 	\todraw(aleph)(luatex)
-	\todraw(pdfetex)(luatex)
-	\drawfull[dashed] (lua)to(luatex);
 	\todraw*(pdfetex)(luatex)
+	\todraw[dashed](lua)(luatex);
 	
 	\steplayer[-2]
 	\tonode[\experimental]{itex}{7,\layer}{iTeX is the official successor of TeX89, announced by Don Knuth at the TUG conference 2010.}{i\TeX};
@@ -239,7 +233,7 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\steplayer[-1.7]
 	\tonode[\vip]{latex2ε}{0,\layer}{June 1994: New release of LaTeX to avoid incompatible dialects of LaTeX 2.09. Introduced by the LaTeX3-Team.}{\LaTeXe};
 	\todraw(latex209)(latex2ε)
-	\todraw*(latex209)(latex2ε)
+	\todraw'(latex209)(latex2ε)
 	\todraw[dashed](slitex)(latex2ε)
 	\todraw[dashed](amslatex11)(latex2ε)
 	
@@ -251,11 +245,11 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\steplayer[-1.5]
 	\tonode[\vip]{pdflatex}{2,\layer}{The standard LaTeX. If anyone talks about "LaTeX" it is nearly shure to be this package. pdfLaTeX2e produces pdf or dvi output.}{pdf\LaTeXe};
 	\todraw(latex2ε)(pdflatex)
-	\todraw*(latex2ε)(pdflatex)
+	\todraw'(latex2ε)(pdflatex)
 	
 	\tonode[\vip]{xelatex}{5,\layer}{Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.}{\XeLaTeX};
 	\todraw(latex2ε)(xelatex)
-	\todraw*(latex2ε)(xelatex)
+	\todraw'(latex2ε)(xelatex)
 	
 	\tonode{lualatex}{-1.8,\layer}{LaTeX based on LuaTeX with pdf (standard) or dvi (dviLuaLaTeX) output. LaTeX support for luaTeX is under heavy development to make this machine usable with the format. Work in progress, but already well useable!}{Lua\LaTeX};
 	\todraw(latex2ε)(lualatex)
@@ -289,14 +283,13 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 \begin{tikzpicture}
 	\tonode{mki}{0,0}{Original ConTeXt with Dutch low level interface.}{\ConTeXt MkI};
 	\tonode[\vip]{mkii}{0,-3}{ConTeXt with English low level interface. Works with any TeX-engine, like LaTeX: TeX, e-TeX, pdfTeX, Aleph, XeTeX, ...}{\ConTeXt MkII};
-	\drawfull (mki) to (mkii);
+	\todraw(mki)(mkii)
 	
 	\tonode{mkiii}{4,-4.5}{Reserved for future use for files supporting XeTeX. Was "skipped" for "practical reasons" (Hans Hagen)}{\ConTeXt\ MkIII};
-	\drawfull (mkii) to (mkiii);
+	\todraw(mkii)(mkiii)
 	
 	\tonode[\vip]{mkiv}{0,-6}{Specially designed for LuaTeX.}{\ConTeXt MkIV};
-	\drawfull (mkii) to (mkiv);
-	\drawshort (mkii) to (mkiv);
+	\todraw*(mkii)(mkiv)
 \end{tikzpicture}
 }  %% end all stuff
 %% and set it twice, with changing from short to full version
@@ -354,52 +347,58 @@ The following pages will be a hodge-podge of many things that are related to \Te
 \overviewsubsection[META*]{META*}
 %%% META* %%%
 \begin{tikzpicture}
-	\tonode[\program]{metafont}{0,0}{The program for creating the fonts originally used by TeX.}{METAFONT};
+	\TOnode[\program](metafont)(0,0)<The program for creating the fonts originally used by TeX.>{METAFONT};
 
-	\tonode[\program]{metapost}{0,-2}{A graphic generating program inspired by METAFONT. MetaPost can produce PostScript graphics as well as SVG.}{MetaPost};
-	\draw (metapost) to (metafont);
+	\TOnode[\program](metapost)(0,-2)<A graphic generating program inspired by METAFONT. MetaPost can produce PostScript graphics as well as SVG.>{MetaPost};
+	\todraw(metapost)(metafont)
 
-	\tonode[\program]{metafun}{0,-4}{"MetaFun is Hans Hagen's extension to (or module for) the MetaPost language."}{MetaFun};
-	\draw (metafun) to (metapost);
+	\TOnode[\program](metafun)(0,-4)<"MetaFun is Hans Hagen's extension to (or module for) the MetaPost language.">{MetaFun};
+	\todraw(metafun)(metapost)
 \end{tikzpicture}
 
 \overviewsubsection[Bib\TeX]{Bib\TeX}
 %%% BIBTEX %%%
 \begin{tikzpicture}
-	\tonode[\program]{bibtex}{0,0}{A helper program to generate a bibliography list.}{\BibTeX};
+	\TOnode[\program](bibtex)(0,0)<A helper program to generate a bibliography list.>{\BibTeX}
+	\steplayer[-1]
 
-	\tonode[\program]{nbibtex}{4,-1}{"NbibTeX helps authors take better advantage of BibTeX data" says the homepage.}{NbibTeX};
-	\draw (nbibtex) to (bibtex);
+	\TOnode[\program](nbibtex)(4,\layer)<"NbibTeX helps authors take better advantage of BibTeX data" says the homepage.>{NbibTeX}
+	\todraw(nbibtex)(bibtex)
+	\steplayer[-0.5]
 
-	\tonode[\program]{bibtex8}{0,-2}{The documentation says: „An 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity“}{\BibTeX8};
-	\draw (bibtex8) to (bibtex);
+	\TOnode[\program](bibtex8)(0,\layer)<The documentation says: „An 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity“>{\BibTeX8}
+	\todraw(bibtex8)(bibtex)
+	\steplayer
 	
-	\tonode[\program]{bibtexu}{0,-4}{A unicode-aware version of BibTeX}{\BibTeX u};
-	\draw (bibtex8) to (bibtexu);
+	\TOnode[\program](bibtexu)(0,\layer)<A unicode-aware version of BibTeX>{\BibTeX u}
+	\todraw(bibtex8)(bibtexu)
 
-	\tonode[\program]{pybtex}{3,-4}{A python implementation of BibTeX.}{Pybtex};
-	\draw (pybtex) to (bibtexu);
+	\TOnode[\program](pybtex)(3,\layer)<A python implementation of BibTeX.>{Pybtex}
+	\todraw(pybtex)(bibtexu)
+	\steplayer
 	
-	\tonode[\program]{biber}{0,-6}{A cooler version of unicode-aware BibTeX, designed for (?) use with BibLaTeX}{biber};
-	\draw (bibtexu) to (biber);
+	\TOnode[\program](biber)(0,\layer)<A cooler version of unicode-aware BibTeX, designed for (?) use with BibLaTeX>{biber}
+	\todraw(bibtexu)(biber)
 	
-	\tonode[\package]{biblatex}{3,-6}{A LaTeX package as frontend for biber.}{Bib\LaTeX};
-	\draw (biber) to (biblatex);
-	\draw (bibtexu) to (biblatex);
+	\TOnode[\package](biblatex)(3,\layer)<A LaTeX package as frontend for biber.>{Bib\LaTeX}
+	\todraw(biber)(biblatex)
+	\todraw(bibtexu)(biblatex)
 \end{tikzpicture}
 
 %%% dvipdfm %%%
 \overviewsubsection[(x)dvipdf(m)(x)]{(x)dvipdf(m)(x)}
 \begin{tikzpicture}
-	\tonode[\program]{dvipdf}{0,0}{Converts dvi files to pdf files.}{dvipdf};
+	\TOnode[\program](dvipdf)(0,0)<Converts dvi files to pdf files.>{dvipdf};
+	\steplayer
 
-	\tonode[\program]{dvipdfm}{0,-2}{Converts dvi files to pdf files. Does not build on dvipdf, but is an independent implementation.}{dvipdfm};
+	\TOnode[\program](dvipdfm)(0,\layer)<Converts dvi files to pdf files. Does not build on dvipdf, but is an independent implementation.>{dvipdfm};
+	\steplayer
 
-	\tonode[\program]{dvipdfmx}{0,-4}{Extended version of dvipdfm. Support for multi-byte encodings and more pdfTeX features. Still active. Combined work of dvipdfm-jpn and dvipdfm-kor.}{dvipdfmx};
+	\TOnode[\program](dvipdfmx)(0,\layer)<Extended version of dvipdfm. Support for multi-byte encodings and more pdfTeX features. Still active. Combined work of dvipdfm-jpn and dvipdfm-kor.>{dvipdfmx};
 	\todraw(dvipdfm)(dvipdfmx)
-	
-	\tonode[\program]{xdvipdfmx}{0,-6}{Converts xdvi files produced by XeTeX to pdf files. Normally always executed after a XeTeX run, so the user won’t notice that an xdvi document was created in between.}{xdvipdfmx};
-	
+	\steplayer
+
+	\TOnode[\program](xdvipdfmx)(0,\layer)<Converts xdvi files produced by XeTeX to pdf files. Normally always executed after a XeTeX run, so the user won’t notice that an xdvi document was created in between.>{xdvipdfmx};
 	\todraw(dvipdfmx)(xdvipdfmx)
 \end{tikzpicture}
 
@@ -407,168 +406,86 @@ The following pages will be a hodge-podge of many things that are related to \Te
 This section tries to cover the development of font technologies – the most important thing for a typesetting system is it’s font mechanism …
 
 \begin{tikzpicture}
-	\tonode[\program]{metafont}{0,0}{Fonts based on the METAFONT program.}{metafont};
+	\TOnode[\program](metafont)(0,0)<Fonts based on the METAFONT program.>{metafont};
 	\steplayer[-3]
 
-	\tonode[\program]{type1}{-2,\layer}{}{PostScript Type 1};
-	\tonode[\program]{truetype}{2,\layer}{}{TrueType};
-	\tonode[\program]{freetype}{6,\layer}{}{FreeType};
+	\TOnode[\program](type1)(-2,\layer)<>{PostScript Type 1};
+	\TOnode[\program](truetype)(2,\layer)<>{TrueType};
+	\TOnode[\program](freetype)(6,\layer)<>{FreeType};
 	\todraw(freetype)(truetype)
 	\steplayer[-3]
 
-	\tonode[\program]{gx}{6,\layer}{}{TrueType GX};
+	\TOnode[\program](gx)(6,\layer)<>{TrueType GX};
 	\todraw(truetype)(gx)
 	\steplayer[-3]
 
-	\tonode[\program]{opentype}{-2,\layer}{}{OpenType};
+	\TOnode[\program](opentype)(-2,\layer)<>{OpenType};
 	\todraw(truetype)(opentype)
 	\todraw(type1)(opentype)
 
-	\tonode[\program]{aat}{2,\layer}{}{AAT};
+	\TOnode[\program](aat)(2,\layer)<>{AAT};
 	\todraw(aat)(gx)
-
 \end{tikzpicture}
 
 %%
-%% I've chosen to typeset the bibliography "by hand" as to avoid problems regarding formatting. And this way I only need one file.
+%% I've chosen to typeset the bibliography "by hand" for full control of formatting and behaviour. Also, I can choose my own syntax ☺
 %%
-
 \clearpage
-\normalsize
-\begin{thebibliography}{10}
+
+\section{References}
 \label{sec:refs}
+\normalsize
+\obeylines
+\flushleft  %% to get rid of the still active centering
 
-	\bibitem[{Annotations}()]{}{\quad The references are in order of occurance in the above document. I.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX.}
-	\vspace{2ex}
-	\bibitem[{Books}()]{}{\LARGE\textbf{\textsf{Books}}}
-	\vspace{1ex}
-	\bibitem[Knuth et~al.(1986)Knuth, Bibby, and Makai]{knuth1986texbook}
-	D.E. Knuth, D.~Bibby, and I.~Makai.
-	\newblock \emph{{The \TeX book}}.
-	\newblock Addison-Wesley Reading, MA, 1986.
-	
-	\bibitem[Mittelbach et~al.(2004)Mittelbach, Goossens, Braams, Carlisle, Rowley,
-	  Detig, and Schrod]{mittelbach2004latex}
-	F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
-	  J.~Schrod.
-	\newblock \emph{{The \LaTeX\ companion}}.
-	\newblock Addison-Wesley, 2004.
-	
-	\vspace{2ex}
-	\bibitem[{Web}()]{}{\LARGE\textbf{\textsf{Web Sources}}}
-	\bibitem[{this document}()]{tex-overview}{This document on github}
-	\newblock \url{http://github.com/alt/tex-overview}
+The references are in order of occurance in the above document. I.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX.
 
-	\vspace{1ex}
-	\bibitem[{OrigDoc}()]{}{\Large\textbf{\textsf{Original Documentation – Engines}}}
-	\vspace{1ex}
+	\tobibsection{Books}
+	\tobib{D.E. Knuth, D.~Bibby, and I.~Makai. The \TeX book\\ Addison-Wesley Reading, MA, 1986.}
+	\tobib{F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
+	  J.~Schrod. The \LaTeX\ companion. \\ Addison-Wesley, 2004.}
 
-	\bibitem[{ANT project page}()]{ant}{ANT project page}
-	\newblock \url{http://ant.berlios.de}
-	
-	\bibitem[{JTEX}()]{jtex}{A TUGboat report on JTeX}
-	\newblock Yasuki S AITO, Report on JTEX: A Japanese TEX, TUGboat 8 (1987), no. 2, 103-116.
+	\tobibsection{Web Sources}
+	\tobib{This document on github}<http://github.com/alt/tex-overview>
 
-	\bibitem[{pTeX}()]{ptex}{p\TeX: sources and documentation}
-	\newblock\url{http://dante.ctan.org/tex-archive/help/Catalogue/entries/ptex.html}
+	\tobibsection{Original Documentation – Engines}
+	\tobib{ANT project page}<http://ant.berlios.de>
+	\tobib{Yasuki S AITO. Report on JTEX: A Japanese TEX.\\ TUGboat 8 (1987), no. 2, 103-116.}%
+		<http://www.tug.org/TUGboat/Articles/tb08-2/tb18saito.pdf>
+	\tobib{p\TeX: sources and documentation}<http://dante.ctan.org/tex-archive/help/Catalogue/entries/ptex.html>
+	\tobib{ML\TeX\ source (CH file)}<http://www.tex.ac.uk/tex-archive/systems/generic/mltex/mltex.ch>
+	\tobib{enc\TeX\ page}<http://www.olsak.net/enctex.html>
+	\tobib{\NTS\ project page}<http://nts.tug.org>
+	\tobib{V\TeX\ – official homepage of micropress-inc}<http://www.micropress-inc.com/>	
+	\tobib{$\epsilon\chi$\TeX\ project page}<http://www.extex.org>	
+	\tobib{ee\TeX\ project page}<http://tex.aanhet.net/eetex>	
+	\tobib{Lua\TeX\ project page}<http://www.luatex.org>
+	
+	\tobibsection{Original Documentation – Makro Packages/Formats}
+	\tobib{\ConTeXt\ wiki}<http://wiki.contextgarden.net>
+	\tobib{\LaTeX\ project page}<http://www.latex-project.org>
+	\tobib{\LaTeX3 project}<http://www.latex-project.org/latex3.html>
+	
+	\tobibsection{Original Documentation – Distributions}
+	\tobib{\TeX live development history}<http://tug.org/texlive/doc/texlive-en/texlive-en.html>
+	\tobib{MikTeX project site}<http://miktex.org/>
 
-	\bibitem[{ML\TeX\ source}()]{mltex}{ML\TeX\ source (CH file)}
-	\newblock \url{http://www.tex.ac.uk/tex-archive/systems/generic/mltex/mltex.ch}
-	
-	\bibitem[{enc\TeX\ page}()]{enctex}
-	{enc\TeX\ page}
-	\newblock \url{http://www.olsak.net/enctex.html}
-	
-	\bibitem[{\NTS\ project page}()]{nts}
-	{\NTS\ project page}
-	\newblock \url{http://nts.tug.org}
-	
-	\bibitem[{v\TeX}()]{vtex official}
-	{V\TeX\ – official homepage of micropress-inc}
-	\newblock \url{http://www.micropress-inc.com/}
-	
-	\bibitem[{$\epsilon\chi$\TeX\ project page}()]{extex}
-	{$\epsilon\chi$\TeX\ project page}
-	\newblock \url{http://www.extex.org}
-	
-	\bibitem[{ee\TeX\ project page}()]{eetex}
-	{ee\TeX\ project page}
-	\newblock \url{http://tex.aanhet.net/eetex}
-	
-	\bibitem[{Lua\TeX\ project page}()]{luatex}
-	{Lua\TeX\ project page}
-	\newblock \url{http://www.luatex.org}
-	
-	\vspace{2ex}
-	\bibitem[{WebMakro}()]{}{\Large\textbf{\textsf{Original Documentation – Makro Packages/Formats}}}
-	\vspace{1ex}
-	\bibitem[wiki()]{contextgarden}
-	\ConTeXt\ wiki
-	\newblock \url{http://wiki.contextgarden.net}
-	
-	\bibitem[{\LaTeX\ project page}()]{latexproject}
-	{\LaTeX\ project page}
-	\newblock \url{http://www.latex-project.org}
-	
-	\bibitem[{\LaTeX3 project}()]{latexprojectiii}
-	{\LaTeX3 project}
-	\newblock \url{http://www.latex-project.org/latex3.html}
-	
-	\vspace{2ex}
-	\bibitem[{WebDistro}()]{}{\Large\textbf{\textsf{Original Documentation – Distributions}}}
-	\vspace{1ex}
-	\bibitem[{TeXlive}()]{TeXlive}
-	{TeXlive development history}
-	\newblock \url{http://tug.org/texlive/doc/texlive-en/texlive-en.html#}
+	\tobibsection{Original Documentation – Fonts}
+	\tobib{Specifications of the Type1 Fonts}<http://partners.adobe.com/public/developer/en/font/T1_SPEC.PDF>
 
-	\bibitem[{MikTeX}()]{MikTeX}
-	{MikTeX project site}
-	\newblock \url{http://miktex.org/}
-
-	\vspace{2ex}
-	\bibitem[{}()]{}{\Large\textbf{\textsf{Original Documentation – Fonts}}}
-	\vspace{1ex}
-
-	\bibitem[{MikTeX}()]{Type1 Fonts}
-	{Specifications of the Type1 Fonts}
-	\newblock \url{http://partners.adobe.com/public/developer/en/font/T1_SPEC.PDF}
-
-	\vspace{2ex}
-	\bibitem[{WebMakro}()]{}{\Large\textbf{\textsf{Original Documentation – Everything Else}}}
-	\vspace{1ex}
-	\bibitem[{dvipdfmx}()]{dvipdfmx}
-	{dvipdfmx project page}
-	\newblock \url{http://project.ktug.or.kr/dvipdfmx/}
+	\tobibsection{Original Documentation – Everything Else}
+	\tobib{dvipdfmx project page}<http://project.ktug.or.kr/dvipdfmx/>
 	
-	\vspace{2ex}
-	\bibitem[{WebMakro}()]{}{\Large\textbf{\textsf{Overview Articles}}}
-	\vspace{1ex}
-	\bibitem[{A Brief History of TeX}()]{abriefhistoftex}{Arthur Reutenauer. A Brief History of \TeX.}
-	\newblock Talk at EuroBacho\TeX\ 2007.\\
-	\newblock \url{http://www.gust.org.pl/bachotex/EuroBachoTeX2007/presentations/bhot.pdf/view}
+	\tobibsection{Overview Articles}
+	\tobib{Arthur Reutenauer. A Brief History of \TeX. Talk at EuroBacho\TeX\ 2007.}%
+	  <http://www.gust.org.pl/bachotex/EuroBachoTeX2007/presentations/bhot.pdf/view>
+	\tobib{A Brief History of \LaTeX}<http://www.xent.com/FoRK-archive/feb98/0307.html>
+	\tobib{Short Article About Omega And Aleph}<http://www.tex.ac.uk/cgi-bin/texfaq2html?label=omegaleph>
+	\tobib{Interviews with Will Robertson, Hans Hagen et.\,al.}<http://www.tug.org/interviews>
 	
-	\bibitem[{A Brief History of \LaTeX}()]{abriefhistoflatex}
-	{A Brief History of \LaTeX}
-	\newblock \url{http://www.xent.com/FoRK-archive/feb98/0307.html}
-	
-	\bibitem[{omega and aleph}()]{omegaleph}
-	{Short Article About Omega And Aleph}
-	\newblock \url{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=omegaleph}
-	
-	\bibitem[{interview}()]{interviews}
-	{Interviews with Will Robertson, Hans Hagen et.\,al.}
-	\newblock \url{http://www.tug.org/interviews}
-	
-	\vspace{2ex}
-	\bibitem[{WebArchive}()]{}{\Large\textbf{\textsf{Web Archives}}}
-	\vspace{1ex}
-	
-	\bibitem[{CTAN}()]{ctan}{Comprehensive TeX Archive Network}
-	\newblock \url{http://www.ctan.org}
-	
-	\bibitem[{historic archive}()]{histarch}{Historic Archive of TeX Distributions}
-	\newblock \url{ftp://ftp.tug.org/historic}
-\end{thebibliography}
+	\tobibsection{Web Archives}
+	\tobib{CTAN – Comprehensive TeX Archive Network:}<http://www.ctan.org>
+	\tobib{Historic Archive of TeX Distributions:}<ftp://ftp.tug.org/historic>
 
 \overviewsection{Text Views}  %% these are generated automatically by the code above.
 \label{sec:text}
