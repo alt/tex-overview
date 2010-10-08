@@ -3,27 +3,14 @@
 %% Packages needed: see list below …
 %% just use an up-to-date TeXlive2010 and the lualatex program to typeset
 
-% this document has version number 0.1a
+% this document has version number 0.1b
 
 \documentclass{scrartcl}
 
-\usepackage{
-  cooltooltips,
-  dtklogos,
-  fontspec,
-  geometry,
-  hyperref,
-  lmodern,
-  natbib,
-  tikz,
-  xcolor,
-  xparse
-}
-
-\input{tex-overview-aux}
+\input{tex-overview-aux}  %% everything that is not content-related
 
 \title{A short overview of \TeX, its children and their friends~\dots}
-\author{Arno Trautmann \thanks{arno.trautmann@gmx.de}}
+\author{Arno Trautmann\thanks{arno.trautmann@gmx.de}}
 \date{\today}
 \pagestyle{empty}
 
@@ -31,22 +18,26 @@
 \maketitle
 
 \begin{abstract}
-\centerline{\hyperref[textextview]{Link for the impatient.}}
+\centerline{\large \hyperref[textextview]{Link for the impatient.}}\vspace*{2ex}
 In the world of \TeX, there are many developments and ambiguos names. This paper tries to give an overview of the development of \TeX\ and related programs. Contributions are welcome!\footnote{The current source of this document is availble at \url{http://github.com/alt/tex-overview}. Please feel free to patch there or mail me any suggestions and comments. I’ll be happy to extend and correct this document!}\\
 \end{abstract}
 
-\section*{Introduction}
+\section{Introduction}
 The base frame of this document is taken from the article \textsf{A brief history of \TeX,~volume~II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007} and his talk there (see references). Additional information is taken from original documentations (see references on page \pageref{sec:refs}) and some review articles. For old, historic information, the \textsf{historic archive} maintained by Ulrik Vieth and hosted on \url{ftp.tug.org} (see refs) was very useful. Many thanks for that great archive!
 
 All information is up to the date of this generated pdf. Everything here is without guarantee – this is just to get an overview. Consult the references for further (and/or correct) information! 
 
-In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows up when you hover the mouse over it. If your pdf viewer does not support this, go to the end of the document, where every tooltip is written in normal text (page \pageref{sec:text}). I tried to make the graph more readable by using colors:
+In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows up when you hover the mouse over it. If your pdf viewer does not support this, go to the end of the document, where every tooltip is written in normal text (page \pageref{sec:text}).
 
+\clearpage
+I tried to make the graph more readable by using colors:
 \begin{description}
-\item[{\color{\normalimportant!70!black} normal}] That is, not very important in my opinion, no huge user group, but still maybe important for special needs. Was in use at least some time back, but is not of great impact nowadays.
-\item[{\color{\vip!70!black} important}] developments (only in my opinion) – i.\,e. engines or distributions that had or have a great impact on (everyday) typesetting for a large community.
-\item[{\color{\experimental!70!black} experimental}] developments that might still be under construction or were never used by a large community. Nevertheless, these might be very important to the development of other enginges or for use of special typesetting.
-\item[{\color{\other!70!black} other}] Programs that are not directly connected to \TeX\ but are interesting in the overview, are given in black.
+\item[{\def\nodecolor{\normalimportant} \tikz \node[coolnode]{normal};}] That is, not very important in my opinion, no huge user group, but still maybe important for special needs. Was in use at least some time back, but is not of great impact nowadays.
+\item[{\def\nodecolor{\vip} \tikz \node[coolnode]{important};}] developments (only in my opinion) – i.\,e. engines or distributions that had or have a great impact on (everyday) typesetting for a large community.
+\item[{\def\nodecolor{\experimental} \tikz \node[coolnode]{experimental};}] developments that might still be under construction or were never used by a large community. Nevertheless, these might be very important to the development of other enginges or for use of special typesetting.
+\item[{\def\nodecolor{\package} \tikz \node[coolnode]{package};}] \LaTeX-packages that seemed worth mentioning. There won’t be many of this, only ground-breaking ones.
+\item[{\def\nodecolor{\distro} \tikz \node[coolnode]{distributions};}] are given in a decent gray.
+\item[{\def\nodecolor{\program} \tikz \node[coolnode]{programs};}] Programs that are not directly connected to \TeX\ (but interesting in the context) or are separate helper programs, are given in black.
 \end{description}
 
 Furthermore, there are two versions of some graphs: A short version mentioning only the most important things and a full one with everything I could find.
@@ -85,7 +76,7 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\setlayer0
 	\tonode[\vip](tex)(7,\layer)<born in 1978>{\TeX}
 	
-	\tonode[\other](ant)(13,\layer)<Ant is Not TeX. A typesetting system inspired by TeX. Only *inspired*, so it has nothing to do with TeX in terms of common code.>{ANT};
+	\tonode[\program](ant)(13,\layer)<Ant is Not TeX. A typesetting system inspired by TeX. Only *inspired*, so it has nothing to do with TeX in terms of common code.>{ANT};
 	\todraw[dotted](tex)(ant)
 	
 	\steplayer[-1.5]
@@ -110,10 +101,10 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\todraw*(tex)(tex3)
 	
 	\steplayer[-2]
-	\tonode(enctex)(5.4,\layer)<A small extension to TeX, started 1997. Adds 10 new primitives relating input re-encoding>{enc\TeX};
+	\tonode(enctex)(5.9,\layer)<A small extension to TeX, started 1997. Adds 10 new primitives relating input re-encoding>{enc\TeX};
 	\todraw(tex3)(enctex)
 	
-	\tonode(mltex)(7.5,\layer)<Extension (started 1990) to TeX that allows hyphenation of words with accented letters. (Therefore the name: MultiLingual TeX.) Distributed as a change file to the original WEB sources of TeX.>{ML\TeX};
+	\tonode(mltex)(8,\layer)<Extension (started 1990) to TeX that allows hyphenation of words with accented letters. (Therefore the name: MultiLingual TeX.) Distributed as a change file to the original WEB sources of TeX.>{ML\TeX};
 	\todraw(tex3)(mltex)
 	
 	\tonode[\experimental](uptex)(11,\layer)<Unicode-aware version of pTeX ("unicode-publishing"-TeX) also modernized from TeX3.>{up\TeX}
@@ -121,7 +112,7 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\todraw(ptex)(uptex)
 
 	\steplayer[-2]
-	\tonode(tex2pdf)(7,\layer)<Early name for pdfTeX.>{\TeX2PDF};
+	\tonode(tex2pdf)(7,\layer)<Early name for pdfTeX. Don't confuse with converters like dvi2pdf.>{\TeX2PDF};
 	\todraw(enctex)(tex2pdf)
 	\todraw(mltex)(tex2pdf)
 	
@@ -137,7 +128,7 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\todraw(tex2pdf)(pdftex)
 	\todraw'(tex3)(pdftex)
 	
-	\tonode(texgx)(10,\layer)<GX stands for Graphic eXtension, a font technologie TeXGX was able to handle. Only on Mac OS.>{\TeX{}gX};
+	\tonode(texgx)(9.5,\layer)<GX stands for Graphic eXtension. TeXGX was able to handle this font technology. Only on Mac OS.>{\TeX{}gX};
 	\todraw(tex3)(texgx)
 	
 	\tonode(nts)(12,\layer)<A project to completely reimplement TeX in Java. Now NTS is officially declared dead.>{\NTS};
@@ -175,7 +166,7 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\todraw(pdfetex)(eetex)
 	
 	\steplayer[-2]
-	\tonode[\other](lua)(0,\layer)<Script language; has nothing to do with TeX!>{Lua};
+	\tonode[\program](lua)(0,\layer)<Script language; has nothing to do with TeX!>{Lua};
 	
 	\tonode[\vip](luatex)(4,\layer)<LuaTeX supports utf8, OpenType and totally everything. TeXlive 2010 ships version 0.60.2. luaTeX features an embedded scripting language, lua, making it easy to extend, so most of the programming can be done in lua instead of TeX-hackery.>{lua\TeX};
 	\todraw(aleph)(luatex)
@@ -190,6 +181,7 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 \newpage
 \overviewsubsection[\LaTeX]{\LaTeX\ (Lamport's \TeX) – a format and large macro package for \TeX}
 %%% LATEX %%%
+\hspace*{-5em}
 \begin{tikzpicture}
 	\tonode(latex090)(-5.5,\layer)<First version still on web (historic archive, see refs) is 0.9, for use with TeX 0.95. No installation help found. Apparently one needs the files lplain.tex and latex.tex to create the format.>{\LaTeX\ 0.9};
 	
@@ -265,8 +257,8 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 	\tonode[\experimental](latex25)(0,\layer)<Will Robertson suggested in an interview (see refs) an interim unstable version on the way to LaTeX3 with version number 2.5 that should bring package authors towards using LaTeX3 syntax. This version should be backwards incompatible to LaTeX2e. (This version does not exist in any official plannings, but I liked the idea, so it is mentioned here :) )>{\LaTeX2.5};
 	\todraw(latex2ε)(latex25)
 	
-	\steplayer[-2]
-	\tonode[\experimental](latex3)(0,\layer)<The planned successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. The expl3-package provides an implemantation that can be used on top of LaTeX2e. Several LaTeX packages already make heavy use of expl3.>{\LaTeX{}3};
+	\steplayer[-3]
+	\tonode[\experimental](latex3)(0,\layer)<The long-time successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. (Almost done by now.) The expl3-package provides an implemantation that can be used on top of LaTeX2e. Several LaTeX packages already make heavy use of expl3. (As does this very document.)>{\LaTeX{}3};
 	\todraw(latex25)(latex3)
 	\todraw[dotted](xelatex)(latex3)
 	\todraw[dotted](pdflatex)(latex3)

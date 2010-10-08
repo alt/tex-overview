@@ -1,26 +1,40 @@
 % !TeX root = tex-overview.tex
+%% for the TeXworks-users.
+
+\usepackage{
+  cooltooltips,
+  dtklogos,  %% for \NTS etc.
+  fontspec,
+  geometry,
+  hyperref,
+  tikz,
+  xcolor,
+  xparse
+}
 
 \hypersetup{
   colorlinks=true,
   linkcolor=blue,
   urlcolor=blue,
-  pdfborder=0 0 0
+  pdfborder=0 0 0   %% don’t like these boxes
 }
-\let\bfseries\scshape
+
+%% use new LaTeX3 syntax:
 \ExplSyntaxNamesOn
+
+%% don‘t like bold face
+\cs_set_eq:NN\bfseries\scshape
 %% some missing definitions for \TeX-like things
 \tl_set:Nn\XeT{X\kern -.1667em\lower .5ex\hbox {E}\kern -.125emT\@}
 \tl_set:Nn\ConTeXt{Con\TeX{}t}
 
 %% constants for the colors. Might change from time to time …
 \tl_set:Nn\vip{red}
-\tl_set:Nn\other{black}
 \tl_set:Nn\normalimportant{blue}
 \tl_set:Nn\experimental{yellow}
-
 \tl_set:Nn\program{black}
 \tl_set:Nn\package{green}
-\tl_set:Nn\distro{gray}
+\tl_set:Nn\distro{orange}
 
 %% shorthand to keep a good structure of the node positions
 \fp_new:N\layer
@@ -28,14 +42,14 @@
 \fp_set:Nn\layer{0}
 \fp_set:Nn\layerdist{-1}
 
+%% width of the tooltip-boxes (negative value to make them disappear at all)
+\dim_set:Nn\fboxrule{-1mm}
+
 %% to separate important from not-so-important nodes
 \bool_new:N\short
 \bool_gset_true:N\short
 
-%% width of the tooltip-boxes (negative value to make them disappear)
-\dim_set:Nn\fboxrule{-1mm}
-
-%% Style of the nodes
+%% Style of the nodes: shade from a light 
 \tikzstyle{coolnode} = [
 	draw=\nodecolor!50!black!70,
 	top color=\nodecolor!10!white!105,
@@ -98,12 +112,12 @@
 
 \NewDocumentCommand{\overviewsection}{m}{
   \clearpage
-  \dim_set:Nn\pdfpagewidth{9cm}       %% make a smaller paper so the header won’t feel so alone on the big, big paper
-  \dim_set:Nn\pdfpageheight{2.5cm}
+%%  \dim_set:Nn\pdfpagewidth{9cm}       %% make a smaller paper so the header won’t feel so alone on the big, big paper
+%%  \dim_set:Nn\pdfpageheight{2.5cm}
   \section{#1\bool_if:NT\short{ – short view}}
   \clearpage
-  \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
-  \dim_set:Nn\pdfpageheight{29.7cm}
+%%  \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
+%%  \dim_set:Nn\pdfpageheight{29.7cm}
 }
 \NewDocumentCommand{\overviewsubsection}{om}{
 \IfNoValueTF{#1}{\subsection{#2}}{\subsection[#1]{#2}}
