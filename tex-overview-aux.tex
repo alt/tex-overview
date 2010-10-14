@@ -56,8 +56,9 @@
 	bottom color= \nodecolor!50!black!50
 ]
 
+\cs_set_eq:NN\tonodestyle\normalimportant
 %% tonode ⇒ tex-overview node, now with better argument specifier
-\NewDocumentCommand\tonode{O{\normalimportant}D(){no label given}D(){no position given}D<>{no description given}m}{
+\NewDocumentCommand\tonode{O{\tonodestyle}D(){no label given}D(){no position given}D<>{no description given}m}{
 %% test if we are in the short or full view
   \gdef\nodecolor{#1}
   \bool_if:NTF\short{
@@ -78,17 +79,6 @@
   }
 }
 
-%% a command for creation of bib-items.
-\NewDocumentCommand\tobibsection{m}{
-  \section*{#1}
-}
-\NewDocumentCommand\tobib{mD<>{}O{}}{
-  \vspace*{1.5ex}
-\begin{minipage}{\textwidth}  %% to prevent page breaks
-  #1\\ \quad \url{#2} #3
-\end{minipage}
-}
-
 %% we want to make use of two pdf layers: the upper (main) one for the nodes
 %% and the lower (background) one for the lines. That way, the lines will not cross the nodes
 \pgfdeclarelayer{background}
@@ -103,6 +93,17 @@
   \end{pgfonlayer}
 }
 
+%% a command for creation of bib-items.
+\NewDocumentCommand\tobibsection{m}{
+  \section*{#1}
+}
+\NewDocumentCommand\tobib{mD<>{}O{}}{
+  \vspace*{1.5ex}
+\begin{minipage}{\textwidth}  %% to prevent page breaks
+  #1\\ \quad \url{#2} #3
+\end{minipage}
+}
+
 \NewDocumentCommand{\setlayer}{m}{
   \fp_set:Nn\layer{#1}
 }
@@ -114,8 +115,9 @@
 \addtokomafont{subsection}{\large}
 
 
-\NewDocumentCommand{\overviewsection}{om}{
+\NewDocumentCommand{\overviewsection}{omO{\tonodestyle}}{
   \clearpage
+  \cs_gset_eq:NN\tonodestyle#3
 %%  \dim_set:Nn\pdfpagewidth{9cm}       %% make a smaller paper so the header won’t feel so alone on the big, big paper
 %%  \dim_set:Nn\pdfpageheight{2.5cm}
   \IfNoValueTF{#1}{\section{#2}}{\section[#1]{#2}}
@@ -124,9 +126,10 @@
 %%  \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
 %%  \dim_set:Nn\pdfpageheight{29.7cm}
 }
-\NewDocumentCommand{\overviewsubsection}{om}{
-\IfNoValueTF{#1}{\subsection{#2}}{\subsection[#1]{#2}}
-  \bool_if:NF\short{\AtEndDocument{\IfNoValueTF{#1}{\subsection{#2}}{\subsection[#1]{#2}}}}
+\NewDocumentCommand{\overviewsubsection}{omO{\tonodestyle}}{
+  \cs_gset_eq:NN\tonodestyle#3
+  \IfNoValueTF{#1}{\subsection{#2}}{\subsection[#1]{#2}}
+    \bool_if:NF\short{\AtEndDocument{\IfNoValueTF{#1}{\subsection{#2}}{\subsection[#1]{#2}}}}
 }
 
 \ExplSyntaxNamesOff

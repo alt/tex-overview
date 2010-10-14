@@ -67,7 +67,7 @@ This document is known to cause problems with the Acrobat Reader. Thanks to the 
 \NewDocumentCommand{\typesetwholecontent}{}{  %% begin all stuff
 
 \clearpage
-\part*{Tree Views}
+\part{Tree Views}
 
 \overviewsection[\TeX]{\TeX\ – the program}
 \label{sec:tree}
@@ -290,7 +290,8 @@ This document is known to cause problems with the Acrobat Reader. Thanks to the 
 \ExplSyntaxNamesOff
 \typesetwholecontent
 
-\overviewsection{Distributions}
+\part{Others}
+\overviewsection{Distributions}[\distro]
 \parbox{\textwidth}{\normalsize
 This section will feature the main distributions of \TeX\ and related programs. Of course, not every Linux Distribution's \TeX\ package can be listed here, but only official upstream distributions. So far, only \TeX live and Mik\TeX\ are listed, but I'll add others if they are/were important.
 }
@@ -299,72 +300,75 @@ This section will feature the main distributions of \TeX\ and related programs. 
 \ExplSyntaxOff
 \overviewsubsection{\TeX live}
 \begin{tikzpicture}
-	\tonode[\distro](web2c)(0,\layer)<An Implementation and Distribution of TeX which translates the original WEB sources to a C code.>{Web2c}
+	\tonode(web2c)(0,\layer)<An Implementation and Distribution of TeX which translates the original WEB sources to a C code.>{Web2c}
 	\steplayer
 
-	\tonode[\distro](emtex)(3,\layer)<Eberhard Mattes TeX Distribution for MS-DOS and OS/2.>{em\TeX}
+	\tonode(emtex)(3,\layer)<Eberhard Mattes TeX Distribution for MS-DOS and OS/2.>{em\TeX}
 	\todraw.(web2c)(emtex)
 	\steplayer
 
-	\tonode[\distro](tetex)(3,\layer)<Maintained by Thomas Esser (hence the te in teTeX) from 1994 to May 2006.>{te\TeX}
-	\tonode[\distro](4alltexcd)(-3,\layer)<The (vague) past ... (?)>{4All\TeX CD }
+	\tonode(tetex)(3,\layer)<Maintained by Thomas Esser (hence the te in teTeX) from 1994 to May 2006.>{te\TeX}
+	\tonode(4alltexcd)(-3,\layer)<The (vague) past ... (?)>{4All\TeX CD }
 	\todraw.(web2c)(tetex)
 	\todraw.(web2c)(4alltexcd)
 	\steplayer
 
-	\tonode[\distro](fptex)(3,\layer)<A free TeX distribution for Win32 based on teTeX, by Fabrice Popineau. Still active, provides up-to-date binaries for Windows. Special support for Japanese Typesetting.>{fp\TeX}
+	\tonode(fptex)(3,\layer)<A free TeX distribution for Win32 based on teTeX, by Fabrice Popineau. Still active, provides up-to-date binaries for Windows. Special support for Japanese Typesetting.>{fp\TeX}
 	\todraw(fptex)(tetex)
 	\steplayer
 
-	\tonode[\distro](xemtex)(4,\layer)<A TeX distribution for Windows, based on fpTeX with XEmacs/AucTeX as IDE for (La)TeX. XemTeX was sponsored by the
-French government.>{XEm\TeX}
+	\tonode(xemtex)(4,\layer)<A TeX distribution for Windows, based on fpTeX with XEmacs/AucTeX as IDE for (La)TeX. XemTeX was sponsored by the French government.>{XEm\TeX}
 	\todraw(xemtex)(fptex)
 
-	\tonode[\distro](tlpre2008)(0,\layer)<First version 1996 (UNIX only, later also Windows binaries), and then a long story of ongoing work -- see the detailed documentation for a detailed history.>{\TeX live 1996 – 2007}
+	\tonode(tlpre2008)(0,\layer)<First version 1996 (UNIX only, later also Windows binaries), and then a long story of ongoing work -- see the detailed documentation for a detailed history.>{\TeX live 1996 – 2007}
 	\todraw(tetex)(tlpre2008)
 	\todraw(4alltexcd)(tlpre2008)
 	\todraw.(web2c)(tlpre2008)
 	\steplayer
 
-	\tonode[\distro](tl2008)(0,\layer)<A new package manager and network installer are available. So installation via the net is possible as well as package updates. Missing packages are not installed on-the-fly. The last of the modern machines is added: luaTeX>{\TeX live2008}
+	\tonode(tl2008)(0,\layer)<A new package manager and network installer are available. So installation via the net is possible as well as package updates. Missing packages are not installed on-the-fly. The last of the modern machines is added: luaTeX>{\TeX live2008}
 	\todraw.(tl2008)(tlpre2008)
 	\steplayer
 
-	\tonode[\distro](tl2009)(0,\layer)<Dropped Omega and Lambda. Aleph and Lamed are kept.>{\TeX live2009}
+	\tonode(tl2009)(0,\layer)<Dropped Omega and Lambda. Aleph and Lamed are kept.>{\TeX live2009}
 	\todraw(tl2009)(tl2008)
 	\steplayer
 
-	\tonode[\distro](tl2010)(0,\layer)<Up to now, latest release of TeXlive.>{\TeX live2010}
+	\tonode(tl2010)(0,\layer)<Up to now, latest release of TeXlive.>{\TeX live2010}
 	\todraw(tl2010)(tl2009)
 
-	\tonode[\distro](tlcontrib)(5,\layer)<An extension of TeXlive that contains packages that TeXlive cannot hold because: not free, binary update, not on CTAN or intermediate release. Useable vie the TeXlive manager.>{TLContrib}
+	\tonode(tlcontrib)(5,\layer)<An extension of TeXlive that contains packages that TeXlive cannot hold because: not free, binary update, not on CTAN or intermediate release. Useable vie the TeXlive manager.>{TLContrib}
 	\todraw.(tl2010)(tlcontrib)
 \end{tikzpicture}
 
 \overviewsubsection{Mik\TeX}
 \begin{tikzpicture}
-	\tonode[\distro](mt26)(0,\layer)<featuring  pdftex 1.40.4, mpost 1.000>{Mik\TeX\ 2.6}
+	\tonode(mt)(0,\layer)<MikTeX is a TeX distribution originally for Windows only. Copyright by Christian Schenk goes back to 2001>{Mik\TeX}
 	\steplayer
 
-	\tonode[\distro](mt27)(0,\layer)<featuring  xetex 0.999.6, pdftex 1.40.9, mpost 1.005>{Mik\TeX\ 2.7}
+	\tonode(mt26)(0,\layer)<Windows only. featuring  pdftex 1.40.4, mpost 1.000>{Mik\TeX\ 2.6}
+	\todraw(mt)(mt26)
+	\steplayer
+
+	\tonode(mt27)(0,\layer)<Windows only. featuring  xetex 0.999.6, pdftex 1.40.9, mpost 1.005>{Mik\TeX\ 2.7}
 	\todraw(mt27)(mt26)
 	\steplayer
 
-	\tonode[\distro](mt28)(0,\layer)<featuring  xetex 0.9995.1, pdftex 1.40.10, mpost 1.005>{Mik\TeX\ 2.8}
+	\tonode(mt28)(0,\layer)<Windows only. featuring  xetex 0.9995.1, pdftex 1.40.10, mpost 1.005>{Mik\TeX\ 2.8}
 	\todraw(mt28)(mt27)
 	\steplayer
 
-	\tonode[\distro](mt29)(0,\layer)<featuring xetex 0.9997.4, pdftex 1.40.11, LuaTeX 0.60.2, mpost 1.211>{Mik\TeX\ 2.9}
+	\tonode(mt29)(0,\layer)<Windows only (stable version). Beta version for GNU/Linux available. featuring xetex 0.9997.4, pdftex 1.40.11, LuaTeX 0.60.2, mpost 1.211>{Mik\TeX\ 2.9}
 	\todraw(mt29)(mt28)
 \end{tikzpicture}
 
 \overviewsubsection{W32\TeX}
 \begin{tikzpicture}
-	\tonode[\distro](w32tex)(0,\layer)<A distributon to provide binaries for windows.>{W32\TeX}
+	\tonode(w32tex)(0,\layer)<A distributon to provide binaries for windows, with special support for Japanese. First version (up to the changelog: 2009/08/02, still highly up-to-date.>{W32\TeX}
 \end{tikzpicture}
 
 \newpage
-\overviewsection{Pandora's Box}
+\overviewsection{Pandora's Box}[\program]
 \parbox{\textwidth}{\normalsize
 The following pages will be a hodge-podge of many things that are related to \TeX\ and used in the process of generating documents in different file formats, i.\,e. conversion tools, bibliography tools etc. Feel free to contribute, I'll choose case-by-case if I'll add something or won't include it. Text editors or viewers will \emph{not} be included!
 }
@@ -372,39 +376,39 @@ The following pages will be a hodge-podge of many things that are related to \Te
 \overviewsubsection[META*]{META*}
 %%% META* %%%
 \begin{tikzpicture}
-	\tonode[\program](metafont)(0,\layer)<The program for creating the fonts originally used by TeX.>{METAFONT};
+	\tonode(metafont)(0,\layer)<The program for creating the fonts originally used by TeX.>{METAFONT};
 	\steplayer
 
-	\tonode[\program](metapost)(0,\layer)<A graphic generating program inspired by METAFONT. MetaPost can produce PostScript graphics as well as SVG.>{MetaPost};
+	\tonode(metapost)(0,\layer)<A graphic generating program inspired by METAFONT. MetaPost can produce PostScript graphics as well as SVG.>{MetaPost};
 	\todraw(metapost)(metafont)
 	\steplayer
 
-	\tonode[\program](metafun)(0,\layer)<"MetaFun is Hans Hagen's extension to (or module for) the MetaPost language.">{MetaFun};
+	\tonode(metafun)(0,\layer)<"MetaFun is Hans Hagen's extension to (or module for) the MetaPost language.">{MetaFun};
 	\todraw(metafun)(metapost)
 \end{tikzpicture}
 
 \overviewsubsection[Bib\TeX]{Bib\TeX}
 %%% BIBTEX %%%
 \begin{tikzpicture}
-	\tonode[\program](bibtex)(0,0)<A helper program to generate a bibliography list.>{\BibTeX}
+	\tonode(bibtex)(0,0)<A helper program to generate a bibliography list.>{\BibTeX}
 	\steplayer[-1]
 
-	\tonode[\program](nbibtex)(4,\layer)<"NbibTeX helps authors take better advantage of BibTeX data" says the homepage.>{NbibTeX}
+	\tonode(nbibtex)(4,\layer)<"NbibTeX helps authors take better advantage of BibTeX data" says the homepage.>{NbibTeX}
 	\todraw(nbibtex)(bibtex)
 	\steplayer[-0.5]
 
-	\tonode[\program](bibtex8)(0,\layer)<The documentation says: "An 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity">{\BibTeX8}
+	\tonode(bibtex8)(0,\layer)<The documentation says: "An 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity">{\BibTeX8}
 	\todraw(bibtex8)(bibtex)
 	\steplayer
 	
-	\tonode[\program](bibtexu)(0,\layer)<A unicode-aware version of BibTeX>{\BibTeX u}
+	\tonode(bibtexu)(0,\layer)<A unicode-aware version of BibTeX>{\BibTeX u}
 	\todraw(bibtex8)(bibtexu)
 
-	\tonode[\program](pybtex)(3,\layer)<A python implementation of BibTeX.>{Pybtex}
+	\tonode(pybtex)(3,\layer)<A python implementation of BibTeX.>{Pybtex}
 	\todraw(pybtex)(bibtexu)
 	\steplayer
 	
-	\tonode[\program](biber)(0,\layer)<A cooler version of unicode-aware BibTeX, designed for (?) use with BibLaTeX>{biber}
+	\tonode(biber)(0,\layer)<A cooler version of unicode-aware BibTeX, designed for (?) use with BibLaTeX>{biber}
 	\todraw(bibtexu)(biber)
 	
 	\tonode[\package](biblatex)(3,\layer)<A LaTeX package as frontend for biber.>{Bib\LaTeX}
@@ -415,43 +419,45 @@ The following pages will be a hodge-podge of many things that are related to \Te
 %%% dvipdfm %%%
 \overviewsubsection[(x)dvipdf(m)(x)]{(x)dvipdf(m)(x)}
 \begin{tikzpicture}
-	\tonode[\program](dvipdf)(0,0)<Converts dvi files to pdf files.>{dvipdf};
+	\tonode(dvipdf)(0,0)<Converts dvi files to pdf files.>{dvipdf};
 	\steplayer
 
-	\tonode[\program](dvipdfm)(0,\layer)<Converts dvi files to pdf files. Does not build on dvipdf, but is an independent implementation.>{dvipdfm};
+	\tonode(dvipdfm)(0,\layer)<Converts dvi files to pdf files. Does not build on dvipdf, but is an independent implementation.>{dvipdfm};
 	\steplayer
 
-	\tonode[\program](dvipdfmx)(0,\layer)<Extended version of dvipdfm. Support for multi-byte encodings and more pdfTeX features. Still active. Combined work of dvipdfm-jpn and dvipdfm-kor.>{dvipdfmx};
+	\tonode(dvipdfmx)(0,\layer)<Extended version of dvipdfm. Support for multi-byte encodings and more pdfTeX features. Still active. Combined work of dvipdfm-jpn and dvipdfm-kor.>{dvipdfmx};
 	\todraw(dvipdfm)(dvipdfmx)
 	\steplayer
 
-	\tonode[\program](xdvipdfmx)(0,\layer)<Converts xdvi files produced by XeTeX to pdf files. Normally always executed after a XeTeX run, so the user won't notice that an xdvi document was created in between.>{xdvipdfmx};
+	\tonode(xdvipdfmx)(0,\layer)<Converts xdvi files produced by XeTeX to pdf files. Normally always executed after a XeTeX run, so the user won't notice that an xdvi document was created in between.>{xdvipdfmx};
 	\todraw(dvipdfmx)(xdvipdfmx)
 \end{tikzpicture}
 
 \overviewsubsection[Font Technologies]{Font Techonolgies}
 \parbox{\textwidth}{\normalsize
 This section tries to cover the development of font technologies – the most important thing for a typesetting system is it's font mechanism …}
-
 \begin{tikzpicture}
-	\tonode[\program](metafont)(0,0)<Fonts based on the METAFONT program.>{metafont};
+	\tonode(bitmap)(0,\layer)<A grainy thing ...>{Bitmap fonts}
 	\steplayer[-3]
 
-	\tonode[\program](type1)(-2,\layer)<>{PostScript Type 1};
-	\tonode[\program](truetype)(2,\layer)<>{TrueType};
-	\tonode[\program](freetype)(6,\layer)<>{FreeType};
+	\tonode(metafont)(0,\layer)<Fonts based on the METAFONT program.>{metafont}
+	\steplayer[-3]
+
+	\tonode(type1)(-2,\layer)<>{PostScript Type 1}
+	\tonode(truetype)(2,\layer)<>{TrueType}
+	\tonode(freetype)(6,\layer)<TrueType implementation for >{FreeType}
 	\todraw(freetype)(truetype)
 	\steplayer[-3]
 
-	\tonode[\program](gx)(6,\layer)<Only available for Mac OS.>{TrueType GX};
+	\tonode(gx)(6,\layer)<Only available for Mac OS.>{TrueType GX}
 	\todraw(truetype)(gx)
 	\steplayer[-3]
 
-	\tonode[\program](opentype)(-2,\layer)<>{OpenType};
+	\tonode(opentype)(-2,\layer)<>{OpenType}
 	\todraw(truetype)(opentype)
 	\todraw(type1)(opentype)
 
-	\tonode[\program](aat)(2,\layer)<Only available for Mac OS.>{AAT};
+	\tonode(aat)(2,\layer)<Only available for Mac OS.>{AAT}
 	\todraw(aat)(gx)
 \end{tikzpicture}
 
@@ -527,7 +533,9 @@ I have to thank the following people for helping me improving this document. Of 
 \item Paul Isambert, for usefull discussions and testing
 \item …
 \end{itemize}
-\part*{Text Views}  %% these are generated automatically by the code above. 
+
+\clearpage
+\part{Text Views}  %% these are generated automatically by the code above. 
 \label{sec:text}
 \end{document}
 
