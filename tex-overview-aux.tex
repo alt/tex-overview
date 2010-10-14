@@ -11,6 +11,8 @@
   xcolor,
   xparse
 }
+\usepackage{bookmark}
+
 
 \hypersetup{
   colorlinks=true,
@@ -22,8 +24,6 @@
 %% use new LaTeX3 syntax:
 \ExplSyntaxNamesOn
 
-%% don‘t like bold face
-\cs_set_eq:NN\bfseries\scshape
 %% some missing definitions for \TeX-like things
 \tl_set:Nn\XeT{X\kern -.1667em\lower .5ex\hbox {E}\kern -.125emT\@}
 \tl_set:Nn\ConTeXt{Con\TeX{}t}
@@ -95,11 +95,11 @@
 \pgfsetlayers{background,main}
 
 %% the command to draw from one node to the other one. Fine tuning is possible via optional argument #3
-\NewDocumentCommand{\todraw}{st{'}O{}d()d()}{
+\NewDocumentCommand{\todraw}{st{'}t{.}t{-}O{}d()d()}{
   \begin{pgfonlayer}{background}
     %% draw in the case that: either a * is given (always draw) or (' is given and \short) or nothing is given
     \bool_if:nT{#1 || (#2 && \short) || !(#2 || \short)}
-      {\draw [thick,gray,#3] (#4) to (#5);}  %% I’m just loooving expl3!
+      {\draw [thick,gray,\IfBooleanT{#3}{dotted},\IfBooleanT{#4}{dashed},#5] (#6) to (#7);}  %% I’m just loooving expl3!
   \end{pgfonlayer}
 }
 
@@ -110,12 +110,17 @@
   \fp_add:Nn\layer{#1}
 }
 
-\NewDocumentCommand{\overviewsection}{m}{
+\addtokomafont{section}{\LARGE}
+\addtokomafont{subsection}{\large}
+
+
+\NewDocumentCommand{\overviewsection}{om}{
   \clearpage
 %%  \dim_set:Nn\pdfpagewidth{9cm}       %% make a smaller paper so the header won’t feel so alone on the big, big paper
 %%  \dim_set:Nn\pdfpageheight{2.5cm}
-  \section{#1\bool_if:NT\short{ – short view}}
-  \clearpage
+  \IfNoValueTF{#1}{\section{#2}}{\section[#1]{#2}}
+  \bool_if:NF\short{\AtEndDocument{\IfNoValueTF{#1}{\section{#2}}{\section[#1]{#2}}}}
+
 %%  \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
 %%  \dim_set:Nn\pdfpageheight{29.7cm}
 }
