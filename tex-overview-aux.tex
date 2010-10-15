@@ -21,10 +21,6 @@
   urlcolor=blue,
   pdfborder=0 0 0   %% don’t like these boxes
 }
-\makeatletter
-%\let\topdfescape\pdf@escapestring  %% to avoid a bug caused by unmatched parenthesis ()
-\let\topdfescape\relax
-\makeatother
 
 %% use new LaTeX3 syntax:
 \ExplSyntaxNamesOn
@@ -71,13 +67,13 @@
     \tl_if_eq:NNT#1{\vip}{   %% then check if this is an important node
       \node[coolnode]
 	(#2) at (#3) {
-        \cooltooltip{#2}{\topdfescape{#4}}{\topdfescape{#4}}{}{#5\strut}
+        \cooltooltip{#2}{#4}{#4}{}{#5\strut}
       };
     }
   }{
   %% long view
     \node[coolnode] (#2) at (#3) {
-      \cooltooltip{#2}{\topdfescape{#4}}{{#4}}{}{#5\strut}
+      \cooltooltip{#2}{#4}{#4}{}{#5\strut}
     };
   %% and the text view, to be added only once!
   \AtEndDocument{\subsubsection*{\color{blue}#5}\parbox{\textwidth}{#4}}
