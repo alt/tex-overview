@@ -257,7 +257,7 @@ This document is known to cause problems with the Acrobat Reader. Thanks to the 
 	\todraw(lambda)(lamed)
 	
 	\steplayer[-1]
-	\tonode[\experimental](latex25)(0,\layer)<Will Robertson suggested in an interview (see refs) an interim unstable version on the way to LaTeX3 with version number 2.5 that should bring package authors towards using LaTeX3 syntax. This version should be backwards incompatible to LaTeX2e. (This version does not exist in any official plannings, but I liked the idea, so it is mentioned here ☺)>{\LaTeX2.5};
+	\tonode[\experimental](latex25)(0,\layer)<Will Robertson suggested in an interview (see refs) an interim unstable version on the way to LaTeX3 with version number 2.5 that should bring package authors towards using LaTeX3 syntax. This version should be backwards incompatible to LaTeX2e. (This version does not exist in any official plannings, but I liked the idea, so it is mentioned here )>{\LaTeX2.5};
 	\todraw(latex2ε)(latex25)
 	
 	\steplayer[-3]
@@ -290,20 +290,24 @@ This document is known to cause problems with the Acrobat Reader. Thanks to the 
 \ExplSyntaxNamesOff
 \typesetwholecontent
 
+\clearpage
 \part{Others}
 \overviewsection{Distributions}[\distro]
 \parbox{\textwidth}{\normalsize
 This section will feature the main distributions of \TeX\ and related programs. Of course, not every Linux Distribution's \TeX\ package can be listed here, but only official upstream distributions. So far, only \TeX live and Mik\TeX\ are listed, but I'll add others if they are/were important.
 }
+
 \ExplSyntaxOn
 \fp_gset:Nn\layerdist{-1.5}
 \ExplSyntaxOff
+
 \overviewsubsection{\TeX live}
+
 \begin{tikzpicture}
 	\tonode(web2c)(0,\layer)<An Implementation and Distribution of TeX which translates the original WEB sources to a C code.>{Web2c}
 	\steplayer
 
-	\tonode(emtex)(3,\layer)<Eberhard Mattes TeX Distribution for MS-DOS and OS/2.>{em\TeX}
+	\tonode(emtex)(3,\layer)<Eberhard Mattes TeX Distribution for MS-DOS and OS2.>{em\TeX}
 	\todraw.(web2c)(emtex)
 	\steplayer
 
@@ -317,7 +321,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\todraw(fptex)(tetex)
 	\steplayer
 
-	\tonode(xemtex)(4,\layer)<A TeX distribution for Windows, based on fpTeX with XEmacs/AucTeX as IDE for (La)TeX. XemTeX was sponsored by the French government.>{XEm\TeX}
+	\tonode(xemtex)(4,\layer)<A TeX distribution for Windows, based on fpTeX with XEmacs,AucTeX as IDE for (La)TeX. XemTeX was sponsored by the French government.>{XEm\TeX}
 	\todraw(xemtex)(fptex)
 
 	\tonode(tlpre2008)(0,\layer)<First version 1996 (UNIX only, later also Windows binaries), and then a long story of ongoing work -- see the detailed documentation for a detailed history.>{\TeX live 1996 – 2007}
@@ -337,7 +341,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\tonode(tl2010)(0,\layer)<Up to now, latest release of TeXlive.>{\TeX live2010}
 	\todraw(tl2010)(tl2009)
 
-	\tonode(tlcontrib)(5,\layer)<An extension of TeXlive that contains packages that TeXlive cannot hold because: not free, binary update, not on CTAN or intermediate release. Useable vie the TeXlive manager.>{TLContrib}
+	\tonode(tlcontrib)(5,\layer)<An extension of TeXlive that contains packages that TeXlive cannot hold because: not free, binary update, not on CTAN or intermediate release. Useable via the TeXlive manager.>{TLContrib}
 	\todraw.(tl2010)(tlcontrib)
 \end{tikzpicture}
 
@@ -364,7 +368,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 
 \overviewsubsection{W32\TeX}
 \begin{tikzpicture}
-	\tonode(w32tex)(0,\layer)<A distributon to provide binaries for windows, with special support for Japanese. First version (up to the changelog: 2009/08/02, still highly up-to-date.>{W32\TeX}
+	\tonode(w32tex)(0,\layer)<A distributon to provide binaries for windows, with special support for Japanese. First version (up to the changelog: 2009/08/02, still highly up-to-date.)>{W32\TeX}
 \end{tikzpicture}
 
 \newpage
