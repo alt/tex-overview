@@ -1,7 +1,8 @@
 % !TeX root = tex-overview.tex
-%% for the TeXworks-users.
+%% (for the TeXworks-users.)
 
 \usepackage{
+  bookmark,
   cooltooltips,
   dtklogos,  %% for \NTS etc.
   fontspec,
@@ -12,8 +13,16 @@
   xcolor,
   xparse
 }
-\usepackage{bookmark}
 
+%% circumventing a bug in cooltooltips
+\makeatletter
+  \let\topdfescapestring\pdf@escapestring
+%  \let\toanywherehook\@empty
+%  \def\toAtEndDocument{\g@addto@macro\toanywherehook}
+\makeatother
+
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Pagella}
 
 \hypersetup{
   colorlinks=true,
@@ -22,8 +31,14 @@
   pdfborder=0 0 0   %% don’t like these boxes
 }
 
-%% use new LaTeX3 syntax:
+\date{\today}
+\pagestyle{empty}
+
+%% use LaTeX3 syntax from here on:
 \ExplSyntaxNamesOn
+
+\tl_set:Nn\settextviews{}
+\cs_set:Nn\addtotextviews:n{\tl_gput_right:Nn\settextviews{#1}}
 
 %% some missing definitions for \TeX-like things
 \tl_set:Nn\XeT{X\kern -.1667em\lower .5ex\hbox {E}\kern -.125emT\@}
@@ -57,9 +72,14 @@
 	bottom color= \nodecolor!50!black!50
 ]
 
+%% set the first default node style (will change to \distro or \program in the document)
 \cs_set_eq:NN\tonodestyle\normalimportant
+
 %% tonode ⇒ tex-overview node, now with better argument specifier
 \NewDocumentCommand\tonode{O{\tonodestyle}D(){no label given}D(){no position given}D<>{no description given}m}{
+%% save the content pdfescaped
+  \tl_set:No\tonodecontent{\topdfescapestring{#4}}
+
 %% test if we are in the short or full view
   \gdef\nodecolor{#1}
   \bool_if:NTF\short{
@@ -67,16 +87,16 @@
     \tl_if_eq:NNT#1{\vip}{   %% then check if this is an important node
       \node[coolnode]
 	(#2) at (#3) {
-        \cooltooltip{#2}{#4}{#4}{}{#5\strut}
+        \cooltooltip{#2}{\tonodecontent}{\tonodecontent}{}{#5\strut}
       };
     }
   }{
   %% long view
     \node[coolnode] (#2) at (#3) {
-      \cooltooltip{#2}{#4}{#4}{}{#5\strut}
+      \cooltooltip{#2}{\tonodecontent}{\tonodecontent}{}{#5\strut}
     };
   %% and the text view, to be added only once!
-  \AtEndDocument{\subsubsection*{\color{blue}#5}\parbox{\textwidth}{#4}}
+  \addtotextviews:n{\subsubsection*{\color{blue}#5}\parbox{\textwidth}{#4}}
   }
 }
 
@@ -96,7 +116,10 @@
 
 %% a command for creation of bib-items.
 \NewDocumentCommand\tobibsection{m}{
-  \section*{#1}
+  \subsection*{#1}
+}
+\NewDocumentCommand\tobibsubsection{m}{
+  \subsection*{#1}
 }
 \NewDocumentCommand\tobib{mD<>{}O{}}{
   \vspace*{1.5ex}
@@ -122,7 +145,7 @@
 %%  \dim_set:Nn\pdfpagewidth{9cm}       %% make a smaller paper so the header won’t feel so alone on the big, big paper
 %%  \dim_set:Nn\pdfpageheight{2.5cm}
   \IfNoValueTF{#1}{\section{#2}}{\section[#1]{#2}}
-  \bool_if:NF\short{\AtEndDocument{\IfNoValueTF{#1}{\section{#2}}{\section[#1]{#2}}}}
+  \bool_if:NF\short{\addtotextviews:n{\IfNoValueTF{#1}{\section{#2}}{\section[#1]{#2}}}}
 
 %%  \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
 %%  \dim_set:Nn\pdfpageheight{29.7cm}
@@ -130,7 +153,7 @@
 \NewDocumentCommand{\overviewsubsection}{omO{\tonodestyle}}{
   \cs_gset_eq:NN\tonodestyle#3
   \IfNoValueTF{#1}{\subsection{#2}}{\subsection[#1]{#2}}
-    \bool_if:NF\short{\AtEndDocument{\IfNoValueTF{#1}{\subsection{#2}}{\subsection[#1]{#2}}}}
+    \bool_if:NF\short{\addtotextviews:n{\IfNoValueTF{#1}{\subsection{#2}}{\subsection[#1]{#2}}}}
 }
 
 \ExplSyntaxNamesOff

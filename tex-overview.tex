@@ -1,6 +1,6 @@
 %% Engine needed: luaTeX ≥ 0.63
 %% Format needed: LaTeX2ε
-%% Packages needed: see list below …
+%% Packages needed: see list in the -aux.tex file …
 %% just use an up-to-date TeXlive2010 and the lualatex program to typeset
 
 % this document has version number 0.1b
@@ -9,11 +9,8 @@
 
 \input{tex-overview-aux}  %% everything that is not content-related
 
-\title{A short overview of \TeX, its children and their friends~\dots}
+\title{An overview of \TeX, its children\\ and their friends~\dots}
 \author{Arno Trautmann\thanks{arno.trautmann@gmx.de}}
-\date{\today}
-\pagestyle{empty}
-
 \begin{document}
 \maketitle
 
@@ -30,13 +27,13 @@ All information is up to the date of this generated pdf. Everything here is with
 In the tree views (page \pageref{sec:tree}), every node has a tooltip that shows up when you hover the mouse over it. If your pdf viewer does not support this, go to the end of the document, where every tooltip is written in normal text (page \pageref{sec:text}).
 
 \clearpage
-I tried to make the graph more readable by using colors. All decisions reflect my personal opinion, not that of the community, of the authors or someone else.
+I tried to make the graphs more readable by using colors. All decisions reflect my personal opinion, not that of the community, of the authors or someone else.
 \begin{description}
 \item[{\let\nodecolor\normalimportant \tikz \node[coolnode]{normal};}] That is, not very important in my opinion, no huge user group, but still maybe important for special needs. Was in use at least some time back, but is not of great impact nowadays.
 \item[{\let\nodecolor\vip \tikz \node[coolnode]{important};}] Engines or formats that had or have a great impact on (everyday) typesetting for a large community.
 \item[{\let\nodecolor\experimental \tikz \node[coolnode]{experimental};}] Developments that might still be under construction or were never used by a large community. Nevertheless, these might be very important to the development of other engines or for use of special typesetting.
 \item[{\let\nodecolor\package \tikz \node[coolnode]{package};}] \LaTeX-packages that seemed worth mentioning. There won't be many of this. Not-included packages are not necessarily unimportant!
-\item[{\let\nodecolor\distro \tikz \node[coolnode]{distributions};}] Software bundles that bring \TeX\ and friends to the normal user.
+\item[{\let\nodecolor\distro \tikz \node[coolnode]{distribution};}] Software bundles that bring \TeX\ and friends to the normal user.
 \item[{\let\nodecolor\program \tikz \node[coolnode]{program};}] Programs that are not directly connected to \TeX\ (but interesting in the context of using \TeX) or are separate helper programs.
 \end{description}
 
@@ -44,7 +41,7 @@ Furthermore, there are two versions of some graphs: A short version mentioning o
 
 In most cases I did not mention the authors of the programs/packages. This is not to diminish their effort but only for clarity (long names make things harder to read). I did not write any of the below-mentioned programs or packages. The authors are given in the documents linked in the references.
 
-\section*{How to contribute}
+\section{How to contribute}
 I hope one day this document would become the standard reference for questions like ”What program do I need for …?“, ”What's the difference between ...\TeX\ and ...\TeX?“, ”Why is it called …?“ etc.
 
 To get to this point, I need some help of people having read more documentation or even developed some of the programs mentioned here themselves. Special help is needed for:
@@ -54,12 +51,25 @@ To get to this point, I need some help of people having read more documentation 
 \item Bib\TeX\ and successors/alternatives
 \end{itemize}
 
-It is up to you to contribute texts, references, links, descriptions, hints etc. I'll be happy about anything I can add here.
+It is up to you to contribute texts, references, links, descriptions, hints etc. I'll be happy about anything I can add here. Also, if you have suggestions about the layout, let me know.
 
-\section*{Note to users of Adobe Acrobat Reader}
-This document is known to cause problems with the Acrobat Reader. Thanks to the people on the texhax mailing list, the program will no longer cause an error with this document. But still you will see green rectangulars around all the nodes. These are not intended, but Acrobat Reader just adds them to make clear that there is an annotation. Use another viewer to get rid of them and enjoy the beauty of this document :)
+\section{Problems with pdf viewers}
+As this document makes heavy use of pdf-features, some pdf viewers are not able to show everything correct and as intended. My experiences with viewers are as follows:
+
+\begin{description}
+\item[evince] Shows the document correct and complete. Tested using Linux.
+
+\item[Acrobat Reader] will show all the information but might hide some text of very long tooltips (at least that's the case on my machine). Also, it draws annoying green boxes around the tooltips which do not belong there.
+
+\item[TeXworks] The built-in pdf viewer of the TeXworks editor does not break lines of tooltips, therefore long annotations are not shown completely.
+
+\item[okular] also does not break the lines.
+
+\item[xpdf] shows only very short tooltips. Most of the information is not visible in the graphs.
+\end{description}
 
 \clearpage
+\twocolumn
 \tableofcontents
 \clearpage
 
@@ -124,15 +134,15 @@ This document is known to cause problems with the Acrobat Reader. Thanks to the 
 	\tonode(omega)(1,\layer)<Support for 16bit-unicode-input. Still constrained on the output.>{$\Omega$};
 	\todraw(tex3)(omega)
 	
-	\tonode[\vip](etex)(4,\layer)<*the* extension to TeX. Provided by the NTS team as an intermediate project until NTS would be ready. eTex is a full TeX and backward compatible.>{$\varepsilon$-\TeX};
+	\tonode[\vip](etex)(4,\layer)<An extension to TeX, provided by the NTS team as an intermediate project until NTS would be ready. eTex is a full TeX and backward compatible. The number of TeX's registers is increased and various new primitives useful to programmers are added.>{$\varepsilon$-\TeX};
 	\todraw(tex--xet)(etex)
 	\todraw'(tex3)(etex)
 	
-	\tonode[\vip](pdftex)(7,\layer)<A new engine to directly produce pdf-files from TeX, without the need of dvi-ps-pdf. This allows to use microtypographic extensions and many other features of the pdf format.>{pdf\TeX};
+	\tonode[\vip](pdftex)(7,\layer)<A new engine to directly produce pdf-files from TeX, without the need of dvi-ps-pdf. This allows to use microtypographic extensions and many other features of the pdf format like page transitions etc.>{pdf\TeX};
 	\todraw(tex2pdf)(pdftex)
 	\todraw'(tex3)(pdftex)
 	
-	\tonode(texgx)(9.5,\layer)<GX stands for Graphic eXtension. TeXGX was able to handle this font technology. Only on Mac OS.>{\TeX{}gX};
+	\tonode(texgx)(9.5,\layer)<GX stands for Graphic eXtension, a font technology. TeXGX was able to handle these fonts. Only on Mac OS.>{\TeX{}gX};
 	\todraw(tex3)(texgx)
 	
 	\tonode(nts)(12,\layer)<A project to completely reimplement TeX in Java. Now NTS is officially declared dead.>{\NTS};
@@ -249,19 +259,19 @@ This document is known to cause problems with the Acrobat Reader. Thanks to the 
 	\tonode(platex)(-4.6,\layer)<A LaTeX-bundle for the pTeX engine.>{p\LaTeXe}
 	\todraw(latex2ε)(platex)
 
-	\tonode[\experimental](lambda)(-6.5,\layer)<A LaTeX-package for the omega-engine.>{$\Lambda$}
+	\tonode[\experimental](lambda)(-6,\layer)<A LaTeX-package for the omega-engine.>{$\Lambda$}
 	\todraw(latex209)(lambda)
 	\steplayer[-1.5]
 
-	\tonode[\experimental](lamed)(-7,\layer)<A LaTeX-package for the aleph-engine.>{Lamed}
+	\tonode[\experimental](lamed)(-7.5,\layer)<A LaTeX-package for the aleph-engine.>{Lamed}
 	\todraw(lambda)(lamed)
 	
 	\steplayer[-1]
-	\tonode[\experimental](latex25)(0,\layer)<Will Robertson suggested in an interview (see refs) an interim unstable version on the way to LaTeX3 with version number 2.5 that should bring package authors towards using LaTeX3 syntax. This version should be backwards incompatible to LaTeX2e. (This version does not exist in any official plannings, but I liked the idea, so it is mentioned here )>{\LaTeX2.5};
+	\tonode[\experimental](latex25)(0,\layer)<Will Robertson suggested in an interview (see refs) an interim unstable version on the way to LaTeX3 with version number 2.5 that should bring package authors towards using LaTeX3 syntax. This version should be backwards incompatible to LaTeX2e. (This version does not exist in any official plannings, but I liked the idea, so it is mentioned here ;) )>{\LaTeX2.5};
 	\todraw(latex2ε)(latex25)
 	
 	\steplayer[-3]
-	\tonode[\experimental](latex3)(0,\layer)<The long-time successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. (Almost done by now.) The expl3-package provides an implemantation that can be used on top of LaTeX2e. Several LaTeX packages already make heavy use of expl3. (As does this very document.)>{\LaTeX{}3};
+	\tonode[\experimental](latex3)(0,\layer)<The long-time successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. (Almost done by now.) The expl3-package provides an implemantation that can be used on top of LaTeX2e. Several LaTeX packages already make heavy use of expl3. (As does this document.)>{\LaTeX{}3};
 	\todraw(latex25)(latex3)
 	\todraw[dotted](xelatex)(latex3)
 	\todraw[dotted](pdflatex)(latex3)
@@ -368,7 +378,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 
 \overviewsubsection{W32\TeX}
 \begin{tikzpicture}
-	\tonode(w32tex)(0,\layer)<A distributon to provide binaries for windows, with special support for Japanese. First version (up to the changelog: 2009/08/02, still highly up-to-date.)>{W32\TeX}
+	\tonode(w32tex)(0,\layer)<A distributon to provide binaries for windows, with special support for Japanese. First version (up to the changelog): 2009/08/02. Still highly up-to-date.>{W32\TeX}
 \end{tikzpicture}
 
 \newpage
@@ -441,15 +451,15 @@ The following pages will be a hodge-podge of many things that are related to \Te
 \parbox{\textwidth}{\normalsize
 This section tries to cover the development of font technologies – the most important thing for a typesetting system is it's font mechanism …}
 \begin{tikzpicture}
-	\tonode(bitmap)(0,\layer)<A grainy thing ...>{Bitmap fonts}
+	\tonode(bitmap)(0,\layer)<Bitmap fonts contain the shape of the letters as a number of dots. If you zoom in, a bitmap letter will show pixels.>{Bitmap fonts}
 	\steplayer[-3]
 
 	\tonode(metafont)(0,\layer)<Fonts based on the METAFONT program.>{metafont}
 	\steplayer[-3]
 
-	\tonode(type1)(-2,\layer)<>{PostScript Type 1}
+	\tonode(type1)(-2,\layer)<Outline font. The shape of a letter is described as mathematical curves so the letter can be made arbitrarely large without getting pixeled.>{PostScript Type 1}
 	\tonode(truetype)(2,\layer)<>{TrueType}
-	\tonode(freetype)(6,\layer)<TrueType implementation for >{FreeType}
+	\tonode(freetype)(6,\layer)<TrueType implementation for Unix.>{FreeType}
 	\todraw(freetype)(truetype)
 	\steplayer[-3]
 
@@ -457,7 +467,7 @@ This section tries to cover the development of font technologies – the most im
 	\todraw(truetype)(gx)
 	\steplayer[-3]
 
-	\tonode(opentype)(-2,\layer)<>{OpenType}
+	\tonode(opentype)(-2,\layer)<Extension of TrueType font format, adding support for PostScript font data. Developed by Microsoft and Adobe.>{OpenType}
 	\todraw(truetype)(opentype)
 	\todraw(type1)(opentype)
 
@@ -469,12 +479,16 @@ This section tries to cover the development of font technologies – the most im
 %% I've chosen to typeset the bibliography "by hand" for full control of formatting and behaviour. Also, I can choose my own syntax ☺
 %%
 \clearpage
+\restoregeometry
+\part{Text Views}  %% these are generated automatically by the code above. 
+\label{sec:text}
+\settextviews
 
+\appendix
+\part{Appendix}
 \section{References}
 \label{sec:refs}
-\normalsize
-\obeylines
-\flushleft  %% to get rid of the still active centering
+\normalsize\obeylines\flushleft  %% to get rid of the still active centering
 
 The references are in order of occurance in the above document. I.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX.
 
@@ -483,41 +497,6 @@ The references are in order of occurance in the above document. I.\,e. if you wa
 	\tobib{F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
 	  J.~Schrod. The \LaTeX\ companion. \\ Addison-Wesley, 2004.}
 
-	\tobibsection{Web Sources}
-	\tobib{This document on github}<http://github.com/alt/tex-overview>
-
-	\tobibsection{Original Documentation – Engines}
-	\tobib{ANT project page}<http://ant.berlios.de>
-	\tobib{Yasuki S AITO. Report on JTEX: A Japanese TEX. TUGboat 8 (1987), no. 2, 103\,–\,116.}%
-		<http://www.tug.org/TUGboat/Articles/tb08-2/tb18saito.pdf>
-	\tobib{p\TeX sources and documentation}<http://dante.ctan.org/tex-archive/help/Catalogue/entries/ptex.html>
-	\tobib{ML\TeX\ source (CH file)}<http://www.tex.ac.uk/tex-archive/systems/generic/mltex/mltex.ch>
-	\tobib{enc\TeX\ page}<http://www.olsak.net/enctex.html>
-	\tobib{\NTS\ project page}<http://nts.tug.org>
-	\tobib{V\TeX\ – official homepage of micropress-inc}<http://www.micropress-inc.com/>	
-	\tobib{$\epsilon\chi$\TeX\ project page}<http://www.extex.org>	
-	\tobib{ee\TeX\ project page}<http://tex.aanhet.net/eetex>	
-	\tobib{Lua\TeX\ project page}<http://www.luatex.org>
-	
-	\tobibsection{Original Documentation – Makro Packages/Formats}
-	\tobib{\ConTeXt\ wiki}<http://wiki.contextgarden.net>
-	\tobib{\LaTeX\ project page}<http://www.latex-project.org>
-	\tobib{\LaTeX3 project}<http://www.latex-project.org/latex3.html>
-	
-	\tobibsection{Original Documentation – Distributions}
-
-	\tobib{fp\TeX: Announcment at TUG 1999}<http://www.tug.org/tug99/program/node39.html>
-	\tobib{\TeX live development history}<http://tug.org/texlive/doc/texlive-en/texlive-en.html>
-	\tobib{TLContrib project page}<http://tlcontrib.metatex.org/>
-	\tobib{MikTeX project page}<http://miktex.org/>
-	\tobib{Win32 project page}<http://w32tex.org/>
-
-	\tobibsection{Original Documentation – Fonts}
-	\tobib{Specifications of the Type1 Fonts}<http://partners.adobe.com/public/developer/en/font/T1_SPEC.PDF>
-
-	\tobibsection{Original Documentation – Everything Else}
-	\tobib{dvipdfmx project page}<http://project.ktug.or.kr/dvipdfmx/>
-	
 	\tobibsection{Overview Articles}
 	\tobib{Arthur Reutenauer. A Brief History of \TeX. Talk at EuroBacho\TeX\ 2007.}%
 	  <http://www.gust.org.pl/bachotex/EuroBachoTeX2007/presentations/bhot.pdf/view>
@@ -529,17 +508,47 @@ The references are in order of occurance in the above document. I.\,e. if you wa
 	\tobib{CTAN – Comprehensive TeX Archive Network:}<http://www.ctan.org>
 	\tobib{Historic Archive of TeX Distributions:}<ftp://ftp.tug.org/historic>
 
+	\tobibsection{Engines (Web sources)}
+	\tobib{ANT project page}<http://ant.berlios.de>
+	\tobib{Yasuki S AITO. Report on JTEX: A Japanese TEX. TUGboat 8 (1987), no. 2, 103\,–\,116.}%
+		<http://www.tug.org/TUGboat/Articles/tb08-2/tb18saito.pdf>
+	\tobib{p\TeX sources and documentation}<http://dante.ctan.org/tex-archive/help/Catalogue/entries/ptex.html>
+	\tobib{ML\TeX\ source (CH file)}<http://www.tex.ac.uk/tex-archive/systems/generic/mltex/mltex.ch>
+	\tobib{enc\TeX\ page}<http://www.olsak.net/enctex.html>
+	\tobib{\NTS\ project page}<http://nts.tug.org>
+	\tobib{V\TeX\ – official homepage of micropress-inc}<http://www.micropress-inc.com/>	
+	\tobib{$\epsilon\chi$\TeX\ project page}<http://www.extex.org>	
+	\tobib{ee\TeX\ project page}<http://tex.aanhet.net/eetex>	
+	\tobib{Lua\TeX\ project page}<http://www.luatex.org>
+	\tobib{i\TeX\ announcement by Don Knuth at the TUG 2010}<http://river-valley.tv/tug-2010/an-earthshaking-announcement>
+	
+	\tobibsection{Formats (Web sources)}
+	\tobib{\ConTeXt\ wiki}<http://wiki.contextgarden.net>
+	\tobib{\LaTeX\ project page}<http://www.latex-project.org>
+	\tobib{\LaTeX3 project}<http://www.latex-project.org/latex3.html>
+	
+	\tobibsection{Distributions (Web sources)}
+	\tobib{fp\TeX: Announcment at TUG 1999}<http://www.tug.org/tug99/program/node39.html>
+	\tobib{\TeX live development history}<http://tug.org/texlive/doc/texlive-en/texlive-en.html>
+	\tobib{TLContrib project page}<http://tlcontrib.metatex.org/>
+	\tobib{MikTeX project page}<http://miktex.org/>
+	\tobib{Win32 project page}<http://w32tex.org/>
+
+	\tobibsection{Fonts (Web sources)}
+	\tobib{Type1 Fonts specifications}<http://partners.adobe.com/public/developer/en/font/T1_SPEC.PDF>
+	\tobib{The FreeType project}<http://freetype.org/index2.html>
+	\tobib{OpenType specifications}<http://www.microsoft.com/typography/otspec/default.htm>
+
+	\tobibsection{Original Documentation – Everything Else}
+	\tobib{dvipdfmx project page}<http://project.ktug.or.kr/dvipdfmx/>
+	
 \clearpage
 \section{List of Contributors}
-I have to thank the following people for helping me improving this document. Of course I thank all the people provinding the above-mentioned references. 
+I have to thank some people for helping me to improve this document. Of course I thank all the people provinding the above-mentioned references. 
 
 \begin{itemize}
 \item Paul Isambert, for usefull discussions and testing
-\item …
+\item Heiko Oberdiek, for solving a bug that broke the document with Acrobat Reader
 \end{itemize}
-
-\clearpage
-\part{Text Views}  %% these are generated automatically by the code above. 
-\label{sec:text}
 \end{document}
 
