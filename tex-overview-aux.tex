@@ -17,8 +17,6 @@
 %% circumventing a bug in cooltooltips
 \makeatletter
   \let\topdfescapestring\pdf@escapestring
-%  \let\toanywherehook\@empty
-%  \def\toAtEndDocument{\g@addto@macro\toanywherehook}
 \makeatother
 
 \setmainfont{TeX Gyre Pagella}
@@ -31,14 +29,22 @@
   pdfborder=0 0 0   %% don’t like these boxes
 }
 
+%% page layout
 \date{\today}
 \pagestyle{empty}
+
+%% adjusting headers
+\addtokomafont{disposition}{\color[rgb]{.4 0 0}}
+\addtokomafont{section}{\Huge}
+\addtokomafont{subsection}{\LARGE}
+\addtokomafont{subsubsection}{\LARGE}
+
 
 %% use LaTeX3 syntax from here on:
 \ExplSyntaxNamesOn
 
 \tl_set:Nn\settextviews{}
-\cs_set:Nn\addtotextviews:n{\tl_gput_right:Nn\settextviews{#1}}
+\cs_gset:Nn\addtotextviews:f{\tl_gput_right:No\settextviews{#1}}
 
 %% some missing definitions for \TeX-like things
 \tl_set:Nn\XeT{X\kern -.1667em\lower .5ex\hbox {E}\kern -.125emT\@}
@@ -62,8 +68,29 @@
 \dim_set:Nn\fboxrule{-1mm}
 
 %% to separate important from not-so-important nodes
-\bool_new:N\short
-\bool_gset_true:N\short
+\bool_new:N\to_short
+
+%% environment to set the graphs
+\NewDocumentCommand\tograph{sD(){}+m}
+{
+  \IfBooleanT{#1}{
+    \ExplSyntaxNamesOn
+    \bool_gset_true:N\to_short
+    \ExplSyntaxNamesOff
+    #2
+    \begin{tikzpicture}
+      #3
+    \end{tikzpicture}
+    \clearpage
+  }
+  \ExplSyntaxNamesOn
+  \bool_gset_false:N\to_short
+  \ExplSyntaxNamesOff
+  #2
+  \begin{tikzpicture}
+  	#3
+  \end{tikzpicture}
+}
 
 %% Style of the nodes: shade from a light 
 \tikzstyle{coolnode} = [
@@ -81,8 +108,8 @@
   \tl_set:No\tonodecontent{\topdfescapestring{#4}}
 
 %% test if we are in the short or full view
-  \gdef\nodecolor{#1}
-  \bool_if:NTF\short{
+  \tl_gset:Nn\nodecolor{#1}
+  \bool_if:NTF\to_short{
   %% short view
     \tl_if_eq:NNT#1{\vip}{   %% then check if this is an important node
       \node[coolnode]
@@ -96,7 +123,7 @@
       \cooltooltip{#2}{\tonodecontent}{\tonodecontent}{}{#5\strut}
     };
   %% and the text view, to be added only once!
-  \addtotextviews:n{\subsubsection*{\color{blue}#5}\parbox{\textwidth}{#4}}
+  \addtotextviews:f{\subsubsection*{\color{blue}#5}\parbox{\textwidth}{#4}}
   }
 }
 
@@ -108,10 +135,76 @@
 %% the command to draw from one node to the other one. Fine tuning is possible via optional argument #3
 \NewDocumentCommand{\todraw}{st{'}t{.}t{-}O{}d()d()}{
   \begin{pgfonlayer}{background}
-    %% draw in the case that: either a * is given (always draw) or (' is given and \short) or nothing is given
-    \bool_if:nT{#1 || (#2 && \short) || !(#2 || \short)}
+    %% draw in the case that: either a * is given (always draw) or (' is given and \to_short) or nothing is given
+    \bool_if:nT{#1 || (#2 && \to_short) || !(#2 || \to_short)}
       {\draw [thick,gray,\IfBooleanT{#3}{dotted},\IfBooleanT{#4}{dashed},#5] (#6) to (#7);}  %% I’m just loooving expl3!
   \end{pgfonlayer}
+}
+
+\NewDocumentCommand{\setlayer}{m}{
+  \fp_set:Nn\layer{#1}
+}
+\NewDocumentCommand{\steplayer}{O{\layerdist}}{
+  \fp_add:Nn\layer{#1}
+}
+
+
+%%% maybe this will be used again in the part commands
+%%  \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
+%%  \dim_set:Nn\pdfpageheight{29.7cm}
+
+%%  \dim_set:Nn\pdfpagewidth{9cm}       %% make a smaller paper so the header won’t feel so alone on the big, cold paper
+%%  \dim_set:Nn\pdfpageheight{2.5cm}
+
+
+\NewDocumentCommand{\overviewsection}{omO{\tonodestyle}}{
+  \bool_if:NTF\to_short
+  {
+    \stepcounter{section}
+    \tl_gset:Nn\to_mandsect{\thesection.\hspace{.2em} #2\newline short view}
+    \IfNoValueTF{#1}{\tl_gset:Nn\to_optsect{\to_mandsect}}{\tl_gset:Nn\to_optsect{#1, short view}}
+    \section*{\to_mandsect}
+    \addtocounter{section}{-1}
+  }
+  {
+    \tl_gset:Nn\to_mandsect{#2}
+    \IfNoValueTF{#1}{\tl_gset:Nn\to_optsect{\to_mandsect}}{\tl_gset:Nn\to_optsect{#1}}
+    \addtotextviews:f{\section[#1]{#2}}
+    \section[\to_optsect]{\to_mandsect}
+  }
+  \cs_gset_eq:NN\tonodestyle#3
+}
+
+\NewDocumentCommand{\overviewsubsection}{omO{\tonodestyle}}{
+  \bool_if:NTF\to_short
+  {
+    \tl_set:Nn\to_mandsubsect{#2, short view}
+    \IfNoValueTF{#1}{\tl_set:Nn\to_optsubsect{\to_mandsubsect}}{\tl_set:Nn\to_optsubsect{#1, short view}}
+    \subsection*{\to_mandsubsect}
+  }
+  {
+    \tl_set:Nn\to_mandsubsect{#2}
+    \IfNoValueTF{#1}{\tl_set:Nn\to_optsubsect{\to_mandsubsect}}{\tl_set:Nn\to_optsubsect{#1}}
+    \addtotextviews:f{\subsection[#1]{#2}} %% there should be \to_opt[]sec in the first arg, but I’m too dumb to get it right
+    \subsection[\to_optsubsect]{\to_mandsubsect}
+  }
+  \cs_gset_eq:NN\tonodestyle#3
+}
+
+\NewDocumentCommand{\overviewsubsubsection}{omO{\tonodestyle}}{
+  \bool_if:NTF\to_short
+  {
+    \tl_set:Nn\to_mandsubsubsect{#2, short view}
+    \IfNoValueTF{#1}{\tl_set:Nn\to_optsubsubsect{\to_mandsubsubsect}}{\tl_set:Nn\to_optsubsubsect{#1, short view}}
+  }
+  {
+    \tl_set:Nn\to_mandsubsubsect{#2}
+    \IfNoValueTF{#1}{\tl_set:Nn\to_optsubsubsect{\to_mandsubsubsect}}{\tl_set:Nn\to_optsubsubsect{#1}}
+    \addtotextviews:f{\subsubsection[#1]{#2}}  %% there should be \to_opt[]sec in the first arg, but I’m too dumb to get it right
+  }
+
+  \subsubsection[\to_optsubsubsect]{\to_mandsubsubsect}
+  \cs_gset_eq:NN\tonodestyle#3
 }
 
 %% a command for creation of bib-items.
@@ -128,32 +221,13 @@
 \end{minipage}
 }
 
-\NewDocumentCommand{\setlayer}{m}{
-  \fp_set:Nn\layer{#1}
-}
-\NewDocumentCommand{\steplayer}{O{\layerdist}}{
-  \fp_add:Nn\layer{#1}
-}
-
-\addtokomafont{section}{\LARGE}
-\addtokomafont{subsection}{\large}
-
-
-\NewDocumentCommand{\overviewsection}{omO{\tonodestyle}}{
-  \clearpage
-  \cs_gset_eq:NN\tonodestyle#3
-%%  \dim_set:Nn\pdfpagewidth{9cm}       %% make a smaller paper so the header won’t feel so alone on the big, big paper
-%%  \dim_set:Nn\pdfpageheight{2.5cm}
-  \IfNoValueTF{#1}{\section{#2}}{\section[#1]{#2}}
-  \bool_if:NF\short{\addtotextviews:n{\IfNoValueTF{#1}{\section{#2}}{\section[#1]{#2}}}}
-
-%%  \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
-%%  \dim_set:Nn\pdfpageheight{29.7cm}
-}
-\NewDocumentCommand{\overviewsubsection}{omO{\tonodestyle}}{
-  \cs_gset_eq:NN\tonodestyle#3
-  \IfNoValueTF{#1}{\subsection{#2}}{\subsection[#1]{#2}}
-    \bool_if:NF\short{\addtotextviews:n{\IfNoValueTF{#1}{\subsection{#2}}{\subsection[#1]{#2}}}}
-}
-
 \ExplSyntaxNamesOff
+
+\AtBeginDocument{
+  {
+    \centering
+    \huge\bfseries An overview of \TeX, its children\\ and their friends~\dots\par
+    \flushright
+    \Large \color[rgb]{.4 0 0} Arno Trautmann\\ \fontsize{9.85}{10}\selectfont arno.trautmann@gmx.de\par
+  }
+}
