@@ -80,7 +80,6 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 \setlength{\columnsep}{1.5cm}
 \twocolumn
 \tableofcontents
-\clearpage
 
 \topart{Tree Views}
 \newgeometry{margin=1cm}  %% to save space; no need for margins if only a tree is shown
@@ -91,7 +90,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 
 %%% TEX  %%%
 \label{textextview}
-\tograph*({\todisposition[\TeX]{\TeX\ – the program}}){
+\tograph*({\tostruct[\TeX]{\TeX\ – the program}}){
 	\setlayer0
 	\tonode[\vip](tex)(7,\layer)<Born in 1978 by Donald Erwin Knuth.>{\TeX}
 	
@@ -197,7 +196,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 
 \clearpage
 %%% LATEX %%%
-\tograph*(\todisposition[\LaTeX]{\LaTeX\ – Lamport's \TeX\ format}){
+\tograph*(\tostruct[\LaTeX]{\LaTeX\ – Lamport's \TeX\ format}){
 
 	\tonode(latex090)(-5.5,\layer)<First version still on web (historic archive, see refs) is 0.90, for use with TeX 0.95. No installation help found. Apparently one needs the files lplain.tex and latex.tex to create the format.>{\LaTeX\ 0.90}
 	
@@ -278,7 +277,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 
 %%% CONTEXT %%%
 \clearpage
-\tograph*(\todisposition[\ConTeXt]{\ConTeXt: con\,tex\,t – text with tex}){
+\tograph*(\tostruct[\ConTeXt]{\ConTeXt: con\,tex\,t – text with tex}){
 	\tonode(pragmatex)(0,\layer)<Former name of ConTeXt.>{pragmatex}
 	\steplayer[-2]
 
@@ -301,31 +300,31 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 %% go on with the rare formats
 \clearpage
 %%%% formats %%%%
-\todisposition[Other Formats]{Other Formats}
+\tostruct[Other Formats]{Other Formats}
 
 %%% YTeX %%%
-\tograph(\todisposition(1)[Y\TeX]{Y\TeX}[\experimental]){
+\tograph(\tostruct(1)[Y\TeX]{Y\TeX}[\experimental]){
 	\tonode(ytex)(0,0)<A macro package developed at MIT. Pronounced "why-TeX", "upsilon-TeX" or "oops-TeX". Tries to offer an easy structure for novices as well as a powerfull macro libraries for experienced users.>{Y\TeX}
 }
 
 %%% StarTeX %%%
-\tograph(\todisposition(1)[Star\TeX]{Star\TeX\ – Starter's \TeX}){
+\tograph(\tostruct(1)[Star\TeX]{Star\TeX\ – Starter's \TeX}){
 	\tonode(startex)(0,0)<A format designed to help students with short documents. Using html-like notation: <command> instead of \ command>{Star\TeX}
 }
 
 %%% JadeTeX %%%
-\tograph(\todisposition(1)[Jade\TeX]{Jade\TeX}){
+\tograph(\tostruct(1)[Jade\TeX]{Jade\TeX}){
 	\tonode(jadetex)(0,0)<A macro package for processing Jade/OpenJade output.>{Jade\TeX}
 }
 
 \clearpage
 
-\todisposition[Pandora's Box]{Pandora's Box}
+\tostruct[Pandora's Box]{Pandora's Box}
 \parbox{\textwidth}{\normalsize
 The following pages will be a hodge-podge of many things that are related to \TeX\ and used in the process of generating documents in different file formats, i.\,e. conversion tools, bibliography tools etc. Feel free to contribute, I'll choose case-by-case if I'll add something or won't include it. Text editors or viewers will \emph{not} be included!
 }
 
-\todisposition(1)[Distributions]{Distributions}[\distro]
+\tostruct(1)[Distributions]{Distributions}[\distro]
 \parbox{\textwidth}{\normalsize
 This section will feature the main distributions of \TeX\ and related programs. Of course, not every Linux Distribution's \TeX\ package can be listed here, but only official upstream distributions.
 }
@@ -334,7 +333,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 \fp_gset:Nn\layerdist{-1.5}
 \ExplSyntaxOff
 
-\tograph(\todisposition(2)[\TeX live]{\TeX live}){
+\tograph(\tostruct(2)[\TeX live]{\TeX live}){
 	\tonode(web2c)(0,\layer)<An Implementation and Distribution of TeX which translates the original WEB sources to a C code.>{Web2c}
 	\steplayer
 
@@ -383,7 +382,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\todraw(tl2010)(mactex)
 }
 
-\tograph(\todisposition(2)[Mik\TeX]{Mik\TeX}){
+\tograph(\tostruct(2)[Mik\TeX]{Mik\TeX}){
 	\tonode(mt)(0,\layer)<MikTeX is a TeX distribution originally for Windows only. Copyright by Christian Schenk goes back to 2001>{Mik\TeX}
 	\steplayer
 
@@ -407,27 +406,27 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\todraw(protext)(mt29)
 }
 
-\tograph(\todisposition(2)[\TeX\ collection]{\TeX\ collection}){
+\tograph(\tostruct(2)[\TeX\ collection]{\TeX\ collection}){
 	\tonode(texcollection)(0,\layer)<A meta-distribution. Provided on DVD by the TUG, this distribution ships with TeXlive, MacTeX and ProTeX as well as with a full CTAN snapshot.>{\TeX\ Collection}
 
 }
 
-\tograph(\todisposition(2)[W32\TeX]{W32\TeX}){
+\tograph(\tostruct(2)[W32\TeX]{W32\TeX}){
 	\tonode(w32tex)(0,\layer)<A distributon to provide binaries for windows, with special support for Japanese. First version (up to the changelog): 2009/08/02. Still highly up-to-date.>{W32\TeX}
 }
 
-\tograph(\todisposition(2)[OzTeX]{OzTeX}){
+\tograph(\tostruct(2)[OzTeX]{OzTeX}){
 	\tonode(oztex)(0,\layer)<A commercial distribution for Mac OS. No longer supported.>{Oz\TeX}
 }
 
-\tograph(\todisposition(2)[for Amiga]{for Amiga}){
+\tograph(\tostruct(2)[for Amiga]{for Amiga}){
 	\tonode(amigatex)(-2,\layer)<By Thomas Rockicki and Radical Eye Software. Commercial distribution for Amiga.>{Amiga-TeX}
 	\tonode(pastex)(2,\layer)<A free distribution for Amiga. Distributed as 5 floppy disks (TeX) plus 2 floppy disks (Metafont). Available from the Aminet.>{pasTeX}
 }
 
 \newpage
 %%% META* %%%
-\tograph(\todisposition(1)[META*]{META*}[\program]){
+\tograph(\tostruct(1)[META*]{META*}[\program]){
 	\tonode(metafont)(0,\layer)<The program for creating the fonts originally used by TeX.>{METAFONT}
 	\steplayer
 
@@ -446,7 +445,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 }
 
 %%% BIBTEX %%%
-\tograph(\todisposition(1)[Bib\TeX]{Bib\TeX}){
+\tograph(\tostruct(1)[Bib\TeX]{Bib\TeX}){
 	\tonode(bibtex)(0,0)<A helper program to generate a bibliography list.>{\BibTeX}
 	\steplayer[-1]
 
@@ -477,7 +476,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 }
 
 %%% dvipdfm %%%
-\tograph(\todisposition(1)[{(x)dvipdf(m)(x)}]{(x)dvipdf(m)(x)}){
+\tograph(\tostruct(1)[{(x)dvipdf(m)(x)}]{(x)dvipdf(m)(x)}){
 	\tonode(dvipdf)(0,0)<Converts dvi files to pdf files.>{dvipdf}
 	\steplayer
 
@@ -492,7 +491,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\todraw(dvipdfmx)(xdvipdfmx)
 }
 
-\tograph(\todisposition(1)[Font Technologies]{Font Techonolgies}[\fonttechnology]
+\tograph(\tostruct(1)[Font Technologies]{Font Techonolgies}[\fonttechnology]
 \parbox{\textwidth}{\large
 This section tries to cover the development of font technologies – the most important thing for a typesetting system is it's font mechanism …\\[4ex]}
 ){
@@ -513,25 +512,21 @@ This section tries to cover the development of font technologies – the most im
 	\todraw(truetype)(opentype)
 	\todraw(type1)(opentype)
 
-	\tonode(aat)(2,\layer)<"Apple Advanced Typographie" fonts are succesors of the GX fonts. Only available for Mac OS, too.>{AAT}
+	\tonode(aat)(6,\layer)<"Apple Advanced Typographie" fonts are succesors of the GX fonts. Only available for Mac OS, too.>{AAT}
 	\todraw(aat)(gx)
 }
 
-\clearpage
-\restoregeometry
 \addtocontents{toc}{\newpage\vspace*{2.95cm}} %% indeed, this is ridiculous
-\newpage
 
 \topart{Text Views}
 \label{sec:text}
 
-\normalsize
-\addtokomafont{section}{\LARGE}
-\addtokomafont{subsection}{\Large}
+\large
+\addtokomafont{section}{\huge}
+\addtokomafont{subsection}{\LARGE}
 \addtokomafont{subsubsection}{\Large}
-\loadgeometry{normal}
 
-\twocolumn
+\newgeometry{margin=1.5cm,twocolumn}  %% a bit more space for text views, but not too much …
 \settextviews  %% these are generated automatically by the code above. 
 \onecolumn
 
@@ -541,16 +536,16 @@ This section tries to cover the development of font technologies – the most im
 %%
 %% I've chosen to typeset the bibliography "by hand" for full control of formatting and behaviour. Also, I can choose my own syntax ☺
 %%
-\section{References}
+\tostruct{References}
 \label{sec:refs}
 \obeylines\flushleft  %% to get rid of the still active centering
 
 The references are in order of occurance in the above document. i.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX. Everything that is not listet as ”book“ is freely available on the internet.
 
 	\tobibsection{Books}
-	\tobib{D.E. Knuth, D.~Bibby, and I.~Makai. The \TeX book\\ Addison-Wesley Reading, MA, 1986.}
+	\tobib{D.E. Knuth, D.~Bibby, and I.~Makai. \textit{The \TeX book}\\ Addison-Wesley Reading, MA, 1986.}
 	\tobib{F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
-	  J.~Schrod. The \LaTeX\ companion. \\ Addison-Wesley, 2004.}
+	  J.~Schrod. \textit{The \LaTeX\ companion.} \\ Addison-Wesley, 2004.}
 
 	\tobibsection{Overview Articles}
 	\tobib{Arthur Reutenauer. A Brief History of \TeX. Talk at EuroBacho\TeX\ 2007.}%
@@ -567,11 +562,13 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{ANT project page}<http://ant.berlios.de>
 	\tobib{Yasuki S AITO. Report on JTEX: A Japanese TEX. TUGboat 8 (1987), no. 2, 103\,–\,116.}%
 		<http://www.tug.org/TUGboat/Articles/tb08-2/tb18saito.pdf>
-	\tobib{p\TeX sources and documentation}<http://dante.ctan.org/tex-archive/help/Catalogue/entries/ptex.html>
-	\tobib{ML\TeX\ source (CH file)}<http://www.tex.ac.uk/tex-archive/systems/generic/mltex/mltex.ch>
+	\tobib{p\TeX\ sources and documentation}<http://dante.ctan.org/tex-archive/help/Catalogue/entries/ptex.html>
 	\tobib{enc\TeX\ page}<http://www.olsak.net/enctex.html>
+	\tobib{ML\TeX\ source (CH file)}<http://www.tex.ac.uk/tex-archive/systems/generic/mltex/mltex.ch>
+	\tobib{pdf\TeX\ project page}<http://tug.org/applications/pdftex/>
 	\tobib{\NTS\ project page}<http://nts.tug.org>
 	\tobib{V\TeX\ – official homepage of micropress-inc}<http://www.micropress-inc.com/>	
+	\tobib{\XeTeX\ project page}<http://tug.org/xetex/>
 	\tobib{$\epsilon\chi$\TeX\ project page}<http://www.extex.org>	
 	\tobib{ee\TeX\ project page}<http://tex.aanhet.net/eetex>	
 	\tobib{Lua\TeX\ project page}<http://www.luatex.org>
