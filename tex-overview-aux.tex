@@ -1,3 +1,6 @@
+%% This document is part of the package tex-overview and is only useable with the main file tex-overview.tex.
+%% author: Arno Trautmann
+
 % !TeX root = tex-overview.tex
 %% (for the TeXworks-users.)
 
@@ -13,15 +16,20 @@
   xcolor,
   xparse
 }
-
 %% circumventing a bug in cooltooltips
 \makeatletter
   \let\topdfescapestring\pdf@escapestring
 \makeatother
 
+\ExplSyntaxNamesOn
+
+
+%% define the look-and-feel of the document
 \setmainfont{TeX Gyre Pagella}
 \setsansfont{TeX Gyre Pagella}
 
+
+%% setup the style of hyperlinks.
 \hypersetup{
   colorlinks=true,
   linkcolor=blue,
@@ -29,22 +37,12 @@
   pdfborder=0 0 0   %% don’t like these boxes
 }
 
-%% page layout
-\date{\today}
+%% page layout, headings
 \pagestyle{empty}
-
-%% adjusting headers
 \addtokomafont{disposition}{\color[rgb]{.4 0 0}}
 \addtokomafont{section}{\Huge}
 \addtokomafont{subsection}{\LARGE}
-\addtokomafont{subsubsection}{\LARGE}
-
-
-%% use LaTeX3 syntax from here on:
-\ExplSyntaxNamesOn
-
-\tl_set:Nn\settextviews{}
-\cs_gset:Nn\addtotextviews:f{\tl_gput_right:No\settextviews{#1}}
+\addtokomafont{subsubsection}{\Large}
 
 %% some missing definitions for \TeX-like things
 \tl_set:Nn\XeT{X\kern -.1667em\lower .5ex\hbox {E}\kern -.125emT\@}
@@ -54,6 +52,7 @@
 \tl_set:Nn\vip{red}
 \tl_set:Nn\normalimportant{blue}
 \tl_set:Nn\experimental{yellow}
+\tl_set:Nn\fonttechnology{pink}
 \tl_set:Nn\program{black}
 \tl_set:Nn\package{green}
 \tl_set:Nn\distro{orange}
@@ -69,6 +68,14 @@
 
 %% to separate important from not-so-important nodes
 \bool_new:N\to_short
+
+%% the token list to save all the textviews. When set once, it is reset. May be useful anyhow
+\tl_set:Nn\to_textviews{}
+\NewDocumentCommand\settextviews{}{
+  \to_textviews
+  \tl_set:Nn\to_textviews{}
+}
+\cs_gset:Nn\addtotextviews:f{\tl_gput_right:No\to_textviews{#1}}
 
 %% environment to set the graphs
 \NewDocumentCommand\tograph{sD(){}+m}
@@ -123,7 +130,7 @@
       \cooltooltip{#2}{\tonodecontent}{\tonodecontent}{}{#5\strut}
     };
   %% and the text view, to be added only once!
-  \addtotextviews:f{\subsubsection*{\color{blue}#5}\parbox{\textwidth}{#4}}
+  \addtotextviews:f{\subsubsection*{\color{blue}#5}\parbox{\columnwidth}{#4}}
   }
 }
 
@@ -141,6 +148,7 @@
   \end{pgfonlayer}
 }
 
+%% a nice way to control the vertical position of nodes
 \NewDocumentCommand{\setlayer}{m}{
   \fp_set:Nn\layer{#1}
 }
@@ -148,16 +156,41 @@
   \fp_add:Nn\layer{#1}
 }
 
+\NewDocumentCommand\topart{m}{
+  \dim_set:Nn\pdfpagewidth{9cm}       %% make a smaller paper so the header won’t feel so alone on the big, cold paper
+  \dim_set:Nn\pdfpageheight{4cm}
+	\newgeometry{margin=1cm}  %% to save space; no need for margins if only a tree is shown
+	\part{#1}
+	\newpage
+	\restoregeometry
+  \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
+  \dim_set:Nn\pdfpageheight{29.7cm}
+}
 
-%%% maybe this will be used again in the part commands
-%%  \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
-%%  \dim_set:Nn\pdfpageheight{29.7cm}
+%% the following code is made to avoid code doubling on cost of readability. It is more an experiment of mine. This code is neither stable nor exemplary …
+%% the first argument, given in (), determines the level of the d
+\NewDocumentCommand\todisposition{D(){0}omO{\tonodestyle}}{
+  \tl_set:Nn\to_disp{section}
+  \int_compare:nT{#1 > 0}{\tl_put_left:Nn\to_disp{sub}}
+  \int_compare:nT{#1 > 1}{\tl_put_left:Nn\to_disp{sub}}
+  \bool_if:NTF\to_short
+  {
+    \int_compare:nT{#1 = 0}{\stepcounter{section}}
+    \tl_gset:cn{to_mand\to_disp}{\cs:w the\to_disp\cs_end:.\hspace{.175em} #3\newline short view}
+    \IfNoValueTF{#2}{\tl_gset:cn{to_opt\to_disp sect}{\tl_use:c{to_mand\to_disp}}}{\tl_gset:cn{to_opt\to_disp}{#2, short view}}
+    \cs:w \to_disp \cs_end:*{\cs:w to_mand\to_disp \cs_end:}
+    \int_compare:nT{#1 = 0}{\addtocounter{section}{-1}}
+  }
+  {
+    \tl_gset:cn{to_mand\to_disp}{#3}
+    \IfNoValueTF{#2}{\tl_gset:cn{to_opt\to_disp}{\cs:w to_mand\to_disp\cs_end:}}{\tl_gset:cn{to_opt\to_disp}{#2}}
+    \addtotextviews:f{\cs:w \to_disp\cs_end:[#2]{#3}}
+    \cs:w \to_disp\cs_end:[\cs:w to_opt\to_disp\cs_end:]{\cs:w to_mand\to_disp\cs_end:}
+  }
+  \cs_gset_eq:NN\tonodestyle#4
+}
 
-%%  \dim_set:Nn\pdfpagewidth{9cm}       %% make a smaller paper so the header won’t feel so alone on the big, cold paper
-%%  \dim_set:Nn\pdfpageheight{2.5cm}
-
-
-\NewDocumentCommand{\overviewsection}{omO{\tonodestyle}}{
+\NewDocumentCommand\overviewsection{omO{\tonodestyle}}{
   \bool_if:NTF\to_short
   {
     \stepcounter{section}
@@ -176,14 +209,13 @@
 }
 
 \NewDocumentCommand{\overviewsubsection}{omO{\tonodestyle}}{
+  \tl_set:Nn\to_mandsubsect{#2}
   \bool_if:NTF\to_short
   {
-    \tl_set:Nn\to_mandsubsect{#2, short view}
     \IfNoValueTF{#1}{\tl_set:Nn\to_optsubsect{\to_mandsubsect}}{\tl_set:Nn\to_optsubsect{#1, short view}}
     \subsection*{\to_mandsubsect}
   }
   {
-    \tl_set:Nn\to_mandsubsect{#2}
     \IfNoValueTF{#1}{\tl_set:Nn\to_optsubsect{\to_mandsubsect}}{\tl_set:Nn\to_optsubsect{#1}}
     \addtotextviews:f{\subsection[#1]{#2}} %% there should be \to_opt[]sec in the first arg, but I’m too dumb to get it right
     \subsection[\to_optsubsect]{\to_mandsubsect}
@@ -192,13 +224,12 @@
 }
 
 \NewDocumentCommand{\overviewsubsubsection}{omO{\tonodestyle}}{
+  \tl_set:Nn\to_mandsubsubsect{#2}
   \bool_if:NTF\to_short
   {
-    \tl_set:Nn\to_mandsubsubsect{#2, short view}
     \IfNoValueTF{#1}{\tl_set:Nn\to_optsubsubsect{\to_mandsubsubsect}}{\tl_set:Nn\to_optsubsubsect{#1, short view}}
   }
   {
-    \tl_set:Nn\to_mandsubsubsect{#2}
     \IfNoValueTF{#1}{\tl_set:Nn\to_optsubsubsect{\to_mandsubsubsect}}{\tl_set:Nn\to_optsubsubsect{#1}}
     \addtotextviews:f{\subsubsection[#1]{#2}}  %% there should be \to_opt[]sec in the first arg, but I’m too dumb to get it right
   }
@@ -217,7 +248,7 @@
 \NewDocumentCommand\tobib{mD<>{}O{}}{
   \vspace*{1.5ex}
 \begin{minipage}{\textwidth}  %% to prevent page breaks
-  #1\\ \quad \url{#2} #3
+  \large #1\normalsize\\ \hspace*{1em} \parbox{\textwidth-1.5em}{\url{#2} #3}
 \end{minipage}
 }
 
@@ -227,7 +258,9 @@
   {
     \centering
     \huge\bfseries An overview of \TeX, its children\\ and their friends~\dots\par
-    \flushright
-    \Large \color[rgb]{.4 0 0} Arno Trautmann\\ \fontsize{9.85}{10}\selectfont arno.trautmann@gmx.de\par
+    \flushright\parbox{4cm}{
+    \Large \color[rgb]{.4 0 0} Arno Trautmann\\ \fontsize{9.85}{10}\selectfont arno.trautmann@gmx.de}
+	\hspace*{2cm}\par
   }
+	\vspace*{1cm}
 }
