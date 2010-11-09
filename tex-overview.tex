@@ -39,7 +39,7 @@ I tried to make the graphs more readable by using colors. All decisions reflect 
 
 \item[{\let\nodecolor\program \tikz \node[coolnode]{program};}] Programs that are not directly connected to \TeX\ (but interesting in the context of using \TeX) or are separate helper programs.
 
-\item[{\let\nodecolor\fonttechnology \tikz \node[coolnode]{font};}] A font technologie. Neither a program nor libraries that provide access to fonts nor the actual files, but rather the abstract definition or specification.
+\item[{\let\nodecolor\fonttechnology \tikz \node[coolnode]{font};}] Something related to a font. Neither a program nor libraries that provide access to fonts nor the actual files, but rather the abstract definition or specification.
 
 \end{description}
 
@@ -304,6 +304,10 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 %%%% formats %%%%
 \tostruct[Other Formats]{Other Formats}
 
+\tograph(\tostruct(1)[XML\TeX]{XML\TeX}){
+  \tonode(xmltex)(0,\layer)<A format (based on machines like pdfTeX, XeTeX and maybe luaTeX) that converts XML input to DVI or PDF output. Can also be based on other formats when parsed at format-building time.>{XML\TeX}
+}
+
 %%% YTeX %%%
 \tograph(\tostruct(1)[Y\TeX]{Y\TeX}[\experimental]){
 	\tonode(ytex)(0,0)<A macro package developed at MIT. Pronounced "why-TeX", "upsilon-TeX" or "oops-TeX". Tries to offer an easy structure for novices as well as a powerfull macro libraries for experienced users.>{Y\TeX}
@@ -319,7 +323,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\tonode(jadetex)(0,0)<A macro package for processing Jade/OpenJade output.>{Jade\TeX}
 }
 
-\tograph(\tostruct(1)[Texinfo]{Texinfo}){
+\tograph(\tostruct(1)[Texinfo]{Texinfo}[\normalimportant]){
 	\tonode(texinfo)(0,0)<The official documentation format of the GNU project. Uses TeX to provide documentations.>{Texinfo}
 }
 
@@ -589,6 +593,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{\LaTeX\ project page}<http://www.latex-project.org>
 	\tobib{\LaTeX3 project}<http://www.latex-project.org/latex3.html>
 	\tobib{A\LaTeX: Discussion in TUGboat Vol. 16 (1995), No. 3, p. 269ff.}<http://www.tug.org/TUGboat/Articles/tb16-3/tb48swif.pdf>
+	\tobib{XML\TeX\ manual}<http://www.dcarlisle.demon.co.uk/xmltex/manual.html>
 	\tobib{Y\TeX\ on CTAN}<http://tug.ctan.org/tex-archive/macros/ytex/>
 	\tobib{Jade\TeX\ project page}<http://jadetex.sourceforge.net/>
 	\tobib{Star\TeX\ on CTAN}<http://www.ctan.org/tex-archive/macros/startex/>
@@ -624,6 +629,7 @@ I have to thank some people for helping me to improve this document. Of course I
 \begin{itemize}
 \item Paul Isambert, for usefull discussions and testing
 \item Heiko Oberdiek, for solving a bug that broke the document with Acrobat Reader
+\item Peter Dyballa, for detailed historic information
 \end{itemize}
 \end{document}
 
