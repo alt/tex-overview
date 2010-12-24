@@ -489,9 +489,10 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\tonode[\package](librarian)(5,\layer)<A TeX file (useable with all formats) that typesets BibTeX-style bibliographies without the need of BibTeX. Therefore, it provides a format-independent typesetting of bibliographies.>{Librarian}
 }
 
-%%% dvipdfm %%%
+%%% dvipdfm and  similar ones %%%
 \tograph(\tostruct(1)[{(x)dvipdf(m)(x)}]{(x)dvipdf(m)(x)}){
 	\tonode(dvipdf)(0,0)<A shellscript from Ghostscript that uses dvips and and gs for converting.>{dvipdf}
+	\tonode(xdv2pdf)(4,0)<No idea so far what this is, but it is mentioned in the fontspec manual as possible driver for XeTeX.>{xdv2pdf}
 	\steplayer
 
 	\tonode(dvipdfm)(0,\layer)<Converts DVI files to PDF files. Does /not/ build on dvipdf, but is an independent implementation.>{dvipdfm}
