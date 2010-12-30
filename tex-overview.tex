@@ -3,7 +3,7 @@
 %% Packages needed: see list in the -aux.tex file …
 %% just use an up-to-date TeXlive2010 and the lualatex program to typeset
 
-% this document has version number 0.1c
+% this document has version number 0.1c (-ish)
 
 \documentclass{scrartcl}
 \input{tex-overview-aux}  %% everything that is not content-related
@@ -22,7 +22,11 @@ All information is up to the date of this generated PDF and up to the informatio
 
 In the tree views, every node has a tooltip that shows up when you hover the mouse over it. For the case that your PDF viewer does not support this, there is a list of all the descriptions on page~\pageref{sec:text}.
 
-I tried to make the graphs more readable by using colors. All decisions reflect my personal opinion, not that of the community, of the authors or someone else.
+\newpage
+\section{How to read this document}
+This document consists of several graphs showing the development of software more or less directly related to \TeX. The graphs try to show the time  development (downwards), as well as dependencies, changes, etc.
+
+I tried to make the graphs more readable by using colors for different categories. The decisions about what is important and what is “normal” reflect my personal opinion only.
 
 \begin{description}
 \item[{\let\nodecolor\normalimportant \tikz \node[coolnode]{normal};}] That is, not very important in my opinion, no huge user group, but still maybe important for special needs. Was used by a major community at least some time back, but is not of great impact nowadays.
@@ -450,7 +454,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\tonode(metatype1)(-3,\layer)<A program to produce Type1 fonts from metafont source code.>{MetaType1}
 	\todraw(metatype1)(metafont)
 
-	\tonode(metapost)(0,\layer)<A graphic generating program inspired by METAFONT. MetaPost can produce PostScript graphics as well as SVG.>{MetaPost}
+	\tonode(metapost)(0,\layer)<A graphic generating program written by John Hobby, inspired by METAFONT. MetaPost can produce PostScript graphics as well as SVG.>{MetaPost}
 	\todraw(metapost)(metafont)
 	\steplayer
 
