@@ -71,9 +71,10 @@
 %% to separate important from not-so-important nodes
 \bool_new:N\to_short
 
-%% the token list to save all the textviews. When set once, it is reset. May be useful anyhow
+%% the token list to save all the textviews. When set once, it is reset. May be useful anyhow. Or not.
 \tl_set:Nn\to_textviews{}
 \NewDocumentCommand\settextviews{}{
+  \setcounter{section}{3} %% to enable equal section numbers for both text and tree views
   \to_textviews
   \tl_set:Nn\to_textviews{}
 }
@@ -170,8 +171,8 @@
   \dim_set:Nn\pdfpageheight{29.7cm}
 }
 
-%% the following code is made to avoid code doubling on cost of readability. It is more an experiment of mine. This code is neither stable nor exemplary …
-%% the first argument, given in (), determines the level of the d
+%% the following code is made to avoid code doubling on cost of readability. Seems to be stable enough to work here.
+%% the first argument, given in (), determines the level (sub/sub/section) of the entry. The rest is totally unreadable ☹
 \NewDocumentCommand\tostruct{D(){0}omO{\tonodestyle}}{
   \tl_set:Nn\to_disp{section}
   \int_compare:nT{#1 > 0}{\tl_put_left:Nn\to_disp{sub}}
@@ -191,54 +192,6 @@
     \cs:w \to_disp\cs_end:[\cs:w \to_disp opt\cs_end:]{\cs:w \to_disp mand\cs_end:}
   }
   \cs_gset_eq:NN\tonodestyle#4
-}
-
-\NewDocumentCommand\overviewsection{omO{\tonodestyle}}{
-  \bool_if:NTF\to_short
-  {
-    \stepcounter{section}
-    \tl_gset:Nn\to_mandsect{\thesection.\hspace{.2em} #2\newline short view}
-    \IfNoValueTF{#1}{\tl_gset:Nn\to_optsect{\to_mandsect}}{\tl_gset:Nn\to_optsect{#1, short view}}
-    \section*{\to_mandsect}
-    \addtocounter{section}{-1}
-  }
-  {
-    \tl_gset:Nn\to_mandsect{#2}
-    \IfNoValueTF{#1}{\tl_gset:Nn\to_optsect{\to_mandsect}}{\tl_gset:Nn\to_optsect{#1}}
-    \addtotextviews:f{\section[#1]{#2}}
-    \section[\to_optsect]{\to_mandsect}
-  }
-  \cs_gset_eq:NN\tonodestyle#3
-}
-
-\NewDocumentCommand{\overviewsubsection}{omO{\tonodestyle}}{
-  \tl_set:Nn\to_mandsubsect{#2}
-  \bool_if:NTF\to_short
-  {
-    \IfNoValueTF{#1}{\tl_set:Nn\to_optsubsect{\to_mandsubsect}}{\tl_set:Nn\to_optsubsect{#1, short view}}
-    \subsection*{\to_mandsubsect}
-  }
-  {
-    \IfNoValueTF{#1}{\tl_set:Nn\to_optsubsect{\to_mandsubsect}}{\tl_set:Nn\to_optsubsect{#1}}
-    \addtotextviews:f{\subsection[#1]{#2}} %% there should be \to_opt[]sec in the first arg, but I’m too dumb to get it right
-    \subsection[\to_optsubsect]{\to_mandsubsect}
-  }
-  \cs_gset_eq:NN\tonodestyle#3
-}
-
-\NewDocumentCommand{\overviewsubsubsection}{omO{\tonodestyle}}{
-  \tl_set:Nn\to_mandsubsubsect{#2}
-  \bool_if:NTF\to_short
-  {
-    \IfNoValueTF{#1}{\tl_set:Nn\to_optsubsubsect{\to_mandsubsubsect}}{\tl_set:Nn\to_optsubsubsect{#1, short view}}
-  }
-  {
-    \IfNoValueTF{#1}{\tl_set:Nn\to_optsubsubsect{\to_mandsubsubsect}}{\tl_set:Nn\to_optsubsubsect{#1}}
-    \addtotextviews:f{\subsubsection[#1]{#2}}  %% there should be \to_opt[]sec in the first arg, but I’m too dumb to get it right
-  }
-
-  \subsubsection[\to_optsubsubsect]{\to_mandsubsubsect}
-  \cs_gset_eq:NN\tonodestyle#3
 }
 
 %% a command for creation of bib-items.
