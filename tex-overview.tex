@@ -239,7 +239,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\todraw(latex209)(amslatex11)
 	
 	\steplayer[-1.7]
-	\tonode[\vip](latex2ε)(0,\layer)<June 1994: New release of LaTeX to avoid incompatible dialects of LaTeX 2.09. Introduced by the LaTeX3-Team.>{\LaTeXe}
+	\tonode[\vip](latex2ε)(0,\layer)<June 1994: New release of LaTeX to avoid incompatible dialects of LaTeX 2.09. Introduced by the LaTeX3-Team.>{\LaTeX\,2\raisebox{-.5ex}ε}
 	\todraw*(latex209)(latex2ε)
 	\todraw[dashed](slitex)(latex2ε)
 	\todraw[dashed](amslatex11)(latex2ε)
@@ -365,7 +365,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\tonode[\histdistro](xemtex)(4,\layer)<A TeX distribution for Windows, based on fpTeX with XEmacs,AucTeX as IDE for (La)TeX. XemTeX was sponsored by the French government.>{XEm\TeX}
 	\todraw(xemtex)(fptex)
 
-	\tonode[\histdistro](tlpre2008)(0,\layer)<First version 1996 (UNIX only, later also Windows binaries), and then a long story of ongoing work -- see the detailed documentation for a detailed history.>{\TeX\ live 1996 – 2007}
+	\tonode[\histdistro](tlpre2008)(0,\layer)<First version 1996 (UNIX only, later also Windows binaries), and then a long story of ongoing work -- see the documentation for a detailed history. Some of the binaries (still) identify themselfes as *TeXk. The "k" stands for "Karl" meaning that they were compiled with kpathsea.>{\TeX\ live 1996 – 2007}
 	\todraw(tetex)(tlpre2008)
 	\todraw(4alltexcd)(tlpre2008)
 	\todraw.(web2c)(tlpre2008)
@@ -462,15 +462,20 @@ The following pages will be a hodge-podge of many things that are related to \Te
 
 	\tonode(metapost)(0,\layer)<A graphic generating program written by John Hobby, inspired by METAFONT. MetaPost can produce PostScript graphics as well as SVG.>{MetaPost}
 	\todraw(metapost)(metafont)
-	\steplayer
+	\steplayer[-3]
 
-	\tonode(metafun)(0,\layer)<"MetaFun is Hans Hagen's extension to (or module for) the MetaPost language.">{MetaFun}
+	\tonode[\experimental](megapost)(0,\layer)<A planned extension of MetaPost "that will extend the range
+and precision of the internal data types.">{MegaPost}
+	\todraw(metapost)(megapost)
+
+	\tonode[\normalimportant]%% to indicate that it is a format rather than a program …
+			(metafun)(3,\layer)<"MetaFun is Hans Hagen's extension to (or module for) the MetaPost language." It is a format for MetaPost.>{MetaFun}
 	\todraw(metafun)(metapost)
 }
 
 %%% BIBTEX %%%
 \tograph(\tostruct(1)[Bib\TeX]{Bib\TeX}){
-	\tonode(bibtex)(0,0)<A helper program to generate a bibliography list.>{\BibTeX}
+	\tonode(bibtex)(0,0)<A helper program to sort a bibliography list.>{\BibTeX}
 	\steplayer[-1]
 
 	\tonode(nbibtex)(4,\layer)<"NbibTeX helps authors take better advantage of BibTeX data" says the homepage.>{NbibTeX}
@@ -488,7 +493,7 @@ The following pages will be a hodge-podge of many things that are related to \Te
 	\todraw(pybtex)(bibtexu)
 	\steplayer
 	
-	\tonode(biber)(0,\layer)<A perl implementation of a BibTeX-like program, designed for (?) use with BibLaTeX. "biber" is an animal handling bibliographies. (german for "beaver", hence the beaver in the biber logo)>{biber}
+	\tonode(biber)(0,\layer)<A perl implementation of a BibTeX-like program, designed as backend for BibLaTeX. "biber" is an animal handling bibliographies. (german for "beaver", hence the beaver in the biber logo)>{biber}
 	\todraw(bibtexu)(biber)
 	
 	\tonode[\package](biblatex)(3,\layer)<A LaTeX package as frontend for biber (can also be used with BibTeXu/8).>{Bib\LaTeX}
@@ -549,8 +554,8 @@ This section tries to cover the development of fonts – the most important thin
 \addtokomafont{subsection}{\LARGE}
 \addtokomafont{subsubsection}{\Large}
 
-\newgeometry{margin=1.5cm,twocolumn}  %% a bit more space for text views, but not too much …
-\settextviews  %% these are generated automatically by the code above. 
+\newgeometry{margin=1.5cm,twocolumn} %% a bit more space for text views, but not too much …
+\settextviews  %% these are generated automatically by the code above, see the -aux.tex document
 \addtocontents{toc}{\string\end{multicols}}
 \onecolumn
 
@@ -562,7 +567,7 @@ This section tries to cover the development of fonts – the most important thin
 %%
 \tostruct{References}
 \label{sec:refs}
-\obeylines\flushleft  %% to get rid of the still active centering
+\obeylines\flushleft  %% centering was still active until here
 
 The references are in order of occurance in the above document. i.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX. Everything that is not listet as ”book“ is freely available on the internet.
 
@@ -632,16 +637,17 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{OpenType specifications}<http://www.microsoft.com/typography/otspec/default.htm>
 
 	\tobibsection{Everything Else}
+	\tobib{MetaPost developments in TUGboat Vol. 29 (2008), No. 3, p. 380ff.}<http://www.tug.org/TUGboat/Contents/contents29-3.html>
 	\tobib{dvipdfmx project page}<http://project.ktug.or.kr/dvipdfmx/>
-	
+
 \clearpage
 \section{List of Contributors}
-I have to thank some people for helping me to improve this document. Of course I thank all the people provinding the above-mentioned references. 
+I have to thank some people for helping me to improve this document. Of course I thank all the people provinding the above-mentioned references.
 
 \begin{itemize}
-\item Paul Isambert, for usefull discussions and testing
-\item Heiko Oberdiek, for solving a bug that broke the document with Acrobat Reader
-\item Peter Dyballa, for detailed historic information
+\item Paul Isambert, for usefull discussions and testing.
+\item Heiko Oberdiek, for solving a bug that broke the document with Acrobat Reader.
+\item Peter Dyballa, for detailed historic information.
+\item Many people that stumbled upon my questions on different mailinglist, mostly texhax.
 \end{itemize}
 \end{document}
-
