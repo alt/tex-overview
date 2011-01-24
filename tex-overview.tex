@@ -1,7 +1,7 @@
 %% Engine needed: luaTeX ≥ 0.65
 %% Format needed: LaTeX2ε
 %% Packages needed: see list in the -aux.tex file …
-%% use an up-to-date TeXlive2010 (with tl-contrib updates) and the lualatex program to typeset
+%% use an up-to-date TeX live2010 (with tl-contrib updates) and the lualatex format to typeset
 
 % this document has version number 0.1d
 
@@ -193,7 +193,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\steplayer[-2]
 	\tonode[\program](lua)(0,\layer)<A script language; has nothing to do with TeX.>{Lua}
 	
-	\tonode[\vip](luatex)(4,\layer)<LuaTeX supports utf8, OpenType and many more things. TeXlive 2010 ships version 0.60.2. luaTeX features an embedded scripting language, lua, making it easy to extend, so most of the programming can be done in lua instead of TeX-hackery.>{lua\TeX}
+	\tonode[\vip](luatex)(4,\layer)<LuaTeX supports utf8, OpenType and many more things. TeX live 2010 ships version 0.60.2. luaTeX features an embedded scripting language, lua, making it easy to extend, so most of the programming can be done in lua instead of TeX-hackery.>{lua\TeX}
 	\todraw(aleph)(luatex)
 	\todraw*(pdfetex)(luatex)
 	\todraw[dashed](lua)(luatex)
@@ -218,7 +218,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\todraw(latex092)(latex09210)
 	\steplayer[-2.3]
 
-	\tonode(latex2010)(-5,\layer)<Seemingly heavy changes compared to 0.92. Version for TeX 1.0. Release of 11 Dec 1983. There were never public versiaons 1.x >{\LaTeX\ 2.0 - 1.0}
+	\tonode(latex2010)(-5,\layer)<Seemingly heavy changes compared to 0.92. Version for TeX 1.0. Release of 11 Dec 1983. There were never public versions 1.x >{\LaTeX\ 2.0 - 1.0}
 	\todraw(latex09210.south)(latex2010.north)
 	
 	\tonode(latex205)(0,\layer)<No sure information found so far.>{\LaTeX\ 2.05}
@@ -235,7 +235,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\tonode(slitex)(2,\layer)<A variation of LaTeX2.09 to provide an easy way for producing presentations. In LaTeX2e absorbed as a documentclass (slides).>{SLI\TeX}
 	\todraw(latex209)(slitex)
 	
-	\tonode(amslatex11)(6,\layer)<A port of Spivak's AMS-TeX to LaTeX 2.09, released 1990>{\AMS\LaTeX\ 1.1}
+	\tonode(amslatex11)(6,\layer)<A port of Spivak's AMS-TeX to LaTeX 2.09, released 1990.>{\AMS\LaTeX\ 1.1}
 	\todraw(latex209)(amslatex11)
 	
 	\steplayer[-1.7]
@@ -279,7 +279,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\todraw(latex2ε)(latex25)
 	
 	\steplayer[-3]
-	\tonode[\experimental](latex3)(0,\layer)<The long-time successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. (Almost done by now.) The expl3-package provides an implemantation that can be used on top of LaTeX2e. Several LaTeX packages already make heavy use of expl3. (As does this document.) LaTeX3 makes use of eTeX primitives and therefore needs this engine or successors. Special adaptions of luaTeX features are starting to evolve.>{\LaTeX{}3}
+	\tonode[\experimental](latex3)(0,\layer)<The long-time successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. (Almost done by now.) The expl3-package provides an implementation that can be used on top of LaTeX2e. Several LaTeX packages already make heavy use of expl3. (As does this document.) LaTeX3 makes use of eTeX primitives and therefore needs this engine or successors. Special adaptions of luaTeX features are starting to evolve.>{\LaTeX{}3}
 	\todraw(latex25)(latex3)
 }
 
@@ -345,7 +345,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 \ExplSyntaxOff
 
 \tograph(\tostruct(1)[\TeX\ live]{\TeX\ live}){
-	\tonode(web2c)(0,\layer)<An Implementation and Distribution of TeX which translates the original WEB sources to a C code.>{Web2c}
+	\tonode(web2c)(0,\layer)<An Implementation and Distribution of TeX which translates the original WEB sources to a C code.>{Web2C}
 	\steplayer
 
 	\tonode[\histdistro](emtex)(3,\layer)<Eberhard Mattes' TeX Distribution for MS-DOS and OS2.>{em\TeX}
@@ -362,7 +362,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\todraw(fptex)(tetex)
 	\steplayer[-2.5]
 
-	\tonode[\histdistro](xemtex)(4,\layer)<A TeX distribution for Windows, based on fpTeX with XEmacs,AucTeX as IDE for (La)TeX. XemTeX was sponsored by the French government.>{XEm\TeX}
+	\tonode[\histdistro](xemtex)(4,\layer)<A TeX distribution for Windows, based on fpTeX with XEmacs/AucTeX as IDE for (La)TeX. XemTeX was sponsored by the French government.>{XEm\TeX}
 	\todraw(xemtex)(fptex)
 
 	\tonode[\histdistro](tlpre2008)(0,\layer)<First version 1996 (UNIX only, later also Windows binaries), and then a long story of ongoing work -- see the documentation for a detailed history. Some of the binaries (still) identify themselfes as *TeXk. The "k" stands for "Karl" meaning that they were compiled with kpathsea.>{\TeX\ live 1996 – 2007}
@@ -374,7 +374,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\tonode(tl2008)(0,\layer)<A new package manager and network installer are available. So installation via the net is possible as well as package updates. Missing packages are not installed on-the-fly. The last of the modern machines is added: luaTeX>{\TeX\ live2008}
 	\todraw.(tl2008)(tlpre2008)
 
-	\tonode[\histdistro](gwtex)(5,\layer)<A (re)distribution for Mac OS based on TeXlive (earlier on teTeX) by Gerben Wierda. Provides TeX-related packages for the i-Installer. Unsupported from 2007 on.>{gw\TeX}
+	\tonode[\histdistro](gwtex)(5,\layer)<A (re)distribution for Mac OS based on TeX live (earlier on teTeX) by Gerben Wierda. Provides TeX-related packages for the i-Installer. Unsupported from 2007 on.>{gw\TeX}
 	\todraw(tlpre2008)(gwtex)
 
 	\steplayer
@@ -383,13 +383,13 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\todraw(tl2009)(tl2008)
 	\steplayer
 
-	\tonode(tl2010)(0,\layer)<Up to now, latest release of TeXlive.>{\TeX\ live2010}
+	\tonode(tl2010)(0,\layer)<Up to now, latest release of TeX live.>{\TeX\ live2010}
 	\todraw(tl2010)(tl2009)
 
-	\tonode(tlcontrib)(-5,\layer)<An extension of TeXlive that contains packages that TeXlive cannot hold because: not free, binary update, not on CTAN or intermediate release. Useable via the TeXlive manager.>{TLContrib}
+	\tonode(tlcontrib)(-5,\layer)<An extension of TeX live that contains packages that TeX live cannot hold because: not free, binary update, not on CTAN or intermediate release. Useable via the TeX live manager.>{TLContrib}
 	\todraw.(tl2010)(tlcontrib)
 
-	\tonode(mactex)(5,\layer)<Once based on teTeX, MacTeX is now TeXlive-based. For Mac OS X only, it provides a native installer, the TeXShop editor and Mac-specific tools.>{Mac\TeX}
+	\tonode(mactex)(5,\layer)<Once based on teTeX, MacTeX is now TeX live-based. For Mac OS X only, it provides a native installer, the TeXShop editor and Mac-specific tools.>{Mac\TeX}
 	\todraw(tl2010)(mactex)
 }
 
@@ -418,14 +418,13 @@ This section will feature the main distributions of \TeX\ and related programs. 
 }
 
 \tograph(\tostruct(1)[\TeX\ collection]{\TeX\ collection}){
-	\tonode(texcollection)(0,\layer)<A meta-distribution. Provided on DVD by the TUG, this distribution ships with TeXlive, MacTeX and ProTeX as well as with a full CTAN snapshot.>{\TeX\ Collection}
+	\tonode(texcollection)(0,\layer)<A meta-distribution. Provided on DVD by the TUG, this distribution ships with TeX live, MacTeX and ProTeX as well as with a full CTAN snapshot.>{\TeX\ Collection}
 
 }
 
 \tograph(\tostruct(1)[Con\TeX t minimals]{Con\TeX t minimals}){
 	\tonode(minimals)(0,\layer)<ConTeXt minimals provides a distribution of latest (beta and stable) ConTeXt versions with binaries and formats. Efficient upgrading is possible as well as parallel use with another TeX distribution.>{Con\TeX t minimals}
 }
-
 
 \tograph(\tostruct(1)[W32\TeX]{W32\TeX}){
 	\tonode(w32tex)(0,\layer)<A distributon to provide binaries for MS Windows, with special support for Japanese. First version (up to the changelog): 2009/08/02. Still highly up-to-date.>{W32\TeX}
@@ -435,7 +434,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\tonode[\histdistro](oztex)(0,\layer)<A commercial distribution for Mac OS. No longer supported.>{Oz\TeX}
 }
 
-\tograph(\tostruct(1)[for Amiga]{for Amiga}){
+\tograph(\tostruct(1)[For Amiga]{For Amiga}){
 	\tonode[\histdistro](amigatex)(-2,\layer)<By Thomas Rockicki and Radical Eye Software. Commercial distribution for Amiga.>{Amiga-TeX}
 	\tonode[\histdistro](pastex)(2,\layer)<A free distribution for Amiga. Distributed as 5 floppy disks (TeX) plus 2 floppy disks (Metafont). Available from the Aminet.>{pasTeX}
 }
@@ -444,6 +443,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\tonode[\histdistro](ntex)(0,\layer)<A distribution for Linux and other Unix systems. Latest version is 2.3.2, released at 23-Aug-1998. No longer developed.>{N\TeX}
 }
 
+\newpage
 \tostruct[Pandora's Box]{Pandora's Box}
 \parbox{\textwidth}{\normalsize
 The following pages will be a hodge-podge of many things that are related to \TeX\ and used in the process of generating documents in different file formats, i.\,e. conversion tools, bibliography tools etc. Feel free to contribute, I'll choose case-by-case if I'll add something or won't include it. Text editors or viewers will \emph{not} be included!
@@ -484,6 +484,9 @@ and precision of the internal data types.">{MegaPost}
 
 	\tonode(bibtex8)(0,\layer)<The documentation says: "An 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity">{\BibTeX8}
 	\todraw(bibtex8)(bibtex)
+
+	\tonode(mlbibtex)(-4,\layer)<Mentioned in the kpathsea-manual. No idea what it is -- BibTeX for MLTeX?>{MlBibTeX}
+	\todraw(mlbibtex)(bibtex)
 	\steplayer
 	
 	\tonode(bibtexu)(0,\layer)<A Unicode-aware version of BibTeX>{\BibTeX u}
