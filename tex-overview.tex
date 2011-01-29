@@ -161,7 +161,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\todraw(tex3)(nts)
 	
 	\steplayer[-2]
-	\tonode[\experimental](omega2)(0,\layer)<A short-time try to pick up the development of Omega again in 2006. Seemed more like a good plan and is now regarded as obsolete. LuaTeX is kind of a successor.>{$\Omega_2$}
+	\tonode[\experimental](omega2)(0,\layer)<A short-time try to pick up the development of Omega again in 2006. Seemed more like a good plan and is now regarded as obsolete. luaTeX is kind of a successor.>{$\Omega_2$}
 	\todraw(omega)(omega2)
 	
 	\tonode[\experimental](vtex)(3.6,\layer)<VTeX (VisualTeX) can produce PDF, HTML, SVG, DVI or ps output directly from input. In contrast to pdfTeX, it includes a full PostScript interpreter, thus capable to include EPS figures, PStricks etc. First official version I found: February 15, 1999: VTeX 6.3; last official version seems to be from Oct 1, 2005: VTeX 8.61. Commercial product.>{V\TeX}
@@ -172,9 +172,9 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\todraw(omega)(aleph)
 	\todraw(etex)(aleph)
 	
-	\tonode[\vip](xetex)(8,\layer)<This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. Unicode encoding is fully supported (utf8 as native encoding). XeTeX also features support for OpenType, AAT, TrueType and Graphite-fonts (via the operation system). In contrary to pdfTeX or luaTeX, no external configuration file is needed to use fonts. In newest versions, character protrusion is possible.>{\XeTeX}
-	\todraw(texgx)(xetex)
-	\todraw*(etex)(xetex)
+	\tonode[\vip](XeTeX)(8,\layer)<This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. Unicode encoding is fully supported (utf8 as native encoding). XeTeX also features support for OpenType, AAT, TrueType and Graphite-fonts (via the operation system). In contrary to pdfTeX or luaTeX, no external configuration file is needed to use fonts. In newest versions, character protrusion is possible.>{\XeTeX}
+	\todraw(texgx)(XeTeX)
+	\todraw*(etex)(XeTeX)
 	
 	\tonode[\experimental](extex)(12,\layer)<Planned implementation of a high-quality typesetting system, written in Java. Based on experiences in NTS, eTeX, pdfTeX and Omega. Started in 2003, current version in repository is 0.0. (i. e. not very far ...)>{$\epsilon\chi$\TeX}
 	\todraw(nts)(extex)
@@ -193,7 +193,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\steplayer[-2]
 	\tonode[\program](lua)(0,\layer)<A script language; has nothing to do with TeX.>{Lua}
 	
-	\tonode[\vip](luatex)(4,\layer)<LuaTeX supports utf8, OpenType and many more things. TeX live 2010 ships version 0.60.2. luaTeX features an embedded scripting language, lua, making it easy to extend, so most of the programming can be done in lua instead of TeX-hackery.>{lua\TeX}
+	\tonode[\vip](luatex)(4,\layer)<luaTeX supports utf8, OpenType and many more things. TeX live 2010 ships version 0.60.2. luaTeX features an embedded scripting language, lua, making it easy to extend, so most of the programming can be done in lua instead of TeX-hackery.>{lua\TeX}
 	\todraw(aleph)(luatex)
 	\todraw*(pdfetex)(luatex)
 	\todraw[dashed](lua)(luatex)
@@ -271,12 +271,16 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\tonode(platex)(-4.6,\layer)<A LaTeX based format for the pTeX engine.>{p\LaTeX}
 	\todraw(latex2ε)(platex)
 	
-	\tonode(lualatex)(-1.8,\layer)<LaTeX based on LuaTeX with PDF (standard) or DVI (dviLuaLaTeX) output. LaTeX support for luaTeX is under heavy development to make this machine usable with the format. Work in progress, but already well useable! (This document is processed with luaLaTeX2e.)>{Lua\LaTeX}
+	\tonode(lualatex)(-1.8,\layer)<LaTeX based on luaTeX with PDF (standard) or DVI (dviLuaLaTeX) output. LaTeX support for luaTeX is under heavy development to make this machine usable with the format. Work in progress, but already well useable! (This document is processed with luaLaTeX2e.)>{Lua\LaTeX}
 	\todraw(latex2ε)(lualatex)
 	\steplayer[-2]
 
+	\tonode[\experimental](latex22)(0,\layer)<Inofficial suggestion by Philipp Stephani on the luaLaTeX list. LaTex2.2 should still be a full LaTeX2e, but with the expl3 bundle in the format.>{\LaTeX2.2}
+	\todraw(latex2ε)(latex22)
+	\steplayer[-2]
+
 	\tonode[\experimental](latex25)(0,\layer)<Will Robertson suggested in an interview (see refs) an interim unstable version on the way to LaTeX3 with version number 2.5 that should bring package authors towards using LaTeX3 syntax. This version should be backwards incompatible to LaTeX2e. (This version does not exist in any official plannings, but I liked the idea, so it is mentioned here ;) )>{\LaTeX2.5}
-	\todraw(latex2ε)(latex25)
+	\todraw(latex22)(latex25)
 	
 	\steplayer[-3]
 	\tonode[\experimental](latex3)(0,\layer)<The long-time successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. (Almost done by now.) The expl3-package provides an implementation that can be used on top of LaTeX2e. Several LaTeX packages already make heavy use of expl3. (As does this document.) LaTeX3 makes use of eTeX primitives and therefore needs this engine or successors. Special adaptions of luaTeX features are starting to evolve.>{\LaTeX{}3}
@@ -301,7 +305,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\todraw(mkii)(mkiii)
 	\steplayer[-2]
 	
-	\tonode[\vip](mkiv)(0,\layer)<Specially designed for LuaTeX.>{\ConTeXt MkIV}
+	\tonode[\vip](mkiv)(0,\layer)<Specially designed for luaTeX.>{\ConTeXt MkIV}
 	\todraw*(mkii)(mkiv)
 }
 
@@ -401,15 +405,15 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\todraw(mt)(mt26)
 	\steplayer
 
-	\tonode(mt27)(0,\layer)<Windows only. featuring  xetex 0.999.6, pdftex 1.40.9, mpost 1.005>{MiK\TeX\ 2.7}
+	\tonode(mt27)(0,\layer)<Windows only. featuring  XeTeX 0.999.6, pdftex 1.40.9, mpost 1.005>{MiK\TeX\ 2.7}
 	\todraw(mt27)(mt26)
 	\steplayer
 
-	\tonode(mt28)(0,\layer)<Windows only. featuring  xetex 0.9995.1, pdftex 1.40.10, mpost 1.005>{MiK\TeX\ 2.8}
+	\tonode(mt28)(0,\layer)<Windows only. featuring  XeTeX 0.9995.1, pdftex 1.40.10, mpost 1.005>{MiK\TeX\ 2.8}
 	\todraw(mt28)(mt27)
 	\steplayer
 
-	\tonode(mt29)(0,\layer)<Windows only (stable version). Beta version for GNU/Linux available. featuring xetex 0.9997.4, pdftex 1.40.11, LuaTeX 0.60.2, mpost 1.211. Offers both LaTeX and ConTeXt (Mk IV) formats.>{MiK\TeX\ 2.9}
+	\tonode(mt29)(0,\layer)<Windows only (stable version). Beta version for GNU/Linux available. Featuring XeTeX 0.9997.4, pdftex 1.40.11, luaTeX 0.60.2, mpost 1.211. Offers both LaTeX and ConTeXt (Mk IV) formats.>{MiK\TeX\ 2.9}
 	\todraw(mt29)(mt28)
 	\steplayer	
 	
@@ -600,16 +604,17 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{pdf\TeX\ project page}<http://tug.org/applications/pdftex/>
 	\tobib{\NTS\ project page}<http://nts.tug.org>
 	\tobib{V\TeX\ – official homepage of micropress-inc}<http://www.micropress-inc.com/>	
-	\tobib{\XeTeX\ project page}<http://tug.org/xetex/>
+	\tobib{\XeTeX\ project page}<http://tug.org/XeTeX/>
 	\tobib{$\epsilon\chi$\TeX\ project page}<http://www.extex.org>	
 	\tobib{ee\TeX\ project page}<http://tex.aanhet.net/eetex>	
 	\tobib{Lua\TeX\ project page}<http://www.luatex.org>
 	\tobib{i\TeX\ announcement by Don Knuth at the TUG 2010}<http://river-valley.tv/tug-2010/an-earthshaking-announcement>
 	
 	\tobibsection{Formats}
-	\tobib{\ConTeXt\ wiki}<http://wiki.contextgarden.net>
 	\tobib{\LaTeX\ project page}<http://www.latex-project.org>
+	\tobib{\LaTeX2.2 – mail from Philipp Stephani on luaLaTeX-dev list (last paragraph)}<http://tug.org/pipermail/lualatex-dev/2011-January/001033.html>
 	\tobib{\LaTeX3 project}<http://www.latex-project.org/latex3.html>
+	\tobib{\ConTeXt\ wiki}<http://wiki.contextgarden.net>
 	\tobib{A\LaTeX: Discussion in TUGboat Vol. 16 (1995), No. 3, p. 269ff.}<http://www.tug.org/TUGboat/Articles/tb16-3/tb48swif.pdf>
 	\tobib{XML\TeX\ manual}<http://www.dcarlisle.demon.co.uk/xmltex/manual.html>
 	\tobib{Y\TeX\ on CTAN}<http://tug.ctan.org/tex-archive/macros/ytex/>
