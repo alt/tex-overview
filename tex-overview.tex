@@ -85,7 +85,7 @@ As this document makes heavy use of PDF-features, some PDF viewers are not able 
 \end{description}
 
 \subsection*{About this document}
-This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ format with  lua\TeX\ 0.\the\luatexversion.\luatexrevision.
+This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ format with \verb|expl3| and \verb|xpackages| based on lua\TeX\ 0.\the\luatexversion.\luatexrevision.
 
 \addtocontents{toc}{\string\begin{multicols}{2}}
 
@@ -235,7 +235,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\tonode(slitex)(2,\layer)<A variation of LaTeX2.09 to provide an easy way for producing presentations. In LaTeX2e absorbed as a documentclass (slides).>{SLI\TeX}
 	\todraw(latex209)(slitex)
 	
-	\tonode(amslatex11)(6,\layer)<A port of Spivak's AMS-TeX to LaTeX 2.09, released 1990.>{\AMS\LaTeX\ 1.1}
+	\tonode(amslatex11)(6,\layer)<A port of Spivak's AMS-TeX to LaTeX 2.09 by Frank Mittelbach and Rainer Schöpf, released 1990.>{\AMS\LaTeX\ 1.1}
 	\todraw(latex209)(amslatex11)
 	
 	\steplayer[-1.7]
@@ -251,6 +251,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\tonode[\experimental](lamed)(-7.5,\layer)<A LaTeX based format for the aleph engine.>{Lamed}
 	\todraw(lambda)(lamed)
 
+	\steplayer[+1]
 	\tonode(amslatex12)(6,\layer)<A port of version 1.1 to LaTeX 2e by Downes and Jones.>{\AMS\LaTeX 1.2}
 	\tonode[\experimental](alatex)(-4.2,\layer)<A slightly changed LaTeX format by Matt Swift to offer modularity at format level. Acts as normal LaTeX if not explicitly told to do different. "A" for "alternate", "abstract" or the indefinite article.>{A\LaTeX}
 	\todraw(amslatex11)(amslatex12)
@@ -258,9 +259,9 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\todraw(latex2ε)(alatex)
 	\steplayer[-1.5]
 
-	\tonode(amslatex21)(8,\layer)<Version 2.1 of amsLaTeX.>{\AMS\LaTeX 2.1}
+	\tonode(amslatex21)(8,\layer)<Latest AMSLaTeX version is 2.2 from 2001. Intermedita versions are not shown.>{\AMS\LaTeX 2.2}
 	\todraw(amslatex12)(amslatex21)
-	\steplayer[-1]
+	\steplayer[-1.5]
 
 	\tonode[\vip](pdflatex)(2,\layer)<The "standard LaTeX". If anyone talks about "LaTeX" it is nearly sure to be this package. pdfLaTeX2e produces PDF or DVI output.>{pdf\LaTeX}
 	\todraw*(latex2ε)(pdflatex)
@@ -271,9 +272,14 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\tonode(platex)(-4.6,\layer)<A LaTeX based format for the pTeX engine.>{p\LaTeX}
 	\todraw(latex2ε)(platex)
 	
-	\tonode(lualatex)(-1.8,\layer)<LaTeX based on luaTeX with PDF (standard) or DVI (dviLuaLaTeX) output. LaTeX support for luaTeX is under heavy development to make this machine usable with the format. Work in progress, but already well useable! (This document is processed with luaLaTeX2e.)>{Lua\LaTeX}
-	\todraw(latex2ε)(lualatex)
+	\tonode[\vip](lualatex)(-1.8,\layer)<LaTeX based on luaTeX with PDF (standard) or DVI (dviLuaLaTeX) output. LaTeX support for luaTeX is under heavy development to make this machine usable with the format. Work in progress, but already well useable! (This document is processed with luaLaTeX2e.)>{Lua\LaTeX}
+	\todraw*(latex2ε)(lualatex)
 	\steplayer[-2]
+
+	\tonode[\experimental](latex2x)(-1.8,\layer)<An experimental step towards LaTeX3. LaTeX2x is a normal LaTeX2e, but with expl3 and xpackages compiled in the format. It is *not* intended for everyday use but only for experimenting with LaTeX3.>{\LaTeX2x}
+	\todraw(latex2x)(latex2ε)
+	\steplayer[-2]
+
 
 	\tonode[\experimental](latex22)(0,\layer)<Inofficial suggestion by Philipp Stephani on the luaLaTeX list. LaTex2.2 should still be a full LaTeX2e, but with the expl3 bundle in the format.>{\LaTeX2.2}
 	\todraw(latex2ε)(latex22)
@@ -285,6 +291,9 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\steplayer[-3]
 	\tonode[\experimental](latex3)(0,\layer)<The long-time successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. (Almost done by now.) The expl3-package provides an implementation that can be used on top of LaTeX2e. Several LaTeX packages already make heavy use of expl3. (As does this document.) LaTeX3 makes use of eTeX primitives and therefore needs this engine or successors. Special adaptions of luaTeX features are starting to evolve.>{\LaTeX{}3}
 	\todraw(latex25)(latex3)
+
+	\steplayer[-3]
+	\tonode[\experimental](timeslatex)(-5,\layer)<Information needed.>{times\LaTeX}
 }
 
 %%% CONTEXT %%%
@@ -313,19 +322,22 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 \clearpage
 %%%% formats %%%%
 \tostruct[Other Formats]{Other Formats}
+%%% AMSTeX %%%
+\tograph(\tostruct(1)[\AMS-\TeX]{\AMS-\TeX}){
+	\tonode(amstex20)(0,\layer)<A macro package provided by the American Mathematical Society. Version 2.0 from 1990. No information found for versions pre-2.0.>{\AMS-\TeX  2.0}
+	\steplayer[-1]
 
-\tograph(\tostruct(1)[XML\TeX]{XML\TeX}){
-  \tonode(xmltex)(0,\layer)<A format (based on machines like pdfTeX, XeTeX and maybe luaTeX) that converts XML input to DVI or PDF output. Can also be based on other formats when parsed at format-building time.>{XML\TeX}
-}
+	\tonode(lamstex)(5,\layer)<"LamSTeX{} is an extension of AmSTeX, and thus almost completely compatible with plain TeX", as the documentation says. See references for details.>{\LamSTeX  2.0}
+	\todraw(amstex20)(lamstex)
+	\steplayer[-1]
 
-%%% YTeX %%%
-\tograph(\tostruct(1)[Y\TeX]{Y\TeX}[\experimental]){
-	\tonode(ytex)(0,0)<A macro package developed at MIT. Pronounced "why-TeX", "upsilon-TeX" or "oops-TeX". Tries to offer an easy structure for novices as well as a powerfull macro libraries for experienced users.>{Y\TeX}
-}
+	\tonode(amstex21)(0,\layer)<Version 2.1 released 1991.>{\AMS-\TeX  2.1}
 
-%%% StarTeX %%%
-\tograph(\tostruct(1)[Star\TeX]{Star\TeX\ – Starter's \TeX}){
-	\tonode(startex)(0,0)<A format designed to help students with short documents. Using html-like notation: <command> instead of \ command>{Star\TeX}
+	\todraw(amstex20)(amstex21)
+	\steplayer[-2]
+
+	\tonode(amstex22)(0,\layer)< Latest version is 2.2 from 2001.>{\AMS-\TeX 2.2}
+	\todraw(amstex21)(amstex22)
 }
 
 %%% JadeTeX %%%
@@ -333,8 +345,29 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe/3\ 
 	\tonode(jadetex)(0,0)<A macro package for processing Jade/OpenJade output.>{Jade\TeX}
 }
 
+%%% MacroTeX %%%
+\tograph(\tostruct(1)[Macro\TeX]{Macro\TeX}){
+	\tonode(macrotex)(0,0)<Information needed.>{Macro\TeX}
+}
+
+%%% StarTeX %%%
+\tograph(\tostruct(1)[Star\TeX]{Star\TeX\ – Starter's \TeX}){
+	\tonode(startex)(0,0)<A format designed to help students with short documents. Using html-like notation: <command> instead of \ command>{Star\TeX}
+}
+
+%%% Texinfo %%%
 \tograph(\tostruct(1)[Texinfo]{Texinfo}[\normalimportant]){
 	\tonode(texinfo)(0,0)<The official documentation format of the GNU project. Uses TeX to provide documentations.>{Texinfo}
+}
+
+%%% XMLTeX %%%
+\tograph(\tostruct(1)[XML\TeX]{XML\TeX}){
+  \tonode(xmltex)(0,\layer)<A format (based on machines like pdfTeX, XeTeX and maybe luaTeX) that converts XML input to DVI or PDF output. Can also be based on other formats when parsed at format-building time.>{XML\TeX}
+}
+
+%%% YTeX %%%
+\tograph(\tostruct(1)[Y\TeX]{Y\TeX}[\experimental]){
+	\tonode(ytex)(0,0)<A macro package developed at MIT. Pronounced "why-TeX", "upsilon-TeX" or "oops-TeX". Tries to offer an easy structure for novices as well as a powerfull macro libraries for experienced users.>{Y\TeX}
 }
 
 \clearpage
@@ -612,15 +645,18 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	
 	\tobibsection{Formats}
 	\tobib{\LaTeX\ project page}<http://www.latex-project.org>
+	\tobib{\AMS\LaTeX: Documentation on CTAN}<http://www.ctan.org/tex-archive/macros/amstex/doc/>
 	\tobib{\LaTeX2.2 – mail from Philipp Stephani on luaLaTeX-dev list (last paragraph)}<http://tug.org/pipermail/lualatex-dev/2011-January/001033.html>
 	\tobib{\LaTeX3 project}<http://www.latex-project.org/latex3.html>
 	\tobib{\ConTeXt\ wiki}<http://wiki.contextgarden.net>
 	\tobib{A\LaTeX: Discussion in TUGboat Vol. 16 (1995), No. 3, p. 269ff.}<http://www.tug.org/TUGboat/Articles/tb16-3/tb48swif.pdf>
-	\tobib{XML\TeX\ manual}<http://www.dcarlisle.demon.co.uk/xmltex/manual.html>
-	\tobib{Y\TeX\ on CTAN}<http://tug.ctan.org/tex-archive/macros/ytex/>
+	\tobib{\AMS-\TeX\ on CTAN}<http://www.ctan.org/tex-archive/macros/amstex/>
+	\tobib{L\AMS\TeX: Short description}<http://www.tex.ac.uk/tex-archive/digests/texline/no13/lamstex>
 	\tobib{Jade\TeX\ project page}<http://jadetex.sourceforge.net/>
 	\tobib{Star\TeX\ on CTAN}<http://www.ctan.org/tex-archive/macros/startex/>
 	\tobib{Texinfo project page}<http://www.gnu.org/software/texinfo/>
+	\tobib{XML\TeX\ manual}<http://www.dcarlisle.demon.co.uk/xmltex/manual.html>
+	\tobib{Y\TeX\ on CTAN}<http://tug.ctan.org/tex-archive/macros/ytex/>
 
 	\tobibsection{Distributions}
 	\tobib{fp\TeX: Announcment at TUG 1999}<http://www.tug.org/tug99/program/node39.html>
