@@ -4,6 +4,8 @@
 % !TeX root = tex-overview.tex
 %% (for the TeXworks-users.)
 
+\usepackage[svgnames]{xcolor}
+
 \usepackage{
   bookmark,
   cooltooltips,
@@ -14,10 +16,10 @@
   multicol,
   pdftexcmds,
   tikz,
-  xcolor,
   xparse
 }
-%% circumventing a bug in cooltooltips
+
+%% for circumventing a bug in cooltooltips
 \makeatletter
   \let\topdfescapestring\pdf@escapestring
 \makeatother
@@ -51,6 +53,7 @@
 \tl_set:Nn\vip{red}
 \tl_set:Nn\normalimportant{blue}
 \tl_set:Nn\experimental{yellow}
+\tl_set:Nn\planned{LightSkyBlue}
 \tl_set:Nn\fonttechnology{pink}
 \tl_set:Nn\program{black}
 \tl_set:Nn\package{green}

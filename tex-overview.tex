@@ -39,6 +39,8 @@ I tried to make the graphs more readable by using colors for different categorie
 
 \item[{\let\nodecolor\experimental \tikz \node[coolnode]{experimental};}] Developments that might still be under construction or were never used by a large community. Nevertheless, these might be very important to the development of other engines or for use of special typesetting.
 
+\item[{\let\nodecolor\planned \tikz \node[coolnode]{planned};}] Things that are planned to raise one day and are in the phase of preparation, i.\,e. there may be some code but not in the final form yet.
+
 \item[{\let\nodecolor\package \tikz \node[coolnode]{package};}] \LaTeX-packages or single \TeX-files (useable as packages or modules) that seemed worth mentioning. There won't be many of this; most very important packages won’t be mentioned.
 
 \item[{\let\nodecolor\distro \tikz \node[coolnode]{distribution};}] Software bundles that bring \TeX\ and friends to the normal user.
@@ -276,24 +278,23 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\todraw*(latex2ε)(lualatex)
 	\steplayer[-2]
 
-	\tonode[\experimental](latex2x)(-1.8,\layer)<An experimental step towards LaTeX3. LaTeX2x is a normal LaTeX2e, but with expl3 and xpackages compiled in the format. It is *not* intended for everyday use but only for experimenting with LaTeX3.>{\LaTeX2x}
+	\tonode[\planned](latex2x)(0,\layer)<An experimental step towards LaTeX3. LaTeX2x is a normal LaTeX2e, but with expl3 and xpackages compiled in the format. It is *not* intended for everyday use but only for experimenting with LaTeX3. Might be concentrated on luaTeX, but XeTeX and pdfTeX variants will be available.>{\LaTeX2x}
 	\todraw(latex2x)(latex2ε)
 	\steplayer[-2]
 
-
-	\tonode[\experimental](latex22)(0,\layer)<Inofficial suggestion by Philipp Stephani on the luaLaTeX list. LaTex2.2 should still be a full LaTeX2e, but with the expl3 bundle in the format.>{\LaTeX2.2}
-	\todraw(latex2ε)(latex22)
+	\tonode[\planned](latex22)(0,\layer)<Inofficial suggestion by Philipp Stephani on the luaLaTeX list. LaTex2.2 should still be a full LaTeX2e, but with the expl3 bundle in the format. In fact, this is what LaTeX2x is planned to be.>{\LaTeX2.2}
+	\todraw(latex2x)(latex22)
 	\steplayer[-2]
 
-	\tonode[\experimental](latex25)(0,\layer)<Will Robertson suggested in an interview (see refs) an interim unstable version on the way to LaTeX3 with version number 2.5 that should bring package authors towards using LaTeX3 syntax. This version should be backwards incompatible to LaTeX2e. (This version does not exist in any official plannings, but I liked the idea, so it is mentioned here ;) )>{\LaTeX2.5}
+	\tonode[\planned](latex25)(0,\layer)<Will Robertson suggested in an interview (see refs) an interim unstable version on the way to LaTeX3 with version number 2.5 that should bring package authors towards using LaTeX3 syntax. This version should be backwards *incompatible* to LaTeX2e. (This version does not exist in any official plannings, but I liked the idea, so it is mentioned here ;) )>{\LaTeX2.5}
 	\todraw(latex22)(latex25)
 	
 	\steplayer[-3]
-	\tonode[\experimental](latex3)(0,\layer)<The long-time successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. (Almost done by now.) The expl3-package provides an implementation that can be used on top of LaTeX2e. Several LaTeX packages already make heavy use of expl3. (As does this document.) LaTeX3 makes use of eTeX primitives and therefore needs this engine or successors. Special adaptions of luaTeX features are starting to evolve.>{\LaTeX{}3}
+	\tonode[\planned](latex3)(0,\layer)<The long-time successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. (Almost done by now.) The expl3-package provides an implementation that can be used on top of LaTeX2e. Several LaTeX packages already make heavy use of expl3. (As does this document.) LaTeX3 makes use of eTeX primitives and therefore needs this engine or successors. Special adaptions of luaTeX features are starting to evolve.>{\LaTeX{}3}
 	\todraw(latex25)(latex3)
 
 	\steplayer[-3]
-	\tonode[\experimental](timeslatex)(-5,\layer)<Information needed.>{times\LaTeX}
+	\tonode[\experimental](timeslatex)(-5,\layer)<Some LaTeX 2.09 derivate, need more information.>{times\LaTeX}
 }
 
 %%% CONTEXT %%%
