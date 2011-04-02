@@ -16,7 +16,9 @@ In the world of \TeX, there are many developments and ambiguous names. This pape
 \end{abstract}
 
 \section*{Introduction}
-The base frame and main idea of this document was taken from the article \textit{A brief history of \TeX,~volume~II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007} and his talk there (see~references on page~\pageref{sec:refs}). Additional information is taken from original documentations and some review articles. For old, historic information, the \textsf{historic~archive} maintained by Ulrik Vieth and hosted on \url{ftp.tug.org} (see~refs) was very useful, especially in the reconstruction of \LaTeX\ versions. Many thanks for that great archive!
+This document is for people that have stumbled upon different term icluding something related to \TeX\ and are confused by the many different terms – at least I was, so mabye others are, too … 
+
+The base frame and main idea for this overview was taken from the article \textit{A brief history of \TeX,~volume~II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007} and his talk there (see~references on page~\pageref{sec:refs}). Additional information is taken from original documentations and some review articles. For old, historic information, the \textsf{historic~archive} maintained by Ulrik Vieth and hosted on \url{ftp.tug.org} (see~refs) was very useful, especially in the reconstruction of \LaTeX\ versions. Many thanks for that great archive!
 
 All information is up to the date of this generated PDF and up to the information I found. Everything here is without guarantee – this is just to get an overview. Consult the references for further (and/or~correct) information! 
 
@@ -56,6 +58,14 @@ I tried to make the graphs more readable by using colors for different categorie
 Some graphs are quite complex, which is the reason why there are two versions of them: A short one mentioning only the most important things and a full version with everything I could find.
 
 In most cases I did not mention the authors of the programs/packages. This is not to diminish their effort but only for brevity (long names make things harder to read). I did not write any of the below-mentioned programs or packages. The authors are given in the documents linked in the references.
+
+\section{Engine, Format, Distribution}
+There are three kinds of terms that are often confused especially by new users. This will try to explain them very shortly:
+\begin{description}
+\item[engine] This is the program that does all the actual work. The original program is \TeX, while lua\TeX\ is its latest successor.
+\item[format] A format is a (large) collection of abbreviations (macros) that make the life easy when working with \TeX. The most commonly used formats are \LaTeX, Con\TeX t and plain\TeX. The latter is a minimal set of macros provided by Don Knuth. Formats can be combined with different engines, exploiting the special abilities of these engines. A format is first a collection of text files, but can be compiled into a binary format that can be read in very fast by \TeX.
+\item[distribution] In addition to formats, a large set of additional files can be used to work with \TeX, called \emph{packages} for \LaTeX, \emph{modules} for Con\TeX t etc. To get all needed files in a convinient way, there are distributions that contain everything and are (or should be) easy to install. Examples are MiKTeX and \TeX~live.
+\end{description}
 
 \section{How to contribute}
 I hope one day this document would become the standard reference for questions like ”What program do I need for …?“, ”What's the difference between ...\TeX\ and ...\TeX?“, ”Why is it called …?“ etc.
@@ -276,10 +286,17 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	
 	\tonode[\vip](lualatex)(-1.8,\layer)<LaTeX based on luaTeX with PDF (standard) or DVI (dviLuaLaTeX) output. LaTeX support for luaTeX is under heavy development to make this machine usable with the format. Work in progress, but already well useable! (This document is processed with luaLaTeX2e.)>{Lua\LaTeX}
 	\todraw*(latex2ε)(lualatex)
-	\steplayer[-2]
+	\steplayer[-1.5]
+
+	\tonode[\package](expl3)(1.5,\layer)<The expl3 bundle is the ground stock of LaTeX3. It is a bundle of packages that can be used with LaTeX2e, but are planned to become the kernel of LaTeX3. They provide the low-levle structures, programming structures and everything needed for package authors.>{expl3}
+
+	\tonode[\package](xpackages)(4.5,\layer)<The xpackages are a bundle of packages intended to become the ground stock of packages for the high-levle and user-level interface in LaTeX3. Based on expl3, they can be used with LaTeX2e already.>{xpackages}
+	\steplayer[-1.5]
 
 	\tonode[\planned](latex2x)(0,\layer)<An experimental step towards LaTeX3. LaTeX2x is a normal LaTeX2e, but with expl3 and xpackages compiled in the format. It is *not* intended for everyday use but only for experimenting with LaTeX3. Might be concentrated on luaTeX, but XeTeX and pdfTeX variants will be available.>{\LaTeX2x}
 	\todraw(latex2x)(latex2ε)
+	\todraw(latex2x)(expl3)
+	\todraw(latex2x)(xpackages)
 	\steplayer[-2]
 
 	\tonode[\planned](latex22)(0,\layer)<Inofficial suggestion by Philipp Stephani on the luaLaTeX list. LaTex2.2 should still be a full LaTeX2e, but with the expl3 bundle in the format. In fact, this is what LaTeX2x is planned to be.>{\LaTeX2.2}
