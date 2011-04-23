@@ -215,6 +215,19 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 }
 
 \clearpage
+
+%%% plain TeX %%%
+\tograph(\tostruct[plain\TeX]{plain\TeX\ – the first format}){
+	\tonode(plaintex)(0,\layer)<The basic format offered by Don Knuth to provide a minimal set of macros to work with.>{plain\TeX}
+
+\steplayer[-2]
+
+	\tonode(eplain)(0,\layer)<Extensions of plainTeX to provide often-used utilities. Not thought for document preparation as LaTex is. First version that is still available is 2.1 from 1992. Latest version 3.4 is from 2 2010 and based on pdfTeX..>{eplain}
+
+\todraw(plaintex)(eplain)
+}
+\clearpage
+
 %%% LATEX %%%
 \tograph*(\tostruct[\LaTeX]{\LaTeX\ – Lamport's \TeX\ format}){
 
@@ -361,6 +374,17 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 %%% JadeTeX %%%
 \tograph(\tostruct(1)[Jade\TeX]{Jade\TeX}){
 	\tonode(jadetex)(0,0)<A macro package for processing Jade/OpenJade output.>{Jade\TeX}
+}
+
+%%% PHYS(E) %%%
+\tograph(\tostruct(1)[PHYS(E)]{PHYS(E)}){
+	\tonode(physe)(0,0)<Documentation says: "The TeX formats PHYSE and PHYS are extensions of the PLAIN format
+and should simplify the writing of physics papers." Latest version I found is from 1986. PHYS is for german, PHYSE for english usage.>{PHYS(E)}
+}
+
+%%% PHYZZX %%%
+\tograph(\tostruct(1)[PHYZZX]{PHYZZX}){
+	\tonode(phyzzx)(0,0)<Documentation says: "PHYZZX is a macropackage which is designed to make typing papers destined for Physical Review or Nuclear Physics as simple as possible." Created 1984, latest version I found is from 1988.>{PHYZZX}
 }
 
 %%% MacroTeX %%%
@@ -662,6 +686,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{i\TeX\ announcement by Don Knuth at the TUG 2010}<http://river-valley.tv/tug-2010/an-earthshaking-announcement>
 	
 	\tobibsection{Formats}
+	\tobib{Eplain homepage}<http://www.tug.org/eplain/>
 	\tobib{\LaTeX\ project page}<http://www.latex-project.org>
 	\tobib{\AMS\LaTeX: Documentation on CTAN}<http://www.ctan.org/tex-archive/macros/amstex/doc/>
 	\tobib{\LaTeX2.2 – mail from Philipp Stephani on luaLaTeX-dev list (last paragraph)}<http://tug.org/pipermail/lualatex-dev/2011-January/001033.html>
@@ -671,10 +696,12 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{\AMS-\TeX\ on CTAN}<http://www.ctan.org/tex-archive/macros/amstex/>
 	\tobib{L\AMS\TeX: Short description}<http://www.tex.ac.uk/tex-archive/digests/texline/no13/lamstex>
 	\tobib{Jade\TeX\ project page}<http://jadetex.sourceforge.net/>
-	\tobib{Star\TeX\ on CTAN}<http://www.ctan.org/tex-archive/macros/startex/>
+	\tobib{PHYSE and PHYS on CTAN}<http://ctan.org/tex-archive/macros/physe>
+	\tobib{PHYZZX on CTAN}<http://ctan.org/tex-archive/macros/phyzzx>
+	\tobib{Star\TeX\ on CTAN}<http://www.ctan.org/tex-archive/macros/startex>
 	\tobib{Texinfo project page}<http://www.gnu.org/software/texinfo/>
 	\tobib{XML\TeX\ manual}<http://www.dcarlisle.demon.co.uk/xmltex/manual.html>
-	\tobib{Y\TeX\ on CTAN}<http://tug.ctan.org/tex-archive/macros/ytex/>
+	\tobib{Y\TeX\ on CTAN}<http://tug.ctan.org/tex-archive/macros/ytex>
 
 	\tobibsection{Distributions}
 	\tobib{fp\TeX: Announcment at TUG 1999}<http://www.tug.org/tug99/program/node39.html>
