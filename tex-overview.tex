@@ -75,6 +75,7 @@ To get to this point, I need some help of people having read more documentation 
 \item font technologies
 \item METAFONT and succesors
 \item Bib\TeX\ and successors/alternatives
+\item information about e-p\TeX\ and p\BibTeX, as the only documentation I found is japanese. If you speek japanese, I'd be happy about a translation!
 \end{itemize}
 
 It is up to you to contribute texts, references, links, descriptions, hints etc. I'll be happy about anything I can add here. Also, if you have suggestions about the layout, let me know.
@@ -137,6 +138,9 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	
 	\tonode[\vip](tex3)(7,\layer)<Ability to handle 8-bit input. 1989. TeX development was frozen in 1991 and only bugfixes were made. Now in version 3.1415926, it gets closer to pi with every bugfix. Don Knuth wishes the version number to be pi when he dies.>{\TeX3}
 	\todraw*(tex)(tex3)
+
+	\tonode(eptex)(13,\layer)<No sure information found; a pTeX successor with eTeX extensions?>{e-p\TeX}
+	\todraw(ptex)(eptex)
 	
 	\steplayer[-2]
 	\tonode(enctex)(5.9,\layer)<A small extension to TeX, started 1997. Adds 10 new primitives relating input re-encoding>{enc\TeX}
@@ -570,6 +574,9 @@ and precision of the internal data types.">{MegaPost}
 	
 	\tonode(bibtexu)(0,\layer)<A Unicode-aware version of BibTeX>{\BibTeX u}
 	\todraw(bibtex8)(bibtexu)
+
+	\tonode(pbibtex)(-4,\layer)<No sure information found; a BibTeX-successor for pTeX?>{p\BibTeX}
+	\todraw(bibtex8)(pbibtex)
 
 	\tonode(pybtex)(3,\layer)<A python implementation of BibTeX.>{Pybtex}
 	\todraw(pybtex)(bibtexu)
