@@ -1,12 +1,10 @@
 %% Engine needed: luaTeX ≥ 0.65
 %% Format needed: LaTeX2ε
 %% Packages needed: see list in the -aux.tex file …
-%% use an up-to-date TeX live2010 (with tl-contrib updates) and the lualatex format to typeset
+%% use an up-to-date TeX live2010 (with tl-contrib updates)
 
-% this document has version number 0.1d
-
-\documentclass{scrartcl}
-\input{tex-overview-aux}  %% everything that is not content-related
+% this document has version number 0.1d-ish.
+\input{tex-overview-aux} %% everything that is not content-related
 
 \begin{document}
 \savegeometry{normal}
@@ -75,7 +73,7 @@ To get to this point, I need some help of people having read more documentation 
 \item font technologies
 \item METAFONT and succesors
 \item Bib\TeX\ and successors/alternatives
-\item information about e-p\TeX\ and p\BibTeX, as the only documentation I found is japanese. If you speek japanese, I'd be happy about a translation!
+\item information about e-p\TeX\ and p\BibTeX, as the only documentation I found is japanese. If you know japanese, I'd be happy about a translation!
 \end{itemize}
 
 It is up to you to contribute texts, references, links, descriptions, hints etc. I'll be happy about anything I can add here. Also, if you have suggestions about the layout, let me know.
@@ -129,7 +127,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\todraw(tex)(jtex)
 
 	\steplayer[-1.5]
-	\tonode(ptex)(10,\layer)<Extension of Nihongo TeX to enable vertical typesetting. ("p" for "publishing")  Distributed as WEB change files. >{p\TeX}
+	\tonode(ptex)(10,\layer)<Extension of Nihongo TeX to enable vertical typesetting. ("p" for "publishing")  Distributed as WEB change files. Primary author is D. E. Knuth, latest version (TeX live 2011) is pTeX 3.1415926-p3.2.>{p\TeX}
 	\todraw(nihongo)(ptex)
 
 	\steplayer[-1.5]
@@ -139,7 +137,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\tonode[\vip](tex3)(7,\layer)<Ability to handle 8-bit input. 1989. TeX development was frozen in 1991 and only bugfixes were made. Now in version 3.1415926, it gets closer to pi with every bugfix. Don Knuth wishes the version number to be pi when he dies.>{\TeX3}
 	\todraw*(tex)(tex3)
 
-	\tonode(eptex)(13,\layer)<No sure information found; a pTeX successor with eTeX extensions?>{e-p\TeX}
+	\tonode(eptex)(13,\layer)<No sure information found; a pTeX successor with eTeX extensions? As primary author, D. E. Knuth is given; latest Version (TeXlive 2011) is 3.1415926-p3.2-110415-2.3.>{e-p\TeX}
 	\todraw(ptex)(eptex)
 	
 	\steplayer[-2]
@@ -209,7 +207,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\steplayer[-2]
 	\tonode[\program](lua)(0,\layer)<A script language; has nothing to do with TeX.>{Lua}
 	
-	\tonode[\vip](luatex)(4,\layer)<luaTeX supports utf8, OpenType and many more things. TeX live 2010 ships version 0.60.2. luaTeX features an embedded scripting language, lua, making it easy to extend, so most of the programming can be done in lua instead of TeX-hackery.>{lua\TeX}
+	\tonode[\vip](luatex)(4,\layer)<luaTeX supports utf8, OpenType and many more things. TeX live 2011 ships version 0.70.1. luaTeX features an embedded scripting language, lua, making it easy to extend and to change the TeX interna, so most of the programming can be done in lua instead of TeX-hackery.>{lua\TeX}
 	\todraw(aleph)(luatex)
 	\todraw*(pdfetex)(luatex)
 	\todraw[dashed](lua)(luatex)
@@ -466,14 +464,18 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\todraw(tl2009)(tl2008)
 	\steplayer
 
-	\tonode(tl2010)(0,\layer)<Up to now, latest release of TeX live.>{\TeX\ live2010}
+	\tonode(tl2010)(0,\layer)<Release of 2010.>{\TeX\ live2010}
 	\todraw(tl2010)(tl2009)
 
 	\tonode(tlcontrib)(-5,\layer)<An extension of TeX live that contains packages that TeX live cannot hold because: not free, binary update, not on CTAN or intermediate release. Useable via the TeX live manager.>{TLContrib}
 	\todraw.(tl2010)(tlcontrib)
+	\steplayer
+
+	\tonode(tl2011)(0,\layer)<Up to now, latest release of TeX live. In pretest as of june 2011.>{\TeX\ live2011}
+	\todraw(tl2011)(tl2010)
 
 	\tonode(mactex)(5,\layer)<Once based on teTeX, MacTeX is now TeX live-based. For Mac OS X only, it provides a native installer, the TeXShop editor and Mac-specific tools.>{Mac\TeX}
-	\todraw(tl2010)(mactex)
+	\todraw(tl2011)(mactex)
 }
 
 \tograph(\tostruct(1)[MiK\TeX]{MiK\TeX}){
@@ -738,7 +740,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 
 \clearpage
 \section{List of Contributors}
-I have to thank some people for helping me to improve this document. Of course I thank all the people provinding the above-mentioned references.
+I have to thank some people for helping me to improve this document. Of course I thank all the people provinding the above-mentioned programs and references.
 
 \begin{itemize}
 \item Paul Isambert, for usefull discussions and testing.

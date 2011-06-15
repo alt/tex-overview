@@ -1,9 +1,9 @@
-%% This document is part of the package tex-overview and is only useable with the main file tex-overview.tex.
+%% This document is part of the document tex-overview. It only contains the formatting and definitions for typesetting.
 %% author: Arno Trautmann
 
 % !TeX root = tex-overview.tex
 %% (for the TeXworks-users.)
-
+\documentclass{scrartcl}
 \usepackage[svgnames]{xcolor}
 
 \usepackage{
@@ -14,10 +14,13 @@
   geometry,
   hyperref,
   multicol,
+  microtype,
   pdftexcmds,
   tikz,
   xparse
 }
+\microtypesetup{stretch=35} %% allow for a bit more expansion to improve typesetting of the columns.
+\frenchspacing
 
 %% for circumventing a bug in cooltooltips
 \makeatletter
@@ -34,8 +37,7 @@
 \hypersetup{
   colorlinks=true,
   linkcolor=blue,
-  urlcolor=blue,
-  pdfborder=0 0 0   %% don’t like these boxes
+  urlcolor=blue
 }
 
 %% page layout, headings
