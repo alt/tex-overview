@@ -27,7 +27,7 @@ In the tree views, every node has a tooltip that shows up when you hover the mou
 \tableofcontents
 
 
-\section{How to read this document}
+\section*{How to read this document}
 This document consists of several graphs showing the development of software more or less directly related to \TeX. The graphs try to show the time  development (downwards), as well as dependencies, changes, etc.
 
 I tried to make the graphs more readable by using colors for different categories. The decisions about what is important and what is “normal” reflect my personal opinion only.
@@ -53,22 +53,22 @@ I tried to make the graphs more readable by using colors for different categorie
 
 \end{description}
 
-Some graphs are quite complex, which is the reason why there are two versions of them: A short one mentioning only the most important things and a full version with everything I could find.
+Some of the graphs are quite complex, which is the reason why there are two versions of them: A short one mentioning only the most important things and a full version with everything I could find.
 
 In most cases I did not mention the authors of the programs/packages. This is not to diminish their effort but only for brevity (long names make things harder to read). I did not write any of the below-mentioned programs or packages. The authors are given in the documents linked in the references.
 
-\section{Engine, Format, Distribution}
+\section{The Difference Between Engine, Format and Distribution}
 There are three kinds of terms that are often confused especially by new users. This will try to explain them very shortly:
 \begin{description}
 \item[engine] This is the program that does all the actual work. The original program is \TeX, while lua\TeX\ is its latest successor.
-\item[format] A format is a (large) collection of abbreviations (macros) that make the life easy when working with \TeX. The most commonly used formats are \LaTeX, Con\TeX t and plain\TeX. The latter is a minimal set of macros provided by Don Knuth. Formats can be combined with different engines, exploiting the special abilities of these engines. A format is first a collection of text files, but can be compiled into a binary format that can be read in very fast by \TeX.
+\item[format] A format is a (large) collection of abbreviations (macros) that make the life easy when working with \TeX. The most commonly used formats are \LaTeX, Con\TeX t and plain\TeX. The latter one is a minimal set of macros provided by Don Knuth. Formats can be combined with different engines, exploiting the special abilities of these engines. A format is first a collection of text files, but can be compiled into a binary format that can be read in faster by the engine.
 \item[distribution] In addition to formats, a large set of additional files can be used to work with \TeX, called \emph{packages} for \LaTeX, \emph{modules} for Con\TeX t etc. To get all needed files in a convinient way, there are distributions that contain everything and are (or should be) easy to install. Examples are MiKTeX and \TeX~live.
 \end{description}
 
 \section{How to contribute}
-I hope one day this document would become the standard reference for questions like ”What program do I need for …?“, ”What's the difference between ...\TeX\ and ...\TeX?“, ”Why is it called …?“ etc.
+I hope one day this document would become the standard reference for questions like ”What program do I need for …?“, ”What's the difference between …\TeX\ and …\TeX?“, ”Why is it called …?“ etc.
 
-To get to this point, I need some help of people having read more documentation or even developed some of the programs mentioned here themselves. Special help is needed for:
+To get to this point, I need some help of people having read more documentation or even developed some of the programs mentioned here themselves. At the moment, special help is needed for:
 \begin{itemize}
 \item font technologies
 \item METAFONT and succesors
@@ -127,7 +127,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\todraw(tex)(jtex)
 
 	\steplayer[-1.5]
-	\tonode(ptex)(10,\layer)<Extension of Nihongo TeX to enable vertical typesetting. ("p" for "publishing")  Distributed as WEB change files. Primary author is D. E. Knuth, latest version (TeX live 2011) is pTeX 3.1415926-p3.2.>{p\TeX}
+	\tonode(ptex)(10,\layer)<Extension of Nihongo TeX to enable vertical typesetting. (“p” for “publishing”)  Distributed as WEB change files. Primary author is D. E. Knuth, latest version (TeX live 2011) is pTeX 3.1415926-p3.2.>{p\TeX}
 	\todraw(nihongo)(ptex)
 
 	\steplayer[-1.5]
@@ -147,7 +147,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\tonode(mltex)(8,\layer)<Extension to TeX (started 1990) that allows hyphenation of words with accented letters. (Therefore the name: MultiLingual TeX.) Distributed as a change file to the original WEB sources of TeX.>{ML\TeX}
 	\todraw(tex3)(mltex)
 	
-	\tonode[\experimental](uptex)(11,\layer)<Unicode-aware version of pTeX. ("Unicode-publishing"-TeX) Also modernized from TeX3.>{up\TeX}
+	\tonode[\experimental](uptex)(11,\layer)<Unicode-aware version of pTeX. (“Unicode-publishing”-TeX) Also modernized from TeX3.>{up\TeX}
 	\todraw(tex3)(uptex)
 	\todraw(ptex)(uptex)
 
@@ -280,7 +280,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 
 	\steplayer[+1]
 	\tonode(amslatex12)(6,\layer)<A port of version 1.1 to LaTeX 2e by Downes and Jones.>{\AMS\LaTeX 1.2}
-	\tonode[\experimental](alatex)(-4.2,\layer)<A slightly changed LaTeX format by Matt Swift to offer modularity at format level. Acts as normal LaTeX if not explicitly told to do different. "A" for "alternate", "abstract" or the indefinite article.>{A\LaTeX}
+	\tonode[\experimental](alatex)(-4.2,\layer)<A slightly changed LaTeX format by Matt Swift to offer modularity at format level. Acts as normal LaTeX if not explicitly told to do different. “A” for “alternate”, “abstract” or the indefinite article.>{A\LaTeX}
 	\todraw(amslatex11)(amslatex12)
 	\todraw(latex2ε)(amslatex12)
 	\todraw(latex2ε)(alatex)
@@ -290,7 +290,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\todraw(amslatex12)(amslatex21)
 	\steplayer[-1.5]
 
-	\tonode[\vip](pdflatex)(2,\layer)<The "standard LaTeX". If anyone talks about "LaTeX" it is nearly sure to be this package. pdfLaTeX2e produces PDF or DVI output.>{pdf\LaTeX}
+	\tonode[\vip](pdflatex)(2,\layer)<The “standard LaTeX”. If anyone talks about “LaTeX” it is nearly sure to be this package. pdfLaTeX2e produces PDF or DVI output.>{pdf\LaTeX}
 	\todraw*(latex2ε)(pdflatex)
 	
 	\tonode[\vip](xelatex)(5,\layer)<Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.>{\XeLaTeX}
@@ -332,7 +332,11 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 %%% CONTEXT %%%
 \clearpage
 \tograph*(\tostruct[\ConTeXt]{\ConTeXt: con\,tex\,t – text with tex}){
-	\tonode(pragmatex)(0,\layer)<Former name of ConTeXt.>{pragmatex}
+	\tonode(inrstex)(-3,\layer)<“Extended Plain TeX for use with MLTeX.”>{INRS\TeX}
+	\steplayer[-2]
+
+	\tonode(pragmatex)(0,\layer)<Former name of ConTeXt. Based, besides others, on INRSTeX.>{pragmatex}
+	\todraw(inrstex)(pragmatex)
 	\steplayer[-2]
 
 	\tonode(mki)(0,\layer)<Original ConTeXt with Dutch low level interface.>{\ConTeXt MkI}
@@ -343,7 +347,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\todraw(mki)(mkii)
 	\steplayer[-2]
 	
-	\tonode(mkiii)(4,\layer)<Reserved for future use for files supporting XeTeX. Was "skipped" for "practical reasons" (Hans Hagen)>{\ConTeXt\ MkIII}
+	\tonode(mkiii)(4,\layer)<Reserved for future use for files supporting XeTeX. Was “skipped” for “practical reasons” (Hans Hagen)>{\ConTeXt\ MkIII}
 	\todraw(mkii)(mkiii)
 	\steplayer[-2]
 	
@@ -360,7 +364,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\tonode(amstex20)(0,\layer)<A macro package provided by the American Mathematical Society. Version 2.0 from 1990. No information found for versions pre-2.0.>{\AMS-\TeX  2.0}
 	\steplayer[-1]
 
-	\tonode(lamstex)(5,\layer)<"LamSTeX{} is an extension of AmSTeX, and thus almost completely compatible with plain TeX", as the documentation says. See references for details.>{\LamSTeX  2.0}
+	\tonode(lamstex)(5,\layer)<“LamSTeX{} is an extension of AmSTeX, and thus almost completely compatible with plain TeX”, as the documentation says. See references for details.>{\LamSTeX  2.0}
 	\todraw(amstex20)(lamstex)
 	\steplayer[-1]
 
@@ -378,20 +382,27 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\tonode(jadetex)(0,0)<A macro package for processing Jade/OpenJade output.>{Jade\TeX}
 }
 
-%%% PHYS(E) %%%
-\tograph(\tostruct(1)[PHYS(E)]{PHYS(E)}){
-	\tonode(physe)(0,0)<Documentation says: "The TeX formats PHYSE and PHYS are extensions of the PLAIN format
-and should simplify the writing of physics papers." Latest version I found is from 1986. PHYS is for german, PHYSE for english usage.>{PHYS(E)}
-}
-
-%%% PHYZZX %%%
-\tograph(\tostruct(1)[PHYZZX]{PHYZZX}){
-	\tonode(phyzzx)(0,0)<Documentation says: "PHYZZX is a macropackage which is designed to make typing papers destined for Physical Review or Nuclear Physics as simple as possible." Created 1984, latest version I found is from 1988.>{PHYZZX}
+%%% Lollipop %%%
+\tograph(\tostruct(1)[Lollipop]{Lollipop}){
+	\tonode(lollipop09)(0,0)<First release, October 1992.>{Lollipop 0.9}
+	\steplayer
+	\tonode(lollipop095)(0,0)<Latest, unofficial, release, January 1993.>{Lollipop 0.95}
 }
 
 %%% MacroTeX %%%
 \tograph(\tostruct(1)[Macro\TeX]{Macro\TeX}){
 	\tonode(macrotex)(0,0)<Information needed.>{Macro\TeX}
+}
+
+%%% PHYS(E) %%%
+\tograph(\tostruct(1)[PHYS(E)]{PHYS(E)}){
+	\tonode(physe)(0,0)<Documentation says: “The TeX formats PHYSE and PHYS are extensions of the PLAIN format
+and should simplify the writing of physics papers.” Latest version I found is from 1986. PHYS is for german, PHYSE for english usage.>{PHYS(E)}
+}
+
+%%% PHYZZX %%%
+\tograph(\tostruct(1)[PHYZZX]{PHYZZX}){
+	\tonode(phyzzx)(0,0)<Documentation says: “PHYZZX is a macropackage which is designed to make typing papers destined for Physical Review or Nuclear Physics as simple as possible.” Created 1984, latest version I found is from 1988.>{PHYZZX}
 }
 
 %%% StarTeX %%%
@@ -411,7 +422,7 @@ and should simplify the writing of physics papers." Latest version I found is fr
 
 %%% YTeX %%%
 \tograph(\tostruct(1)[Y\TeX]{Y\TeX}[\experimental]){
-	\tonode(ytex)(0,0)<A macro package developed at MIT. Pronounced "why-TeX", "upsilon-TeX" or "oops-TeX". Tries to offer an easy structure for novices as well as a powerfull macro libraries for experienced users.>{Y\TeX}
+	\tonode(ytex)(0,0)<A macro package developed at MIT. Pronounced “why-TeX”, “upsilon-TeX” or “oops-TeX”. Tries to offer an easy structure for novices as well as a powerfull macro libraries for experienced users.>{Y\TeX}
 }
 
 \clearpage
@@ -446,7 +457,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\tonode[\histdistro](xemtex)(4,\layer)<A TeX distribution for Windows, based on fpTeX with XEmacs/AucTeX as IDE for (La)TeX. XemTeX was sponsored by the French government.>{XEm\TeX}
 	\todraw(xemtex)(fptex)
 
-	\tonode[\histdistro](tlpre2008)(0,\layer)<First version 1996 (UNIX only, later also Windows binaries), and then a long story of ongoing work -- see the documentation for a detailed history. Some of the binaries (still) identify themselfes as *TeXk. The "k" stands for "Karl" meaning that they were compiled with kpathsea.>{\TeX\ live 1996 – 2007}
+	\tonode[\histdistro](tlpre2008)(0,\layer)<First version 1996 (UNIX only, later also Windows binaries), and then a long story of ongoing work – see the documentation for a detailed history. Some of the binaries (still) identify themselfes as *TeXk. The “k” stands for “Karl” meaning that they were compiled with kpathsea.>{\TeX\ live 1996\,–\,2007}
 	\todraw(tetex)(tlpre2008)
 	\todraw(4alltexcd)(tlpre2008)
 	\todraw.(web2c)(tlpre2008)
@@ -479,7 +490,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 }
 
 \tograph(\tostruct(1)[MiK\TeX]{MiK\TeX}){
-	\tonode(mt)(0,\layer)<MiKTeX is a TeX distribution originally for Windows only. Copyright by Christian Schenk goes back to 2001. Regarding the name, the author stated: "mik used to be my login name. It is an acronym for: Micro-kid. Hence the capital K in MiKTeX.">{MiK\TeX}
+	\tonode(mt)(0,\layer)<MiKTeX is a TeX distribution originally for Windows only. Copyright by Christian Schenk goes back to 2001. Regarding the name, the author stated: “mik used to be my login name. It is an acronym for: Micro-kid. Hence the capital K in MiKTeX.”>{MiK\TeX}
 	\steplayer
 
 	\tonode(mt26)(0,\layer)<Windows only. featuring  pdftex 1.40.4, mpost 1.000>{MiK\TeX\ 2.6}
@@ -528,12 +539,22 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\tonode[\histdistro](ntex)(0,\layer)<A distribution for Linux and other Unix systems. Latest version is 2.3.2, released at 23-Aug-1998. No longer developed.>{N\TeX}
 }
 
+\ExplSyntaxOn
+  \dim_set:Nn\pdfpagewidth{13cm}       %% make a smaller paper so the header won’t feel so alone on the big, cold paper
+  \dim_set:Nn\pdfpageheight{6cm}
+\newgeometry{left=1cm,top=1cm,width=11cm}
+\ExplSyntaxOff
 \newpage
 \tostruct[Pandora's Box]{Pandora's Box}
 \parbox{\textwidth}{\normalsize
 The following pages will be a hodge-podge of many things that are related to \TeX\ and used in the process of generating documents in different file formats, i.\,e. conversion tools, bibliography tools etc. Feel free to contribute, I'll choose case-by-case if I'll add something or won't include it. Text editors or viewers will \emph{not} be included!
 }
-\newpage
+  \restoregeometry
+\ExplSyntaxOn
+  \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
+  \dim_set:Nn\pdfpageheight{29.7cm}
+\ExplSyntaxOff
+
 %%% META* %%%
 \tograph(\tostruct(1)[META*]{META*}[\program]){
 	\tonode(metafont)(0,\layer)<The program for creating the fonts originally used by TeX.>{METAFONT}
@@ -545,16 +566,16 @@ The following pages will be a hodge-podge of many things that are related to \Te
 	\tonode(metatype1)(-3,\layer)<A program to produce Type1 fonts from metafont source code.>{MetaType1}
 	\todraw(metatype1)(metafont)
 
-	\tonode(metapost)(0,\layer)<A graphic generating program written by John Hobby, inspired by METAFONT. MetaPost can produce PostScript graphics as well as SVG.>{MetaPost}
+	\tonode(metapost)(0,\layer)<A graphic generating program written by John Hobby, inspired by METAFONT. MetaPost can produce PostScript graphics as well as SVG. Latest (experimental) version is 1.750 as of spring 2011.>{MetaPost}
 	\todraw(metapost)(metafont)
 	\steplayer[-3]
 
-	\tonode[\experimental](megapost)(0,\layer)<A planned extension of MetaPost "that will extend the range
-and precision of the internal data types.">{MegaPost}
+	\tonode[\experimental](megapost)(0,\layer)<A planned extension of MetaPost “that will extend the range
+and precision of the internal data types.”>{MegaPost}
 	\todraw(metapost)(megapost)
 
 	\tonode[\normalimportant]%% to indicate that it is a format rather than a program …
-			(metafun)(3,\layer)<"MetaFun is Hans Hagen's extension to (or module for) the MetaPost language." It is a format for MetaPost.>{MetaFun}
+			(metafun)(3,\layer)<“MetaFun is Hans Hagen's extension to (or module for) the MetaPost language.” It is a format for MetaPost.>{MetaFun}
 	\todraw(metafun)(metapost)
 }
 
@@ -563,14 +584,14 @@ and precision of the internal data types.">{MegaPost}
 	\tonode(bibtex)(0,0)<A helper program to sort a bibliography list.>{\BibTeX}
 	\steplayer[-1]
 
-	\tonode(nbibtex)(4,\layer)<"NbibTeX helps authors take better advantage of BibTeX data" says the homepage.>{NbibTeX}
+	\tonode(nbibtex)(4,\layer)<“NbibTeX helps authors take better advantage of BibTeX data” says the homepage.>{NbibTeX}
 	\todraw(nbibtex)(bibtex)
 	\steplayer[-0.5]
 
-	\tonode(bibtex8)(0,\layer)<The documentation says: "An 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity">{\BibTeX8}
+	\tonode(bibtex8)(0,\layer)<The documentation says: “An 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity”>{\BibTeX8}
 	\todraw(bibtex8)(bibtex)
 
-	\tonode(mlbibtex)(-4,\layer)<Mentioned in the kpathsea-manual. No idea what it is -- BibTeX for MLTeX?>{MlBibTeX}
+	\tonode(mlbibtex)(-4,\layer)<Mentioned in the kpathsea-manual. No idea what it is – BibTeX for MLTeX?>{MlBibTeX}
 	\todraw(mlbibtex)(bibtex)
 	\steplayer
 	
@@ -584,7 +605,7 @@ and precision of the internal data types.">{MegaPost}
 	\todraw(pybtex)(bibtexu)
 	\steplayer
 	
-	\tonode(biber)(0,\layer)<A perl implementation of a BibTeX-like program, designed as backend for BibLaTeX. "biber" is an animal handling bibliographies. (german for "beaver", hence the beaver in the biber logo)>{biber}
+	\tonode(biber)(0,\layer)<A perl implementation of a BibTeX-like program, designed as backend for BibLaTeX. “biber” is an animal handling bibliographies. (german for “beaver”, hence the beaver in the biber logo)>{biber}
 	\todraw(bibtexu)(biber)
 	
 	\tonode[\package](biblatex)(3,\layer)<A LaTeX package as frontend for biber (can also be used with BibTeXu/8).>{Bib\LaTeX}
@@ -625,7 +646,7 @@ This section tries to cover the development of fonts – the most important thin
 	\todraw(freetype)(truetype)
 	\steplayer[-3]
 
-	\tonode(gx)(6,\layer)<"Graphis eXtension". A font format only available for Mac OS.>{TrueType GX}
+	\tonode(gx)(6,\layer)<“Graphis eXtension”. A font format only available for Mac OS.>{TrueType GX}
 	\todraw(truetype)(gx)
 	\steplayer[-3]
 
@@ -633,7 +654,7 @@ This section tries to cover the development of fonts – the most important thin
 	\todraw(truetype)(opentype)
 	\todraw(type1)(opentype)
 
-	\tonode(aat)(6,\layer)<"Apple Advanced Typography" fonts are succesors of the GX fonts. Only available for Mac OS, too.>{AAT}
+	\tonode(aat)(6,\layer)<“Apple Advanced Typography” fonts are succesors of the GX fonts. Only available for Mac OS, too.>{AAT}
 	\todraw(aat)(gx)
 }
 
@@ -654,7 +675,7 @@ This section tries to cover the development of fonts – the most important thin
 \topart{Appendix}
 
 %%
-%% I've chosen to typeset the bibliography "by hand" for full control of formatting and behaviour. Also, I can choose my own syntax ☺
+%% I've chosen to typeset the bibliography “by hand” for full control of formatting and behaviour. Also, I can choose my own syntax ☺
 %%
 \tostruct{References}
 \label{sec:refs}
@@ -668,15 +689,16 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	  J.~Schrod. \textit{The \LaTeX\ companion.} \\ Addison-Wesley, 2004.}
 
 	\tobibsection{Overview Articles}
-	\tobib{Arthur Reutenauer. A Brief History of \TeX. Talk at EuroBacho\TeX\ 2007.}%
+	\tobib{Arthur Reutenauer. \textit{A Brief History of \TeX}. Talk at EuroBacho\TeX\ 2007.}%
 	  <http://www.gust.org.pl/bachotex/EuroBachoTeX2007/presentations/bhot.pdf/view>
-	\tobib{A Brief History of \LaTeX}<http://www.xent.com/FoRK-archive/feb98/0307.html>
+	\tobib{\textit{A Brief History of \LaTeX}}<http://www.xent.com/FoRK-archive/feb98/0307.html>
+	\tobib{Hans Hagen: \textit{16 years of Con\TeX t}. Article in TUGboat Vol. 32, Number 1, 2011.}
 	\tobib{Short Article About Omega And Aleph}<http://www.tex.ac.uk/cgi-bin/texfaq2html?label=omegaleph>
 	\tobib{Interviews with Will Robertson, Hans Hagen et.\,al.}<http://www.tug.org/interviews>
 	
 	\tobibsection{Archives}
-	\tobib{CTAN – Comprehensive TeX Archive Network:}<http://www.ctan.org>
-	\tobib{Historic Archive of TeX Distributions:}<ftp://ftp.tug.org/historic>
+	\tobib{CTAN – Comprehensive \TeX\ Archive Network:}<http://www.ctan.org>
+	\tobib{Historic Archive of \TeX\ Distributions:}<ftp://ftp.tug.org/historic>
 
 	\tobibsection{Engines}
 	\tobib{ANT project page}<http://ant.berlios.de>
@@ -702,13 +724,14 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{\LaTeX3 project}<http://www.latex-project.org/latex3.html>
 	\tobib{\ConTeXt\ wiki}<http://wiki.contextgarden.net>
 	\tobib{A\LaTeX: Discussion in TUGboat Vol. 16 (1995), No. 3, p. 269ff.}<http://www.tug.org/TUGboat/Articles/tb16-3/tb48swif.pdf>
-	\tobib{\AMS-\TeX\ on CTAN}<http://www.ctan.org/tex-archive/macros/amstex/>
+	\tobib{\AMS-\TeX\ on CTAN}<http://www.ctan.org/tex-archive/macros/amstex>
+	\tobib{INRS\TeX\ on CTAN}<http://www.ctan.org/tex-archive/macros/inrstex>
 	\tobib{L\AMS\TeX: Short description}<http://www.tex.ac.uk/tex-archive/digests/texline/no13/lamstex>
-	\tobib{Jade\TeX\ project page}<http://jadetex.sourceforge.net/>
+	\tobib{Jade\TeX\ project page}<http://jadetex.sourceforge.net>
 	\tobib{PHYSE and PHYS on CTAN}<http://ctan.org/tex-archive/macros/physe>
 	\tobib{PHYZZX on CTAN}<http://ctan.org/tex-archive/macros/phyzzx>
 	\tobib{Star\TeX\ on CTAN}<http://www.ctan.org/tex-archive/macros/startex>
-	\tobib{Texinfo project page}<http://www.gnu.org/software/texinfo/>
+	\tobib{Texinfo project page}<http://www.gnu.org/software/texinfo>
 	\tobib{XML\TeX\ manual}<http://www.dcarlisle.demon.co.uk/xmltex/manual.html>
 	\tobib{Y\TeX\ on CTAN}<http://tug.ctan.org/tex-archive/macros/ytex>
 
@@ -721,13 +744,13 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{Mac\TeX\ project page}<http://www.tug.org/mactex>
 	\tobib{MiKTeX project page}<http://miktex.org/>
 	\tobib{Christian Schenk about the name of MiKTeX (mailing list archive)}<http://sourceforge.net/mailarchive/message.php?msg_id=26826076>
-	\tobib{Pro\TeX t project page}<http://www.tug.org/protext/>
-	\tobib{\TeX Collection page}<http://www.tug.org/texcollection/>
+	\tobib{Pro\TeX t project page}<http://www.tug.org/protext>
+	\tobib{\TeX Collection page}<http://www.tug.org/texcollection>
 	\tobib{Con\TeX t minimals on Con\TeX t garden wiki}<http://wiki.contextgarden.net/ConTeXt_Minimals>
 	\tobib{Win32 project page}<http://w32tex.org/>
-	\tobib{Oz\TeX\ project page}<http://www.trevorrow.com/oztex/>
+	\tobib{Oz\TeX\ project page}<http://www.trevorrow.com/oztex>
 	\tobib{\TeX\ on Amiga}<http://serpens.de/~zza/amigafaq/AmigaFAQg_49.html>
-	\tobib{N\TeX\ project page}<http://www.langbein.org/software/ntex/>
+	\tobib{N\TeX\ project page}<http://www.langbein.org/software/ntex>
 
 	\tobibsection{Fonts}
 	\tobib{Type1 Fonts specifications}<http://partners.adobe.com/public/developer/en/font/T1_SPEC.PDF>

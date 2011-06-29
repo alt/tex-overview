@@ -19,6 +19,11 @@
   tikz,
   xparse
 }
+\makeatletter
+\def\l@section#1#2{ % this is not neat, but seemingly the only way to reduce the space between sections in toc.
+\ifnum \c@tocdepth >\z@ \ifnum \lastpenalty <20009 \addpenalty {\@secpenalty }\fi \addvspace {.3em \@plus \p@ }\setlength \@tempdima {1.5em}\if@tocleft \ifx \toc@l@number \@empty \else \setlength \@tempdima {0\toc@l@number }\fi \fi \begingroup \raggedsectionentry \parindent \z@ \advance \rightskip \@pnumwidth \parfillskip -\@pnumwidth \interlinepenalty \@M \leavevmode \advance \leftskip \@tempdima \null \nobreak \hskip -\leftskip \usekomafont {sectionentry}{#1\nobreak \usekomafont {sectionentrypagenumber}{\hfill \nobreak \hb@xt@ \@pnumwidth {\hss #2}}}\par \endgroup \ifnum \scr@compatibility >\@nameuse {scr@v@2.96}\relax \penalty 20008 \fi \fi 
+}
+
 \microtypesetup{stretch=35} %% allow for a bit more expansion to improve typesetting of the columns.
 \frenchspacing
 
@@ -35,6 +40,7 @@
 
 %% setup the style of hyperlinks.
 \hypersetup{
+  unicode=true,
   colorlinks=true,
   linkcolor=blue,
   urlcolor=blue
