@@ -221,12 +221,12 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 %%% plain TeX %%%
 \tograph(\tostruct[plain\TeX]{plain\TeX\ – the first format}){
 	\tonode(plaintex)(0,\layer)<The basic format offered by Don Knuth to provide a minimal set of macros to work with.>{plain\TeX}
-
 \steplayer[-2]
 
-	\tonode(eplain)(0,\layer)<Extensions of plainTeX to provide often-used utilities. Not thought for document preparation as LaTex is. First version that is still available is 2.1 from 1992. Latest version 3.4 is from 2 2010 and based on pdfTeX..>{eplain}
-
-\todraw(plaintex)(eplain)
+	\tonode(ecplain)(-2,\layer)<A plainTeX using EC fonts. Latest changes in May 2002 for pdfTeX.>{ec-plain}
+	\tonode(eplain)(2,\layer)<Extensions of plainTeX to provide often-used utilities. Not thought for document preparation as LaTex is. First version that is still available is 2.1 from 1992. Latest version 3.4 is from 2 2010 and based on pdfTeX.>{eplain}
+	\todraw(plaintex)(ecplain)
+	\todraw(plaintex)(eplain)
 }
 \clearpage
 
@@ -375,6 +375,16 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 
 	\tonode(amstex22)(0,\layer)< Latest version is 2.2 from 2001.>{\AMS-\TeX 2.2}
 	\todraw(amstex21)(amstex22)
+}
+
+%%% BLUe' Format %%%
+\tograph(\tostruct(1)[BLUe]{BLUe}){
+	\tonode(blue)(0,0)<A macro package based on plainTeX. Shareware, last version on CTAN from June 1996.>{BLUe}
+}
+
+%%% HP TeX %%%
+\tograph(\tostruct(1)[HP\TeX]{HP\TeX}){
+	\tonode(hptex)(0,0)<A format specially written for HP hardware, written 1984.>{HP \TeX}
 }
 
 %%% JadeTeX %%%
@@ -539,6 +549,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\tonode[\histdistro](ntex)(0,\layer)<A distribution for Linux and other Unix systems. Latest version is 2.3.2, released at 23-Aug-1998. No longer developed.>{N\TeX}
 }
 
+\newpage
 \ExplSyntaxOn
   \dim_set:Nn\pdfpagewidth{13cm}       %% make a smaller paper so the header won’t feel so alone on the big, cold paper
   \dim_set:Nn\pdfpageheight{6cm}
@@ -718,15 +729,18 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	
 	\tobibsection{Formats}
 	\tobib{Eplain homepage}<http://www.tug.org/eplain/>
+	\tobib{EC plain on CTAN}<http://www.ctan.org/tex-archive/macros/ec-plain>
 	\tobib{\LaTeX\ project page}<http://www.latex-project.org>
 	\tobib{\AMS\LaTeX: Documentation on CTAN}<http://www.ctan.org/tex-archive/macros/amstex/doc/>
 	\tobib{\LaTeX2.2 – mail from Philipp Stephani on luaLaTeX-dev list (last paragraph)}<http://tug.org/pipermail/lualatex-dev/2011-January/001033.html>
 	\tobib{\LaTeX3 project}<http://www.latex-project.org/latex3.html>
 	\tobib{\ConTeXt\ wiki}<http://wiki.contextgarden.net>
 	\tobib{A\LaTeX: Discussion in TUGboat Vol. 16 (1995), No. 3, p. 269ff.}<http://www.tug.org/TUGboat/Articles/tb16-3/tb48swif.pdf>
+	\tobib{BLUe on CTAN}<http://www.ctan.org/tex-archive/macros/blu>
 	\tobib{\AMS-\TeX\ on CTAN}<http://www.ctan.org/tex-archive/macros/amstex>
 	\tobib{INRS\TeX\ on CTAN}<http://www.ctan.org/tex-archive/macros/inrstex>
 	\tobib{L\AMS\TeX: Short description}<http://www.tex.ac.uk/tex-archive/digests/texline/no13/lamstex>
+	\tobib{HP \TeX\ on CTAN}<http://www.ctan.org/tex-archive/macros/hptex>
 	\tobib{Jade\TeX\ project page}<http://jadetex.sourceforge.net>
 	\tobib{PHYSE and PHYS on CTAN}<http://ctan.org/tex-archive/macros/physe>
 	\tobib{PHYZZX on CTAN}<http://ctan.org/tex-archive/macros/phyzzx>
