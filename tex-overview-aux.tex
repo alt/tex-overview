@@ -1,4 +1,4 @@
-%% This document is part of the document tex-overview. It only contains the formatting and definitions for typesetting.
+%% This document is part of the document tex-overview. It contains the formatting and definitions for typesetting. Please do *not* consider anything here as an example of good TeX coding style. It is not.
 %% author: Arno Trautmann
 
 % !TeX root = tex-overview.tex
@@ -9,7 +9,7 @@
 \usepackage{
   bookmark,
   cooltooltips,
-  dtklogos,  %% for \NTS etc.
+  dtklogos,  %% for \NTS etc. ⇒  what about metalogo?
   fontspec,
   geometry,
   hyperref,
@@ -20,7 +20,7 @@
   xparse
 }
 \makeatletter
-\def\l@section#1#2{ % this is not neat, but seemingly the only way to reduce the space between sections in toc.
+\def\l@section#1#2{ % this is not neat, but seemingly the only way to reduce the space between sections in toc. % Actually, it's a good reason to think about a plain TeX solution for this package …
 \ifnum \c@tocdepth >\z@ \ifnum \lastpenalty <20009 \addpenalty {\@secpenalty }\fi \addvspace {.3em \@plus \p@ }\setlength \@tempdima {1.5em}\if@tocleft \ifx \toc@l@number \@empty \else \setlength \@tempdima {0\toc@l@number }\fi \fi \begingroup \raggedsectionentry \parindent \z@ \advance \rightskip \@pnumwidth \parfillskip -\@pnumwidth \interlinepenalty \@M \leavevmode \advance \leftskip \@tempdima \null \nobreak \hskip -\leftskip \usekomafont {sectionentry}{#1\nobreak \usekomafont {sectionentrypagenumber}{\hfill \nobreak \hb@xt@ \@pnumwidth {\hss #2}}}\par \endgroup \ifnum \scr@compatibility >\@nameuse {scr@v@2.96}\relax \penalty 20008 \fi \fi 
 }
 
