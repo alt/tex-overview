@@ -60,15 +60,15 @@ In most cases I did not mention the authors of the programs/packages. This is no
 \section{The Difference Between Engine, Format and Distribution}
 There are three kinds of terms that are often confused especially by new users. This will try to explain them very shortly:
 \begin{description}
-\item[engine] This is the program that does all the actual work. The original program is \TeX, while lua\TeX\ is its latest successor.
+\item[engine] This is the program that does all the actual work. The original program is \TeX, a famous development is pdf\TeX, while lua\TeX\ is the latest successor.
 \item[format] A format is a (large) collection of abbreviations (macros) that make the life easy when working with \TeX. The most commonly used formats are \LaTeX, Con\TeX t and plain\TeX. The latter one is a minimal set of macros provided by Don Knuth. Formats can be combined with different engines, exploiting the special abilities of these engines. A format is first a collection of text files, but can be compiled into a binary format that can be read in faster by the engine.
-\item[distribution] In addition to formats, a large set of additional files can be used to work with \TeX, called \emph{packages} for \LaTeX, \emph{modules} for Con\TeX t etc. To get all needed files in a convinient way, there are distributions that contain everything and are (or should be) easy to install. Examples are MiKTeX and \TeX~live.
+\item[distribution] In addition to formats, a large set of suppelmentary files can be used to work with \TeX, called \emph{packages} for \LaTeX, \emph{modules} for Con\TeX t etc. To get all needed files in a convinient way, there are distributions that contain everything and are (or should be) easy to install. Examples are MiKTeX and \TeX~live.
 \end{description}
 
 \section{How to contribute}
 I hope one day this document would become the standard reference for questions like ”What program do I need for …?“, ”What's the difference between …\TeX\ and …\TeX?“, ”Why is it called …?“ etc.
 
-To get to this point, I need some help of people having read more documentation or even developed some of the programs mentioned here themselves. At the moment, special help is needed for:
+To get to this point, I need some help of people who know more about the \TeX\ world than I do. At the moment, special help is needed for:
 \begin{itemize}
 \item font technologies
 \item METAFONT and succesors
@@ -537,10 +537,13 @@ This section will feature the main distributions of \TeX\ and related programs. 
 
 \tograph(\tostruct(1)[Con\TeX t minimals]{Con\TeX t minimals}){
 	\tonode(minimals)(0,\layer)<ConTeXt minimals provides a distribution of latest (beta and stable) ConTeXt versions with binaries and formats. Efficient upgrading is possible as well as parallel use with another TeX distribution.>{Con\TeX t minimals}
+	\steplayer
+	\tonode(standalone)(0,\layer)<Renaming of minimals in 2011.>{Con\TeX t standalone}
+	\todraw(minimals)(standalone)
 }
 
 \tograph(\tostruct(1)[W32\TeX]{W32\TeX}){
-	\tonode(w32tex)(0,\layer)<A distributon to provide binaries for MS Windows, with special support for Japanese. First version (up to the changelog): 2009/08/02. Still highly up-to-date.>{W32\TeX}
+	\tonode(w32tex)(0,\layer)<A distributon to provide binaries for MS Windows, with special support for Japanese. First version (up to the changelog): 2009/08/02. Still up-to-date.>{W32\TeX}
 }
 
 \tograph(\tostruct(1)[OzTeX]{OzTeX}){
