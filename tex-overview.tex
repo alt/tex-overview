@@ -1,9 +1,9 @@
-%% Engine needed: luaTeX ≥ 0.65
+%% Engine needed: LuaTeX ≥ 0.65
 %% Format needed: LaTeX2ε
 %% Packages needed: see list in the -aux.tex file …
-%% use an up-to-date TeX live2010 (with tl-contrib updates)
+%% use an up-to-date TeX live2011 (with tl-contrib updates)
 
-% this document has version number 0.1d-ish.
+% this document has version number 0.1f-ish.
 \input{tex-overview-aux} %% everything that is not content-related
 
 \begin{document}
@@ -60,7 +60,7 @@ In most cases I did not mention the authors of the programs/packages. This is no
 \section{The Difference Between Engine, Format and Distribution}
 There are three kinds of terms that are often confused especially by new users. This will try to explain them very shortly:
 \begin{description}
-\item[engine] This is the program that does all the actual work. The original program is \TeX, a famous development is pdf\TeX, while lua\TeX\ is the latest successor.
+\item[engine] This is the program that does all the actual work. The original program is \TeX, a famous development is pdf\TeX, while Lua\TeX\ is the latest successor.
 \item[format] A format is a (large) collection of abbreviations (macros) that make the life easy when working with \TeX. The most commonly used formats are \LaTeX, Con\TeX t and plain\TeX. The latter one is a minimal set of macros provided by Don Knuth. Formats can be combined with different engines, exploiting the special abilities of these engines. A format is first a collection of text files, but can be compiled into a binary format that can be read in faster by the engine.
 \item[distribution] In addition to formats, a large set of suppelmentary files can be used to work with \TeX, called \emph{packages} for \LaTeX, \emph{modules} for Con\TeX t etc. To get all needed files in a convinient way, there are distributions that contain everything and are (or should be) easy to install. Examples are MiKTeX and \TeX~live.
 \end{description}
@@ -96,7 +96,7 @@ As this document makes heavy use of PDF-features, some PDF viewers are not able 
 \end{description}
 
 \subsection*{About this document}
-This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ format with \verb|expl3| and \verb|xpackages| based on lua\TeX\ 0.\the\luatexversion.\luatexrevision.
+This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ format with \verb|expl3| and \verb|xpackages| based on Lua\TeX\ 0.\the\luatexversion.\luatexrevision.
 
 \addtocontents{toc}{\string\begin{multicols}{2}}
 
@@ -175,7 +175,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\todraw(tex3)(nts)
 	
 	\steplayer[-2]
-	\tonode[\experimental](omega2)(0,\layer)<A short-time try to pick up the development of Omega again in 2006. Seemed more like a good plan and is now regarded as obsolete. luaTeX is kind of a successor.>{$\Omega_2$}
+	\tonode[\experimental](omega2)(0,\layer)<A short-time try to pick up the development of Omega again in 2006. Seemed more like a good plan and is now regarded as obsolete. LuaTeX is kind of a successor.>{$\Omega_2$}
 	\todraw(omega)(omega2)
 	
 	\tonode[\experimental](vtex)(3.6,\layer)<VTeX (VisualTeX) can produce PDF, HTML, SVG, DVI or ps output directly from input. In contrast to pdfTeX, it includes a full PostScript interpreter, thus capable to include EPS figures, PStricks etc. First official version I found: February 15, 1999: VTeX 6.3; last official version seems to be from Oct 1, 2005: VTeX 8.61. Commercial product.>{V\TeX}
@@ -186,7 +186,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\todraw(omega)(aleph)
 	\todraw(etex)(aleph)
 	
-	\tonode[\vip](XeTeX)(8,\layer)<This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. Unicode encoding is fully supported (utf8 as native encoding). XeTeX also features support for OpenType, AAT, TrueType and Graphite-fonts (via the operation system). In contrary to pdfTeX or luaTeX, no external configuration file is needed to use fonts. In newest versions, character protrusion is possible.>{\XeTeX}
+	\tonode[\vip](XeTeX)(8,\layer)<This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. Unicode encoding is fully supported (utf8 as native encoding). XeTeX also features support for OpenType, AAT, TrueType and Graphite-fonts (via the operation system). In contrary to pdfTeX or LuaTeX, no external configuration file is needed to use fonts. In newest versions, character protrusion is possible.>{\XeTeX}
 	\todraw(texgx)(XeTeX)
 	\todraw*(etex)(XeTeX)
 	
@@ -201,13 +201,13 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\todraw*(pdftex)(pdfetex)
 	
 	\steplayer[-2]
-	\tonode[\experimental](eetex)(6,\layer)<Experimental extension to pdfeTeX by Taco Hoekwater, created 2000. Distributed as change file. Now dead due to his development of luaTeX.>{ee\TeX}
+	\tonode[\experimental](eetex)(6,\layer)<Experimental extension to pdfeTeX by Taco Hoekwater, created 2000. Distributed as change file. Now dead due to his development of LuaTeX.>{ee\TeX}
 	\todraw(pdfetex)(eetex)
 	
 	\steplayer[-2]
 	\tonode[\program](lua)(0,\layer)<A script language; has nothing to do with TeX.>{Lua}
 	
-	\tonode[\vip](luatex)(4,\layer)<luaTeX supports utf8, OpenType and many more things. TeX live 2011 ships version 0.70.1. luaTeX features an embedded scripting language, lua, making it easy to extend and to change the TeX interna, so most of the programming can be done in lua instead of TeX-hackery.>{lua\TeX}
+	\tonode[\vip](luatex)(4,\layer)<LuaTeX supports utf8, OpenType and many more things. TeX live 2011 ships version 0.70.1. LuaTeX features an embedded scripting language, Lua, making it easy to extend and to change the TeX interna, so most of the programming can be done in Lua instead of TeX-hackery.>{Lua\TeX}
 	\todraw(aleph)(luatex)
 	\todraw*(pdfetex)(luatex)
 	\todraw[dashed](lua)(luatex)
@@ -299,7 +299,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\tonode(platex)(-4.6,\layer)<A LaTeX based format for the pTeX engine.>{p\LaTeX}
 	\todraw(latex2ε)(platex)
 	
-	\tonode[\vip](lualatex)(-1.8,\layer)<LaTeX based on luaTeX with PDF (standard) or DVI (dviLuaLaTeX) output. LaTeX support for luaTeX is under heavy development to make this machine usable with the format. Work in progress, but already well useable! (This document is processed with luaLaTeX2e.)>{Lua\LaTeX}
+	\tonode[\vip](lualatex)(-1.8,\layer)<LaTeX based on LuaTeX with PDF (standard) or DVI (dvilualatex) output. LaTeX support for LuaTeX is under heavy development to make this machine usable with the format. Work in progress, but already well useable! (This document is processed with LuaLaTeX2e.)>{Lua\LaTeX}
 	\todraw*(latex2ε)(lualatex)
 	\steplayer[-1.5]
 
@@ -308,13 +308,13 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\tonode[\package](xpackages)(4.5,\layer)<The xpackages are a bundle of packages intended to become the ground stock of packages for the high-levle and user-level interface in LaTeX3. Based on expl3, they can be used with LaTeX2e already.>{xpackages}
 	\steplayer[-1.5]
 
-	\tonode[\planned](latex2x)(0,\layer)<A (somewhat) planned experimental step towards LaTeX3. LaTeX2x is a normal LaTeX2e, but with expl3 and xpackages compiled in the format. It is *not* intended for everyday use but only for experimenting with LaTeX3. Might be concentrated on luaTeX, but XeTeX and pdfTeX variants will be available.>{\LaTeX2x}
+	\tonode[\planned](latex2x)(0,\layer)<A (somewhat) planned experimental step towards LaTeX3. LaTeX2x is a normal LaTeX2e, but with expl3 and xpackages compiled in the format. It is *not* intended for everyday use but only for experimenting with LaTeX3. Might be concentrated on LuaTeX, but XeTeX and pdfTeX variants will be available.>{\LaTeX2x}
 	\todraw(latex2x)(latex2ε)
 	\todraw(latex2x)(expl3)
 	\todraw(latex2x)(xpackages)
 	\steplayer[-2]
 
-	\tonode[\planned](latex22)(0,\layer)<Inofficial suggestion by Philipp Stephani on the luaLaTeX list. LaTex2.2 should still be a full LaTeX2e, but with the expl3 bundle in the format. In fact, this is what LaTeX2x is planned to be.>{\LaTeX2.2}
+	\tonode[\planned](latex22)(0,\layer)<Inofficial suggestion by Philipp Stephani on the LuaLaTeX list. LaTex2.2 should still be a full LaTeX2e, but with the expl3 bundle in the format. In fact, this is what LaTeX2x is planned to be.>{\LaTeX2.2}
 	\todraw(latex2x)(latex22)
 	\steplayer[-2]
 
@@ -322,7 +322,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\todraw(latex22)(latex25)
 	
 	\steplayer[-3]
-	\tonode[\planned](latex3)(0,\layer)<The long-time successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. (Almost done by now.) The expl3-package provides an implementation that can be used on top of LaTeX2e. Several LaTeX packages already make heavy use of expl3. (As does this document.) LaTeX3 makes use of eTeX primitives and therefore needs this engine or successors. Special adaptions of luaTeX features are starting to evolve.>{\LaTeX{}3}
+	\tonode[\planned](latex3)(0,\layer)<The long-time successor of LaTeX2e. It is planned to implement a very elaborate low-level programming language. (Almost done by now.) The expl3-package provides an implementation that can be used on top of LaTeX2e. Several LaTeX packages already make heavy use of expl3. (As does this document.) LaTeX3 makes use of eTeX primitives and therefore needs this engine or successors. Special adaptions of LuaTeX features are starting to evolve.>{\LaTeX{}3}
 	\todraw(latex25)(latex3)
 
 	\steplayer[-3]
@@ -351,7 +351,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\todraw(mkii)(mkiii)
 	\steplayer[-2]
 	
-	\tonode[\vip](mkiv)(0,\layer)<Specially designed for luaTeX.>{\ConTeXt MkIV}
+	\tonode[\vip](mkiv)(0,\layer)<Specially designed for LuaTeX.>{\ConTeXt MkIV}
 	\todraw*(mkii)(mkiv)
 }
 
@@ -427,7 +427,7 @@ and should simplify the writing of physics papers.” Latest version I found is 
 
 %%% XMLTeX %%%
 \tograph(\tostruct(1)[XML\TeX]{XML\TeX}){
-  \tonode(xmltex)(0,\layer)<A format (based on machines like pdfTeX, XeTeX and maybe luaTeX) that converts XML input to DVI or PDF output. Can also be based on other formats when parsed at format-building time.>{XML\TeX}
+  \tonode(xmltex)(0,\layer)<A format (based on machines like pdfTeX, XeTeX and maybe LuaTeX) that converts XML input to DVI or PDF output. Can also be based on other formats when parsed at format-building time.>{XML\TeX}
 }
 
 %%% YTeX %%%
@@ -482,7 +482,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\todraw.(web2c)(tlpre2008)
 	\steplayer
 
-	\tonode(tl2008)(0,\layer)<A new package manager and network installer are available. So installation via the net is possible as well as package updates. Missing packages are not installed on-the-fly. The last of the modern machines is added: luaTeX>{\TeX\ live2008}
+	\tonode(tl2008)(0,\layer)<A new package manager and network installer are available. So installation via the net is possible as well as package updates. Missing packages are not installed on-the-fly. The last of the modern machines is added: LuaTeX>{\TeX\ live2008}
 	\todraw.(tl2008)(tlpre2008)
 
 	\tonode[\histdistro](gwtex)(5,\layer)<A (re)distribution for Mac OS based on TeX live (earlier on teTeX) by Gerben Wierda. Provides TeX-related packages for the i-Installer. Unsupported from 2007 on.>{gw\TeX}
@@ -497,12 +497,14 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\tonode(tl2010)(0,\layer)<Release of 2010.>{\TeX\ live2010}
 	\todraw(tl2010)(tl2009)
 
-	\tonode(tlcontrib)(-5,\layer)<An extension of TeX live that contains packages that TeX live cannot hold because: not free, binary update, not on CTAN or intermediate release. Useable via the TeX live manager.>{TLContrib}
+
+	\tonode(tlcontrib)(-5,\layer)<An extension to TeX live that contains packages that TeX live cannot hold because: not-free lizence, binary update, not on CTAN or intermediate release. Useable via the TeX live manager.>{TLContrib}
 	\todraw.(tl2010)(tlcontrib)
 	\steplayer
 
-	\tonode(tl2011)(0,\layer)<Up to now, latest release of TeX live. After pretests, available since July 2011.>{\TeX\ live2011}
+	\tonode(tl2011)(0,\layer)<Latest release of TeX live, available since July 2011.>{\TeX\ live2011}
 	\todraw(tl2011)(tl2010)
+	\todraw.(tl2011)(tlcontrib)
 
 	\tonode(mactex)(5,\layer)<Once based on teTeX, MacTeX is now TeX live-based. For Mac OS X only, it provides a native installer, the TeXShop editor and Mac-specific tools.>{Mac\TeX}
 	\todraw(tl2011)(mactex)
@@ -524,7 +526,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\todraw(mt28)(mt27)
 	\steplayer
 
-	\tonode(mt29)(0,\layer)<Windows only (stable version). Beta version for GNU/Linux available. Featuring XeTeX 0.9997.4, pdftex 1.40.11, luaTeX 0.60.2, mpost 1.211. Offers both LaTeX and ConTeXt (Mk IV) formats.>{MiK\TeX\ 2.9}
+	\tonode(mt29)(0,\layer)<Windows only (stable version). Beta version for GNU/Linux available. Featuring XeTeX 0.9997.4, pdftex 1.40.11, LuaTeX 0.60.2, mpost 1.211. Offers both LaTeX and ConTeXt (Mk IV) formats.>{MiK\TeX\ 2.9}
 	\todraw(mt29)(mt28)
 	\steplayer	
 	
@@ -598,7 +600,7 @@ and precision of the internal data types.”>{MegaPost}
 	\todraw(metapost)(megapost)
 
 	\tonode[\normalimportant]%% to indicate that it is a format rather than a program …
-			(metafun)(3,\layer)<“MetaFun is Hans Hagen's extension to (or module for) the MetaPost language.” It is a format for MetaPost.>{MetaFun}
+			(metafun)(3,\layer)<“MetaFun is Hans Hagen's extension to (or module for) the MetaPost language.” A format for MetaPost that is useable with ConTeXt.>{MetaFun}
 	\todraw(metafun)(metapost)
 }
 
@@ -744,7 +746,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{EC plain on CTAN}<http://www.ctan.org/tex-archive/macros/ec-plain>
 	\tobib{\LaTeX\ project page}<http://www.latex-project.org>
 	\tobib{\AMS\LaTeX: Documentation on CTAN}<http://www.ctan.org/tex-archive/macros/amstex/doc/>
-	\tobib{\LaTeX2.2 – mail from Philipp Stephani on luaLaTeX-dev list (last paragraph)}<http://tug.org/pipermail/lualatex-dev/2011-January/001033.html>
+	\tobib{\LaTeX2.2 – mail from Philipp Stephani on LuaLaTeX-dev list (last paragraph)}<http://tug.org/pipermail/lualatex-dev/2011-January/001033.html>
 	\tobib{\LaTeX3 project}<http://www.latex-project.org/latex3.html>
 	\tobib{\ConTeXt\ wiki}<http://wiki.contextgarden.net>
 	\tobib{A\LaTeX: Discussion in TUGboat Vol. 16 (1995), No. 3, p. 269ff.}<http://www.tug.org/TUGboat/Articles/tb16-3/tb48swif.pdf>
