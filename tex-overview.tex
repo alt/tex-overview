@@ -308,7 +308,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the lua\LaTeXe\ fo
 	\tonode[\package](xpackages)(4.5,\layer)<The xpackages are a bundle of packages intended to become the ground stock of packages for the high-levle and user-level interface in LaTeX3. Based on expl3, they can be used with LaTeX2e already.>{xpackages}
 	\steplayer[-1.5]
 
-	\tonode[\planned](latex2x)(0,\layer)<An experimental step towards LaTeX3. LaTeX2x is a normal LaTeX2e, but with expl3 and xpackages compiled in the format. It is *not* intended for everyday use but only for experimenting with LaTeX3. Might be concentrated on luaTeX, but XeTeX and pdfTeX variants will be available.>{\LaTeX2x}
+	\tonode[\planned](latex2x)(0,\layer)<A (somewhat) planned experimental step towards LaTeX3. LaTeX2x is a normal LaTeX2e, but with expl3 and xpackages compiled in the format. It is *not* intended for everyday use but only for experimenting with LaTeX3. Might be concentrated on luaTeX, but XeTeX and pdfTeX variants will be available.>{\LaTeX2x}
 	\todraw(latex2x)(latex2ε)
 	\todraw(latex2x)(expl3)
 	\todraw(latex2x)(xpackages)
@@ -456,8 +456,10 @@ This section will feature the main distributions of \TeX\ and related programs. 
 \tograph(\tostruct(1)[\TeX\ live]{\TeX\ live}){
 	\tonode(web2c)(0,\layer)<An Implementation and Distribution of TeX which translates the original WEB sources to a C code.>{Web2C}
 	\steplayer
+%% PCTeX? (Breitenloher) [need more information]
+%% True TeX (MS DOS) [need more information]
 
-	\tonode[\histdistro](emtex)(3,\layer)<Eberhard Mattes' TeX Distribution for MS-DOS and OS2.>{em\TeX}
+	\tonode[\histdistro](emtex)(3,\layer)<Eberhard Mattes' TeX Distribution for MS-DOS and OS2.>{em\TeX} %% d-latex, latex … (trennmuster)
 	\todraw.(web2c)(emtex)
 	\steplayer
 
