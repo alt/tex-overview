@@ -3,7 +3,7 @@
 %% Packages needed: see list in the -aux.tex file …
 %% use an up-to-date TeX live2011 (with tl-contrib updates)
 
-% this document has version number 0.1e-ish.
+% this document has version number 0.1f-ish.
 \input{tex-overview-aux} %% everything that is not content-related
 
 \begin{document}
@@ -117,102 +117,117 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	\todraw[dotted](tex)(ant)
 	
 	\steplayer[-1.5]
-	\tonode(tex-xet)(3,\layer)<The first extension to TeX, 1987. It was able to typeset in two directions, but only with a mark in the DVI to change the direction.>{\TeX-\XeT}
+	\tonode(tex-xet)(4,\layer)<The first extension to TeX, 1987. It was able to typeset in two directions, but only with a mark in the DVI to change the direction.>{\TeX-\XeT}
 	\todraw(tex)(tex-xet)
 
 	\tonode(nihongo)(10,\layer)<A true multibyte extension of TeX. Could handle all Japanese characters in one font.>{Nihongo \TeX}
 	\todraw(tex)(nihongo)
 	
 	\tonode(jtex)(15,\layer)<An extension of TeX for typesetting Japanese. (1987, Yasuki Saito)>{j\TeX}
-	\todraw(tex)(jtex)
+		\todraw(tex)(jtex)
 
-	\steplayer[-1.5]
-	\tonode(ptex)(10,\layer)<Extension of Nihongo TeX to enable vertical typesetting. (“p” for “publishing”)  Distributed as WEB change files. Primary author is D. E. Knuth, latest version (TeX live 2011) is pTeX 3.1415926-p3.2.>{p\TeX}
-	\todraw(nihongo)(ptex)
-
-	\steplayer[-1.5]
-	\tonode(tex--xet)(3,\layer)<TeX--XeT was able to really put the glyphs on the right place in the DVI.>{\TeX-{}-\XeT}
-	\todraw(tex-xet)(tex--xet)
-	
-	\tonode[\vip](tex3)(7,\layer)<Ability to handle 8-bit input. 1989. TeX development was frozen in 1991 and only bugfixes were made. Now in version 3.1415926, it gets closer to pi with every bugfix. Don Knuth wishes the version number to be pi when he dies.>{\TeX3}
-	\todraw*(tex)(tex3)
-
-	\tonode(eptex)(13,\layer)<No sure information found; a pTeX successor with eTeX extensions? As primary author, D. E. Knuth is given; latest Version (TeXlive 2011) is 3.1415926-p3.2-110415-2.3.>{e-p\TeX}
-	\todraw(ptex)(eptex)
-	
 	\steplayer[-2]
+
+	\tonode(tex--xet)(4,\layer)<TeX--XeT was able to really put the glyphs on the right place in the DVI.>{\TeX-{}-\XeT}
+		\todraw(tex-xet)(tex--xet)
+
+	\tonode[\vip](tex3)(7,\layer)<Ability to handle 8-bit input. 1989. TeX development was frozen in 1991 and only bugfixes were made. Now in version 3.1415926, it gets closer to pi with every bugfix. Don Knuth wishes the version number to be pi when he dies.>{\TeX3}
+		\todraw*(tex)(tex3)
+
+	\steplayer[-1.5]
+
+	\tonode(ptex)(12,\layer)<Extension of Nihongo TeX to enable vertical typesetting. (“p” for “publishing”)  Distributed as WEB change files. Primary author is D. E. Knuth, latest version (TeX live 2011) is pTeX 3.1415926-p3.2.>{p\TeX}
+		\todraw(nihongo)(ptex)
+		\todraw(tex3)(ptex)
+
+	\steplayer[-1.5]
+	
 	\tonode(enctex)(5.9,\layer)<A small extension to TeX, started 1997. Adds 10 new primitives relating input re-encoding>{enc\TeX}
 	\todraw(tex3)(enctex)
 	
 	\tonode(mltex)(8,\layer)<Extension to TeX (started 1990) that allows hyphenation of words with accented letters. (Therefore the name: MultiLingual TeX.) Distributed as a change file to the original WEB sources of TeX.>{ML\TeX}
 	\todraw(tex3)(mltex)
 	
-	\tonode[\experimental](uptex)(11,\layer)<Unicode-aware version of pTeX. (“Unicode-publishing”-TeX) Also modernized from TeX3.>{up\TeX}
-	\todraw(tex3)(uptex)
-	\todraw(ptex)(uptex)
+	\tonode[\experimental](uptex)(14,\layer)<Unicode-aware version of pTeX – "Unicode-publishing"-TeX>{up\TeX}
+		\todraw(ptex)(uptex)
+	\steplayer[-2]
 
-	\steplayer[-2]
-	\tonode(tex2pdf)(7,\layer)<Early name for pdfTeX. Don't confuse with converters like dvi2pdf.>{\TeX2PDF}
-	\todraw(enctex)(tex2pdf)
-	\todraw(mltex)(tex2pdf)
-	
-	\steplayer[-2]
 	\tonode[\experimental](omega)(1,\layer)<Support for 16bit-Unicode-input. Still constrained on the output encoding. Started 1994.>{$\Omega$}
-	\todraw(tex3)(omega)
+		\todraw(tex3)(omega)
 	
 	\tonode[\vip](etex)(4,\layer)<An extension to TeX, provided by the NTS team as an intermediate project until NTS would be ready. eTex is a full TeX and backward compatible. The number of TeX's registers is increased and various new primitives useful to programmers are added.>{$\varepsilon$-\TeX}
-	\todraw(tex--xet)(etex)
-	\todraw'(tex3)(etex)
-	
-	\tonode[\vip](pdftex)(7,\layer)<A new engine to directly produce PDF-files from TeX, without the need of DVI-PS-PDF. This allows to use microtypographic extensions and many other features of the PDF format like page transitions etc.>{pdf\TeX}
-	\todraw(tex2pdf)(pdftex)
-	\todraw'(tex3)(pdftex)
-	
-	\tonode(texgx)(9.5,\layer)<GX stands for Graphic eXtension, a font technology available only on Mac OS. TeXGX was able to handle these fonts.>{\TeX{}gX}
-	\todraw(tex3)(texgx)
+		\todraw(tex--xet)(etex)
+		\todraw'(tex3)(etex)
+
+	\tonode(tex2pdf)(7,\layer)<Early name for pdfTeX. Don't confuse with converters like dvi2pdf.>{\TeX2PDF}
+		\todraw(enctex)(tex2pdf)
+		\todraw(mltex)(tex2pdf)
 	
 	\tonode(nts)(12,\layer)<A project to completely reimplement TeX in Java. Now NTS is officially declared dead.>{\NTS}
-	\todraw(tex3)(nts)
-	
-	\steplayer[-2]
+		\todraw(tex3)(nts)
+
+	\steplayer[-1]
+
+	\tonode(texgx)(10,\layer)<"GX" stands for Graphic eXtension, a font technology available only on Mac OS. TeXGX was able to handle these fonts.>{\TeX{}gX}
+		\todraw(tex3)(texgx)
+
+	\steplayer[-1]
+
 	\tonode[\experimental](omega2)(0,\layer)<A short-time try to pick up the development of Omega again in 2006. Seemed more like a good plan and is now regarded as obsolete. LuaTeX is kind of a successor.>{$\Omega_2$}
-	\todraw(omega)(omega2)
+		\todraw(omega)(omega2)
 	
 	\tonode[\experimental](vtex)(3.6,\layer)<VTeX (VisualTeX) can produce PDF, HTML, SVG, DVI or ps output directly from input. In contrast to pdfTeX, it includes a full PostScript interpreter, thus capable to include EPS figures, PStricks etc. First official version I found: February 15, 1999: VTeX 6.3; last official version seems to be from Oct 1, 2005: VTeX 8.61. Commercial product.>{V\TeX}
-	\todraw(etex)(vtex)
-	
-	\steplayer[-2]
+		\todraw(etex)(vtex)
+
+	\steplayer[-1]
+
+	\tonode(eptex)(14,\layer)<A merge of e-TeX with pTeX written by Hironori Kitagawa. Additional support for 256 math fonts, and some pdfTeX functionality. Latest Version (TeXlive 2011) is 3.1415926-p3.2-110415-2.3.>{ε-p\TeX}
+		\todraw(ptex)(eptex)
+		\todraw(etex)(eptex)
+
+	\steplayer[-1]
+
 	\tonode(aleph)(1,\layer)<Originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions. Authors: John Plaice and Yannis Haralambous, now maintained for severe bugfixes by Taco Hoekwater. Latest version number is 3.1415926-1.15-2.1-0.0-rc4.>{$\aleph$ (Aleph)}
-	\todraw(omega)(aleph)
-	\todraw(etex)(aleph)
+		\todraw(omega)(aleph)
+		\todraw(etex)(aleph)
 	
-	\tonode[\vip](XeTeX)(8,\layer)<This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. Unicode encoding is fully supported (utf8 as native encoding). XeTeX also features support for OpenType, AAT, TrueType and Graphite-fonts (via the operation system). In contrary to pdfTeX or LuaTeX, no external configuration file is needed to use fonts. In newest versions, character protrusion is possible.>{\XeTeX}
-	\todraw(texgx)(XeTeX)
-	\todraw*(etex)(XeTeX)
+	\tonode[\vip](pdftex)(7,\layer)<A new engine to directly produce PDF-files from TeX, without the need of DVI-PS-PDF. This allows to use microtypographic extensions and many other features of the PDF format like page transitions etc.>{pdf\TeX}
+		\todraw(tex2pdf)(pdftex)
+		\todraw'(tex3)(pdftex)
 	
-	\tonode[\experimental](extex)(12,\layer)<Planned implementation of a high-quality typesetting system, written in Java. Based on experiences in NTS, eTeX, pdfTeX and Omega. Started in 2003, current version in repository is 0.0. (i. e. not very far ...)>{$\epsilon\chi$\TeX}
-	\todraw(nts)(extex)
-	\todraw(omega)(extex)
-	\todraw(etex)(extex)
-	\todraw(pdftex)(extex)
+	\steplayer[-1]
+
+	\tonode[\experimental](extex)(13,\layer)<Planned implementation of a high-quality typesetting system, written in Java. Based on experiences in NTS, eTeX, pdfTeX and Omega. Started in 2003, current version in repository is 0.0. (i. e. not very far ...)>{$\epsilon\chi$\TeX}
+		\todraw(nts)(extex)
+		\todraw(omega)(extex)
+		\todraw(etex)(extex)
+		\todraw(pdftex)(extex)
+
+	\steplayer[-1]
 	
-	\tonode[\vip](pdfetex)(5,\layer)<Merging the pdfTeX engine with the eTeX-extensions. This engine can produce DVI (with or without the eTeX-extensions) as well as PDF (again, with or without extensions).>{pdf($\epsilon$)-\TeX}
-	\todraw*(etex)(pdfetex)
-	\todraw*(pdftex)(pdfetex)
+	\tonode[\vip](pdfetex)(6,\layer)<Merging the pdfTeX engine with the eTeX-extensions. This engine can produce DVI (with or without the eTeX-extensions) as well as PDF (again, with or without extensions).>{pdf($\epsilon$)-\TeX}
+		\todraw*(etex)(pdfetex)
+		\todraw*(pdftex)(pdfetex)
+
+	\tonode[\vip](XeTeX)(10,\layer)<This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. Unicode encoding is fully supported (utf8 as native encoding). XeTeX also features support for OpenType, AAT, TrueType and Graphite-fonts (via the operation system). In contrary to pdfTeX or LuaTeX, no external configuration file is needed to use fonts. In newest versions, character protrusion is possible.>{\XeTeX}
+		\todraw(texgx)(XeTeX)
+		\todraw*(etex)(XeTeX)
 	
 	\steplayer[-2]
-	\tonode[\experimental](eetex)(6,\layer)<Experimental extension to pdfeTeX by Taco Hoekwater, created 2000. Distributed as change file. Now dead due to his development of LuaTeX.>{ee\TeX}
-	\todraw(pdfetex)(eetex)
+
+	\tonode[\experimental](eetex)(8,\layer)<Experimental extension to pdfeTeX by Taco Hoekwater, created 2000. Distributed as change file. Now dead due to his development of LuaTeX.>{ee\TeX}
+		\todraw(pdfetex)(eetex)
 	
-	\steplayer[-2]
+	\steplayer[-1]
+
 	\tonode[\program](lua)(0,\layer)<A script language; has nothing to do with TeX.>{Lua}
 	
 	\tonode[\vip](luatex)(4,\layer)<LuaTeX supports utf8, OpenType and many more things. TeX live 2011 ships version 0.70.1. LuaTeX features an embedded scripting language, Lua, making it easy to extend and to change the TeX interna, so most of the programming can be done in Lua instead of TeX-hackery.>{Lua\TeX}
-	\todraw(aleph)(luatex)
-	\todraw*(pdfetex)(luatex)
-	\todraw[dashed](lua)(luatex)
+		\todraw(aleph)(luatex)
+		\todraw*(pdfetex)(luatex)
+		\todraw[dashed](lua)(luatex)
 	
-	\steplayer[-2]
+	\steplayer[-3]
 	\tonode[\experimental](itex)(7,\layer)<iTeX is the official successor of TeX3, announced by Don Knuth at the TUG conference 2010.>{i\TeX}
 }
 
@@ -223,9 +238,13 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	\tonode(plaintex)(0,\layer)<The basic format offered by Don Knuth to provide a minimal set of macros to work with.>{plain\TeX}
 \steplayer[-2]
 
-	\tonode(ecplain)(-2,\layer)<A plainTeX using EC fonts. Latest changes in May 2002 for pdfTeX.>{ec-plain}
-	\tonode(eplain)(2,\layer)<Extensions of plainTeX to provide often-used utilities. Not thought for document preparation as LaTex is. First version that is still available is 2.1 from 1992. Latest version 3.4 is from 2 2010 and based on pdfTeX.>{eplain}
+	\tonode[\experimental](ecplain)(-2,\layer)<A plainTeX using EC fonts. Latest changes in May 2002 for pdfTeX.>{ec-plain}
+	\tonode[\experimental](csplain)(2,\layer)<A plainTeX using cs-fonts.>{csplain}
 	\todraw(plaintex)(ecplain)
+	\todraw(plaintex)(csplain)
+
+\steplayer[-2]
+	\tonode[\experimental](eplain)(0,\layer)<Extensions of plainTeX to provide often-used utilities. Not thought for document preparation as LaTex is. First version that is still available is 2.1 from 1992. Latest version 3.4 is from 2 2010 and based on pdfTeX.>{eplain}
 	\todraw(plaintex)(eplain)
 }
 \clearpage
@@ -290,17 +309,9 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	\todraw(amslatex12)(amslatex21)
 	\steplayer[-1.5]
 
-%	\tonode[\vip](pdflatex)(2,\layer)<The “standard LaTeX”. If anyone talks about “LaTeX” it is nearly sure to be this package. pdfLaTeX2e produces PDF or DVI output.>{pdf\LaTeX}
-%	\todraw*(latex2ε)(pdflatex)
-	
-%	\tonode[\vip](xelatex)(5,\layer)<Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.>{\XeLaTeX}
-%	\todraw*(latex2ε)(xelatex)
-
 	\tonode(platex)(-4.6,\layer)<A LaTeX based format for the pTeX engine.>{p\LaTeX}
 	\todraw(latex2ε)(platex)
 	
-%	\tonode[\vip](lualatex)(-1.8,\layer)<LaTeX based on LuaTeX with PDF (standard) or DVI (dvilualatex) output.)>{Lua\LaTeX}
-%	\todraw*(latex2ε)(lualatex)
 	\steplayer[-1.5]
 
 	\tonode[\package](expl3)(1.5,\layer)<The expl3 bundle is the ground stock of LaTeX3. It is a bundle of packages that can be used with LaTeX2e, but are planned to become the kernel of LaTeX3. They provide the low-levle structures, programming structures and everything needed for package authors.>{expl3}
@@ -339,23 +350,20 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	\todraw(inrstex)(pragmatex)
 	\steplayer[-2]
 
-	\tonode(mki)(0,\layer)<Original ConTeXt with Dutch low level interface.>{\ConTeXt\ MkI}
+	\tonode(mki)(0,\layer)<Original ConTeXt with Dutch low level interface. "Mk" stands for "Mark", meaning "version".>{\ConTeXt\ MkI}
 	\todraw(mki)(pragmatex)
 	\steplayer[-2]
 
-	\tonode[\vip](mkii)(0,\layer)<ConTeXt with English low level interface. Works with any TeX-engine, as LaTeX does: TeX, e-TeX, pdfTeX, Aleph, XeTeX, ...>{\ConTeXt\ MkII}
+	\tonode[\vip](mkii)(0,\layer)<ConTeXt with English low level interface. Works with any TeX-engine, as LaTeX does: TeX, e-TeX, pdfTeX, Aleph, XeTeX, .... For the end user, no difference to MkI.>{\ConTeXt\ MkII}
 	\todraw(mki)(mkii)
 	\steplayer[-2]
 	
-	\tonode[\experimental](mkiii)(4,\layer)<Reserved for future use for files supporting XeTeX. Was “skipped” for “practical reasons” (Hans Hagen)>{\ConTeXt\ MkIII}
-	\todraw(mkii)(mkiii)
-	\steplayer[-2]
-	
-	\tonode[\vip](mkiv)(0,\layer)<Specially designed for LuaTeX.>{\ConTeXt\ MkIV}
+	\tonode[\vip](mkiv)(0,\layer)<Specially designed for LuaTeX. MkIII was “skipped” for “practical reasons”, as Hans Hagens says, and “mkii, mkvi, mkvi all have 4 chars (which is why I skipped the v, but who knows if mkv will show up some day”)>{\ConTeXt\ MkIV}
 	\todraw*(mkii)(mkiv)
+	\steplayer[-2]
 
 	\tonode[\experimental](mkvi)(0,\layer)<Latest experimental version of ConTeXt.>{\ConTeXt\ MkVI}
-	\todraw*(mkii)(mkiv)
+	\todraw(mkiv)(mkvi)
 }
 
 %% go on with the rare formats
@@ -542,11 +550,8 @@ This section will feature the main distributions of \TeX\ and related programs. 
 
 }
 
-\tograph(\tostruct(1)[Con\TeX t minimals]{Con\TeX t minimals}){
-	\tonode(minimals)(0,\layer)<ConTeXt minimals provides a distribution of latest (beta and stable) ConTeXt versions with binaries and formats. Efficient upgrading is possible as well as parallel use with another TeX distribution.>{Con\TeX t minimals}
-	\steplayer
-	\tonode(standalone)(0,\layer)<Renaming of minimals in 2011.>{Standalone Con\TeX t}
-	\todraw(minimals)(standalone)
+\tograph(\tostruct(1)[standalone Con\TeX t]{standalone Con\TeX t}){
+	\tonode(minimals)(-3,\layer)<standalone ConTeXt provides a distribution of latest (beta and stable) ConTeXt versions with binaries and formats. Efficient upgrading is possible as well as parallel use with another TeX distribution. Was renamed from “minimals” into standalone in 2011.>{Standalone}
 }
 
 \tograph(\tostruct(1)[W32\TeX]{W32\TeX}){
@@ -731,6 +736,54 @@ The preliminary nomenclature is:
 \addtocontents{toc}{\string\end{multicols}}
 \onecolumn
 
+\tostruct[Program Names]{Program Names}[\normalimportant]
+\flushleft  %% centering was still active until here
+The following list tries to explain what happens if a programm is called by a given name. E.\,g. the command \texttt{latex} starts the PDF\TeX\ engine in DVI mode with the format \LaTeX\,2\raisebox{-.5ex}ε. This will list the names used in the official \TeX~live distribution (which should be the same in MiK\TeX) and only those which are not totally clear by the name itself.
+
+\def\totablesec#1{
+  \rowcolor[gray]{0.9}\hspace*{-1em}\Large \strut \large\rmfamily #1 & \\
+}
+
+\begin{longtable}{>{\ttfamily\quad\large}ll}
+\rowcolor[gray]{0.8}\hspace*{-1em}\LARGE \bfseries program & \LARGE  meaning\\
+\tiny \\
+\totablesec{engines}
+tex & starts \TeX\ with the plain format\\
+ptex & starts p\TeX\ with the plain format\\
+mltex & starts PDFε-\TeX\ with the plain format and DVI output\\ %% FIXME is this true? …
+eptex & starts ε-p\TeX\ with the plain format\\
+pdftex & starts PDFε-\TeX\ with the plain format and PDF output\\
+etex & starts PDFε-\TeX\ with the plain format and DVI output\\
+pdfetex & starts PDFε-\TeX\ with the plain format and PDF output\\
+aleph & starts the aleph engine\\
+xetex & starts \XeTeX\ with the plain format\\
+luatex & starts Lua\TeX\ with the plain format and PDF output\\
+dviluatex & starts Lua\TeX\ with the plain format and DVI output\\
+\totablesec{plain\TeX}
+eplain & starts PDFε-\TeX\ with the eplain format and DVI output\\
+csplain & starts PDFε-\TeX\ with the csplain format and DVI output\\
+pdfcsplain & starts PDFε-\TeX\ with the csplain format and PDF output\\
+\totablesec{\LaTeXe}
+latex & starts PDFε-\TeX\ with the \LaTeXe\ format and DVI output\\
+pdflatex & starts PDFε-\TeX\ with the \LaTeXe\ format and PDF output\\
+lamed & starts Aleph with the Lamed format\\
+platex & starts ε-p\TeX\ with the p\LaTeX\ format\\
+xelatex & starts \XeTeX\ with the \LaTeXe\ format\\
+lualatex & starts Lua\TeX\ with the \LaTeXe\ format and PDF output\\
+dvilualatex & starts Lua\TeX\ with the \LaTeXe\ format and DVI output\\
+\totablesec{Con\TeX t}
+texexec & Con\TeX t-related stuff\\ %% FIXME
+context & Con\TeX t-related stuff\\ %% FIXME
+mtxrun & Con\TeX t-related stuff\\ %% FIXME
+\totablesec{other formats}
+amstex & starts PDF\TeX\ with the \AMS\TeX\ format and DVI output\\
+xmltex & starts PDF\TeX\ with the XML\TeX\ format \\%%  FIXME: what output? …
+\totablesec{metafont}
+mf & starts the METAFONT program\\
+mp & starts the METAPOST program\\
+
+\end{longtable}
+
 \appendix
 \topart{Appendix}
 
@@ -739,7 +792,7 @@ The preliminary nomenclature is:
 %%
 \tostruct{References}
 \label{sec:refs}
-\obeylines\flushleft
+\obeylines
 
 The references are in order of occurance in the above document. i.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX. Everything that is not listet as ”book“ is freely available on the internet.
 
@@ -833,6 +886,7 @@ I have to thank some people for helping me to improve this document. Of course I
 \item Paul Isambert, for usefull discussions and testing.
 \item Heiko Oberdiek, for solving a bug that broke the document with Acrobat Reader.
 \item Peter Dyballa, for detailed historic information.
+\item Mojca Miklavec, for many information, especially on Con\TeX t-related stuff.
 
 \item Many people that stumbled upon my questions on different mailinglist, mostly texhax.
 \end{itemize}
