@@ -7,7 +7,9 @@
 \usepackage[svgnames]{xcolor}
 
 \usepackage{
+  array,
   bookmark,
+  booktabs,
   cooltooltips,
   dtklogos,  %% for \NTS etc. ⇒  what about metalogo?
   fontspec,
@@ -16,6 +18,7 @@
   multicol,
   microtype,
   pdftexcmds,
+  tabu,
   tikz,
   xparse
 }
@@ -90,7 +93,7 @@
 \cs_gset:Nn\addtotextviews:f{\tl_gput_right:No\to_textviews{#1}}
 
 %% environment to set the graphs
-\NewDocumentCommand\tograph{sD(){}+m}
+\NewDocumentCommand\tograph{s+D(){}+m}
 {
   \IfBooleanT{#1}{
     \ExplSyntaxNamesOn

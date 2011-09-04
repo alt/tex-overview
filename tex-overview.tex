@@ -3,7 +3,7 @@
 %% Packages needed: see list in the -aux.tex file …
 %% use an up-to-date TeX live2011 (with tl-contrib updates)
 
-% this document has version number 0.1f-ish.
+% this document has version number 0.1e-ish.
 \input{tex-overview-aux} %% everything that is not content-related
 
 \begin{document}
@@ -62,7 +62,7 @@ There are three kinds of terms that are often confused especially by new users. 
 \begin{description}
 \item[engine] This is the program that does all the actual work. The original program is \TeX, a famous development is pdf\TeX, while Lua\TeX\ is the latest successor.
 \item[format] A format is a (large) collection of abbreviations (macros) that make the life easy when working with \TeX. The most commonly used formats are \LaTeX, Con\TeX t and plain\TeX. The latter one is a minimal set of macros provided by Don Knuth. Formats can be combined with different engines, exploiting the special abilities of these engines. A format is first a collection of text files, but can be compiled into a binary format that can be read in faster by the engine.
-\item[distribution] In addition to formats, a large set of suppelmentary files can be used to work with \TeX, called \emph{packages} for \LaTeX, \emph{modules} for Con\TeX t etc. To get all needed files in a convinient way, there are distributions that contain everything and are (or should be) easy to install. Examples are MiKTeX and \TeX~live.
+\item[distribution] In addition to formats, a large set of suppelmentary files can be used to work with \TeX, called \emph{packages} for \LaTeX, \emph{modules} for Con\TeX t, and many external programs have proven useful for the work with \TeX. Distributions such as \TeX~live and MiK\TeX\ strive to provide a full set of such programs and macros by using a package manager to take care of package dependencies and updating. Many Linux distributions, as well as cygwin for Windows, repackage a \TeX\ distribution (mostly \TeX~live) using the Linux distribution's package system.
 \end{description}
 
 \section{How to contribute}
@@ -79,20 +79,20 @@ To get to this point, I need some help of people who know more about the \TeX\ w
 It is up to you to contribute texts, references, links, descriptions, hints etc. I'll be happy about anything I can add here. Also, if you have suggestions about the layout, let me know.
 
 \section{Problems with PDF viewers}
-As this document makes heavy use of PDF-features, some PDF viewers are not able to show everything correct and as intended. My experiences with viewers are as follows:
+As this document makes heavy use of PDF-features, some PDF viewers are not able to show everything correct and as intended. My experiences with viewers are as follows, where the number is the version which I tested:
 
 \begin{description}
-\item[evince] Shows the document correct and complete. Tested using Linux.
+\item[evince 3.0.2] Shows the document correct and complete. Tested using Linux.
 
-\item[Acrobat Reader] will show all the information but might hide some text of very long tooltips (at least that's the case on my machine). Also, it draws annoying green boxes around the tooltips which do not belong there.
+\item[Adobe Reader 9] will show all the information but might hide some text of very long tooltips (at least that's the case on my machine). Also, it draws annoying green boxes around the tooltips which do not belong there.
 
-\item[TeXworks] The built-in PDF viewer of the TeXworks editor does not break lines of tooltips, therefore long annotations are not shown completely.
+\item[\TeX works 0.5 r869] The built-in PDF viewer of the \TeX works editor does not break lines of tooltips, therefore long annotations are not shown completely.
 
-\item[okular] also does not break the lines.
+\item[okular 0.13] also does not break the lines.
 
-\item[xpdf] shows only very short tooltips. Most of the information is not visible in the graphs.
+\item[xpdf 3.03] shows only very short tooltips. Most of the information is not visible in the graphs.
 
-\item[gv] shows no tooltips, but the annoying green boxes. (Linux)
+\item[gv 3.7.2] shows no tooltips, but the annoying green boxes. (Linux)
 \end{description}
 
 \subsection*{About this document}
@@ -157,7 +157,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	\todraw(mltex)(tex2pdf)
 	
 	\steplayer[-2]
-	\tonode(omega)(1,\layer)<Support for 16bit-Unicode-input. Still constrained on the output encoding. Started 1994.>{$\Omega$}
+	\tonode[\experimental](omega)(1,\layer)<Support for 16bit-Unicode-input. Still constrained on the output encoding. Started 1994.>{$\Omega$}
 	\todraw(tex3)(omega)
 	
 	\tonode[\vip](etex)(4,\layer)<An extension to TeX, provided by the NTS team as an intermediate project until NTS would be ready. eTex is a full TeX and backward compatible. The number of TeX's registers is increased and various new primitives useful to programmers are added.>{$\varepsilon$-\TeX}
@@ -182,7 +182,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	\todraw(etex)(vtex)
 	
 	\steplayer[-2]
-	\tonode[\experimental](aleph)(1,\layer)<Originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions. Authors: John Plaice and Yannis Haralambous, now maintained for severe bugfixes by Taco Hoekwater.>{$\aleph$ (Aleph)}
+	\tonode(aleph)(1,\layer)<Originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions. Authors: John Plaice and Yannis Haralambous, now maintained for severe bugfixes by Taco Hoekwater. Latest version number is 3.1415926-1.15-2.1-0.0-rc4.>{$\aleph$ (Aleph)}
 	\todraw(omega)(aleph)
 	\todraw(etex)(aleph)
 	
@@ -266,7 +266,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	\todraw(latex209)(amslatex11)
 	
 	\steplayer[-1.7]
-	\tonode[\vip](latex2ε)(0,\layer)<June 1994: New release of LaTeX to avoid incompatible dialects of LaTeX 2.09. Introduced by the LaTeX3-Team.>{\LaTeX\,2\raisebox{-.5ex}ε}
+	\tonode[\vip](latex2ε)(0,\layer)<June 1994: New release of LaTeX to avoid incompatible dialects of LaTeX 2.09. Introduced by the LaTeX3-Team. This is the latest stable version of LaTeX at the moment. Support for pdfTeX, XeTeX and LuaTeX is give, where small changes allow for the special abilities of the engines. Most adaption to the engines is done on package level (fonts, encodings etc.)>{\LaTeX\,2\raisebox{-.5ex}ε}
 	\todraw*(latex209)(latex2ε)
 	\todraw[dashed](slitex)(latex2ε)
 	\todraw[dashed](amslatex11)(latex2ε)
@@ -286,21 +286,21 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	\todraw(latex2ε)(alatex)
 	\steplayer[-1.5]
 
-	\tonode(amslatex21)(8,\layer)<Latest AMSLaTeX version is 2.2 from 2001. Intermedita versions are not shown.>{\AMS\LaTeX 2.2}
+	\tonode(amslatex21)(8,\layer)<Latest AMSLaTeX version is 2.2 from 2001. Intermediate versions are not shown.>{\AMS\LaTeX 2.2}
 	\todraw(amslatex12)(amslatex21)
 	\steplayer[-1.5]
 
-	\tonode[\vip](pdflatex)(2,\layer)<The “standard LaTeX”. If anyone talks about “LaTeX” it is nearly sure to be this package. pdfLaTeX2e produces PDF or DVI output.>{pdf\LaTeX}
-	\todraw*(latex2ε)(pdflatex)
+%	\tonode[\vip](pdflatex)(2,\layer)<The “standard LaTeX”. If anyone talks about “LaTeX” it is nearly sure to be this package. pdfLaTeX2e produces PDF or DVI output.>{pdf\LaTeX}
+%	\todraw*(latex2ε)(pdflatex)
 	
-	\tonode[\vip](xelatex)(5,\layer)<Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.>{\XeLaTeX}
-	\todraw*(latex2ε)(xelatex)
+%	\tonode[\vip](xelatex)(5,\layer)<Using the XeTeX engine. There are some special packages that provide easy access to the modern features of XeTeX.>{\XeLaTeX}
+%	\todraw*(latex2ε)(xelatex)
 
 	\tonode(platex)(-4.6,\layer)<A LaTeX based format for the pTeX engine.>{p\LaTeX}
 	\todraw(latex2ε)(platex)
 	
-	\tonode[\vip](lualatex)(-1.8,\layer)<LaTeX based on LuaTeX with PDF (standard) or DVI (dvilualatex) output. LaTeX support for LuaTeX is under heavy development to make this machine usable with the format. Work in progress, but already well useable! (This document is processed with LuaLaTeX2e.)>{Lua\LaTeX}
-	\todraw*(latex2ε)(lualatex)
+%	\tonode[\vip](lualatex)(-1.8,\layer)<LaTeX based on LuaTeX with PDF (standard) or DVI (dvilualatex) output.)>{Lua\LaTeX}
+%	\todraw*(latex2ε)(lualatex)
 	\steplayer[-1.5]
 
 	\tonode[\package](expl3)(1.5,\layer)<The expl3 bundle is the ground stock of LaTeX3. It is a bundle of packages that can be used with LaTeX2e, but are planned to become the kernel of LaTeX3. They provide the low-levle structures, programming structures and everything needed for package authors.>{expl3}
@@ -339,19 +339,22 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	\todraw(inrstex)(pragmatex)
 	\steplayer[-2]
 
-	\tonode(mki)(0,\layer)<Original ConTeXt with Dutch low level interface.>{\ConTeXt MkI}
+	\tonode(mki)(0,\layer)<Original ConTeXt with Dutch low level interface.>{\ConTeXt\ MkI}
 	\todraw(mki)(pragmatex)
 	\steplayer[-2]
 
-	\tonode[\vip](mkii)(0,\layer)<ConTeXt with English low level interface. Works with any TeX-engine, as LaTeX does: TeX, e-TeX, pdfTeX, Aleph, XeTeX, ...>{\ConTeXt MkII}
+	\tonode[\vip](mkii)(0,\layer)<ConTeXt with English low level interface. Works with any TeX-engine, as LaTeX does: TeX, e-TeX, pdfTeX, Aleph, XeTeX, ...>{\ConTeXt\ MkII}
 	\todraw(mki)(mkii)
 	\steplayer[-2]
 	
-	\tonode(mkiii)(4,\layer)<Reserved for future use for files supporting XeTeX. Was “skipped” for “practical reasons” (Hans Hagen)>{\ConTeXt\ MkIII}
+	\tonode[\experimental](mkiii)(4,\layer)<Reserved for future use for files supporting XeTeX. Was “skipped” for “practical reasons” (Hans Hagen)>{\ConTeXt\ MkIII}
 	\todraw(mkii)(mkiii)
 	\steplayer[-2]
 	
-	\tonode[\vip](mkiv)(0,\layer)<Specially designed for LuaTeX.>{\ConTeXt MkIV}
+	\tonode[\vip](mkiv)(0,\layer)<Specially designed for LuaTeX.>{\ConTeXt\ MkIV}
+	\todraw*(mkii)(mkiv)
+
+	\tonode[\experimental](mkvi)(0,\layer)<Latest experimental version of ConTeXt.>{\ConTeXt\ MkVI}
 	\todraw*(mkii)(mkiv)
 }
 
@@ -360,7 +363,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 %%%% formats %%%%
 \tostruct[Other Formats]{Other Formats}
 %%% AMSTeX %%%
-\tograph(\tostruct(1)[\AMS-\TeX]{\AMS-\TeX}){
+\tograph(\tostruct(1)[\texorpdfstring{\AMS}{AMS}-\TeX]{\AMS-\TeX}){
 	\tonode(amstex20)(0,\layer)<A macro package provided by the American Mathematical Society. Version 2.0 from 1990. No information found for versions pre-2.0.>{\AMS-\TeX  2.0}
 	\steplayer[-1]
 
@@ -542,7 +545,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 \tograph(\tostruct(1)[Con\TeX t minimals]{Con\TeX t minimals}){
 	\tonode(minimals)(0,\layer)<ConTeXt minimals provides a distribution of latest (beta and stable) ConTeXt versions with binaries and formats. Efficient upgrading is possible as well as parallel use with another TeX distribution.>{Con\TeX t minimals}
 	\steplayer
-	\tonode(standalone)(0,\layer)<Renaming of minimals in 2011.>{Con\TeX t standalone}
+	\tonode(standalone)(0,\layer)<Renaming of minimals in 2011.>{Standalone Con\TeX t}
 	\todraw(minimals)(standalone)
 }
 
@@ -593,7 +596,11 @@ The following pages will be a hodge-podge of many things that are related to \Te
 
 	\tonode(metapost)(0,\layer)<A graphic generating program written by John Hobby, inspired by METAFONT. MetaPost can produce PostScript graphics as well as SVG. Latest (experimental) version is 1.750 as of spring 2011.>{MetaPost}
 	\todraw(metapost)(metafont)
-	\steplayer[-3]
+	\steplayer[-2]
+
+	\tonode(mptopdf)(-3,\layer)<Actually a pdfTeX-generated format, this program can be used to compile metapost code directly into PDF output. Metafun is supported, too.>{mptopdf}
+	\todraw.(metapost)(mptopdf)
+	\steplayer[-1]
 
 	\tonode[\experimental](megapost)(0,\layer)<A planned extension of MetaPost “that will extend the range
 and precision of the internal data types.”>{MegaPost}
@@ -683,6 +690,34 @@ This section tries to cover the development of fonts – the most important thin
 	\todraw(aat)(gx)
 }
 
+\tograph(\tostruct(1)[Work Flow]{Work Flow}[\vip]
+{
+\flushleft
+\large Ok, this section maybe will kill me … I will try to depict the typical work flow for working with \TeX. This will never be complete as there are many ways to work with any of the \TeX\ flavours, including helper programs etc. We will start with a simple \LaTeX\ document, and maybe we will extend this to different formats, engines etc. …
+
+The preliminary nomenclature is:
+\begin{itemize}
+\item[red] necessary files
+\item[yellow] additional input files
+\item[blue] automatically produced files
+\item[green] program that is used – editor, processing tool, viewer, …
+\end{itemize}
+
+%% yes, this is stupid, but for now that's how it is …:
+\let\necessary\vip
+\let\additional\experimental
+\let\automatic\normalimportant
+\let\program\package
+}
+){
+	\tonode(texfile)(0,\layer)<The .tex file. A plain text file that typically contains all of the document information.>{.tex}
+	\steplayer[-5]
+
+	\tonode(pdffile)(0,\layer)<The resulting, ready-compiled document is most often a PDF document. Production of DVI documents is also mostly possible, but seldom used.>{.pdf}
+
+	\draw[->,very thick](texfile) to node{latex} (pdffile);
+}
+
 \topart{Text Views}
 \label{sec:text}
 
@@ -704,7 +739,7 @@ This section tries to cover the development of fonts – the most important thin
 %%
 \tostruct{References}
 \label{sec:refs}
-\obeylines\flushleft  %% centering was still active until here
+\obeylines\flushleft
 
 The references are in order of occurance in the above document. i.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX. Everything that is not listet as ”book“ is freely available on the internet.
 
@@ -798,6 +833,7 @@ I have to thank some people for helping me to improve this document. Of course I
 \item Paul Isambert, for usefull discussions and testing.
 \item Heiko Oberdiek, for solving a bug that broke the document with Acrobat Reader.
 \item Peter Dyballa, for detailed historic information.
+
 \item Many people that stumbled upon my questions on different mailinglist, mostly texhax.
 \end{itemize}
 \end{document}
