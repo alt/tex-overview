@@ -136,7 +136,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 
 	\steplayer[-1.5]
 
-	\tonode(ptex)(12,\layer)<Extension of Nihongo TeX to enable vertical typesetting. (“p” for “publishing”)  Distributed as WEB change files. Primary author is D. E. Knuth, latest version (TeX live 2011) is pTeX 3.1415926-p3.2.>{p\TeX}
+	\tonode(ptex)(12,\layer)<Extension of Nihongo TeX to enable vertical typesetting. (“p” for “publishing”)  Distributed as WEB change files. Primary author is D. E. Knuth, latest version (TeX live 2011) is pTeX 3.1415926-p3.2 (modified from the official version 3.1.11)>{p\TeX}
 		\todraw(nihongo)(ptex)
 		\todraw(tex3)(ptex)
 
@@ -350,20 +350,20 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	\todraw(inrstex)(pragmatex)
 	\steplayer[-2]
 
-	\tonode(mki)(0,\layer)<Original ConTeXt with Dutch low level interface. "Mk" stands for "Mark", meaning "version".>{\ConTeXt\ MkI}
-	\todraw(mki)(pragmatex)
+	\tonode(MKi)(0,\layer)<Original ConTeXt with Dutch low level interface. "MK" stands for "Mark", meaning "version".>{\ConTeXt\ MKI}
+	\todraw(MKi)(pragmatex)
 	\steplayer[-2]
 
-	\tonode[\vip](mkii)(0,\layer)<ConTeXt with English low level interface. Works with any TeX-engine, as LaTeX does: TeX, e-TeX, pdfTeX, Aleph, XeTeX, .... For the end user, no difference to MkI.>{\ConTeXt\ MkII}
-	\todraw(mki)(mkii)
+	\tonode[\vip](MKii)(0,\layer)<ConTeXt with English low level interface. Works with any TeX-engine, as LaTeX does: TeX, e-TeX, pdfTeX, Aleph, XeTeX, .... For the end user, no difference to MKI.>{\ConTeXt\ MKII}
+	\todraw(MKi)(MKii)
 	\steplayer[-2]
 	
-	\tonode[\vip](mkiv)(0,\layer)<Specially designed for LuaTeX. MkIII was “skipped” for “practical reasons”, as Hans Hagens says, and “mkii, mkvi, mkvi all have 4 chars (which is why I skipped the v, but who knows if mkv will show up some day”)>{\ConTeXt\ MkIV}
-	\todraw*(mkii)(mkiv)
+	\tonode[\vip](MKiv)(0,\layer)<Specially designed for LuaTeX. MKIII was “skipped” for “practical reasons”, as Hans Hagens says, and “MKii, MKvi, MKvi all have 4 chars (which is why I skipped the v, but who knows if MKv will show up some day”)>{\ConTeXt\ MKIV}
+	\todraw*(MKii)(MKiv)
 	\steplayer[-2]
 
-	\tonode[\experimental](mkvi)(0,\layer)<Latest experimental version of ConTeXt.>{\ConTeXt\ MkVI}
-	\todraw(mkiv)(mkvi)
+	\tonode[\experimental](MKvi)(0,\layer)<Latest experimental version of ConTeXt.>{\ConTeXt\ MKVI}
+	\todraw(MKiv)(MKvi)
 }
 
 %% go on with the rare formats
@@ -537,7 +537,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\todraw(mt28)(mt27)
 	\steplayer
 
-	\tonode(mt29)(0,\layer)<Windows only (stable version). Beta version for GNU/Linux available. Featuring XeTeX 0.9997.4, pdftex 1.40.11, LuaTeX 0.60.2, mpost 1.211. Offers both LaTeX and ConTeXt (Mk IV) formats.>{MiK\TeX\ 2.9}
+	\tonode(mt29)(0,\layer)<Windows only (stable version). Beta version for GNU/Linux available. Featuring XeTeX 0.9997.4, pdftex 1.40.11, LuaTeX 0.60.2, mpost 1.211. Offers both LaTeX and ConTeXt (MK IV) formats.>{MiK\TeX\ 2.9}
 	\todraw(mt29)(mt28)
 	\steplayer	
 	
@@ -625,32 +625,41 @@ and precision of the internal data types.”>{MegaPost}
 	\todraw(nbibtex)(bibtex)
 	\steplayer[-0.5]
 
-	\tonode(bibtex8)(0,\layer)<The documentation says: “An 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity”>{\BibTeX8}
+	\tonode(bibtex8)(0,\layer)<The documentation says: "An 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity">{\BibTeX8}
 	\todraw(bibtex8)(bibtex)
 
-	\tonode(mlbibtex)(-4,\layer)<Mentioned in the kpathsea-manual. No idea what it is – BibTeX for MLTeX?>{MlBibTeX}
+	\tonode(mlbibtex)(-4,\layer)<Mentioned in the kpathsea-manual. No idea what it is. BibTeX for MLTeX?>{MlBibTeX}
 	\todraw(mlbibtex)(bibtex)
 	\steplayer
 	
 	\tonode(bibtexu)(0,\layer)<A Unicode-aware version of BibTeX>{\BibTeX u}
 	\todraw(bibtex8)(bibtexu)
 
-	\tonode(pbibtex)(-4,\layer)<No sure information found; a BibTeX-successor for pTeX?>{p\BibTeX}
-	\todraw(bibtex8)(pbibtex)
+	\tonode(jbibtex)(-4,\layer)<jBibTeX was developed by Shoichi Matsui around 1988. It is included in the p\TeX\ distribution since 1995.>{j\BibTeX}
+	\todraw(bibtex8)(jbibtex)
 
 	\tonode(pybtex)(3,\layer)<A python implementation of BibTeX.>{Pybtex}
 	\todraw(pybtex)(bibtexu)
+	\steplayer
+
+	\tonode(pbibtex)(-4,\layer)<Kind of a successor of jBibTeX, pBibTeX is a Japanese-aware version of BibTeX supporting Japanese bibliography lists. Special support for Japanese (input/output) encodings and punctiation.>{p\BibTeX}
+	\todraw(jbibtex)(pbibtex)
+	\steplayer
+
+	\tonode(upbibtex)(-6,\layer)<Can be found in the development repositories, but no documentation found.>{up\BibTeX}
+	\todraw(pbibtex)(upbibtex)
 	\steplayer
 	
 	\tonode(biber)(0,\layer)<A perl implementation of a BibTeX-like program, designed as backend for BibLaTeX. “biber” is an animal handling bibliographies. (german for “beaver”, hence the beaver in the biber logo)>{biber}
 	\todraw(bibtexu)(biber)
 	
-	\tonode[\package](biblatex)(3,\layer)<A LaTeX package as frontend for biber (can also be used with BibTeXu/8).>{Bib\LaTeX}
-	\todraw(biber)(biblatex)
-	\todraw(bibtexu)(biblatex)
 	\steplayer
 
-	\tonode[\package](librarian)(5,\layer)<A TeX file (useable with all formats) that typesets BibTeX-style bibliographies without the need of BibTeX. Therefore, it provides a format-independent typesetting of bibliographies.>{Librarian}
+	\tonode[\package](biblatex)(3,\layer)<A LaTeX package as frontend for biber (can also be used with BibTeXu/8).>{Bib\LaTeX}
+	\todraw.(biber)(biblatex)
+	\todraw.(bibtexu)(biblatex)
+
+	\tonode[\package](librarian)(8,\layer)<A TeX file (useable with all formats) that typesets BibTeX-style bibliographies without the need of BibTeX. Therefore, it provides a format-independent typesetting of bibliographies.>{Librarian}
 }
 
 %%% dvipdfm and  similar ones %%%
@@ -738,50 +747,53 @@ The preliminary nomenclature is:
 
 \tostruct[Program Names]{Program Names}[\normalimportant]
 \flushleft  %% centering was still active until here
-The following list tries to explain what happens if a programm is called by a given name. E.\,g. the command \texttt{latex} starts the PDF\TeX\ engine in DVI mode with the format \LaTeX\,2\raisebox{-.5ex}ε. This will list the names used in the official \TeX~live distribution (which should be the same in MiK\TeX) and only those which are not totally clear by the name itself.
+The following list tries to explain what happens if a programm is called by a given name. E.\,g. calling the command \texttt{latex} on the command line will start the PDFε-\TeX\ engine\footnote{Actually it's only called PDF\TeX\ now, but it is always the version that includes ε-\TeX\ extensions. Here, always the full name is used for clearness.} in DVI mode with the format \LaTeX\,2\raisebox{-.5ex}ε. This will list the names used in the official \TeX~live distribution (which should be the same in MiK\TeX) and only those which are not totally clear by the name itself.
 
 \def\totablesec#1{
-  \rowcolor[gray]{0.9}\hspace*{-1em}\Large \strut \large\rmfamily #1 & \\
+~ \\[-2ex]
+  \rowcolor[gray]{0.9}\hspace*{3em}\Large \strut \large\rmfamily #1 & \\
+ ~ \\[-2ex]
 }
 
 \begin{longtable}{>{\ttfamily\quad\large}ll}
 \rowcolor[gray]{0.8}\hspace*{-1em}\LARGE \bfseries program & \LARGE  meaning\\
-\tiny \\
-\totablesec{engines}
-tex & starts \TeX\ with the plain format\\
-ptex & starts p\TeX\ with the plain format\\
-mltex & starts PDFε-\TeX\ with the plain format and DVI output\\ %% FIXME is this true? …
-eptex & starts ε-p\TeX\ with the plain format\\
-pdftex & starts PDFε-\TeX\ with the plain format and PDF output\\
-etex & starts PDFε-\TeX\ with the plain format and DVI output\\
-pdfetex & starts PDFε-\TeX\ with the plain format and PDF output\\
-aleph & starts the aleph engine\\
-xetex & starts \XeTeX\ with the plain format\\
-luatex & starts Lua\TeX\ with the plain format and PDF output\\
-dviluatex & starts Lua\TeX\ with the plain format and DVI output\\
-\totablesec{plain\TeX}
-eplain & starts PDFε-\TeX\ with the eplain format and DVI output\\
-csplain & starts PDFε-\TeX\ with the csplain format and DVI output\\
-pdfcsplain & starts PDFε-\TeX\ with the csplain format and PDF output\\
+\\[-2ex]
+\totablesec{plain formats}
+tex & \TeX\ with the plain format\\
+ptex & p\TeX\ with the plain format\\
+mltex & PDFε-\TeX\ with the plain format and DVI output\\
+eptex & ε-p\TeX\ with the plain format\\
+pdftex & PDFε-\TeX\ with the plain format and PDF output\\
+etex & PDFε-\TeX\ with the plain format and DVI output\\
+pdfetex & PDFε-\TeX\ with the plain format and PDF output\\
+aleph & Aleph with the plain format\\
+xetex & \XeTeX\ with the plain format\\
+luatex & Lua\TeX\ with the plain format and PDF output\\
+dviluatex & Lua\TeX\ with the plain format and DVI output\\
+eplain & PDFε-\TeX\ with the eplain format and DVI output\\
+csplain & PDFε-\TeX\ with the csplain format and DVI output\\
+pdfcsplain & PDFε-\TeX\ with the csplain format and PDF output\\
 \totablesec{\LaTeXe}
-latex & starts PDFε-\TeX\ with the \LaTeXe\ format and DVI output\\
-pdflatex & starts PDFε-\TeX\ with the \LaTeXe\ format and PDF output\\
-lamed & starts Aleph with the Lamed format\\
-platex & starts ε-p\TeX\ with the p\LaTeX\ format\\
-xelatex & starts \XeTeX\ with the \LaTeXe\ format\\
-lualatex & starts Lua\TeX\ with the \LaTeXe\ format and PDF output\\
-dvilualatex & starts Lua\TeX\ with the \LaTeXe\ format and DVI output\\
+latex & PDFε-\TeX\ with the \LaTeXe\ format and DVI output\\
+pdflatex & PDFε-\TeX\ with the \LaTeXe\ format and PDF output\\
+lamed & Aleph with the Lamed format\\
+platex & ε-p\TeX\ with the p\LaTeX\ format\\
+xelatex & \XeTeX\ with the \LaTeXe\ format\\
+lualatex & Lua\TeX\ with the \LaTeXe\ format and PDF output\\
+dvilualatex & Lua\TeX\ with the \LaTeXe\ format and DVI output\\
 \totablesec{Con\TeX t}
-texexec & Con\TeX t-related stuff\\ %% FIXME
-context & Con\TeX t-related stuff\\ %% FIXME
-mtxrun & Con\TeX t-related stuff\\ %% FIXME
+texexec & PDFε-\TeX with Con\TeX t MKII format and PDF output\\
+texexec --interface = de & dito, with german interface\\
+texexec --xtx & \XeTeX with Con\TeX t MKII format\\
+context & Lua\TeX\ with Con\TeX t MKIV format and PDF output\\
+context --interface = de & dito, with german interface\\
 \totablesec{other formats}
-amstex & starts PDF\TeX\ with the \AMS\TeX\ format and DVI output\\
-xmltex & starts PDF\TeX\ with the XML\TeX\ format \\%%  FIXME: what output? …
+amstex & PDF\TeX\ with the \AMS\TeX\ format and DVI output\\
+xmltex & PDF\TeX\ with the XML\TeX\ format \\%%  FIXME: what output? …
 \totablesec{metafont}
-mf & starts the METAFONT program\\
-mp & starts the METAPOST program\\
-
+mf & the METAFONT program\\
+mp & the METAPOST program\\
+mptopdf & PDFε-\TeX\ with the mptopdf format and PDF output\\
 \end{longtable}
 
 \appendix
@@ -817,6 +829,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{ANT project page}<http://ant.berlios.de>
 	\tobib{Yasuki S AITO. Report on JTEX: A Japanese TEX. TUGboat 8 (1987), no. 2, 103\,–\,116.}%
 		<http://www.tug.org/TUGboat/Articles/tb08-2/tb18saito.pdf>
+	\tobib{p\TeX\ page}<http://ascii.asciimw.jp/pb/ptex/>
 	\tobib{p\TeX\ sources and documentation}<http://dante.ctan.org/tex-archive/help/Catalogue/entries/ptex.html>
 	\tobib{enc\TeX\ page}<http://www.olsak.net/enctex.html>
 	\tobib{ML\TeX\ source (CH file)}<http://www.tex.ac.uk/tex-archive/systems/generic/mltex/mltex.ch>
@@ -887,6 +900,7 @@ I have to thank some people for helping me to improve this document. Of course I
 \item Heiko Oberdiek, for solving a bug that broke the document with Acrobat Reader.
 \item Peter Dyballa, for detailed historic information.
 \item Mojca Miklavec, for many information, especially on Con\TeX t-related stuff.
+\item Hironori Kitagawa, for information about Japanese-specific programs.
 
 \item Many people that stumbled upon my questions on different mailinglist, mostly texhax.
 \end{itemize}
