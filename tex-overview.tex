@@ -26,8 +26,15 @@ In the tree views, every node has a tooltip that shows up when you hover the mou
 \newpage
 \tableofcontents
 
+\section{The Difference Between Engine, Format and Distribution}
+There are three kinds of terms that are often confused especially by new users. This will try to explain them very shortly:
+\begin{description}
+\item[engine] This is the program that does all the actual work. The original program is \TeX, a famous development is pdf\TeX, while Lua\TeX\ is the latest successor.
+\item[format] A format is a (large) collection of abbreviations (macros) that make the life easy when working with \TeX. The most commonly used formats are \LaTeX, Con\TeX t and plain\TeX. The latter one is a minimal set of macros provided by Don Knuth. Formats can be combined with different engines, exploiting the special abilities of these engines. A format is first a collection of text files, but can be compiled into a binary format that can be read in faster by the engine.
+\item[distribution] In addition to formats, a large set of suppelmentary files can be used to work with \TeX, called \emph{packages} for \LaTeX, \emph{modules} for Con\TeX t, and many external programs have proven useful for the work with \TeX. Distributions such as \TeX~live and MiK\TeX\ strive to provide a full set of such programs and macros by using a package manager to take care of package dependencies and updating. Many Linux distributions, as well as cygwin for Windows, repackage a \TeX\ distribution (mostly \TeX~live) using the Linux distribution's package system.
+\end{description}
 
-\section*{How to read this document}
+\section{How to read this document}
 This document consists of several graphs showing the development of software more or less directly related to \TeX. The graphs try to show the time  development (downwards), as well as dependencies, changes, etc.
 
 I tried to make the graphs more readable by using colors for different categories. The decisions about what is important and what is “normal” reflect my personal opinion only.
@@ -57,14 +64,6 @@ Some of the graphs are quite complex, which is the reason why there are two vers
 
 In most cases I did not mention the authors of the programs/packages. This is not to diminish their effort but only for brevity (long names make things harder to read). I did not write any of the below-mentioned programs or packages. The authors are given in the documents linked in the references.
 
-\section{The Difference Between Engine, Format and Distribution}
-There are three kinds of terms that are often confused especially by new users. This will try to explain them very shortly:
-\begin{description}
-\item[engine] This is the program that does all the actual work. The original program is \TeX, a famous development is pdf\TeX, while Lua\TeX\ is the latest successor.
-\item[format] A format is a (large) collection of abbreviations (macros) that make the life easy when working with \TeX. The most commonly used formats are \LaTeX, Con\TeX t and plain\TeX. The latter one is a minimal set of macros provided by Don Knuth. Formats can be combined with different engines, exploiting the special abilities of these engines. A format is first a collection of text files, but can be compiled into a binary format that can be read in faster by the engine.
-\item[distribution] In addition to formats, a large set of suppelmentary files can be used to work with \TeX, called \emph{packages} for \LaTeX, \emph{modules} for Con\TeX t, and many external programs have proven useful for the work with \TeX. Distributions such as \TeX~live and MiK\TeX\ strive to provide a full set of such programs and macros by using a package manager to take care of package dependencies and updating. Many Linux distributions, as well as cygwin for Windows, repackage a \TeX\ distribution (mostly \TeX~live) using the Linux distribution's package system.
-\end{description}
-
 \section{How to contribute}
 I hope one day this document would become the standard reference for questions like ”What program do I need for …?“, ”What's the difference between …\TeX\ and …\TeX?“, ”Why is it called …?“ etc.
 
@@ -73,7 +72,6 @@ To get to this point, I need some help of people who know more about the \TeX\ w
 \item font technologies
 \item METAFONT and succesors
 \item Bib\TeX\ and successors/alternatives
-\item information about e-p\TeX\ and p\BibTeX, as the only documentation I found is japanese. If you know japanese, I'd be happy about a translation!
 \end{itemize}
 
 It is up to you to contribute texts, references, links, descriptions, hints etc. I'll be happy about anything I can add here. Also, if you have suggestions about the layout, let me know.
@@ -230,6 +228,11 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	\steplayer[-3]
 	\tonode[\experimental](itex)(7,\layer)<iTeX is the official successor of TeX3, announced by Don Knuth at the TUG conference 2010.>{i\TeX}
 }
+\vfill
+
+{\flushleft The chronological order may not be exact in this graph. I have to work hard on the arrangement to show both chronological order and code dependence, and for now only the code dependence is more-or-less correct.
+
+} 
 
 \clearpage
 
@@ -400,7 +403,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 
 %%% JadeTeX %%%
 \tograph(\tostruct(1)[Jade\TeX]{Jade\TeX}){
-	\tonode(jadetex)(0,0)<A macro package for processing Jade/OpenJade output.>{Jade\TeX}
+	\tonode(jadetex)(0,0)<A macro package for processing Jade/OpenJade output, based on LaTeX.>{Jade\TeX}
 }
 
 %%% Lollipop %%%
@@ -413,6 +416,11 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 %%% MacroTeX %%%
 \tograph(\tostruct(1)[Macro\TeX]{Macro\TeX}){
 	\tonode(macrotex)(0,0)<Information needed.>{Macro\TeX}
+}
+
+%%% MEX %%%
+\tograph(\tostruct(1)[MeX]{MeX}){
+	\tonode(mex)(0,0)<Information needed. There seems to be different formats that use the pdfTeX engine: mex, pdfmex, htmex and utf8mex.>{MeX}
 }
 
 %%% PHYS(E) %%%
@@ -593,26 +601,32 @@ The following pages will be a hodge-podge of many things that are related to \Te
 	\tonode(metafont)(0,\layer)<The program for creating the fonts originally used by TeX.>{METAFONT}
 	\steplayer
 
-	\tonode(metafog)(3,\layer)<A program to convert metafont shapes to Type1 contours. Uses mathematically correct transformations instead of autotracing.>{Metafog}
+	\tonode(metafog)(4,\layer)<A program to convert metafont shapes to Type1 contours. Uses mathematically correct transformations instead of autotracing.>{Metafog}
 	\todraw(metafog)(metafont)
 
-	\tonode(metatype1)(-3,\layer)<A program to produce Type1 fonts from metafont source code.>{MetaType1}
+	\tonode(metatype1)(-4,\layer)<A program to produce Type1 fonts from metafont source code.>{MetaType1}
 	\todraw(metatype1)(metafont)
+	\steplayer[-1]
 
 	\tonode(metapost)(0,\layer)<A graphic generating program written by John Hobby, inspired by METAFONT. MetaPost can produce PostScript graphics as well as SVG. Latest (experimental) version is 1.750 as of spring 2011.>{MetaPost}
 	\todraw(metapost)(metafont)
 	\steplayer[-2]
 
-	\tonode(mptopdf)(-3,\layer)<Actually a pdfTeX-generated format, this program can be used to compile metapost code directly into PDF output. Metafun is supported, too.>{mptopdf}
+	\tonode[\normalimportant](mptopdf)(-4,\layer)<Actually a pdfTeX-generated format, this program can be used to compile metapost code directly into PDF output. Metafun is supported, too.>{mptopdf}
 	\todraw.(metapost)(mptopdf)
+
+	\tonode[\experimental](mflua)(4,\layer)<A (so far) experimental implementation of METAFONT with Lua embedded for better extraction of information from METAFONT.>{MFLua}
+	\todraw(mflua)(metafont)
 	\steplayer[-1]
 
 	\tonode[\experimental](megapost)(0,\layer)<A planned extension of MetaPost “that will extend the range
 and precision of the internal data types.”>{MegaPost}
 	\todraw(metapost)(megapost)
 
+	\steplayer[-1]
+
 	\tonode[\normalimportant]%% to indicate that it is a format rather than a program …
-			(metafun)(3,\layer)<“MetaFun is Hans Hagen's extension to (or module for) the MetaPost language.” A format for MetaPost that is useable with ConTeXt.>{MetaFun}
+			(metafun)(4,\layer)<“MetaFun is Hans Hagen's extension to (or module for) the MetaPost language.” A format for MetaPost that is useable with ConTeXt.>{MetaFun}
 	\todraw(metafun)(metapost)
 }
 
@@ -659,7 +673,7 @@ and precision of the internal data types.”>{MegaPost}
 	\todraw.(biber)(biblatex)
 	\todraw.(bibtexu)(biblatex)
 
-	\tonode[\package](librarian)(8,\layer)<A TeX file (useable with all formats) that typesets BibTeX-style bibliographies without the need of BibTeX. Therefore, it provides a format-independent typesetting of bibliographies.>{Librarian}
+	\tonode[\package](librarian)(7,\layer)<A TeX file (useable with all formats) that typesets BibTeX-style bibliographies without the need of BibTeX. Therefore, it provides a format-independent typesetting of bibliographies.>{Librarian}
 }
 
 %%% dvipdfm and  similar ones %%%
@@ -760,19 +774,27 @@ The following list tries to explain what happens if a programm is called by a gi
 \\[-2ex]
 \totablesec{plain formats}
 tex & \TeX\ with the plain format\\
+
+aleph & Aleph with the plain format\\
+eptex & ε-p\TeX\ with the plain format\\
+dviluatex & Lua\TeX\ with the plain format and DVI output\\
+csplain & PDFε-\TeX\ with the csplain format and DVI output\\
+eplain & PDFε-\TeX\ with the eplain format and DVI output\\
+etex & PDFε-\TeX\ with the plain format and DVI output\\
+mltex & PDFε-\TeX\ with ML\TeX\ extensions enabled, DVI output\\
+pdfcsplain & PDFε-\TeX\ with the csplain format and PDF output\\
+pdfetex & PDFε-\TeX\ with the plain format and PDF output\\
+pdftex & PDFε-\TeX\ with the plain format and PDF output\\
+
+
 ptex & p\TeX\ with the plain format\\
 mltex & PDFε-\TeX\ with the plain format and DVI output\\
-eptex & ε-p\TeX\ with the plain format\\
-pdftex & PDFε-\TeX\ with the plain format and PDF output\\
-etex & PDFε-\TeX\ with the plain format and DVI output\\
-pdfetex & PDFε-\TeX\ with the plain format and PDF output\\
-aleph & Aleph with the plain format\\
+
+
 xetex & \XeTeX\ with the plain format\\
 luatex & Lua\TeX\ with the plain format and PDF output\\
-dviluatex & Lua\TeX\ with the plain format and DVI output\\
-eplain & PDFε-\TeX\ with the eplain format and DVI output\\
-csplain & PDFε-\TeX\ with the csplain format and DVI output\\
 pdfcsplain & PDFε-\TeX\ with the csplain format and PDF output\\
+
 \totablesec{\LaTeXe}
 latex & PDFε-\TeX\ with the \LaTeXe\ format and DVI output\\
 pdflatex & PDFε-\TeX\ with the \LaTeXe\ format and PDF output\\
@@ -789,7 +811,14 @@ context & Lua\TeX\ with Con\TeX t MKIV format and PDF output\\
 context --interface = de & dito, with german interface\\
 \totablesec{other formats}
 amstex & PDF\TeX\ with the \AMS\TeX\ format and DVI output\\
+jadetex & PDFε-\TeX\ with the Jade\TeX\ format and DVI output\\
+mex & PDFε-\TeX\ with the MeX format and DVI output\\
+pdfjadetex & PDFε-\TeX\ with the Jade\TeX\ format and PDF output\\
+pdfmex & PDFε-\TeX\ with the MeX format and PDF output\\
+pdfxmltex & PDF\TeX\ with the XML\TeX\ format\\%%  FIXME: what output? …
+utf8mex & PDFε-\TeX\ with the UTF8MeX format and DVI output\\
 xmltex & PDF\TeX\ with the XML\TeX\ format \\%%  FIXME: what output? …
+
 \totablesec{metafont}
 mf & the METAFONT program\\
 mp & the METAPOST program\\
