@@ -80,17 +80,17 @@ It is up to you to contribute texts, references, links, descriptions, hints etc.
 As this document makes heavy use of PDF-features, some PDF viewers are not able to show everything correct and as intended. My experiences with viewers are as follows, where the number is the version which I tested:
 
 \begin{description}
-\item[evince 3.0.2] Shows the document correct and complete. Tested using Linux.
+\item[evince 3.0.2] Shows the document correct and complete. (Tested on Arch Linux)
 
-\item[Adobe Reader 9] will show all the information but might hide some text of very long tooltips (at least that's the case on my machine). Also, it draws annoying green boxes around the tooltips which do not belong there.
+\item[Adobe Reader 9] will show all the information but might hide some text of very long tooltips (at least that's the case on my machine). Also, it draws annoying green boxes around the tooltips which do not belong there. (Tested on Arch Linux)
 
-\item[\TeX works 0.5 r869] The built-in PDF viewer of the \TeX works editor does not break lines of tooltips, therefore long annotations are not shown completely.
+\item[\TeX works 0.5 r869] The built-in PDF viewer of the \TeX works editor does not break lines of tooltips, therefore long annotations are not shown completely. (Tested on Arch Linux)
 
-\item[okular 0.13] also does not break the lines.
+\item[okular 0.13] also does not break the lines. (Tested on Arch Linux)
 
-\item[xpdf 3.03] shows only very short tooltips. Most of the information is not visible in the graphs.
+\item[xpdf 3.03] shows only very short tooltips. Most of the information is not visible in the graphs. (Tested on Arch Linux)
 
-\item[gv 3.7.2] shows no tooltips, but the annoying green boxes. (Linux)
+\item[gv 3.7.2] shows no tooltips, but the annoying green boxes. (Tested on Arch Linux)
 \end{description}
 
 \subsection*{About this document}
@@ -113,6 +113,9 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	
 	\tonode[\program](ant)(13,\layer)<Ant is Not TeX. A typesetting system inspired by TeX. Only *inspired*, so it has nothing to do with TeX in terms of common code.>{ANT}
 	\todraw[dotted](tex)(ant)
+
+	\tonode[\program](hex)(0,\layer)<An experimental reimplementation of TeX in Haskell.>{HeX}
+	\todraw[dotted](tex)(hex)
 	
 	\steplayer[-1.5]
 	\tonode(tex-xet)(4,\layer)<The first extension to TeX, 1987. It was able to typeset in two directions, but only with a mark in the DVI to change the direction.>{\TeX-\XeT}
@@ -604,7 +607,7 @@ The following pages will be a hodge-podge of many things that are related to \Te
 	\tonode(metafog)(4,\layer)<A program to convert metafont shapes to Type1 contours. Uses mathematically correct transformations instead of autotracing.>{Metafog}
 	\todraw(metafog)(metafont)
 
-	\tonode(metatype1)(-4,\layer)<A program to produce Type1 fonts from metafont source code.>{MetaType1}
+	\tonode(metatype1)(-4,\layer)<A program to produce Type1 fonts from METAFONT source code.>{MetaType1}
 	\todraw(metatype1)(metafont)
 	\steplayer[-1]
 
@@ -612,7 +615,7 @@ The following pages will be a hodge-podge of many things that are related to \Te
 	\todraw(metapost)(metafont)
 	\steplayer[-2]
 
-	\tonode[\normalimportant](mptopdf)(-4,\layer)<Actually a pdfTeX-generated format, this program can be used to compile metapost code directly into PDF output. Metafun is supported, too.>{mptopdf}
+	\tonode[\normalimportant](mptopdf)(-4,\layer)<Actually a pdfTeX-generated format, this program can be used to compile MetaPost source code directly into PDF output. Metafun is supported, too.>{mptopdf}
 	\todraw.(metapost)(mptopdf)
 
 	\tonode[\experimental](mflua)(4,\layer)<A (so far) experimental implementation of METAFONT with Lua embedded for better extraction of information from METAFONT.>{MFLua}
@@ -625,7 +628,7 @@ and precision of the internal data types.”>{MegaPost}
 
 	\steplayer[-1]
 
-	\tonode[\normalimportant]%% to indicate that it is a format rather than a program …
+	\tonode[\normalimportant]
 			(metafun)(4,\layer)<“MetaFun is Hans Hagen's extension to (or module for) the MetaPost language.” A format for MetaPost that is useable with ConTeXt.>{MetaFun}
 	\todraw(metafun)(metapost)
 }
@@ -678,7 +681,7 @@ and precision of the internal data types.”>{MegaPost}
 
 %%% dvipdfm and  similar ones %%%
 \tograph(\tostruct(1)[{(x)dvipdf(m)(x)}]{(x)dvipdf(m)(x)}){
-	\tonode(dvipdf)(0,0)<A shellscript from Ghostscript that uses dvips and and gs for converting.>{dvipdf}
+	\tonode(dvipdf)(0,0)<A shellscript from Ghostscript that uses dvips and gs for conversion.>{dvipdf}
 	\tonode(xdv2pdf)(4,0)<No idea so far what this is, but it is mentioned in the fontspec manual as possible driver for XeTeX.>{xdv2pdf}
 	\steplayer
 
@@ -718,7 +721,7 @@ This section tries to cover the development of fonts – the most important thin
 	\todraw(aat)(gx)
 }
 
-\tograph(\tostruct(1)[Work Flow]{Work Flow}[\vip]
+\tograph(\tostruct(1)[Work Flow]{Work Flow – Under Construction!}[\vip]
 {
 \flushleft
 \large Ok, this section maybe will kill me … I will try to depict the typical work flow for working with \TeX. This will never be complete as there are many ways to work with any of the \TeX\ flavours, including helper programs etc. We will start with a simple \LaTeX\ document, and maybe we will extend this to different formats, engines etc. …
@@ -765,12 +768,12 @@ The following list tries to explain what happens if a programm is called by a gi
 
 \def\totablesec#1{
 ~ \\[-2ex]
-  \rowcolor[gray]{0.9}\hspace*{3em}\Large \strut \large\rmfamily #1 & \\
+  \rowcolor[gray]{0.9}\hspace*{2em}\Large \strut \large\rmfamily #1 & \\
  ~ \\[-2ex]
 }
 
-\begin{longtable}{>{\ttfamily\quad\large}ll}
-\rowcolor[gray]{0.8}\hspace*{-1em}\LARGE \bfseries program & \LARGE  meaning\\
+\begin{longtabu}{>{\ttfamily\large}lX}
+\rowcolor[gray]{0.8}\LARGE \bfseries program & \LARGE  meaning\\
 \\[-2ex]
 \totablesec{plain formats}
 tex & \TeX\ with the plain format\\
@@ -781,34 +784,31 @@ dviluatex & Lua\TeX\ with the plain format and DVI output\\
 csplain & PDFε-\TeX\ with the csplain format and DVI output\\
 eplain & PDFε-\TeX\ with the eplain format and DVI output\\
 etex & PDFε-\TeX\ with the plain format and DVI output\\
+luatex & Lua\TeX\ with the plain format and PDF output\\
 mltex & PDFε-\TeX\ with ML\TeX\ extensions enabled, DVI output\\
 pdfcsplain & PDFε-\TeX\ with the csplain format and PDF output\\
 pdfetex & PDFε-\TeX\ with the plain format and PDF output\\
 pdftex & PDFε-\TeX\ with the plain format and PDF output\\
-
-
 ptex & p\TeX\ with the plain format\\
-mltex & PDFε-\TeX\ with the plain format and DVI output\\
-
-
 xetex & \XeTeX\ with the plain format\\
-luatex & Lua\TeX\ with the plain format and PDF output\\
-pdfcsplain & PDFε-\TeX\ with the csplain format and PDF output\\
 
 \totablesec{\LaTeXe}
 latex & PDFε-\TeX\ with the \LaTeXe\ format and DVI output\\
-pdflatex & PDFε-\TeX\ with the \LaTeXe\ format and PDF output\\
+dvilualatex & Lua\TeX\ with the \LaTeXe\ format and DVI output\\
 lamed & Aleph with the Lamed format\\
+lualatex & Lua\TeX\ with the \LaTeXe\ format and PDF output\\
+mllatex & PDFε-\TeX\ with ML\TeX\ extensions enabled, \LaTeXe\ format and DVI output\\
+pdflatex & PDFε-\TeX\ with the \LaTeXe\ format and PDF output\\
+
 platex & ε-p\TeX\ with the p\LaTeX\ format\\
 xelatex & \XeTeX\ with the \LaTeXe\ format\\
-lualatex & Lua\TeX\ with the \LaTeXe\ format and PDF output\\
-dvilualatex & Lua\TeX\ with the \LaTeXe\ format and DVI output\\
+
 \totablesec{Con\TeX t}
 texexec & PDFε-\TeX with Con\TeX t MKII format and PDF output\\
-texexec --interface = de & dito, with german interface\\
+texexec --interface = de & dito, with german interface (only an example, more languages available)\\
 texexec --xtx & \XeTeX with Con\TeX t MKII format\\
 context & Lua\TeX\ with Con\TeX t MKIV format and PDF output\\
-context --interface = de & dito, with german interface\\
+context --interface = de & dito, with german interface (only an example)\\
 \totablesec{other formats}
 amstex & PDF\TeX\ with the \AMS\TeX\ format and DVI output\\
 jadetex & PDFε-\TeX\ with the Jade\TeX\ format and DVI output\\
@@ -823,7 +823,7 @@ xmltex & PDF\TeX\ with the XML\TeX\ format \\%%  FIXME: what output? …
 mf & the METAFONT program\\
 mp & the METAPOST program\\
 mptopdf & PDFε-\TeX\ with the mptopdf format and PDF output\\
-\end{longtable}
+\end{longtabu}
 
 \appendix
 \topart{Appendix}
@@ -856,6 +856,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 
 	\tobibsection{Engines}
 	\tobib{ANT project page}<http://ant.berlios.de>
+	\tobib{HeX project page}<http://luispedro.org/software/hex>
 	\tobib{Yasuki S AITO. Report on JTEX: A Japanese TEX. TUGboat 8 (1987), no. 2, 103\,–\,116.}%
 		<http://www.tug.org/TUGboat/Articles/tb08-2/tb18saito.pdf>
 	\tobib{p\TeX\ page}<http://ascii.asciimw.jp/pb/ptex/>
