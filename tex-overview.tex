@@ -229,11 +229,11 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 		\todraw[dashed](lua)(luatex)
 	
 	\steplayer[-3]
-	\tonode[\experimental](itex)(7,\layer)<iTeX is the official successor of TeX3, announced by Don Knuth at the TUG conference 2010.>{i\TeX}
+	\tonode[\experimental](itex)(7,\layer)<iTeX is the official successor of TeX3, announced by Don Knuth at the TUG conference 2010. Not to be confused with William Cheswick's application for the iPad.>{i\TeX}
 }
 \vfill
 
-{\flushleft The chronological order may not be exact in this graph. I have to work hard on the arrangement to show both chronological order and code dependence, and for now only the code dependence is more-or-less correct.
+{\flushleft The chronological order may not be exact in this graph. I have to work hard on the arrangement to show both chronological order and code dependence, and for now only the code dependence is (should be) correct.
 
 } 
 
@@ -445,6 +445,11 @@ and should simplify the writing of physics papers.” Latest version I found is 
 %%% Texinfo %%%
 \tograph(\tostruct(1)[Texinfo]{Texinfo}[\normalimportant]){
 	\tonode(texinfo)(0,0)<The official documentation format of the GNU project. Uses TeX to provide documentations.>{Texinfo}
+}
+
+%%% TeXsis %%%
+\tograph(\tostruct(1)[TeXsis]{\TeX sis}[\normalimportant]){
+	\tonode(texsis)(0,0)<A plainTeX-based format for physicists. Latest version is 2.18 from 21 April 2001.>{\TeX sis}
 }
 
 %%% XMLTeX %%%
@@ -815,9 +820,10 @@ jadetex & PDFε-\TeX\ with the Jade\TeX\ format and DVI output\\
 mex & PDFε-\TeX\ with the MeX format and DVI output\\
 pdfjadetex & PDFε-\TeX\ with the Jade\TeX\ format and PDF output\\
 pdfmex & PDFε-\TeX\ with the MeX format and PDF output\\
-pdfxmltex & PDF\TeX\ with the XML\TeX\ format\\%%  FIXME: what output? …
+pdfxmltex & PDFε-\TeX\ with the XML\TeX\ format\\%%  FIXME: what output? …
+texsis & PDFε-\TeX\ with the \TeX sis format and DVI output\\
 utf8mex & PDFε-\TeX\ with the UTF8MeX format and DVI output\\
-xmltex & PDF\TeX\ with the XML\TeX\ format \\%%  FIXME: what output? …
+xmltex & PDFε-\TeX\ with the XML\TeX\ format \\%%  FIXME: what output? …
 
 \totablesec{metafont}
 mf & the METAFONT program\\
@@ -829,26 +835,28 @@ mptopdf & PDFε-\TeX\ with the mptopdf format and PDF output\\
 \topart{Appendix}
 
 %%
-%% I've chosen to typeset the bibliography “by hand” for full control of formatting and behaviour. Also, I can choose my own syntax ☺
+%% This is kind-of a bibliography.
 %%
 \tostruct{References}
 \label{sec:refs}
 \obeylines
 
-The references are in order of occurance in the above document. i.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX. Everything that is not listet as ”book“ is freely available on the internet.
+The references are in order of occurance in the above document. i.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX. Everything that is not listet as ”book“ is freely available on the internet. (TUGboat articles will become freely accessible about one year after publication.)
 
 	\tobibsection{Books}
 	\tobib{D.E. Knuth, D.~Bibby, and I.~Makai. \textit{The \TeX book}\\ Addison-Wesley Reading, MA, 1986.}
 	\tobib{F.~Mittelbach, M.~Goossens, J.~Braams, D.~Carlisle, C.~Rowley, C.~Detig, and
 	  J.~Schrod. \textit{The \LaTeX\ companion.} \\ Addison-Wesley, 2004.}
 
-	\tobibsection{Overview Articles}
+	\tobibsection{Overview Articles / Pages}
 	\tobib{Arthur Reutenauer. \textit{A Brief History of \TeX}. Talk at EuroBacho\TeX\ 2007.}%
 	  <http://www.gust.org.pl/bachotex/EuroBachoTeX2007/presentations/bhot.pdf/view>
 	\tobib{\textit{A Brief History of \LaTeX}}<http://www.xent.com/FoRK-archive/feb98/0307.html>
 	\tobib{Hans Hagen: \textit{16 years of Con\TeX t}. Article in TUGboat Vol. 32, Number 1, 2011.}
 	\tobib{Short Article About Omega And Aleph}<http://www.tex.ac.uk/cgi-bin/texfaq2html?label=omegaleph>
 	\tobib{Interviews with Will Robertson, Hans Hagen et.\,al.}<http://www.tug.org/interviews>
+	\tobib{The levels of \TeX\ – explains shortly the differences between engines, distributions, front ends etc.}<http://tug.org/levels.html>
+	\tobib{Things with “\TeX” in the name – a page with a similar aim as this document, and many interesting links}<http://www.tex.ac.uk/cgi-bin/texfaq2html?label=texthings>
 	
 	\tobibsection{Archives}
 	\tobib{CTAN – Comprehensive \TeX\ Archive Network:}<http://www.ctan.org>
@@ -870,6 +878,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{$\epsilon\chi$\TeX\ project page}<http://www.extex.org>	
 	\tobib{ee\TeX\ project page}<http://tex.aanhet.net/eetex>	
 	\tobib{Lua\TeX\ project page}<http://www.luatex.org>
+	\tobib{i\TeX—Document formatting in an ereader world. TUGboat 32 (2011), no. 2, 158\,–\,163.}
 	\tobib{i\TeX\ announcement by Don Knuth at the TUG 2010}<http://river-valley.tv/tug-2010/an-earthshaking-announcement>
 	
 	\tobibsection{Formats}
@@ -891,6 +900,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{PHYZZX on CTAN}<http://ctan.org/tex-archive/macros/phyzzx>
 	\tobib{Star\TeX\ on CTAN}<http://www.ctan.org/tex-archive/macros/startex>
 	\tobib{Texinfo project page}<http://www.gnu.org/software/texinfo>
+	\tobib{\TeX sis project page}<http://www.texsis.org>
 	\tobib{XML\TeX\ manual}<http://www.dcarlisle.demon.co.uk/xmltex/manual.html>
 	\tobib{Y\TeX\ on CTAN}<http://tug.ctan.org/tex-archive/macros/ytex>
 	\tobib{Zz\TeX: Article in TUGboat 13 (1992), No. 4}<http://www.tug.org/TUGboat/tb13-4/tb37anag.pdf>
