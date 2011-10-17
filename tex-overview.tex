@@ -618,23 +618,26 @@ The following pages will be a hodge-podge of many things that are related to \Te
 
 	\tonode(metapost)(0,\layer)<A graphic generating program written by John Hobby, inspired by METAFONT. MetaPost can produce PostScript graphics as well as SVG. Latest (experimental) version is 1.750 as of spring 2011.>{MetaPost}
 	\todraw(metapost)(metafont)
-	\steplayer[-2]
+	\steplayer[-1]
 
 	\tonode[\normalimportant](mptopdf)(-4,\layer)<Actually a pdfTeX-generated format, this program can be used to compile MetaPost source code directly into PDF output. Metafun is supported, too.>{mptopdf}
 	\todraw.(metapost)(mptopdf)
 
 	\tonode[\experimental](mflua)(4,\layer)<A (so far) experimental implementation of METAFONT with Lua embedded for better extraction of information from METAFONT.>{MFLua}
 	\todraw(mflua)(metafont)
+	\steplayer[-2]
+
+	\tonode[\normalimportant](metappeal)(4,\layer)<"Metappeal is an extension to Plain MetaPost, providing a lightweight framework 
+for consistent development in MetaPost.">{Metappeal}
+	\todraw(metappeal)(metapost)
 	\steplayer[-1]
 
 	\tonode[\experimental](megapost)(0,\layer)<A planned extension of MetaPost “that will extend the range
 and precision of the internal data types.”>{MegaPost}
 	\todraw(metapost)(megapost)
-
 	\steplayer[-1]
 
-	\tonode[\normalimportant]
-			(metafun)(4,\layer)<“MetaFun is Hans Hagen's extension to (or module for) the MetaPost language.” A format for MetaPost that is useable with ConTeXt.>{MetaFun}
+	\tonode[\normalimportant](metafun)(3,\layer)<“MetaFun is Hans Hagen's extension to (or module for) the MetaPost language.” A format for MetaPost that is useable with ConTeXt.>{MetaFun}
 	\todraw(metafun)(metapost)
 }
 
