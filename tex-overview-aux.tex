@@ -1,4 +1,4 @@
-%% This document is part of the document tex-overview. It contains the formatting and definitions for typesetting. Please do *not* consider anything here as an example of good TeX coding style. It is not.
+%% This document is part of the document tex-overview. It contains the formatting and definitions for typesetting. Please do *not* consider anything here as an example of good TeX coding style – it's not.
 %% author: Arno Trautmann
 
 % !TeX root = tex-overview.tex
@@ -17,6 +17,7 @@
   geometry,
   hyperref,
   longtable,
+  luacode,
   multicol,
   microtype,
   pdftexcmds,
@@ -216,8 +217,8 @@
   \subsection*{#1}
 }
 \NewDocumentCommand\tobib{mD<>{}O{}}{
-  \vspace*{1.5ex}
-\begin{minipage}{\textwidth}  %% to prevent page breaks
+  \medskip
+\begin{minipage}{\textwidth}  %% to prevent page breaks within bib-items
   \large #1\normalsize\\ \hspace*{1em} \parbox{\textwidth-1.5em}{\url{#2} #3}
 \end{minipage}
 }
@@ -227,11 +228,69 @@
 \AtBeginDocument{
   {
     \centering
-    \huge\bfseries An overview of \TeX, its children\\ and their friends~\dots\par
+    \huge\bfseries An overview of \TeX, its children\\
+                             and their friends~\dots
+    \vspace*{-.2cm}
     \flushright\parbox{4cm}{
-      \Large \color[rgb]{.4 0 0} Arno Trautmann\\ \fontsize{9.85}{10}\selectfont arno.trautmann@gmx.de
+      \large \color[rgb]{.4 0 0} Arno Trautmann\\
+      \fontsize{8.25}{10}\selectfont arno.trautmann@gmx.de
     }
-    \hspace*{2cm}\par
+    \hspace*{.7cm}\par
   }
   \vspace*{1cm}
+}
+
+%% ok, now something just for fun, but I wanted to use this in a "real life" document:
+% we first define some Lua functions for drawing and then use them to colorize the corners of the document.
+\begin{luacode}
+function pdf_print (...)
+  for _, str in ipairs({...}) do
+    pdf.print(str .. " ")
+  end
+  pdf.print("\string\n")
+end
+
+function move (p)
+  pdf_print(p[1],p[2],"m")
+end
+
+function line (p)
+  pdf_print(p[1],p[2],"l")
+end
+
+function curve(p1,p2,p3)
+  pdf_print(p1[1], p1[2],
+            p2[1], p2[2],
+            p3[1], p3[2], "c")
+end
+
+function linewidth (w)
+  pdf_print(w,"w")
+end
+
+function disturb_point(point,strength)
+  if strength then else strength = 5 end
+  return {point[1] + math.random()*2*strength - strength,
+          point[2] + math.random()*2*strength - strength}
+end
+
+function sloppyline(start,stop)
+  local start_line = disturb_point(start,10)
+  local stop_line = disturb_point(stop,10)
+  move(start) curve(start_line,stop_line,stop)
+  pdf_print("S") -- stroke
+end
+\end{luacode}
+
+\AtBeginShipout{%
+  \AtBeginShipoutUpperLeft{%
+	\color[rgb]{.6 0 0}
+	\luatexlatelua{
+      linewidth(40)
+      sloppyline({-30,-30},{30,30})
+      sloppyline({620,-30},{560,30})
+      sloppyline({-30,-800},{30,-860})
+      sloppyline({620,-800},{560,-860})
+    }
+  }%
 }

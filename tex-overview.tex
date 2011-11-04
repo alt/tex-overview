@@ -1,6 +1,5 @@
-%% Engine needed: LuaTeX ≥ 0.65
+%% Engine needed: LuaTeX ≥ 0.70.1
 %% Format needed: LaTeX2ε
-%% Packages needed: see list in the -aux.tex file …
 %% use an up-to-date TeX live2011 (with tl-contrib updates)
 
 % this document has version number 0.1f-ish.
@@ -9,8 +8,9 @@
 \begin{document}
 \savegeometry{normal}
 \begin{abstract}
-{\centering \Large \hyperref[textextview]{Link for the impatient.}\\[2ex]}
 In the world of \TeX, there are many developments and ambiguous names. This paper tries to give an overview of the development of \TeX\ and related programs. Contributions are very welcome!\footnote{The current source code of this document is availble at \url{http://github.com/alt/tex-overview}. Please feel free to patch there or mail me any suggestions and comments. I'll be happy to extend and correct this document!}
+
+{\centering \Large \hyperref[textextview]{Link for the impatient.}\\[2ex]}
 \end{abstract}
 
 \section*{Introduction}
@@ -498,6 +498,10 @@ This section will feature the main distributions of \TeX\ and related programs. 
 
 	\tonode(fptex)(3,\layer)<A free TeX distribution for Win32 based on teTeX, by Fabrice Popineau. Still active, provides up-to-date binaries for Windows. Special support for Japanese Typesetting.>{fp\TeX}
 	\todraw(fptex)(tetex)
+
+	\tonode(gnutex)(3,\layer)<A temporary attempt to distribute TeX and related programs according to the GPL. Not a change of teTeX, but a new approach inspired by teTeX. As most (La)TeX packages are not GPL compatible, it was quite "crippled" and never made it into the real world.>{GNU\TeX\ 0.x}
+	\todraw(gnutex)(tetex)
+
 	\steplayer[-2.5]
 
 	\tonode[\histdistro](xemtex)(4,\layer)<A TeX distribution for Windows, based on fpTeX with XEmacs/AucTeX as IDE for (La)TeX. XemTeX was sponsored by the French government.>{XEm\TeX}
@@ -772,7 +776,7 @@ The preliminary nomenclature is:
 
 \tostruct[Program Names]{Program Names}[\normalimportant]
 \flushleft  %% centering was still active until here
-The following list tries to explain what happens if a programm is called by a given name. E.\,g. calling the command \texttt{latex} on the command line will start the PDFε-\TeX\ engine\footnote{Actually it's only called PDF\TeX\ now, but it is always the version that includes ε-\TeX\ extensions. Here, always the full name is used for clearness.} in DVI mode with the format \LaTeX\,2\raisebox{-.5ex}ε. This will list the names used in the official \TeX~live distribution (which should be the same in MiK\TeX) and only those which are not totally clear by the name itself.
+The following list tries to explain what happens if a programm is called by a given name. E.\,g. calling the command \texttt{latex} on the command line will start the PDFε-\TeX\ engine\footnote{Actually it's only called PDF\TeX\ now, but it is always the version that includes ε-\TeX\ extensions. Here, always the full name is used for clearness.} in DVI mode with the format \LaTeX\,2\raisebox{-.5ex}ε. This will list the names used in the \emph{official} (upstream) \TeX~live distribution (which should mostly be the same in MiK\TeX) and only those which are not totally clear by the name itself.
 
 \def\totablesec#1{
 ~ \\[-2ex]
@@ -781,7 +785,7 @@ The following list tries to explain what happens if a programm is called by a gi
 }
 
 \begin{longtabu}{>{\ttfamily\large}lX}
-\rowcolor[gray]{0.8}\LARGE \bfseries program & \LARGE  meaning\\
+\rowcolor[gray]{0.8}\LARGE \bfseries program \strut & \LARGE  meaning\\
 \\[-2ex]
 \totablesec{plain formats}
 tex & \TeX\ with the plain format\\
@@ -881,7 +885,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{$\epsilon\chi$\TeX\ project page}<http://www.extex.org>	
 	\tobib{ee\TeX\ project page}<http://tex.aanhet.net/eetex>	
 	\tobib{Lua\TeX\ project page}<http://www.luatex.org>
-	\tobib{i\TeX—Document formatting in an ereader world. TUGboat 32 (2011), no. 2, 158\,–\,163.}
+	\tobib{\textit{i\TeX—Document formatting in an ereader world.} TUGboat 32 (2011), no. 2, 158\,–\,163.}
 	\tobib{i\TeX\ announcement by Don Knuth at the TUG 2010}<http://river-valley.tv/tug-2010/an-earthshaking-announcement>
 	
 	\tobibsection{Formats}
@@ -913,6 +917,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{\TeX\ live development history}<http://tug.org/texlive/doc/texlive-en/texlive-en.html>
 	\tobib{gw\TeX\ project page}<http://ii2.sourceforge.net/tex-index.html>
 	\tobib{Brief History of gwTeX}<http://www.tug.org/twg/mactex/award/2007/gerben/aboutgwtex.html>
+	\tobib{Frank Mittelbach: \textit{Reflections on the history of the \LaTeX\ Project Public License (LPPL)—A software license for \LaTeX\ and more.} In: TUGboat Vol. 32 (2011) No.~1, p.~83~ff.}<http://www.tug.org/TUGboat/Contents/contents32-1.html>
 	\tobib{TLContrib project page}<http://tlcontrib.metatex.org/>
 	\tobib{Mac\TeX\ project page}<http://www.tug.org/mactex>
 	\tobib{MiKTeX project page}<http://miktex.org/>
