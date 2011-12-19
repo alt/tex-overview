@@ -210,9 +210,10 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 		\todraw*(etex)(pdfetex)
 		\todraw*(pdftex)(pdfetex)
 
-	\tonode[\vip](XeTeX)(10,\layer)<This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. Unicode encoding is fully supported (utf8 as native encoding). XeTeX also features support for OpenType, AAT, TrueType and Graphite-fonts (via the operation system). In contrary to pdfTeX or LuaTeX, no external configuration file is needed to use fonts. In newest versions, character protrusion is possible.>{\XeTeX}
+	\tonode[\vip](XeTeX)(10,\layer)<This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. Unicode encoding is fully supported (utf8 as native encoding). XeTeX also features support for OpenType, AAT, TrueType and Graphite-fonts (via the operation system). In contrary to pdfTeX or LuaTeX, no external configuration file is needed to use fonts. Since version 3.1415926-2.2-0.9997.4, code from pdf(e)TeX for margin kerning has been added.>{\XeTeX}
 		\todraw(texgx)(XeTeX)
 		\todraw*(etex)(XeTeX)
+		\todraw'(pdfetex)(XeTeX)
 	
 	\steplayer[-2]
 
@@ -574,6 +575,10 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\tonode(minimals)(-3,\layer)<standalone ConTeXt provides a distribution of latest (beta and stable) ConTeXt versions with binaries and formats. Efficient upgrading is possible as well as parallel use with another TeX distribution. Was renamed from “minimals” into standalone in 2011.>{Standalone}
 }
 
+\tograph(\tostruct(1)[Ker\TeX]{Ker\TeX}){
+	\tonode(kertex)(0,\layer)<A lightweight TeX distribution including all of Don Knuth's programs and fonts, dvips, MetaPost, bibtex and more. It is pure C89 and under a BSD like license.>{Ker\TeX}
+}
+
 \tograph(\tostruct(1)[W32\TeX]{W32\TeX}){
 	\tonode(w32tex)(0,\layer)<A distributon to provide binaries for MS Windows, with special support for Japanese. First version (up to the changelog): 2009/08/02. Still up-to-date.>{W32\TeX}
 }
@@ -776,17 +781,16 @@ The preliminary nomenclature is:
 
 \tostruct[Program Names]{Program Names}[\normalimportant]
 \flushleft  %% centering was still active until here
-The following list tries to explain what happens if a programm is called by a given name. E.\,g. calling the command \texttt{latex} on the command line will start the PDFε-\TeX\ engine\footnote{Actually it's only called PDF\TeX\ now, but it is always the version that includes ε-\TeX\ extensions. Here, always the full name is used for clearness.} in DVI mode with the format \LaTeX\,2\raisebox{-.5ex}ε. This will list the names used in the \emph{official} (upstream) \TeX~live distribution (which should mostly be the same in MiK\TeX) and only those which are not totally clear by the name itself.
-
-\def\totablesec#1{
-~ \\[-2ex]
-  \rowcolor[gray]{0.9}\hspace*{2em}\Large \strut \large\rmfamily #1 & \\
- ~ \\[-2ex]
-}
+The following list tries to explain what happens if a programm is called by a given name. E.\,g. calling the command \texttt{latex} on the command line will start the PDFε-\TeX\ engine\footnote{Actually it's only called PDF\TeX\ now, but it is always the version that includes ε-\TeX\ extensions. Here, always the full name is used for clearness.} in DVI mode with the format \LaTeX\,2\raisebox{-.5ex}ε. This will list the names used in the \emph{official} (upstream) \TeX~live distribution, which should mostly (but not all) be the same in MiK\TeX.
 
 \begin{longtabu}{>{\ttfamily\large}lX}
 \rowcolor[gray]{0.8}\LARGE \bfseries program \strut & \LARGE  meaning\\
 \\[-2ex]
+\totablesec{engines / no preloaded format}
+initex & INI\TeX\ (same as \texttt{tex --ini})\\
+texlua & Lua\TeX\ in Lua mode\\
+texluac & Lua\TeX\ as byte compiler\\
+
 \totablesec{plain formats}
 tex & \TeX\ with the plain format\\
 	
@@ -796,15 +800,12 @@ dviluatex & Lua\TeX\ with the plain format and DVI output\\
 csplain & PDFε-\TeX\ with the csplain format and DVI output\\
 eplain & PDFε-\TeX\ with the eplain format and DVI output\\
 etex & PDFε-\TeX\ with the plain format and DVI output\\
-initex & INI\TeX\ with no preloaded format (same as \texttt{tex --ini})\\
 luatex & Lua\TeX\ with the plain format and PDF output\\
 mltex & PDFε-\TeX\ with ML\TeX\ extensions enabled, DVI output\\
 pdfcsplain & PDFε-\TeX\ with the csplain format and PDF output\\
 pdfetex & PDFε-\TeX\ with the plain format and PDF output\\
 pdftex & PDFε-\TeX\ with the plain format and PDF output\\
 ptex & p\TeX\ with the plain format\\
-texlua & Lua\TeX\ in Lua mode\\
-texluac & Lua\TeX\ as byte compiler\\
 xetex & \XeTeX\ with the plain format\\
 
 \totablesec{\LaTeXe}
@@ -928,6 +929,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{Pro\TeX t project page}<http://www.tug.org/protext>
 	\tobib{\TeX Collection page}<http://www.tug.org/texcollection>
 	\tobib{Con\TeX t minimals on Con\TeX t garden wiki}<http://wiki.contextgarden.net/ConTeXt_Minimals>
+	\tobib{Ker\TeX\ project page}<http://www.kergis.com/en/kertex.html>
 	\tobib{Win32 project page}<http://w32tex.org/>
 	\tobib{Oz\TeX\ project page}<http://www.trevorrow.com/oztex>
 	\tobib{\TeX\ on Amiga}<http://serpens.de/~zza/amigafaq/AmigaFAQg_49.html>

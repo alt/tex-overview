@@ -209,6 +209,13 @@
   \cs_gset_eq:NN\tonodestyle#4
 }
 
+%% the sectioning of the names table
+\NewDocumentCommand\totablesec{m}{
+~ \\[-2ex]
+  \rowcolor[gray]{0.9}\hspace*{2em}\Large \strut \large\rmfamily #1 \\
+ ~ \\[-2ex]
+}
+
 %% a command for creation of bib-items.
 \NewDocumentCommand\tobibsection{m}{
   \subsection*{#1}
