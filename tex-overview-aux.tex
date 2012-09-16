@@ -75,10 +75,12 @@
 \tl_set:Nn\histdistro{purple}
 
 %% shorthand to keep a good structure of the node positions
-\fp_new:N\layer
-\fp_new:N\layerdist
-\fp_set:Nn\layer{0}
-\fp_set:Nn\layerdist{-1}
+\fp_new:N\layer_num
+\fp_new:N\layerdist_num
+\fp_set:Nn\layer_num{0}
+\fp_set:Nn\layerdist_num{-1}
+
+\cs_new:Npn\layer{\fp_use:N\layer_num}
 
 %% width of the tooltip-boxes (negative value to make them disappear at all)
 \dim_set:Nn\fboxrule{-1mm}
@@ -168,10 +170,10 @@
 
 %% a nice way to control the vertical position of nodes
 \NewDocumentCommand{\setlayer}{m}{
-  \fp_set:Nn\layer{#1}
+  \fp_set:Nn\layer_num{#1}
 }
-\NewDocumentCommand{\steplayer}{O{\layerdist}}{
-  \fp_add:Nn\layer{#1}
+\NewDocumentCommand{\steplayer}{O{\layerdist_num}}{
+  \fp_add:Nn\layer_num{#1}
 }
 
 \NewDocumentCommand\topart{m}{
@@ -226,7 +228,8 @@
 \NewDocumentCommand\tobib{mD<>{}O{}}{
   \medskip
 \begin{minipage}{\textwidth}  %% to prevent page breaks within bib-items
-  \large #1\normalsize\\ \hspace*{1em} \parbox{\textwidth-1.5em}{\url{#2} #3}
+  \large #1\normalsize\\ \hspace*{1em} \parbox{.95\textwidth}
+{\url{#2} #3}
 \end{minipage}
 }
 

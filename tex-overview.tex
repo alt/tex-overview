@@ -1,8 +1,8 @@
 %% Engine needed: LuaTeX ≥ 0.70.1
 %% Format needed: LaTeX2ε
-%% use an up-to-date TeX live2011 (with tl-contrib updates)
+%% use an up-to-date TeX Live2012 (with tl-contrib updates)
 
-% this document has version number 0.1f-ish.
+% this document has version number 0.1e-ish.
 \input{tex-overview-aux} %% everything that is not content-related
 
 \begin{document}
@@ -31,9 +31,10 @@ There are three kinds of terms that are often confused especially by new users. 
 \begin{description}
 \item[engine] This is the program that does all the actual work. The original program is \TeX, a famous development is pdf\TeX, while Lua\TeX\ is the latest successor.
 \item[format] A format is a (large) collection of abbreviations (macros) that make the life easy when working with \TeX. The most commonly used formats are \LaTeX, Con\TeX t and plain\TeX. The latter one is a minimal set of macros provided by Don Knuth. Formats can be combined with different engines, exploiting the special abilities of these engines. A format is first a collection of text files, but can be compiled into a binary format that can be read in faster by the engine.
-\item[distribution] In addition to formats, a large set of suppelmentary files can be used to work with \TeX, called \emph{packages} for \LaTeX, \emph{modules} for Con\TeX t, and many external programs have proven useful for the work with \TeX. Distributions such as \TeX~live and MiK\TeX\ strive to provide a full set of such programs and macros by using a package manager to take care of package dependencies and updating. Many Linux distributions, as well as cygwin for Windows, repackage a \TeX\ distribution (mostly \TeX~live) using the Linux distribution's package system.
+\item[distribution] In addition to formats, a large set of suppelmentary files can be used to work with \TeX, called \emph{packages} for \LaTeX, \emph{modules} for Con\TeX t, and many external programs have proven useful for the work with \TeX. Distributions such as \TeX~Live and MiK\TeX\ strive to provide a full set of such programs and macros by using a package manager to take care of package dependencies and updating. Many Linux distributions, as well as cygwin for Windows, repackage a \TeX\ distribution (mostly \TeX~Live) using the Linux distribution's package system.
 \end{description}
 
+\newpage
 \section{How to read this document}
 This document consists of several graphs showing the development of software more or less directly related to \TeX. The graphs try to show the time  development (downwards), as well as dependencies, changes, etc.
 
@@ -137,7 +138,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 
 	\steplayer[-1.5]
 
-	\tonode(ptex)(12,\layer)<Extension of Nihongo TeX to enable vertical typesetting. (“p” for “publishing”)  Distributed as WEB change files. Primary author is D. E. Knuth, latest version (TeX live 2011) is pTeX 3.1415926-p3.2 (modified from the official version 3.1.11)>{p\TeX}
+	\tonode(ptex)(12,\layer)<Extension of Nihongo TeX to enable vertical typesetting. (“p” for “publishing”)  Distributed as WEB change files. Primary author is D. E. Knuth, latest version (TeX Live 2012) is pTeX 3.1415926-p3.3.>{p\TeX}
 		\todraw(nihongo)(ptex)
 		\todraw(tex3)(ptex)
 
@@ -149,7 +150,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	\tonode(mltex)(8,\layer)<Extension to TeX (started 1990) that allows hyphenation of words with accented letters. (Therefore the name: MultiLingual TeX.) Distributed as a change file to the original WEB sources of TeX.>{ML\TeX}
 	\todraw(tex3)(mltex)
 	
-	\tonode[\experimental](uptex)(14,\layer)<Unicode-aware version of pTeX – "Unicode-publishing"-TeX>{up\TeX}
+	\tonode[\experimental](uptex)(14,\layer)<Unicode-aware version of pTeX – "Unicode-publishing"-TeX.>{up\TeX}
 		\todraw(ptex)(uptex)
 	\steplayer[-2]
 
@@ -182,11 +183,17 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 
 	\steplayer[-1]
 
-	\tonode(eptex)(14,\layer)<A merge of e-TeX with pTeX written by Hironori Kitagawa. Additional support for 256 math fonts, and some pdfTeX functionality. Latest Version (TeXlive 2011) is 3.1415926-p3.2-110415-2.3.>{ε-p\TeX}
+	\tonode(eptex)(13.7,\layer)<A merge of e-TeX with pTeX written by Hironori Kitagawa. Additional support for 256 math fonts, and some pdfTeX functionality. Latest Version (TeX Live 2012) is 3.1415926-p3.3-110825-2.4.>{ε-p\TeX}
 		\todraw(ptex)(eptex)
 		\todraw(etex)(eptex)
 
-	\steplayer[-1]
+	\steplayer[-1.5]
+
+	\tonode(euptex)(15.2,\layer)<>{ε-up\TeX}
+		\todraw(etex)(euptex)
+		\todraw(uptex)(euptex)
+
+	\steplayer[-.5]
 
 	\tonode(aleph)(1,\layer)<Originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions. Authors: John Plaice and Yannis Haralambous, now maintained for severe bugfixes by Taco Hoekwater. Latest version number is 3.1415926-1.15-2.1-0.0-rc4.>{$\aleph$ (Aleph)}
 		\todraw(omega)(aleph)
@@ -198,7 +205,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	
 	\steplayer[-1]
 
-	\tonode[\experimental](extex)(13,\layer)<Planned implementation of a high-quality typesetting system, written in Java. Based on experiences in NTS, eTeX, pdfTeX and Omega. Started in 2003, current version in repository is 0.0. (i. e. not very far ...)>{$\epsilon\chi$\TeX}
+	\tonode[\experimental](extex)(12,\layer)<Planned implementation of a high-quality typesetting system, written in Java. Based on experiences in NTS, eTeX, pdfTeX and Omega. Started in 2003, current version in repository is 0.0. (i. e. not very far ...)>{$\epsilon\chi$\TeX}
 		\todraw(nts)(extex)
 		\todraw(omega)(extex)
 		\todraw(etex)(extex)
@@ -224,7 +231,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 
 	\tonode[\program](lua)(0,\layer)<A script language; has nothing to do with TeX.>{Lua}
 	
-	\tonode[\vip](luatex)(4,\layer)<LuaTeX supports utf8, OpenType and many more things. TeX live 2011 ships version 0.70.1. LuaTeX features an embedded scripting language, Lua, making it easy to extend and to change the TeX interna, so most of the programming can be done in Lua instead of TeX-hackery.>{Lua\TeX}
+	\tonode[\vip](luatex)(4,\layer)<LuaTeX supports utf8, OpenType and many more things. TeX Live 2012 ships version 0.70.2. LuaTeX features an embedded scripting language, Lua, making it easy to extend and to change the TeX interna, so most of the programming can be done in Lua instead of TeX-hackery.>{Lua\TeX}
 		\todraw(aleph)(luatex)
 		\todraw*(pdfetex)(luatex)
 		\todraw[dashed](lua)(luatex)
@@ -481,7 +488,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 \fp_gset:Nn\layerdist{-1.5}
 \ExplSyntaxOff
 
-\tograph(\tostruct(1)[\TeX\ live]{\TeX\ live}){
+\tograph(\tostruct(1)[\TeX\ Live]{\TeX\ Live}){
 	\tonode(web2c)(0,\layer)<An Implementation and Distribution of TeX which translates the original WEB sources to a C code.>{Web2C}
 	\steplayer
 %% PCTeX? (Breitenloher) [need more information]
@@ -508,38 +515,44 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\tonode[\histdistro](xemtex)(4,\layer)<A TeX distribution for Windows, based on fpTeX with XEmacs/AucTeX as IDE for (La)TeX. XemTeX was sponsored by the French government.>{XEm\TeX}
 	\todraw(xemtex)(fptex)
 
-	\tonode[\histdistro](tlpre2008)(0,\layer)<First version 1996 (UNIX only, later also Windows binaries), and then a long story of ongoing work – see the documentation for a detailed history. Some of the binaries (still) identify themselfes as *TeXk. The “k” stands for “Karl” meaning that they were compiled with kpathsea.>{\TeX\ live 1996\,–\,2007}
+	\tonode[\histdistro](tlpre2008)(0,\layer)<First version 1996 (UNIX only, later also Windows binaries), and then a long story of ongoing work – see the documentation for a detailed history. Some of the binaries (still) identify themselfes as *TeXk. The “k” stands for “Karl” meaning that they were compiled with kpathsea.>{\TeX\ Live 1996\,–\,2007}
 	\todraw(tetex)(tlpre2008)
 	\todraw(4alltexcd)(tlpre2008)
 	\todraw.(web2c)(tlpre2008)
 	\steplayer
 
-	\tonode(tl2008)(0,\layer)<A new package manager and network installer are available. So installation via the net is possible as well as package updates. Missing packages are not installed on-the-fly. The last of the modern machines is added: LuaTeX>{\TeX\ live2008}
+	\tonode(tl2008)(0,\layer)<A new package manager and network installer are available. So installation via the net is possible as well as package updates. Missing packages are not installed on-the-fly. The last of the modern machines is added: LuaTeX>{\TeX\ Live 2008}
 	\todraw.(tl2008)(tlpre2008)
 
-	\tonode[\histdistro](gwtex)(5,\layer)<A (re)distribution for Mac OS based on TeX live (earlier on teTeX) by Gerben Wierda. Provides TeX-related packages for the i-Installer. Unsupported from 2007 on.>{gw\TeX}
+	\tonode[\histdistro](gwtex)(5,\layer)<A (re)distribution for Mac OS based on TeX Live (earlier on teTeX) by Gerben Wierda. Provides TeX-related packages for the i-Installer. Unsupported from 2007 on.>{gw\TeX}
 	\todraw(tlpre2008)(gwtex)
 
 	\steplayer
 
-	\tonode(tl2009)(0,\layer)<Dropped Omega and Lambda. Aleph and Lamed are kept.>{\TeX\ live2009}
+	\tonode(tl2009)(0,\layer)<Dropped Omega and Lambda. Aleph and Lamed are kept.>{\TeX\ Live 2009}
 	\todraw(tl2009)(tl2008)
 	\steplayer
 
-	\tonode(tl2010)(0,\layer)<Release of 2010.>{\TeX\ live2010}
+	\tonode(tl2010)(0,\layer)<Release of 2010.>{\TeX\ Live 2010}
 	\todraw(tl2010)(tl2009)
 
 
-	\tonode(tlcontrib)(-5,\layer)<An extension to TeX live that contains packages that TeX live cannot hold because: not-free lizence, binary update, not on CTAN or intermediate release. Useable via the TeX live manager.>{TLContrib}
+	\tonode(tlcontrib)(-5,\layer)<An extension to TeX Live that contains packages that TeX Live cannot hold because: not-free lizence, binary update, not on CTAN or intermediate release. Useable via the TeX Live manager. Latest version can handle several TL sources.>{TLContrib}
 	\todraw.(tl2010)(tlcontrib)
 	\steplayer
 
-	\tonode(tl2011)(0,\layer)<Latest release of TeX live, available since July 2011.>{\TeX\ live2011}
+	\tonode(tl2011)(0,\layer)<2011 release of TeX Live.>{\TeX~Live 2011}
 	\todraw(tl2011)(tl2010)
 	\todraw.(tl2011)(tlcontrib)
 
-	\tonode(mactex)(5,\layer)<Once based on teTeX, MacTeX is now TeX live-based. For Mac OS X only, it provides a native installer, the TeXShop editor and Mac-specific tools.>{Mac\TeX}
-	\todraw(tl2011)(mactex)
+	\steplayer
+
+	\tonode(tl2012)(0,\layer)<Latest release of TeX Live for 2012.>{\TeX~Live 2012}
+	\todraw(tl2012)(tl2011)
+	\todraw.(tl2012)(tlcontrib)
+
+	\tonode(mactex)(5,\layer)<Once based on teTeX, MacTeX is now TeX Live-based. For Mac OS X only, it provides a native installer, the TeXShop editor and Mac-specific tools.>{Mac\TeX}
+	\todraw(tl2012)(mactex)
 }
 
 \tograph(\tostruct(1)[MiK\TeX]{MiK\TeX}){
@@ -567,7 +580,7 @@ This section will feature the main distributions of \TeX\ and related programs. 
 }
 
 \tograph(\tostruct(1)[\TeX\ collection]{\TeX\ collection}){
-	\tonode(texcollection)(0,\layer)<A meta-distribution. Provided on DVD by the TUG, this distribution ships with TeX live, MacTeX and ProTeX as well as with a full CTAN snapshot.>{\TeX\ Collection}
+	\tonode(texcollection)(0,\layer)<A meta-distribution. Provided on DVD by the TUG, this distribution ships with TeX Live, MacTeX and ProTeX as well as with a full CTAN snapshot.>{\TeX\ Collection}
 
 }
 
@@ -715,7 +728,7 @@ and precision of the internal data types.”>{MegaPost}
 
 \tograph(\tostruct(1)[Fonts]{Fonts}[\fonttechnology]
 \parbox{\textwidth}{\large
-This section tries to cover the development of fonts – the most important thing for a typesetting system is it's font mechanism …\\[4ex]}
+This section tries to cover the development of fonts – the most important thing for a typesetting system are font mechanism …\\[4ex]}
 ){
 	\tonode(bitmap)(0,\layer)<Bitmap fonts contain the shape of the letters as a number of dots. If you zoom in, a bitmap letter will show pixels. Hence one needs a special version for every resolution.>{Bitmap fonts}
 	\steplayer[-3]
@@ -738,10 +751,11 @@ This section tries to cover the development of fonts – the most important thin
 	\todraw(aat)(gx)
 }
 
+\newpage
 \tograph(\tostruct(1)[Work Flow]{Work Flow – Under Construction!}[\vip]
 {
 \flushleft
-\large Ok, this section maybe will kill me … I will try to depict the typical work flow for working with \TeX. This will never be complete as there are many ways to work with any of the \TeX\ flavours, including helper programs etc. We will start with a simple \LaTeX\ document, and maybe we will extend this to different formats, engines etc. …
+\large Ok, this section might never be ready, but I will leavi it here in the hope that someone will help out: I want to try to depict the typical work flow for working with \TeX. This will never be complete as there are many ways to work with any of the \TeX\ flavours, including helper programs etc. We will start with a simple \LaTeX\ document, and maybe we will extend this to different formats, engines etc. …
 
 The preliminary nomenclature is:
 \begin{itemize}
@@ -781,7 +795,7 @@ The preliminary nomenclature is:
 
 \tostruct[Program Names]{Program Names}[\normalimportant]
 \flushleft  %% centering was still active until here
-The following list tries to explain what happens if a programm is called by a given name. E.\,g. calling the command \texttt{latex} on the command line will start the PDFε-\TeX\ engine\footnote{Actually it's only called PDF\TeX\ now, but it is always the version that includes ε-\TeX\ extensions. Here, always the full name is used for clearness.} in DVI mode with the format \LaTeX\,2\raisebox{-.5ex}ε. This will list the names used in the \emph{official} (upstream) \TeX~live distribution, which should mostly (but not all) be the same in MiK\TeX.
+The following list tries to explain what happens if a programm is called by a given name. E.\,g. calling the command \texttt{latex} on the command line will start the PDFε-\TeX\ engine\footnote{Actually it's only called PDF\TeX\ now, but it is always the version that includes ε-\TeX\ extensions. Here, always the full name is used for clearness.} in DVI mode with the format \LaTeX\,2\raisebox{-.5ex}ε. This will list the names used in the \emph{official} (upstream) \TeX~Live~2012 distribution, which should mostly (but not all) be the same in MiK\TeX.
 
 \begin{longtabu}{>{\ttfamily\large}lX}
 \rowcolor[gray]{0.8}\LARGE \bfseries program \strut & \LARGE  meaning\\
@@ -795,10 +809,11 @@ texluac & Lua\TeX\ as byte compiler\\
 tex & \TeX\ with the plain format\\
 	
 aleph & Aleph with the plain format\\
-eptex & ε-p\TeX\ with the plain format\\
-dviluatex & Lua\TeX\ with the plain format and DVI output\\
 csplain & PDFε-\TeX\ with the csplain format and DVI output\\
+dviluatex & Lua\TeX\ with the plain format and DVI output\\
 eplain & PDFε-\TeX\ with the eplain format and DVI output\\
+eptex & ε-p\TeX\ with the plain format\\
+euptex & ε-up\TeX\ with the plain format\\
 etex & PDFε-\TeX\ with the plain format and DVI output\\
 luatex & Lua\TeX\ with the plain format and PDF output\\
 mltex & PDFε-\TeX\ with ML\TeX\ extensions enabled, DVI output\\
@@ -816,7 +831,8 @@ lualatex & Lua\TeX\ with the \LaTeXe\ format and PDF output\\
 mllatex & PDFε-\TeX\ with ML\TeX\ extensions enabled, \LaTeXe\ format and DVI output\\
 pdflatex & PDFε-\TeX\ with the \LaTeXe\ format and PDF output\\
 
-platex & ε-p\TeX\ with the p\LaTeX\ format\\
+platex & ε-p\TeX\ with the p\LaTeX\ format and DVI output\\
+uplatex & ε-up\TeX\ with the up\LaTeX\ format and DVI output\\
 xelatex & \XeTeX\ with the \LaTeXe\ format\\
 
 \totablesec{Con\TeX t}
@@ -852,7 +868,7 @@ mptopdf & PDFε-\TeX\ with the mptopdf format and PDF output\\
 \label{sec:refs}
 \obeylines
 
-The references are in order of occurance in the above document. i.\,e. if you want information about Lua\TeX, it will be below e.\,g. $\epsilon$\TeX. Everything that is not listet as ”book“ is freely available on the internet. (TUGboat articles will become freely accessible about one year after publication.)
+The references are in order of occurance in the above document. i.\,e. if you want information about Lua\TeX, it will be below e.\,g. ε\TeX. Everything that is not listet as ”book“ is freely available on the internet. (TUGboat articles will become freely accessible about one year after publication.)
 
 	\tobibsection{Books}
 	\tobib{D.E. Knuth, D.~Bibby, and I.~Makai. \textit{The \TeX book}\\ Addison-Wesley Reading, MA, 1986.}
@@ -918,7 +934,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 
 	\tobibsection{Distributions}
 	\tobib{fp\TeX: Announcment at TUG 1999}<http://www.tug.org/tug99/program/node39.html>
-	\tobib{\TeX\ live development history}<http://tug.org/texlive/doc/texlive-en/texlive-en.html>
+	\tobib{\TeX\ Live development history}<http://tug.org/texlive/doc/texlive-en/texlive-en.html>
 	\tobib{gw\TeX\ project page}<http://ii2.sourceforge.net/tex-index.html>
 	\tobib{Brief History of gwTeX}<http://www.tug.org/twg/mactex/award/2007/gerben/aboutgwtex.html>
 	\tobib{Frank Mittelbach: \textit{Reflections on the history of the \LaTeX\ Project Public License (LPPL)—A software license for \LaTeX\ and more.} In: TUGboat Vol. 32 (2011) No.~1, p.~83~ff.}<http://www.tug.org/TUGboat/Contents/contents32-1.html>
