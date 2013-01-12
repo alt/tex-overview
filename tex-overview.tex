@@ -235,7 +235,15 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 		\todraw(aleph)(luatex)
 		\todraw*(pdfetex)(luatex)
 		\todraw[dashed](lua)(luatex)
-	
+
+	\steplayer[-2]
+	\tonode[\program](luajit)(0,\layer)<A just-in-time compiler for Lua.>{LuaJIT}
+		\todraw(lua)(luajit)
+
+	\tonode[\experimental](luajittex)(4,\layer)<LuaJITTeX is a LuaTeX based on LuaJIT, a just-in-time compiler for Lua.>{LuaJIT\TeX}
+		\todraw(luajittex)(luatex)
+		\todraw[dashed](luajit)(luajittex)
+
 	\steplayer[-3]
 	\tonode[\experimental](itex)(7,\layer)<iTeX is the official successor of TeX3, announced by Don Knuth at the TUG conference 2010. Not to be confused with William Cheswick's application for the iPad.>{i\TeX}
 }
@@ -556,6 +564,9 @@ This section will feature the main distributions of \TeX\ and related programs. 
 
 	\tonode(basictex)(8,\layer)<“BasicTeX is a subset of TeX Live designed for easy download by users with limited download speed.”>{Basic\TeX}
 	\todraw(mactex)(basictex)
+
+	\tonode(texportal)(-4,\layer)<A TeX Live port for Android OS. Based on binaries from the TeXAndroid project; not all binaries are available at the moment.>{\TeX Portal}
+	\todraw(tl2012)(texportal)
 }
 
 \tograph(\tostruct(1)[MiK\TeX]{MiK\TeX}){
@@ -908,6 +919,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{$\epsilon\chi$\TeX\ project page}<http://www.extex.org>	
 	\tobib{ee\TeX\ project page}<http://tex.aanhet.net/eetex>	
 	\tobib{Lua\TeX\ project page}<http://www.luatex.org>
+	\tobib{LuaJIT\TeX\ project page}<http://foundry.supelec.fr/gf/project/luajittex/>
 	\tobib{\textit{i\TeX—Document formatting in an ereader world.} TUGboat 32 (2011), no. 2, 158\,–\,163.}
 	\tobib{i\TeX\ announcement by Don Knuth at the TUG 2010}<http://river-valley.tv/tug-2010/an-earthshaking-announcement>
 	
@@ -943,6 +955,8 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{Frank Mittelbach: \textit{Reflections on the history of the \LaTeX\ Project Public License (LPPL)—A software license for \LaTeX\ and more.} In: TUGboat Vol. 32 (2011) No.~1, p.~83~ff.}<http://www.tug.org/TUGboat/Contents/contents32-1.html>
 	\tobib{TLContrib project page}<http://tlcontrib.metatex.org/>
 	\tobib{Mac\TeX\ project page}<http://www.tug.org/mactex>
+	\tobib{\TeX Portal project page}<https://github.com/anhoavu/TeXPortal>
+	\tobib{\TeX Android project page}<https://github.com/anhoavu/TeXAndroid>
 	\tobib{MiKTeX project page}<http://miktex.org/>
 	\tobib{Christian Schenk about the name of MiKTeX (mailing list archive)}<http://sourceforge.net/mailarchive/message.php?msg_id=26826076>
 	\tobib{Pro\TeX t project page}<http://www.tug.org/protext>
