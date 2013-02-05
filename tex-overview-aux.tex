@@ -48,13 +48,13 @@
 \hypersetup{
   unicode=true,
   colorlinks=true,
-  linkcolor=blue,
+  linkcolor=DarkRed,
   urlcolor=blue
 }
 
 %% page layout, headings
 \pagestyle{empty}
-\addtokomafont{disposition}{\color[rgb]{.4 0 0}}
+\addtokomafont{disposition}{\color[rgb]{0 0 .7}}
 \addtokomafont{section}{\Huge}
 \addtokomafont{subsection}{\LARGE}
 \addtokomafont{subsubsection}{\Large}
@@ -242,7 +242,7 @@
                              and their friends~\dots
     \vspace*{-.2cm}
     \flushright\parbox{4cm}{
-      \large \color[rgb]{.4 0 0} Arno Trautmann\\
+      \large \color[rgb]{0 0 .7} Arno Trautmann\\
       \fontsize{8.25}{10}\selectfont arno.trautmann@gmx.de
     }
     \hspace*{.7cm}\par
@@ -294,7 +294,7 @@ end
 
 \AtBeginShipout{%
   \AtBeginShipoutUpperLeft{%
-	\color[rgb]{.6 0 0}
+	\color[rgb]{0 0 .7}
 	\luatexlatelua{
       linewidth(40)
       sloppyline({-30,-30},{30,30})
