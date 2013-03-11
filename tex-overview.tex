@@ -18,13 +18,16 @@ This document is for people that have stumbled upon different term icluding some
 
 The base frame and main idea for this overview was taken from the article \textit{A brief history of \TeX,~volume~II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007} and his talk there (see~references on page~\pageref{sec:refs}). Additional information is taken from original documentations and some review articles. For old, historic information, the \textsf{historic~archive} maintained by Ulrik Vieth and hosted on \url{ftp.tug.org} (see~refs) was very useful, especially in the reconstruction of \LaTeX\ versions. Many thanks for that great archive!
 
-All information is up to the date of this generated PDF and up to the information I found. Everything here is without guarantee – this is just to get an overview. Consult the references for further (and/or~correct) information! 
+All information is up to the date of this generated PDF and up to the information I~found. Everything here is without guarantee – this is just to get an overview. Consult the references for further (and/or~correct) information! 
 
 In the tree views, every node has a tooltip that shows up when you hover the mouse over it. For the case that your PDF viewer does not support this, there is a list of all the descriptions on page~\pageref{sec:text}.
 
 \setlength{\columnsep}{1.5cm}
+\newgeometry{bottom=3.5cm}
 \newpage
 \tableofcontents
+
+\restoregeometry
 
 \section{The Difference Between Engine, Format and Distribution}
 There are three kinds of terms that are often confused especially by new users. This will try to explain them very shortly:
@@ -189,7 +192,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 
 	\steplayer[-1.5]
 
-	\tonode(euptex)(15.2,\layer)<>{ε-up\TeX}
+	\tonode(euptex)(15.2,\layer)<No description so far.>{ε-up\TeX}
 		\todraw(etex)(euptex)
 		\todraw(uptex)(euptex)
 
@@ -244,7 +247,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 		\todraw(luajittex)(luatex)
 		\todraw[dashed](luajit)(luajittex)
 
-	\steplayer[-3]
+	\steplayer[-2.5]
 	\tonode[\experimental](itex)(7,\layer)<iTeX is the official successor of TeX3, announced by Don Knuth at the TUG conference 2010. Not to be confused with William Cheswick's application for the iPad.>{i\TeX}
 }
 \vfill
@@ -266,7 +269,7 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 	\todraw(plaintex)(csplain)
 
 \steplayer[-2]
-	\tonode[\experimental](eplain)(0,\layer)<Extensions of plainTeX to provide often-used utilities. Not thought for document preparation as LaTex is. First version that is still available is 2.1 from 1992. Latest version 3.4 is from 2 2010 and based on pdfTeX.>{eplain}
+	\tonode[\experimental](eplain)(0,\layer)<Extensions of plainTeX to provide often-used utilities. Not thought for document preparation as LaTex is; you can use it as a standalone format or as extension to a given format. First version that is still available is 2.1 from 1992. Latest version 3.5 is from 2013-02-13.>{Eplain}
 	\todraw(plaintex)(eplain)
 }
 \clearpage
@@ -850,9 +853,9 @@ uplatex & ε-up\TeX\ with the up\LaTeX\ format and DVI output\\
 xelatex & \XeTeX\ with the \LaTeXe\ format\\
 
 \totablesec{Con\TeX t}
-texexec & PDFε-\TeX with Con\TeX t MKII format and PDF output\\
+texexec & PDFε-\TeX\ with Con\TeX t MKII format and PDF output\\
 texexec --interface = de & dito, with german interface (only an example, more languages available)\\
-texexec --xtx & \XeTeX with Con\TeX t MKII format\\
+texexec --xtx & \XeTeX\ with Con\TeX t MKII format\\
 context & Lua\TeX\ with Con\TeX t MKIV format and PDF output\\
 context --interface = de & dito, with german interface (only an example)\\
 \totablesec{other formats}
@@ -876,7 +879,7 @@ mptopdf & PDFε-\TeX\ with the mptopdf format and PDF output\\
 \topart{Appendix}
 
 %%
-%% This is kind-of a bibliography.
+%% This is kind-of-a bibliography.
 %%
 \tostruct{References}
 \label{sec:refs}
