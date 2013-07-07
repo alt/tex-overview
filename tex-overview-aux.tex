@@ -38,8 +38,6 @@
   \let\topdfescapestring\pdf@escapestring
 \makeatother
 
-\ExplSyntaxNamesOn
-
 %% define the look-and-feel of the document
 \setmainfont{TeX Gyre Pagella}
 \setsansfont{TeX Gyre Pagella}
@@ -59,6 +57,7 @@
 \addtokomafont{subsection}{\LARGE}
 \addtokomafont{subsubsection}{\Large}
 
+\ExplSyntaxOn
 %% some missing definitions for \TeX-like things
 \tl_set:Nn\XeT{X\kern -.1667em\lower .5ex\hbox {E}\kern -.125emT\@}
 \tl_set:Nn\ConTeXt{Con\TeX{}t}
@@ -101,30 +100,32 @@
 \NewDocumentCommand\tograph{s+D(){}+m}
 {
   \IfBooleanT{#1}{
-    \ExplSyntaxNamesOn
+    \ExplSyntaxOn
     \bool_gset_true:N\to_short
-    \ExplSyntaxNamesOff
+    \ExplSyntaxOff
     #2
     \begin{tikzpicture}
       #3
     \end{tikzpicture}
     \clearpage
   }
-  \ExplSyntaxNamesOn
+  \ExplSyntaxOn
   \bool_gset_false:N\to_short
-  \ExplSyntaxNamesOff
+  \ExplSyntaxOff
   #2
   \begin{tikzpicture}
   	#3
   \end{tikzpicture}
 }
 
+  \ExplSyntaxOff
 %% Style of the nodes: shade from a light 
 \tikzstyle{coolnode} = [
 	draw=\nodecolor!50!black!70,
 	top color=\nodecolor!10!white!105,
 	bottom color= \nodecolor!50!black!50
 ]
+  \ExplSyntaxOn
 
 %% set the first default node style (will change to \distro or \program in the document)
 \cs_set_eq:NN\tonodestyle\normalimportant
@@ -233,7 +234,7 @@
 \end{minipage}
 }
 
-\ExplSyntaxNamesOff
+\ExplSyntaxOff
 
 \AtBeginDocument{
   {
