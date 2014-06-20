@@ -1,6 +1,6 @@
-%% Engine needed: LuaTeX ≥ 0.76.0
+%% Engine needed: LuaTeX ≥ 0.79.1
 %% Format needed: LaTeX2ε
-%% use an up-to-date TeX Live2013
+%% use an up-to-date TeX Live2014 to be sure
 
 % this document has version number 0.1g-ish.
 \input{tex-overview-aux} %% everything that is not content-related
@@ -14,9 +14,9 @@ In the world of \TeX, there are many developments and ambiguous names. This pape
 \end{abstract}
 
 \section*{Introduction}
-This document is for people that have stumbled upon different term icluding something related to \TeX\ and are confused by the many different terms – at least I was, so mabye others are, too … 
+This document is for people that have stumbled upon different software names icluding something related to \TeX\ and are confused by the many different terms – at least I was, so mabye others are, too … 
 
-The base frame and main idea for this overview was taken from the article \textit{A brief history of \TeX,~volume~II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX 2007} and his talk there (see~references on page~\pageref{sec:refs}). Additional information is taken from original documentations and some review articles. For old, historic information, the \textsf{historic~archive} maintained by Ulrik Vieth and hosted on \url{ftp.tug.org} (see~refs) was very useful, especially in the reconstruction of \LaTeX\ versions. Many thanks for that great archive!
+The base frame and main idea for this overview was taken from the article \textit{A brief history of \TeX,~volume~II} by Arthur Reutenauer in the proceedings of \textsf{EuroBacho\TeX~2007} and his talk there (see~references on page~\pageref{sec:refs}). Additional information is taken from original documentation of the software and some review articles. For information of very old stuff, the \textsf{historic~archive} maintained by Ulrik Vieth and hosted on \url{ftp.tug.org} (see~refs) was very useful, especially in the reconstruction of \LaTeX\ versions. Many thanks for that great archive!
 
 All information is up to the date of this generated PDF and up to the information I~found. Everything here is without guarantee – this is just to get an overview. Consult the references for further (and/or~correct) information! 
 
@@ -33,7 +33,7 @@ In the tree views, every node has a tooltip that shows up when you hover the mou
 There are three kinds of terms that are often confused especially by new users. This will try to explain them very shortly:
 \begin{description}
 \item[engine] This is the program that does all the actual work. The original program is \TeX, a famous development is pdf\TeX, while Lua\TeX\ is the latest successor.
-\item[format] A format is a (large) collection of abbreviations (macros) that make the life easy when working with \TeX. The most commonly used formats are \LaTeX, Con\TeX t and plain\TeX. The latter one is a minimal set of macros provided by Don Knuth. Formats can be combined with different engines, exploiting the special abilities of these engines. A format is first a collection of text files, but can be compiled into a binary format that can be read in faster by the engine.
+\item[format] A format is a (large) collection of abbreviations (macros) that make the life easy when working with \TeX. The most commonly used formats are \LaTeX, Con\TeX t and plain\TeX. The latter one is a minimal set of macros provided by Don Knuth. Formats can be combined with different engines, exploiting the special abilities of these engines. A format is in the beginning a collection of text files, but can be compiled into a binary format that can be read much faster by the engine.
 \item[distribution] In addition to formats, a large set of supplementary files can be used to work with \TeX, called \emph{packages} for \LaTeX, \emph{modules} for Con\TeX t, and many external programs have proven useful for the work with \TeX. Distributions such as \TeX~Live and MiK\TeX\ strive to provide a full set of such programs and macros by using a package manager to take care of package dependencies and updating. Many Linux distributions, as well as cygwin for Windows, repackage a \TeX\ distribution (mostly \TeX~Live) using the Linux distribution's package system.
 \end{description}
 
@@ -52,13 +52,13 @@ I tried to make the graphs more readable by using colors for different categorie
 
 \item[{\let\nodecolor\planned \tikz \node[coolnode]{planned};}] Things that are planned to raise one day and are in the phase of preparation, i.\,e. there may be some code but not in the final form yet.
 
-\item[{\let\nodecolor\package \tikz \node[coolnode]{package};}] \LaTeX-packages or single \TeX-files (useable as packages or modules) that seemed worth mentioning. There won't be many of this; most very important packages won’t be mentioned.
+\item[{\let\nodecolor\package \tikz \node[coolnode]{package};}] \LaTeX-packages or single \TeX-files (useable as packages or modules) that seemed worth mentioning. There won't be many of this; just some that might elsewise be confused for something else.
 
 \item[{\let\nodecolor\distro \tikz \node[coolnode]{distribution};}] Software bundles that bring \TeX\ and friends to the normal user.
 
-\item[{\let\nodecolor\histdistro \tikz \node[coolnode]{hist. dist.};}] Historical distributions that have no use today but were important for bringing TeX to older computer systems.
+\item[{\let\nodecolor\histdistro \tikz \node[coolnode]{hist. dist.};}] Historical distributions that have no use today but were important for bringing \TeX to older computer systems.
 
-\item[{\let\nodecolor\program \tikz \node[coolnode]{program};}] Programs that are not directly connected to \TeX\ (but interesting in the context of using \TeX) or are separate helper programs.
+\item[{\let\nodecolor\program \tikz \node[coolnode]{program};}] Programs that are not directly connected to \TeX\ (but interesting in the context of using \TeX) or separate helper programs.
 
 \item[{\let\nodecolor\fonttechnology \tikz \node[coolnode]{font};}] Something related to a font. Neither a program nor libraries that provide access to fonts nor the actual files, but rather the abstract definition or specification.
 
@@ -71,30 +71,23 @@ In most cases I did not mention the authors of the programs/packages. This is no
 \section{How to contribute}
 I hope one day this document would become the standard reference for questions like ”What program do I need for …?“, ”What's the difference between …\TeX\ and …\TeX?“, ”Why is it called …?“ etc.
 
-To get to this point, I need some help of people who know more about the \TeX\ world than I do. At the moment, special help is needed for:
-\begin{itemize}
-\item font technologies
-\item METAFONT and succesors
-\item Bib\TeX\ and successors/alternatives
-\end{itemize}
-
-It is up to you to contribute texts, references, links, descriptions, hints etc. I'll be happy about anything I can add here. Also, if you have suggestions about the layout, let me know.
+To get to this point, I need some help of people who know more about the \TeX\ world than I do. It is up to you to contribute texts, references, links, descriptions, hints etc. I'll be happy about anything I can add here. Also, if you have suggestions about the layout or corrections to the content, let me know.
 
 \section{Problems with PDF viewers}
-As this document makes heavy use of PDF-features, some PDF viewers are not able to show everything correct and as intended. My experiences with viewers are as follows, where the number is the version which I tested:
+As this document makes heavy use of PDF-features, some PDF viewers are not able to show everything correctly or as intended. My experiences with viewers are as follows, where the number is the version which I tested:
 
 \begin{description}
 \item[evince 3.0.2] Shows the document correct and complete. (Tested on Arch Linux)
 
-\item[Adobe Reader 9] will show all the information but might hide some text of very long tooltips (at least that's the case on my machine). Also, it draws annoying green boxes around the tooltips which do not belong there. (Tested on Arch Linux)
+\item[Adobe Reader 9] Will show all the information but might hide some text of very long tooltips (at least that's the case on my machine). Also, it draws annoying green boxes around the tooltips which do not belong there. (Tested on Arch Linux)
 
-\item[\TeX works 0.5 r869] The built-in PDF viewer of the \TeX works editor does not break lines of tooltips, therefore long annotations are not shown completely. (Tested on Arch Linux)
+\item[\TeX works 0.5 r1307] The built-in PDF viewer of the \TeX works editor does not break lines of tooltips, therefore long annotations are not shown completely. (Tested on Arch Linux)
 
-\item[okular 0.13] also does not break the lines. (Tested on Arch Linux)
+\item[okular 0.13] Also does not break the lines. (Tested on Arch Linux)
 
-\item[xpdf 3.03] shows only very short tooltips. Most of the information is not visible in the graphs. (Tested on Arch Linux)
+\item[xpdf 3.03] Shows only very short tooltips. Most of the information is not visible in the graphs. (Tested on Arch Linux)
 
-\item[gv 3.7.2] shows no tooltips, but the annoying green boxes. (Tested on Arch Linux)
+\item[gv 3.7.2] hows no tooltips, but the annoying green boxes. (Tested on Arch Linux)
 \end{description}
 
 \subsection*{About this document}
@@ -252,11 +245,40 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 }
 \vfill
 
-{\flushleft The chronological order may not be exact in this graph. I have to work hard on the arrangement to show both chronological order and code dependence, and for now only the code dependence is (should be) correct.
+{\flushleft The chronological order may not be exact in this graph. I had to work hard on the arrangement to show both chronological order and code dependence, and for now only the code dependence is (should be) correct.
 
 } 
 
 \clearpage
+
+%%% TeX, iniTeX, virTeX %%%
+
+\tograph(\tostruct[\TeX]{ini\TeX, Vir\TeX\ et. al.}){
+	\tonode(initex)(-3,\layer)<The program TeX without preloaded format ("initial TeX"), intended for format creation. (Format dump possible.)>{ini\TeX}
+
+	\tonode(virtex)(0,\layer)<The program TeX without preloaded format ("virgin TeX"), intended for production use. (Format dump not possible.) No longer part of TeX Live.>{Vir\TeX}
+
+	\tonode(tex)(3,\layer)<In this special context, TeX means the program with the plain format preloaded. (Format dump not possible.)>{\TeX}
+
+	\todraw(initex)(tex)
+	\todraw(tex)(virtex)
+
+\steplayer[-2]
+
+	\tonode(inimf)(-4,\layer)<The program metafont without preloaded format ("initial metafont"), intended for format creation. (Format dump possible.)>{iniMETAFONT}
+
+	\tonode(virmf)(0,\layer)<The program metafont without preloaded format ("virgin metafont"), intended for production use. (Format dump not possible.) No (longer?) part of TeX Live.>{VirMETAFONT}
+
+	\tonode(mf)(4,\layer)<In this special context, mf means the program with the plain format preloaded. (Format dump not possible.)>{METAFONT}
+
+	\todraw(inimf)(mf)
+	\todraw(mf)(virmf)
+
+}
+
+{\flushleft All other engines have the same functionality, but no special names given: |luatex --ini| is the INITEX version of Lua\TeX\ etc.
+
+}
 
 %%% plain TeX %%%
 \tograph(\tostruct[plain\TeX]{plain\TeX\ – the first format}){
@@ -431,8 +453,12 @@ This document is typeset in the \TeX\ Gyre Pagella font using the Lua\LaTeXe\ fo
 %%% Lollipop %%%
 \tograph(\tostruct(1)[Lollipop]{Lollipop}){
 	\tonode(lollipop09)(0,0)<First release, October 1992.>{Lollipop 0.9}
-	\steplayer
-	\tonode(lollipop095)(0,0)<Latest, unofficial, release, January 1993.>{Lollipop 0.95}
+	\steplayer[-2]
+	\tonode(lollipop095)(0,\layer)<Latest, unofficial, release, January 1993.>{Lollipop 0.95}
+	\todraw(lollipop09)(lollipop095)
+	\steplayer[-2]
+	\tonode(lollipop098)(0,\layer)<Resurrection of this old format, now by Victor Eijkhout and Vafa Khalighi. Put to CTAN on 04.09.2014.>{Lollipop 0.98}
+	\todraw(lollipop098)(lollipop095)
 }
 
 %%% MacroTeX %%%
@@ -558,18 +584,23 @@ This section will feature the main distributions of \TeX\ and related programs. 
 
 	\steplayer
 
-	\tonode(tl2012)(0,\layer)<Latest release of TeX Live for 2012.>{\TeX~Live 2012}
+	\tonode(tl2012)(0,\layer)<Release of TeX Live for 2012.>{\TeX~Live 2012}
 	\todraw(tl2012)(tl2011)
 	\todraw.(tl2012)(tlcontrib)
 
+	\tonode(texportal)(-4,\layer)<A TeX Live port for Android OS. Based on binaries from the TeXAndroid project; not all binaries are available at the moment.>{\TeX Portal}
+	\todraw(tl2012)(texportal)
+
+\steplayer
+
+	\tonode(tl2013)(0,\layer)<Latest release of TeX Live for 2012.>{\TeX~Live 2013}
+	\todraw(tl2012)(tl2013)
+
 	\tonode(mactex)(5,\layer)<Once based on teTeX, MacTeX is now TeX Live-based. For Mac OS X only, it provides a native installer, the TeXShop editor and Mac-specific tools.>{Mac\TeX}
-	\todraw(tl2012)(mactex)
+	\todraw(tl2013)(mactex)
 
 	\tonode(basictex)(8,\layer)<“BasicTeX is a subset of TeX Live designed for easy download by users with limited download speed.”>{Basic\TeX}
 	\todraw(mactex)(basictex)
-
-	\tonode(texportal)(-4,\layer)<A TeX Live port for Android OS. Based on binaries from the TeXAndroid project; not all binaries are available at the moment.>{\TeX Portal}
-	\todraw(tl2012)(texportal)
 }
 
 \tograph(\tostruct(1)[MiK\TeX]{MiK\TeX}){
@@ -603,6 +634,10 @@ This section will feature the main distributions of \TeX\ and related programs. 
 
 \tograph(\tostruct(1)[standalone Con\TeX t]{standalone Con\TeX t}){
 	\tonode(minimals)(-3,\layer)<standalone ConTeXt provides a distribution of latest (beta and stable) ConTeXt versions with binaries and formats. Efficient upgrading is possible as well as parallel use with another TeX distribution. Was renamed from “minimals” into standalone in 2011.>{Standalone}
+}
+
+\tograph(\tostruct(1)[Decus \TeX]{Decus \TeX}){
+	\tonode(decustex)(0,\layer)<A TeX/LaTeX distribution for VMS. Started at least in 1988.>{Decus \TeX}
 }
 
 \tograph(\tostruct(1)[Ker\TeX]{Ker\TeX}){
@@ -812,13 +847,14 @@ The preliminary nomenclature is:
 
 \tostruct[Program Names]{Program Names}[\normalimportant]
 \flushleft  %% centering was still active until here
-The following list tries to explain what happens if a programm is called by a given name. E.\,g. calling the command \texttt{latex} on the command line will start the PDFε-\TeX\ engine\footnote{Actually it's only called PDF\TeX\ now, but it is always the version that includes ε-\TeX\ extensions. Here, always the full name is used for clearness.} in DVI mode with the format \LaTeX\,2\raisebox{-.5ex}ε. This will list the names used in the \emph{official} (upstream) \TeX~Live~2012 distribution, which should mostly (but not all) be the same in MiK\TeX.
+The following list tries to explain what happens if a programm is called by a given name. E.\,g. calling the command \texttt{latex} on the command line will start the PDFε-\TeX\ engine\footnote{Actually it's only called PDF\TeX\ now, but it is always the version that includes ε-\TeX\ extensions. Here, always the full name is used for clearness.} in DVI mode with the format \LaTeX\,2\raisebox{-.5ex}ε. This will list the names used in the \emph{official} (upstream) \TeX~Live~2014 distribution, which should mostly (but not all) be the same in MiK\TeX.
 
 \begin{longtabu}{>{\ttfamily\large}lX}
 \rowcolor[gray]{0.8}\LARGE \bfseries program \strut & \LARGE  meaning\\
 \\[-2ex]
 \totablesec{engines / no preloaded format}
 initex & INI\TeX\ (same as \texttt{tex --ini})\\
+inimf & INIMF (same as \texttt{mf --ini}\\
 texlua & Lua\TeX\ in Lua mode\\
 texluac & Lua\TeX\ as byte compiler\\
 
@@ -833,6 +869,7 @@ eptex & ε-p\TeX\ with the plain format\\
 euptex & ε-up\TeX\ with the plain format\\
 etex & PDFε-\TeX\ with the plain format and DVI output\\
 luatex & Lua\TeX\ with the plain format and PDF output\\
+luajittex & LuaJIT\TeX\ with the plain format and PDF output\\
 mltex & PDFε-\TeX\ with ML\TeX\ extensions enabled, DVI output\\
 pdfcsplain & PDFε-\TeX\ with the csplain format and PDF output\\
 pdfetex & PDFε-\TeX\ with the plain format and PDF output\\
@@ -875,6 +912,1803 @@ mp & the METAPOST program\\
 mptopdf & PDFε-\TeX\ with the mptopdf format and PDF output\\
 \end{longtabu}
 
+\tostruct[\LaTeX~Packages]{\LaTeX~Packages}[\normalimportant]
+This will be a very tideous task, but I'll try to list all \LaTeX\ packages available by the latest \TeX~Live version. Why? To keep an overview myself and maybe also help you to find something interesting. This list of course does \emph{not} substitute any of the great documentation offerend online by the CTAN team!
+
+In the following, only the “main” package is listed, for example only PSTricks instead of all the additional extensions to it. For this, the red color indicates a “bundle”, i.\,e.~there is not only one or a few |.sty| files, but a whole lot of them.
+
+\def\bundle{\color{red}}
+\small
+\begin{longtabu} to \textwidth {llX}
+\toprule
+\bf Name & \bf type & \bf comment/description
+\\ \midrule
+\endhead
+\bf Name & \bf type & \bf comment/description
+\\ \midrule
+\endfirsthead
+\bottomrule
+\small & & \texttt{Table continues on next page.}
+\endfoot
+\bottomrule
+\endlastfoot
+\bf Packages from the \texttt{latex} subdirectory\\
+\midrule
+12many	&	&	\\
+a0poster	&	&	\\
+a4wide	&	&	\\
+a5comb	&	&	\\
+aastex	&	&	\\
+abc	&	&	\\
+abntex2	&	&	\\
+abraces	&	&	\\
+abstract	&	&	\\
+accanthis	&	&	\\
+accfonts	&	&	\\
+achemso	&	&	\\
+acmconf	&	&	\\
+acro	&	&	\\
+acronym	&	&	\\
+acroterm	&	&	\\
+active-conf	&	&	\\
+actuarialangle	&	&	\\
+addlines	&	&	\\
+adfathesis	&	&	\\
+adforn	&	&	\\
+adfsymbols	&	&	\\
+adjmulticol	&	&	\\
+adjustbox	&	&	\\
+adrconv	&	&	\\
+advdate	&	&	\\
+ae	&	&	\\
+aecc	&	&	\\
+aeguill	&	&	\\
+afthesis	&	&	\\
+aguplus	&	&	\\
+aiaa	&	&	\\
+akktex	&	&	\\
+akletter	&	&	\\
+alegreya	&	&	\\
+alg	&	&	\\
+algorithm2e	&	&	\\
+algorithmicx	&	&	\\
+algorithms	&	&	\\
+allrunes	&	&	\\
+alnumsec	&	&	\\
+alterqcm	&	&	\\
+altfont	&	&	\\
+ametsoc	&	&	\\
+amsaddr	&	&	\\
+amscls	&	&	\\
+amsfonts	&	&	\\
+amsmath	&	&	\\
+amsrefs	&	&	\\
+animate	&	&	\\
+anonchap	&	&	\\
+anonymouspro	&	&	\\
+answers	&	&	\\
+antiqua	&	&	\\
+antt	&	&	\\
+anyfontsize	&	&	\\
+anysize	&	&	\\
+aobs-tikz	&	&	\\
+aomart	&	&	\\
+apa	&	&	\\
+apa6	&	&	\\
+apa6e	&	&	\\
+apacite	&	&	\\
+appendix	&	&	\\
+appendixnumberbeamer	&	&	\\
+apptools	&	&	\\
+arabi	&	&	\\
+arabtex	&	&	\\
+aramaic-serto	&	&	\\
+archaic	&	&	\\
+arcs	&	&	\\
+arev	&	&	\\
+armenian	&	&	\\
+arraysort	&	&	\\
+arsclassica	&	&	\\
+articleingud	&	&	\\
+arydshln	&	&	\\
+asaetr	&	&	\\
+ascelike	&	&	\\
+ascii-font	&	&	\\
+askmaps	&	&	\\
+aspectratio	&	&	\\
+assignment	&	&	\\
+asyfig	&	&	\\
+asymptote	&	&	\\
+asypictureb	&	&	\\
+attachfile	&	&	\\
+augie	&	&	\\
+auncial-new	&	&	\\
+aurical	&	&	\\
+authoraftertitle	&	&	\\
+authorindex	&	&	\\
+autoarea	&	&	\\
+autonum	&	&	\\
+autopdf	&	&	\\
+auto-pst-pdf	&	&	\\
+avantgar	&	&	\\
+b1encoding	&	&	\\
+babelbib	&	&	\\
+babel-hungarian	&	&	\\
+background	&	&	\\
+backnaur	&	&	\\
+bangtex	&	&	\\
+barcodes	&	&	\\
+bardiag	&	&	\\
+base	&	&	\\
+bashful	&	&	\\
+baskervald	&	&	\\
+baskervaldx	&	&	\\
+basque-book	&	&	\\
+basque-date	&	&	\\
+bbding	&	&	\\
+bbm-macros	&	&	\\
+bbold	&	&	\\
+bchart	&	&	\\
+bclogo	&	&	\\
+\bundle beamer	&	&	\\
+begriff	&	&	\\
+bengali	&	&	\\
+bera	&	&	\\
+berenisadf	&	&	\\
+betababel	&	&	\\
+beton	&	&	\\
+bez123	&	&	\\
+bezos	&	&	\\
+bgreek	&	&	\\
+bgteubner	&	&	\\
+bguq	&	&	\\
+bhcexam	&	&	\\
+bibarts	&	&	\\
+\bundle biblatex	&	&	\\
+bibleref	&	&	\\
+biblist	&	&	\\
+bibtopic	&	&	\\
+bibtopicprefix	&	&	\\
+bibunits	&	&	\\
+bigfoot	&	&	\\
+bigints	&	&	\\
+binomexp	&	&	\\
+biocon	&	&	\\
+bizcard	&	&	\\
+blacklettert1	&	&	\\
+blindtext	&	&	\\
+blkarray	&	&	\\
+block	&	&	\\
+bloques	&	&	\\
+blowup	&	&	\\
+bodegraph	&	&	\\
+bohr	&	&	\\
+boisik	&	&	\\
+boites	&	&	\\
+bold-extra	&	&	\\
+boldtensors	&	&	\\
+bondgraph	&	&	\\
+bookest	&	&	\\
+bookhands	&	&	\\
+booklet	&	&	\\
+bookman	&	&	\\
+booktabs	&	&	\\
+boolexpr	&	&	\\
+boondox	&	&	\\
+bophook	&	&	\\
+bosisio	&	&	\\
+boxedminipage	&	&	\\
+boxhandler	&	&	\\
+bpchem	&	&	\\
+bracketkey	&	&	\\
+braids	&	&	\\
+braille	&	&	\\
+braket	&	&	\\
+brandeis-dissertation	&	&	\\
+breakcites	&	&	\\
+breakurl	&	&	\\
+bropd	&	&	\\
+brushscr	&	&	\\
+bullcntr	&	&	\\
+bundledoc	&	&	\\
+burmese	&	&	\\
+bussproofs	&	&	\\
+bxbase	&	&	\\
+bxcjkjatype	&	&	\\
+bxdpx-beamer	&	&	\\
+bxeepic	&	&	\\
+bxjscls	&	&	\\
+bytefield	&	&	\\
+cabin	&	&	\\
+cachepic	&	&	\\
+calcage	&	&	\\
+calctab	&	&	\\
+calculator	&	&	\\
+calrsfs	&	&	\\
+cals	&	&	\\
+calxxxx-yyyy	&	&	\\
+cancel	&	&	\\
+canoniclayout	&	&	\\
+cantarell	&	&	\\
+captcont	&	&	\\
+captdef	&	&	\\
+caption	&	&	\\
+capt-of	&	&	\\
+carlisle	&	&	\\
+cascadilla	&	&	\\
+cases	&	&	\\
+casyl	&	&	\\
+catchfilebetweentags	&	&	\\
+catechis	&	&	\\
+catoptions	&	&	\\
+cbcoptic	&	&	\\
+cbfonts-fd	&	&	\\
+ccaption	&	&	\\
+ccfonts	&	&	\\
+ccicons	&	&	\\
+cclicenses	&	&	\\
+cd	&	&	\\
+cd-cover	&	&	\\
+cdpbundl	&	&	\\
+cell	&	&	\\
+cellspace	&	&	\\
+censor	&	&	\\
+cfr-lm	&	&	\\
+changebar	&	&	\\
+changelayout	&	&	\\
+changepage	&	&	\\
+changes	&	&	\\
+chappg	&	&	\\
+chapterfolder	&	&	\\
+chbibref	&	&	\\
+chemarrow	&	&	\\
+chemcompounds	&	&	\\
+chemcono	&	&	\\
+chemexec	&	&	\\
+chemmacros	&	&	\\
+chemnum	&	&	\\
+chemstyle	&	&	\\
+cherokee	&	&	\\
+chess	&	&	\\
+chessboard	&	&	\\
+chessfss	&	&	\\
+chess-problem-diagrams	&	&	\\
+chet	&	&	\\
+chextras	&	&	\\
+chicago	&	&	\\
+chkfloat	&	&	\\
+chletter	&	&	\\
+chngcntr	&	&	\\
+chronology	&	&	\\
+chscite	&	&	\\
+cinzel	&	&	\\
+circ	&	&	\\
+circuitikz	&	&	\\
+cite	&	&	\\
+cjhebrew	&	&	\\
+cjk	&	&	\\
+cjk-ko	&	&	\\
+cjkpunct	&	&	\\
+classics	&	&	\\
+classicthesis	&	&	\\
+classpack	&	&	\\
+clearsans	&	&	\\
+clefval	&	&	\\
+cleveref	&	&	\\
+clipboard	&	&	\\
+clock	&	&	\\
+clrscode	&	&	\\
+cmap	&	&	\\
+cmbright	&	&	\\
+cmdstring	&	&	\\
+cmdtrack	&	&	\\
+cm-lgc	&	&	\\
+cmll	&	&	\\
+cmpj	&	&	\\
+cmsd	&	&	\\
+cm-super	&	&	\\
+cmtiup	&	&	\\
+cnbwp	&	&	\\
+cnltx	&	&	\\
+codedoc	&	&	\\
+codepage	&	&	\\
+codicefiscaleitaliano	&	&	\\
+collcell	&	&	\\
+collectbox	&	&	\\
+collref	&	&	\\
+colordoc	&	&	\\
+colorinfo	&	&	\\
+colortbl	&	&	\\
+colorwav	&	&	\\
+colorweb	&	&	\\
+colourchange	&	&	\\
+combelow	&	&	\\
+combine	&	&	\\
+combinedgraphics	&	&	\\
+comfortaa	&	&	\\
+comma	&	&	\\
+commath	&	&	\\
+comment	&	&	\\
+compactbib	&	&	\\
+complexity	&	&	\\
+computational-complexity	&	&	\\
+concepts	&	&	\\
+concmath	&	&	\\
+concprog	&	&	\\
+confproc	&	&	\\
+constants	&	&	\\
+conteq	&	&	\\
+context	&	&	\\
+contour	&	&	\\
+contracard	&	&	\\
+cooking	&	&	\\
+cookingsymbols	&	&	\\
+cool	&	&	\\
+coollist	&	&	\\
+coolstr	&	&	\\
+coolthms	&	&	\\
+cooltooltips	&	&	\\
+coordsys	&	&	\\
+copyrightbox	&	&	\\
+coseoul	&	&	\\
+countriesofeurope	&	&	\\
+counttexruns	&	&	\\
+courier	&	&	\\
+courier-scaled	&	&	\\
+courseoutline	&	&	\\
+coursepaper	&	&	\\
+coverpage	&	&	\\
+covington	&	&	\\
+cprotect	&	&	\\
+crbox	&	&	\\
+crop	&	&	\\
+crossreference	&	&	\\
+crossword	&	&	\\
+crosswrd	&	&	\\
+csbulletin	&	&	\\
+csquotes	&	&	\\
+csvsimple	&	&	\\
+csvtools	&	&	\\
+ctable	&	&	\\
+ctex	&	&	\\
+ctib	&	&	\\
+cuisine	&	&	\\
+currfile	&	&	\\
+currvita	&	&	\\
+curve	&	&	\\
+curve2e	&	&	\\
+curves	&	&	\\
+custom-bib	&	&	\\
+cutwin	&	&	\\
+cv	&	&	\\
+cv4tw	&	&	\\
+cweb-latex	&	&	\\
+cyklop	&	&	\\
+cyrillic	&	&	\\
+dashbox	&	&	\\
+dashrule	&	&	\\
+dashundergaps	&	&	\\
+dataref	&	&	\\
+datatool	&	&	\\
+dateiliste	&	&	\\
+datenumber	&	&	\\
+datetime	&	&	\\
+dblfloatfix	&	&	\\
+dccpaper	&	&	\\
+decimal	&	&	\\
+decorule	&	&	\\
+dejavu	&	&	\\
+delim	&	&	\\
+delimtxt	&	&	\\
+detlev-cm	&	&	\\
+dhua	&	&	\\
+diagbox	&	&	\\
+diagmac2	&	&	\\
+diagnose	&	&	\\
+dialogl	&	&	\\
+dichokey	&	&	\\
+dictsym	&	&	\\
+digiconfigs	&	&	\\
+dinbrief	&	&	\\
+dingbat	&	&	\\
+directory	&	&	\\
+dirtytalk	&	&	\\
+disser	&	&	\\
+dk-bib	&	&	\\
+dlfltxb	&	&	\\
+dnaseq	&	&	\\
+docmfp	&	&	\\
+docmute	&	&	\\
+documentation	&	&	\\
+doi	&	&	\\
+doipubmed	&	&	\\
+dot2texi	&	&	\\
+dotarrow	&	&	\\
+dotseqn	&	&	\\
+dottex	&	&	\\
+doublestroke	&	&	\\
+download	&	&	\\
+dox	&	&	\\
+dozenal	&	&	\\
+dpfloat	&	&	\\
+dprogress	&	&	\\
+drac	&	&	\\
+draftcopy	&	&	\\
+draftwatermark	&	&	\\
+dramatist	&	&	\\
+drawstack	&	&	\\
+droid	&	&	\\
+droit-fr	&	&	\\
+drs	&	&	\\
+dtk	&	&	\\
+duerer-latex	&	&	\\
+duotenzor	&	&	\\
+dutchcal	&	&	\\
+dvdcoll	&	&	\\
+dvgloss	&	&	\\
+dvipdfmx-def	&	&	\\
+dynblocks	&	&	\\
+dyntree	&	&	\\
+ean13isbn	&	&	\\
+easy	&	&	\\
+easyfig	&	&	\\
+easylist	&	&	\\
+easy-todo	&	&	\\
+ebezier	&	&	\\
+ebgaramond	&	&	\\
+ebook	&	&	\\
+ebsthesis	&	&	\\
+ecclesiastic	&	&	\\
+ecltree	&	&	\\
+eco	&	&	\\
+economic	&	&	\\
+ecv	&	&	\\
+ed	&	&	\\
+edfnotes	&	&	\\
+edmargin	&	&	\\
+ednotes	&	&	\\
+eemeir	&	&	\\
+eepic	&	&	\\
+efbox	&	&	\\
+egameps	&	&	\\
+egplot	&	&	\\
+eiad	&	&	\\
+eiad-ltx	&	&	\\
+ejpecp	&	&	\\
+elbioimp	&	&	\\
+electrum	&	&	\\
+eledform	&	&	\\
+eledmac	&	&	\\
+ellipsis	&	&	\\
+elmath	&	&	\\
+elpres	&	&	\\
+elsarticle	&	&	\\
+elteikthesis	&	&	\\
+eltex	&	&	\\
+emarks	&	&	\\
+embedall	&	&	\\
+embrac	&	&	\\
+emp	&	&	\\
+emptypage	&	&	\\
+emulateapj	&	&	\\
+encxvlna	&	&	\\
+endfloat	&	&	\\
+endheads	&	&	\\
+endiagram	&	&	\\
+endnotes	&	&	\\
+engpron	&	&	\\
+engrec	&	&	\\
+engtlc	&	&	\\
+enigma	&	&	\\
+enotez	&	&	\\
+enumitem	&	&	\\
+enumitem-zref	&	&	\\
+envbig	&	&	\\
+environ	&	&	\\
+envlab	&	&	\\
+epigrafica	&	&	\\
+epigraph	&	&	\\
+epiolmec	&	&	\\
+epsdice	&	&	\\
+epspdfconversion	&	&	\\
+eqell	&	&	\\
+eqlist	&	&	\\
+eqname	&	&	\\
+eqnarray	&	&	\\
+eqparbox	&	&	\\
+erdc	&	&	\\
+errata	&	&	\\
+esami	&	&	\\
+esdiff	&	&	\\
+ESIEEcv	&	&	\\
+esint	&	&	\\
+esk	&	&	\\
+eskd	&	&	\\
+eskdx	&	&	\\
+eso-pic	&	&	\\
+esstix	&	&	\\
+estcpmm	&	&	\\
+esvect	&	&	\\
+etaremune	&	&	\\
+etex-pkg	&	&	\\
+etextools	&	&	\\
+ethiop	&	&	\\
+etoc	&	&	\\
+etoolbox	&	&	\\
+euenc	&	&	\\
+eukdate	&	&	\\
+euler	&	&	\\
+eulervm	&	&	\\
+euro	&	&	\\
+europecv	&	&	\\
+eurosym	&	&	\\
+everyhook	&	&	\\
+everypage	&	&	\\
+exam	&	&	\\
+examdesign	&	&	\\
+exam-n	&	&	\\
+example	&	&	\\
+examplep	&	&	\\
+exceltex	&	&	\\
+excludeonly	&	&	\\
+exercise	&	&	\\
+expdlist	&	&	\\
+export	&	&	\\
+exp-testopt	&	&	\\
+exsheets	&	&	\\
+exsol	&	&	\\
+extarrows	&	&	\\
+extpfeil	&	&	\\
+extract	&	&	\\
+extsizes	&	&	\\
+facsimile	&	&	\\
+factura	&	&	\\
+faktor	&	&	\\
+fancybox	&	&	\\
+fancyhdr	&	&	\\
+fancynum	&	&	\\
+fancypar	&	&	\\
+fancyref	&	&	\\
+fancytabs	&	&	\\
+fancytooltips	&	&	\\
+fancyvrb	&	&	\\
+fast-diagram	&	&	\\
+fbb	&	&	\\
+fbithesis	&	&	\\
+fc	&	&	\\
+fcltxdoc	&	&	\\
+fdsymbol	&	&	\\
+fetamont	&	&	\\
+feupphdteses	&	&	\\
+feyn	&	&	\\
+feynmf	&	&	\\
+feynmp-auto	&	&	\\
+fge	&	&	\\
+fifo-stack	&	&	\\
+figbib	&	&	\\
+figsize	&	&	\\
+filecontents	&	&	\\
+filedate	&	&	\\
+filehook	&	&	\\
+fileinfo	&	&	\\
+filemod	&	&	\\
+fink	&	&	\\
+finstrut	&	&	\\
+fira	&	&	\\
+fix2col	&	&	\\
+fixfoot	&	&	\\
+fixltxhyph	&	&	\\
+fixme	&	&	\\
+fixmetodonotes	&	&	\\
+fjodor	&	&	\\
+flabels	&	&	\\
+flacards	&	&	\\
+flagderiv	&	&	\\
+flashcards	&	&	\\
+flashmovie	&	&	\\
+flipbook	&	&	\\
+flippdf	&	&	\\
+float	&	&	\\
+floatflt	&	&	\\
+floatrow	&	&	\\
+flowchart	&	&	\\
+flowfram	&	&	\\
+fmp	&	&	\\
+fmtcount	&	&	\\
+fn2end	&	&	\\
+fnbreak	&	&	\\
+fncychap	&	&	\\
+fncylab	&	&	\\
+fnpara	&	&	\\
+fnpct	&	&	\\
+fnumprint	&	&	\\
+foekfont	&	&	\\
+foilhtml	&	&	\\
+fonetika	&	&	\\
+fontawesome	&	&	\\
+fontaxes	&	&	\\
+fontinst	&	&	\\
+fontspec	&	&	\\
+fonts-tlwg	&	&	\\
+fonttable	&	&	\\
+footbib	&	&	\\
+footmisc	&	&	\\
+footnotebackref	&	&	\\
+footnoterange	&	&	\\
+footnpag	&	&	\\
+forarray	&	&	\\
+foreign	&	&	\\
+forest	&	&	\\
+forloop	&	&	\\
+formular	&	&	\\
+fouridx	&	&	\\
+fourier	&	&	\\
+fouriernc	&	&	\\
+fp	&	&	\\
+fragments	&	&	\\
+framed	&	&	\\
+frankenstein	&	&	\\
+frcursive	&	&	\\
+frege	&	&	\\
+frenchle	&	&	\\
+frletter	&	&	\\
+frontespizio	&	&	\\
+ftcap	&	&	\\
+ftnxtra	&	&	\\
+fullblck	&	&	\\
+fullwidth	&	&	\\
+functan	&	&	\\
+fundus-calligra	&	&	\\
+fundus-cyr	&	&	\\
+fundus-sueterlin	&	&	\\
+fwlw	&	&	\\
+gaceta	&	&	\\
+galois	&	&	\\
+gamebook	&	&	\\
+gastex	&	&	\\
+gatech-thesis	&	&	\\
+gauss	&	&	\\
+gb4e	&	&	\\
+g-brief	&	&	\\
+gcard	&	&	\\
+gchords	&	&	\\
+gcite	&	&	\\
+gene-logic	&	&	\\
+genmpage	&	&	\\
+gentium-tug	&	&	\\
+geometry	&	&	\\
+germbib	&	&	\\
+germkorr	&	&	\\
+geschichtsfrkl	&	&	\\
+getfiledate	&	&	\\
+gfsartemisia	&	&	\\
+gfsbaskerville	&	&	\\
+gfsbodoni	&	&	\\
+gfscomplutum	&	&	\\
+gfsdidot	&	&	\\
+gfsneohellenic	&	&	\\
+gfsporson	&	&	\\
+gfssolomos	&	&	\\
+ghab	&	&	\\
+gillcm	&	&	\\
+gillius	&	&	\\
+gincltex	&	&	\\
+ginpenc	&	&	\\
+gitinfo	&	&	\\
+gloss	&	&	\\
+glossaries	&	&	\\
+gmdoc	&	&	\\
+gmdoc-enhance	&	&	\\
+gmiflink	&	&	\\
+gmp	&	&	\\
+gmutils	&	&	\\
+gmverb	&	&	\\
+gmverse	&	&	\\
+gnuplottex	&	&	\\
+go	&	&	\\
+gradientframe	&	&	\\
+grafcet	&	&	\\
+graphics	&	&	\\
+graphicxbox	&	&	\\
+graphicx-psmin	&	&	\\
+graphviz	&	&	\\
+greekdates	&	&	\\
+greek-fontenc	&	&	\\
+greek-inputenc	&	&	\\
+greektex	&	&	\\
+grfpaste	&	&	\\
+grid	&	&	\\
+gridset	&	&	\\
+grid-system	&	&	\\
+grotesq	&	&	\\
+grundgesetze	&	&	\\
+GS1	&	&	\\
+gtl	&	&	\\
+gtrcrd	&	&	\\
+gu	&	&	\\
+guitar	&	&	\\
+guitarchordschemes	&	&	\\
+guitlogo	&	&	\\
+hacm	&	&	\\
+handout	&	&	\\
+hanging	&	&	\\
+HA-prosper	&	&	\\
+har2nat	&	&	\\
+hardwrap	&	&	\\
+harmony	&	&	\\
+harnon-cv	&	&	\\
+harpoon	&	&	\\
+harvard	&	&	\\
+harveyballs	&	&	\\
+hausarbeit-jura	&	&	\\
+hc	&	&	\\
+helvetic	&	&	\\
+hep	&	&	\\
+hepnames	&	&	\\
+hepparticles	&	&	\\
+hepthesis	&	&	\\
+hepunits	&	&	\\
+here	&	&	\\
+he-she	&	&	\\
+heuristica	&	&	\\
+hexgame	&	&	\\
+hfoldsty	&	&	\\
+hf-tikz	&	&	\\
+hhtensor	&	&	\\
+histogr	&	&	\\
+historische-zeitschrift	&	&	\\
+hitec	&	&	\\
+hletter	&	&	\\
+hobby	&	&	\\
+hobete	&	&	\\
+horoscop	&	&	\\
+hpsdiss	&	&	\\
+hrefhide	&	&	\\
+hrlatex	&	&	\\
+hvfloat	&	&	\\
+hvindex	&	&	\\
+hypdvips	&	&	\\
+hyper	&	&	\\
+hypernat	&	&	\\
+hyperref	&	&	\\
+hyperxmp	&	&	\\
+hyphenat	&	&	\\
+ibycus-babel	&	&	\\
+icsv	&	&	\\
+idxcmds	&	&	\\
+idxlayout	&	&	\\
+IEEEconf	&	&	\\
+ieeepes	&	&	\\
+IEEEtran	&	&	\\
+ifetex	&	&	\\
+ifmslide	&	&	\\
+ifmtarg	&	&	\\
+ifnextok	&	&	\\
+ifoddpage	&	&	\\
+ifplatform	&	&	\\
+ifsym	&	&	\\
+ifthenx	&	&	\\
+iitem	&	&	\\
+ijmart	&	&	\\
+imac	&	&	\\
+image-gallery	&	&	\\
+imakeidx	&	&	\\
+impnattypo	&	&	\\
+import	&	&	\\
+imtekda	&	&	\\
+incgraph	&	&	\\
+inconsolata	&	&	\\
+index	&	&	\\
+initials	&	&	\\
+inlinebib	&	&	\\
+inlinedef	&	&	\\
+inputtrc	&	&	\\
+interactiveworkbook	&	&	\\
+interfaces	&	&	\\
+interval	&	&	\\
+inversepath	&	&	\\
+invoice	&	&	\\
+ionumbers	&	&	\\
+ipaex-type1	&	&	\\
+iso	&	&	\\
+iso10303	&	&	\\
+isodate	&	&	\\
+isodoc	&	&	\\
+isomath	&	&	\\
+isonums	&	&	\\
+isorot	&	&	\\
+isotope	&	&	\\
+issuulinks	&	&	\\
+itnumpar	&	&	\\
+iwhdp	&	&	\\
+iwona	&	&	\\
+jamtimes	&	&	\\
+jknapltx	&	&	\\
+jlabels	&	&	\\
+jmlr	&	&	\\
+jneurosci	&	&	\\
+jpsj	&	&	\\
+junicode	&	&	\\
+jura	&	&	\\
+juraabbrev	&	&	\\
+jurabib	&	&	\\
+juramisc	&	&	\\
+jurarsp	&	&	\\
+jvlisting	&	&	\\
+kantlipsum	&	&	\\
+karnaugh	&	&	\\
+kdgdocs	&	&	\\
+kerkis	&	&	\\
+kerntest	&	&	\\
+keycommand	&	&	\\
+keyreader	&	&	\\
+keystroke	&	&	\\
+keyval2e	&	&	\\
+kix	&	&	\\
+kluwer	&	&	\\
+knitting	&	&	\\
+knittingpattern	&	&	\\
+koma-moderncvclassic	&	&	\\
+\bundle koma-script	&	&	\\
+koma-script-sfs	&	&	\\
+kotex-oblivoir	&	&	\\
+kotex-utf	&	&	\\
+kpfonts	&	&	\\
+ktv-texdata	&	&	\\
+kurier	&	&	\\
+l3experimental	&	&	\\
+l3kernel	&	&	\\
+l3packages	&	&	\\
+labbook	&	&	\\
+labelcas	&	&	\\
+labels	&	&	\\
+labyrinth	&	&	\\
+lapdf	&	&	\\
+lastpage	&	&	\\
+latex2man	&	&	\\
+latexconfig	&	&	\\
+latexfileinfo-pkgs	&	&	\\
+lato	&	&	\\
+layaureo	&	&	\\
+layouts	&	&	\\
+lazylist	&	&	\\
+lcd	&	&	\\
+lcg	&	&	\\
+lcyw	&	&	\\
+leading	&	&	\\
+leaflet	&	&	\\
+ledmac	&	&	\\
+leftidx	&	&	\\
+leipzig	&	&	\\
+lengthconvert	&	&	\\
+lettre	&	&	\\
+lettrine	&	&	\\
+lewis	&	&	\\
+lexikon	&	&	\\
+lexref	&	&	\\
+lgreek	&	&	\\
+lh	&	&	\\
+lhcyr	&	&	\\
+lhelp	&	&	\\
+libertine	&	&	\\
+libgreek	&	&	\\
+librebaskerville	&	&	\\
+librecaslon	&	&	\\
+libris	&	&	\\
+limap	&	&	\\
+linearA	&	&	\\
+linegoal	&	&	\\
+lineno	&	&	\\
+linguex	&	&	\\
+lipsum	&	&	\\
+lisp-on-tex	&	&	\\
+listbib	&	&	\\
+listing	&	&	\\
+listings	&	&	\\
+listings-ext	&	&	\\
+listliketab	&	&	\\
+listofsymbols	&	&	\\
+lithuanian	&	&	\\
+liturg	&	&	\\
+lkproof	&	&	\\
+lm	&	&	\\
+lmake	&	&	\\
+lobster2	&	&	\\
+locality	&	&	\\
+localloc	&	&	\\
+logbox	&	&	\\
+logical-markup-utils	&	&	\\
+logicproof	&	&	\\
+logicpuzzle	&	&	\\
+logpap	&	&	\\
+logreq	&	&	\\
+longnamefilelist	&	&	\\
+loops	&	&	\\
+lpic	&	&	\\
+lplfitch	&	&	\\
+lps	&	&	\\
+lsc	&	&	\\
+lstaddons	&	&	\\
+lt3graph	&	&	\\
+ltablex	&	&	\\
+ltabptch	&	&	\\
+ltxdockit	&	&	\\
+ltxindex	&	&	\\
+ltxkeys	&	&	\\
+ltxmisc	&	&	\\
+ltxnew	&	&	\\
+ltxtools	&	&	\\
+lxfonts	&	&	\\
+ly1	&	&	\\
+macroswap	&	&	\\
+mafr	&	&	\\
+magaz	&	&	\\
+mailing	&	&	\\
+mailmerge	&	&	\\
+makebarcode	&	&	\\
+makebox	&	&	\\
+makecell	&	&	\\
+makecmds	&	&	\\
+makedtx	&	&	\\
+makeglos	&	&	\\
+makeplot	&	&	\\
+makeshape	&	&	\\
+mandi	&	&	\\
+manfnt	&	&	\\
+manuscript	&	&	\\
+margbib	&	&	\\
+marginfix	&	&	\\
+marginnote	&	&	\\
+marvosym	&	&	\\
+matc3	&	&	\\
+matc3mem	&	&	\\
+mathalfa	&	&	\\
+mathastext	&	&	\\
+mathcomp	&	&	\\
+mathdesign	&	&	\\
+mathexam	&	&	\\
+mathspic	&	&	\\
+mattens	&	&	\\
+maybemath	&	&	\\
+mbenotes	&	&	\\
+mcaption	&	&	\\
+mceinleger	&	&	\\
+mcite	&	&	\\
+mciteplus	&	&	\\
+mdframed	&	&	\\
+mdputu	&	&	\\
+mdsymbol	&	&	\\
+mdwtools	&	&	\\
+media9	&	&	\\
+meetingmins	&	&	\\
+memexsupp	&	&	\\
+memoir	&	&	\\
+memory	&	&	\\
+mentis	&	&	\\
+menu	&	&	\\
+menukeys	&	&	\\
+merriweather	&	&	\\
+metalogo	&	&	\\
+method	&	&	\\
+metre	&	&	\\
+metrix	&	&	\\
+mflogo	&	&	\\
+mfnfss	&	&	\\
+mfpic4ode	&	&	\\
+mftinc	&	&	\\
+mh	&	&	\\
+mhchem	&	&	\\
+mhequ	&	&	\\
+microtype	&	&	\\
+midpage	&	&	\\
+miller	&	&	\\
+minibox	&	&	\\
+minipage-marginpar	&	&	\\
+miniplot	&	&	\\
+minitoc	&	&	\\
+minorrevision	&	&	\\
+minted	&	&	\\
+mintspirit	&	&	\\
+minutes	&	&	\\
+mla-paper	&	&	\\
+mlist	&	&	\\
+mltex	&	&	\\
+mmap	&	&	\\
+mnotes	&	&	\\
+mnsymbol	&	&	\\
+moderncv	&	&	\\
+moderntimeline	&	&	\\
+modiagram	&	&	\\
+modref	&	&	\\
+modroman	&	&	\\
+mongolian-babel	&	&	\\
+monofill	&	&	\\
+montex	&	&	\\
+moreenum	&	&	\\
+morefloats	&	&	\\
+morehype	&	&	\\
+moresize	&	&	\\
+moreverb	&	&	\\
+morewrites	&	&	\\
+movie15	&	&	\\
+mparhack	&	&	\\
+mpgraphics	&	&	\\
+ms	&	&	\\
+msc	&	&	\\
+msg	&	&	\\
+mslapa	&	&	\\
+msu-thesis	&	&	\\
+mtgreek	&	&	\\
+multenum	&	&	\\
+multibbl	&	&	\\
+multibib	&	&	\\
+multibibliography	&	&	\\
+multicap	&	&	\\
+multido	&	&	\\
+multienv	&	&	\\
+multiexpand	&	&	\\
+multiobjective	&	&	\\
+multirow	&	&	\\
+musixguit	&	&	\\
+musixtex	&	&	\\
+musuos	&	&	\\
+muthesis	&	&	\\
+mversion	&	&	\\
+mwcls	&	&	\\
+mwe	&	&	\\
+mweights	&	&	\\
+mxedruli	&	&	\\
+mychemistry	&	&	\\
+mycv	&	&	\\
+mylatexformat	&	&	\\
+nag	&	&	\\
+nameauth	&	&	\\
+namespc	&	&	\\
+nanumtype1	&	&	\\
+natbib	&	&	\\
+natded	&	&	\\
+nath	&	&	\\
+nature	&	&	\\
+ncclatex	&	&	\\
+ncctools	&	&	\\
+ncntrsbk	&	&	\\
+nddiss	&	&	\\
+needspace	&	&	\\
+nestquot	&	&	\\
+neuralnetwork	&	&	\\
+newenviron	&	&	\\
+newfile	&	&	\\
+newlfm	&	&	\\
+newpx	&	&	\\
+newspaper	&	&	\\
+newtx	&	&	\\
+newtxtt	&	&	\\
+newunicodechar	&	&	\\
+newvbtm	&	&	\\
+newverbs	&	&	\\
+nextpage	&	&	\\
+nfssext-cfr	&	&	\\
+nicefilelist	&	&	\\
+niceframe	&	&	\\
+nicetext	&	&	\\
+nih	&	&	\\
+nlctdoc	&	&	\\
+noconflict	&	&	\\
+noindentafter	&	&	\\
+noitcrul	&	&	\\
+nolbreaks	&	&	\\
+nomencl	&	&	\\
+nomentbl	&	&	\\
+nonfloat	&	&	\\
+nonumonpart	&	&	\\
+nopageno	&	&	\\
+nostarch	&	&	\\
+notes	&	&	\\
+notes2bib	&	&	\\
+notoccite	&	&	\\
+nowidow	&	&	\\
+nox	&	&	\\
+nrc	&	&	\\
+ntgclass	&	&	\\
+ntheorem	&	&	\\
+nuc	&	&	\\
+numberedblock	&	&	\\
+numericplots	&	&	\\
+numname	&	&	\\
+numprint	&	&	\\
+oberdiek	&	&	\\
+objectz	&	&	\\
+obnov	&	&	\\
+ocg-p	&	&	\\
+ocgx	&	&	\\
+ocr-latex	&	&	\\
+octavo	&	&	\\
+oldstyle	&	&	\\
+onlyamsmath	&	&	\\
+onrannual	&	&	\\
+opcit	&	&	\\
+opensans	&	&	\\
+opteng	&	&	\\
+optional	&	&	\\
+ordinalpt	&	&	\\
+oscola	&	&	\\
+othello	&	&	\\
+othelloboard	&	&	\\
+otibet	&	&	\\
+ot-tableau	&	&	\\
+oubraces	&	&	\\
+outline	&	&	\\
+outliner	&	&	\\
+outlines	&	&	\\
+overpic	&	&	\\
+pacioli	&	&	\\
+pagecolor	&	&	\\
+pagecont	&	&	\\
+pagenote	&	&	\\
+pagerange	&	&	\\
+pageslts	&	&	\\
+palatino	&	&	\\
+paper	&	&	\\
+papercdcase	&	&	\\
+papermas	&	&	\\
+papertex	&	&	\\
+paracol	&	&	\\
+paralist	&	&	\\
+parallel	&	&	\\
+paratype	&	&	\\
+paresse	&	&	\\
+parnotes	&	&	\\
+parrun	&	&	\\
+parselines	&	&	\\
+parskip	&	&	\\
+pas-cours	&	&	\\
+pas-crosswords	&	&	\\
+pas-cv	&	&	\\
+pas-tableur	&	&	\\
+patchcmd	&	&	\\
+pauldoc	&	&	\\
+pawpict	&	&	\\
+pax	&	&	\\
+pb-diagram	&	&	\\
+pbox	&	&	\\
+pbsheet	&	&	\\
+pdf14	&	&	\\
+pdfcomment	&	&	\\
+pdfcprot	&	&	\\
+pdfmarginpar	&	&	\\
+pdfpages	&	&	\\
+pdfscreen	&	&	\\
+pdfslide	&	&	\\
+pdfsync	&	&	\\
+pdftex-def	&	&	\\
+pdftricks	&	&	\\
+pdftricks2	&	&	\\
+pdfwin	&	&	\\
+pdfx	&	&	\\
+pecha	&	&	\\
+perfectcut	&	&	\\
+perltex	&	&	\\
+permute	&	&	\\
+petiteannonce	&	&	\\
+pfarrei	&	&	\\
+pgf	&	&	\\
+pgf-blur	&	&	\\
+pgfgantt	&	&	\\
+pgfkeyx	&	&	\\
+pgfopts	&	&	\\
+pgfplots	&	&	\\
+pgf-soroban	&	&	\\
+pgf-umlcd	&	&	\\
+pgf-umlsd	&	&	\\
+phaistos	&	&	\\
+philex	&	&	\\
+philosophersimprint	&	&	\\
+phonetic	&	&	\\
+phonrule	&	&	\\
+photo	&	&	\\
+physics	&	&	\\
+physymb	&	&	\\
+piano	&	&	\\
+picinpar	&	&	\\
+pict2e	&	&	\\
+pictex2	&	&	\\
+piff	&	&	\\
+pigpen	&	&	\\
+pinlabel	&	&	\\
+pittetd	&	&	\\
+pkgloader	&	&	\\
+pkuthss	&	&	\\
+placeins	&	&	\\
+plantslabels	&	&	\\
+plari	&	&	\\
+plates	&	&	\\
+play	&	&	\\
+playfair	&	&	\\
+plweb	&	&	\\
+pmgraph	&	&	\\
+poemscol	&	&	\\
+poetrytex	&	&	\\
+polski	&	&	\\
+poltawski	&	&	\\
+polyglossia	&	&	\\
+polynom	&	&	\\
+polynomial	&	&	\\
+polytable	&	&	\\
+postcards	&	&	\\
+powerdot	&	&	\\
+powerdot-FUBerlin	&	&	\\
+ppr-prv	&	&	\\
+pracjourn	&	&	\\
+preprint	&	&	\\
+prerex	&	&	\\
+prettyref	&	&	\\
+preview	&	&	\\
+printlen	&	&	\\
+proba	&	&	\\
+probsoln	&	&	\\
+procIAGssymp	&	&	\\
+prodint	&	&	\\
+productbox	&	&	\\
+program	&	&	\\
+progress	&	&	\\
+progressbar	&	&	\\
+properties	&	&	\\
+proposal	&	&	\\
+prosper	&	&	\\
+protex	&	&	\\
+protocol	&	&	\\
+przechlewski-book	&	&	\\
+psbao	&	&	\\
+pseudocode	&	&	\\
+psfrag	&	&	\\
+psfragx	&	&	\\
+psgo	&	&	\\
+pslatex	&	&	\\
+psnfss	&	&	\\
+pspicture	&	&	\\
+pstool	&	&	\\
+\bundle pstricks	&	&	\\
+pstricks-add	&	&	\\
+psu-thesis	&	&	\\
+ptptex	&	&	\\
+punk-latex	&	&	\\
+pxcjkcat	&	&	\\
+pxfonts	&	&	\\
+pxgreeks	&	&	\\
+pxpgfmark	&	&	\\
+pxtxalfa	&	&	\\
+python	&	&	\\
+pythontex	&	&	\\
+qcm	&	&	\\
+qobitree	&	&	\\
+qstest	&	&	\\
+qsymbols	&	&	\\
+qtree	&	&	\\
+quattrocento	&	&	\\
+quotchap	&	&	\\
+quoting	&	&	\\
+quotmark	&	&	\\
+raleway	&	&	\\
+randbild	&	&	\\
+randomwalk	&	&	\\
+randtext	&	&	\\
+ran\_toks	&	&	\\
+rccol	&	&	\\
+rcs	&	&	\\
+rcsinfo	&	&	\\
+rcs-multi	&	&	\\
+readarray	&	&	\\
+realboxes	&	&	\\
+realscripts	&	&	\\
+recipe	&	&	\\
+recipecard	&	&	\\
+rec-thy	&	&	\\
+rectopma	&	&	\\
+recycle	&	&	\\
+refcheck	&	&	\\
+refenums	&	&	\\
+reflectgraphics	&	&	\\
+refman	&	&	\\
+refstyle	&	&	\\
+regcount	&	&	\\
+regexpatch	&	&	\\
+register	&	&	\\
+regstats	&	&	\\
+relenc	&	&	\\
+relsize	&	&	\\
+reotex	&	&	\\
+repeatindex	&	&	\\
+repltext	&	&	\\
+resphilosophica	&	&	\\
+revtex	&	&	\\
+revtex4	&	&	\\
+ribbonproofs	&	&	\\
+rjlparshap	&	&	\\
+rmpage	&	&	\\
+robustcommand	&	&	\\
+robustindex	&	&	\\
+romanbar	&	&	\\
+romande	&	&	\\
+romanneg	&	&	\\
+romannum	&	&	\\
+rotating	&	&	\\
+rotfloat	&	&	\\
+rotpages	&	&	\\
+roundbox	&	&	\\
+rrgtrees	&	&	\\
+rsc	&	&	\\
+rsfso	&	&	\\
+rterface	&	&	\\
+rtkinenc	&	&	\\
+rtklage	&	&	\\
+rubik	&	&	\\
+rulercompass	&	&	\\
+r\_und\_s	&	&	\\
+russ	&	&	\\
+rviewport	&	&	\\
+rvwrite	&	&	\\
+ryethesis	&	&	\\
+sageep	&	&	\\
+sanskrit	&	&	\\
+sansmath	&	&	\\
+sansmathaccent	&	&	\\
+sansmathfonts	&	&	\\
+sapthesis	&	&	\\
+sasnrdisplay	&	&	\\
+sa-tikz	&	&	\\
+sauerj	&	&	\\
+sauterfonts	&	&	\\
+savefnmark	&	&	\\
+savesym	&	&	\\
+savetrees	&	&	\\
+scale	&	&	\\
+scalebar	&	&	\\
+scalerel	&	&	\\
+scanpages	&	&	\\
+schemabloc	&	&	\\
+schule	&	&	\\
+schulschriften	&	&	\\
+schwalbe-chess	&	&	\\
+sciposter	&	&	\\
+screenplay	&	&	\\
+scrjrnl	&	&	\\
+sdrt	&	&	\\
+secdot	&	&	\\
+section	&	&	\\
+sectionbox	&	&	\\
+sectsty	&	&	\\
+seealso	&	&	\\
+selectp	&	&	\\
+semantic	&	&	\\
+semaphor	&	&	\\
+seminar	&	&	\\
+semioneside	&	&	\\
+sepfootnotes	&	&	\\
+sepnum	&	&	\\
+seqsplit	&	&	\\
+serbian-apostrophe	&	&	\\
+serbian-date-lat	&	&	\\
+serbian-def-cyr	&	&	\\
+serbian-lig	&	&	\\
+setdeck	&	&	\\
+setspace	&	&	\\
+sf298	&	&	\\
+sffms	&	&	\\
+sfg	&	&	\\
+sfmath	&	&	\\
+sgame	&	&	\\
+shadethm	&	&	\\
+shadow	&	&	\\
+shadowtext	&	&	\\
+shipunov	&	&	\\
+shorttoc	&	&	\\
+show2e	&	&	\\
+showcharinbox	&	&	\\
+showdim	&	&	\\
+showexpl	&	&	\\
+showlabels	&	&	\\
+showtags	&	&	\\
+shuffle	&	&	\\
+sidecap	&	&	\\
+sidenotes	&	&	\\
+sides	&	&	\\
+silence	&	&	\\
+simplecd	&	&	\\
+simplecv	&	&	\\
+simplewick	&	&	\\
+SIstyle	&	&	\\
+sitem	&	&	\\
+SIunits	&	&	\\
+siunitx	&	&	\\
+skak	&	&	\\
+skb	&	&	\\
+skdoc	&	&	\\
+skeycommand	&	&	\\
+skeyval	&	&	\\
+skmath	&	&	\\
+skrapport	&	&	\\
+skull	&	&	\\
+slantsc	&	&	\\
+smalltableof	&	&	\\
+smartdiagram	&	&	\\
+smartref	&	&	\\
+snapshot	&	&	\\
+snotez	&	&	\\
+songbook	&	&	\\
+songs	&	&	\\
+soton	&	&	\\
+soul	&	&	\\
+sourcecodepro	&	&	\\
+sourcesanspro	&	&	\\
+spanglish	&	&	\\
+spanish-mx	&	&	\\
+sparklines	&	&	\\
+spath3	&	&	\\
+sphack	&	&	\\
+spie	&	&	\\
+splitbib	&	&	\\
+splitindex	&	&	\\
+spot	&	&	\\
+spotcolor	&	&	\\
+spreadtab	&	&	\\
+spverbatim	&	&	\\
+srbook-mem	&	&	\\
+srcltx	&	&	\\
+sr-vorl	&	&	\\
+sseq	&	&	\\
+sslides	&	&	\\
+stack	&	&	\\
+stackengine	&	&	\\
+stage	&	&	\\
+standalone	&	&	\\
+starfont	&	&	\\
+statex	&	&	\\
+statex2	&	&	\\
+statistik	&	&	\\
+staves	&	&	\\
+stdclsdv	&	&	\\
+stdpage	&	&	\\
+steinmetz	&	&	\\
+stellenbosch	&	&	\\
+stex	&	&	\\
+stix	&	&	\\
+stmaryrd	&	&	\\
+storebox	&	&	\\
+storecmd	&	&	\\
+stringstrings	&	&	\\
+struktex	&	&	\\
+sttools	&	&	\\
+stubs	&	&	\\
+subdepth	&	&	\\
+subeqn	&	&	\\
+subeqnarray	&	&	\\
+subfig	&	&	\\
+subfigmat	&	&	\\
+subfigure	&	&	\\
+subfiles	&	&	\\
+subfloat	&	&	\\
+substances	&	&	\\
+substitutefont	&	&	\\
+substr	&	&	\\
+subsupscripts	&	&	\\
+sudoku	&	&	\\
+sudokubundle	&	&	\\
+suftesi	&	&	\\
+sugconf	&	&	\\
+superiors	&	&	\\
+supertabular	&	&	\\
+susy	&	&	\\
+svg	&	&	\\
+svgcolor	&	&	\\
+svn	&	&	\\
+svninfo	&	&	\\
+svn-multi	&	&	\\
+svn-prov	&	&	\\
+swimgraf	&	&	\\
+syllogism	&	&	\\
+symbol	&	&	\\
+sympytexpackage	&	&	\\
+synproof	&	&	\\
+syntax	&	&	\\
+syntrace	&	&	\\
+synttree	&	&	\\
+t2	&	&	\\
+Tabbing	&	&	\\
+tabfigures	&	&	\\
+tableaux	&	&	\\
+tablefootnote	&	&	\\
+tableof	&	&	\\
+tablists	&	&	\\
+tablor	&	&	\\
+tabls	&	&	\\
+tabriz-thesis	&	&	\\
+tabstackengine	&	&	\\
+tabto-ltx	&	&	\\
+tabu	&	&	\\
+tabularborder	&	&	\\
+tabularcalc	&	&	\\
+tabularew	&	&	\\
+tabulary	&	&	\\
+tabvar	&	&	\\
+tagging	&	&	\\
+talk	&	&	\\
+tamefloats	&	&	\\
+t-angles	&	&	\\
+tcldoc	&	&	\\
+tcolorbox	&	&	\\
+tdclock	&	&	\\
+tdsfrmath	&	&	\\
+technics	&	&	\\
+ted	&	&	\\
+tengwarscript	&	&	\\
+tensor	&	&	\\
+termcal	&	&	\\
+termlist	&	&	\\
+test.tex	&	&	\\
+teubner	&	&	\\
+tex-gyre	&	&	\\
+texilikechaps	&	&	\\
+texilikecover	&	&	\\
+tex-label	&	&	\\
+texlogos	&	&	\\
+texmate	&	&	\\
+texments	&	&	\\
+texpower	&	&	\\
+texshade	&	&	\\
+textcase	&	&	\\
+textfit	&	&	\\
+textglos	&	&	\\
+textgreek	&	&	\\
+textopo	&	&	\\
+textpath	&	&	\\
+textpos	&	&	\\
+tfrupee	&	&	\\
+thalie	&	&	\\
+theoremref	&	&	\\
+thesis-ekf	&	&	\\
+thesis-titlepage-fhac	&	&	\\
+thinsp	&	&	\\
+thmbox	&	&	\\
+thmtools	&	&	\\
+threadcol	&	&	\\
+threeparttable	&	&	\\
+threeparttablex	&	&	\\
+thumb	&	&	\\
+thumbs	&	&	\\
+thumby	&	&	\\
+thuthesis	&	&	\\
+ticket	&	&	\\
+tikz-3dplot	&	&	\\
+tikz-cd	&	&	\\
+tikz-dependency	&	&	\\
+tikzinclude	&	&	\\
+tikz-inet	&	&	\\
+tikzmark	&	&	\\
+tikz-opm	&	&	\\
+tikzorbital	&	&	\\
+tikzpagenodes	&	&	\\
+tikzpfeile	&	&	\\
+tikzposter	&	&	\\
+tikz-qtree	&	&	\\
+tikzscale	&	&	\\
+tikzsymbols	&	&	\\
+tikz-timing	&	&	\\
+times	&	&	\\
+timing-diagrams	&	&	\\
+tipa	&	&	\\
+titlecaps	&	&	\\
+titlefoot	&	&	\\
+titlepic	&	&	\\
+titleref	&	&	\\
+titlesec	&	&	\\
+titling	&	&	\\
+tkz-base	&	&	\\
+tkz-berge	&	&	\\
+tkz-doc	&	&	\\
+tkz-euclide	&	&	\\
+tkz-fct	&	&	\\
+tkz-graph	&	&	\\
+tkz-kiviat	&	&	\\
+tkz-linknodes	&	&	\\
+tkz-orm	&	&	\\
+tkz-tab	&	&	\\
+tocbibind	&	&	\\
+tocloft	&	&	\\
+tocvsec2	&	&	\\
+todo	&	&	\\
+todonotes	&	&	\\
+tokenizer	&	&	\\
+toolbox	&	&	\\
+tools	&	&	\\
+topfloat	&	&	\\
+toptesi	&	&	\\
+totcount	&	&	\\
+totpages	&	&	\\
+tpslifonts	&	&	\\
+tqft	&	&	\\
+trajan	&	&	\\
+tram	&	&	\\
+translations	&	&	\\
+tree-dvips	&	&	\\
+trfsigns	&	&	\\
+trimspaces	&	&	\\
+trivfloat	&	&	\\
+trsym	&	&	\\
+truncate	&	&	\\
+tsemlines	&	&	\\
+tucv	&	&	\\
+tudscr	&	&	\\
+tufte-latex	&	&	\\
+tugboat	&	&	\\
+tui	&	&	\\
+turkmen	&	&	\\
+turnstile	&	&	\\
+turnthepage	&	&	\\
+twoinone	&	&	\\
+twoup	&	&	\\
+txfonts	&	&	\\
+txfontsb	&	&	\\
+txgreeks	&	&	\\
+type1cm	&	&	\\
+typeface	&	&	\\
+typehtml	&	&	\\
+typogrid	&	&	\\
+uaclasses	&	&	\\
+uadocs	&	&	\\
+uafthesis	&	&	\\
+ucbthesis	&	&	\\
+ucdavisthesis	&	&	\\
+ucs	&	&	\\
+ucthesis	&	&	\\
+udesoftec	&	&	\\
+uebungsblatt	&	&	\\
+uestcthesis	&	&	\\
+uiucredborder	&	&	\\
+uiucthesis	&	&	\\
+ulqda	&	&	\\
+ulthese	&	&	\\
+umich-thesis	&	&	\\
+uml	&	&	\\
+umlaute	&	&	\\
+umoline	&	&	\\
+umthesis	&	&	\\
+unamthesis	&	&	\\
+underlin	&	&	\\
+underoverlap	&	&	\\
+underscore	&	&	\\
+undolabl	&	&	\\
+unicode-math	&	&	\\
+units	&	&	\\
+unitsdef	&	&	\\
+universa	&	&	\\
+universalis	&	&	\\
+uni-wtal-ger	&	&	\\
+uni-wtal-lin	&	&	\\
+unravel	&	&	\\
+unswcover	&	&	\\
+uothesis	&	&	\\
+uowthesis	&	&	\\
+uowthesistitlepage	&	&	\\
+upmethodology	&	&	\\
+upquote	&	&	\\
+uri	&	&	\\
+url	&	&	\\
+urwchancal	&	&	\\
+usebib	&	&	\\
+ushort	&	&	\\
+uspatent	&	&	\\
+ut-thesis	&	&	\\
+uwmslide	&	&	\\
+uwthesis	&	&	\\
+varindex	&	&	\\
+varsfromjobname	&	&	\\
+varwidth	&	&	\\
+vdmlisting	&	&	\\
+velthuis	&	&	\\
+venndiagram	&	&	\\
+venturis	&	&	\\
+venturis2	&	&	\\
+venturisadf	&	&	\\
+venturisold	&	&	\\
+venturissans	&	&	\\
+venturissans2	&	&	\\
+verbasef	&	&	\\
+verbatimbox	&	&	\\
+verbatimcopy	&	&	\\
+verbdef	&	&	\\
+verbments	&	&	\\
+verse	&	&	\\
+version	&	&	\\
+versions	&	&	\\
+vertbars	&	&	\\
+vgrid	&	&	\\
+vhistory	&	&	\\
+vmargin	&	&	\\
+vntex	&	&	\\
+vocaltract	&	&	\\
+volumes	&	&	\\
+vpe	&	&	\\
+vruler	&	&	\\
+vwcol	&	&	\\
+wallpaper	&	&	\\
+warning	&	&	\\
+warpcol	&	&	\\
+was	&	&	\\
+wasysym	&	&	\\
+widetable	&	&	\\
+williams	&	&	\\
+withargs	&	&	\\
+wnri-latex	&	&	\\
+wordlike	&	&	\\
+wrapfig	&	&	\\
+wsemclassic	&	&	\\
+wsuipa	&	&	\\
+xargs	&	&	\\
+xcharter	&	&	\\
+xcite	&	&	\\
+xcjk2uni	&	&	\\
+xcolor	&	&	\\
+xcookybooky	&	&	\\
+xdoc	&	&	\\
+xfor	&	&	\\
+xhfill	&	&	\\
+xifthen	&	&	\\
+xkeyval	&	&	\\
+xltxtra	&	&	\\
+xmpincl	&	&	\\
+xnewcommand	&	&	\\
+xoptarg	&	&	\\
+xpatch	&	&	\\
+xpeek	&	&	\\
+xpicture	&	&	\\
+xpinyin	&	&	\\
+xpunctuate	&	&	\\
+xq	&	&	\\
+xskak	&	&	\\
+xtab	&	&	\\
+xwatermark	&	&	\\
+xyling	&	&	\\
+xymtex	&	&	\\
+xytree	&	&	\\
+yafoot	&	&	\\
+yagusylo	&	&	\\
+ydoc	&	&	\\
+yfonts	&	&	\\
+yhmath	&	&	\\
+york-thesis	&	&	\\
+youngtab	&	&	\\
+yplan	&	&	\\
+ytableau	&	&	\\
+zapfchan	&	&	\\
+zapfding	&	&	\\
+zed-csp	&	&	\\
+zhmetrics	&	&	\\
+zhnumber	&	&	\\
+ziffer	&	&	\\
+zlmtt	&	&	\\
+zwgetfdate	&	&	\\
+zwpagelayout	&	&	\\
+zxjafbfont	&	&	\\
+zxjafont	&	&	\\
+zxjatype	&	&	\\
+\midrule
+\multicolumn{3}{l}{test}\\ 
+\midrule
+chickenize	&	&	\\
+hyph-utf8	&	&	\\
+interpreter	&	&	\\
+lualibs	&	&	\\
+luamplib	&	&	\\
+luaotfload	&	&	\\
+luatexbase	&	&	\\
+luatexja	&	&	\\
+luatexko	&	&	\\
+lua-visual-debug	&	&	\\
+luaxml	&	&	\\
+spelling	&	&	\\
+\end{longtabu}
+
+\normalsize
 \appendix
 \topart{Appendix}
 

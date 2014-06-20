@@ -72,6 +72,7 @@
 \tl_set:Nn\package{green}
 \tl_set:Nn\distro{orange}
 \tl_set:Nn\histdistro{purple}
+\tl_set:Nn\annotation{black}
 
 %% shorthand to keep a good structure of the node positions
 \fp_new:N\layer_num
@@ -198,8 +199,8 @@
   \bool_if:NTF\to_short
   {
     \int_compare:nT{#1 = 0}{\stepcounter{section}}
-    \tl_gset:cn{\to_disp mand}{\cs:w the\to_disp\cs_end:.\hspace{.175em} #3\newline short view}
-    \IfNoValueTF{#2}{\tl_gset:cn{\to_disp opt}{\tl_use:c{\to_disp mand}}}{\tl_gset:cn{\to_disp opt}{#2, short view}}
+    \tl_gset:cn{\to_disp mand}{\cs:w the\to_disp\cs_end:.\hspace{.175em} #3\newline short~view}
+    \IfNoValueTF{#2}{\tl_gset:cn{\to_disp opt}{\tl_use:c{\to_disp mand}}}{\tl_gset:cn{\to_disp opt}{#2, short~view}}
     \cs:w \to_disp \cs_end:*{\cs:w\to_disp mand\cs_end:}
     \int_compare:nT{#1 = 0}{\addtocounter{section}{-1}}
   }
