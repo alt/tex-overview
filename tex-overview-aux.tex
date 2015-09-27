@@ -12,12 +12,13 @@
   booktabs,
   cooltooltips,
   colortbl,
-  dtklogos,  %% for \NTS etc. ⇒  what about metalogo?
+  dtklogos,  %% for \NTS etc. does not load metalogo anymore
   fontspec,
   geometry,
   hyperref,
   longtable,
   luacode,
+  metalogo,
   multicol,
   microtype,
   pdftexcmds,
@@ -25,7 +26,24 @@
   tikz,
   xparse
 }
+%% copied definitions from old dtklogos, which are no longer supported:
 \makeatletter
+\providecommand\NTS{\mbox{\mathsurround=0pt
+    \(\cal N\mkern -4mu\lower .5ex\hbox{$\cal T$}\mkern -2mu S\)}}
+\providecommand\AMS{{\normalfont\(\cal A\)\kern-.1667em\lower.5ex\hbox{\(\cal M\)}\kern-.125em{\(\cal S\)}}}
+\providecommand\LamSTeX{%
+  L\raise.42ex\hbox{\kern-.3em\the\scriptfont2 A}%
+  \kern-.2em\lower.376ex\hbox{\the\textfont2 M}%
+  \kern-.125em {\the\textfont2 S}-\TeX}
+\DeclareRobustCommand{\BibTeX}{B\kern-.05em%
+    \hbox{$\m@th$% %% force math size calculations
+          \csname S@\f@size\endcsname
+          \fontsize\sf@size\z@
+          \math@fontsfalse\selectfont
+          I\kern-.025emB}%
+    \kern-.08em%
+    \-\TeX}
+
 \def\l@section#1#2{ % this is not neat, but seemingly the only way to reduce the space between sections in toc. % Actually, it's a good reason to think about a plain TeX solution for this package …
 \ifnum \c@tocdepth >\z@ \ifnum \lastpenalty <20009 \addpenalty {\@secpenalty }\fi \addvspace {.3em \@plus \p@ }\setlength \@tempdima {1.5em}\if@tocleft \ifx \toc@l@number \@empty \else \setlength \@tempdima {0\toc@l@number }\fi \fi \begingroup \raggedsectionentry \parindent \z@ \advance \rightskip \@pnumwidth \parfillskip -\@pnumwidth \interlinepenalty \@M \leavevmode \advance \leftskip \@tempdima \null \nobreak \hskip -\leftskip \usekomafont {sectionentry}{#1\nobreak \usekomafont {sectionentrypagenumber}{\hfill \nobreak \hb@xt@ \@pnumwidth {\hss #2}}}\par \endgroup \ifnum \scr@compatibility >\@nameuse {scr@v@2.96}\relax \penalty 20008 \fi \fi 
 }
