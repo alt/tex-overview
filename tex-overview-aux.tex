@@ -1,4 +1,4 @@
-%% This document is part of the document tex-overview. It contains the formatting and definitions for typesetting. Please do *not* consider anything here as an example of good TeX coding style – it's not.
+%% This document is part of the document tex-overview and should not be distributed without it. This file contains the formatting and definitions for typesetting. Please do *not* consider anything here as an example of good TeX coding style – it's not.
 %% author: Arno Trautmann
 
 % !TeX root = tex-overview.tex
@@ -10,9 +10,7 @@
   array,
   bookmark,
   booktabs,
-  cooltooltips,
   colortbl,
-  dtklogos,  %% for \NTS etc. does not load metalogo anymore
   fontspec,
   geometry,
   hyperref,
@@ -21,7 +19,7 @@
   metalogo,
   multicol,
   microtype,
-  pdftexcmds,
+%  pdftexcmds,
   tabu,
   tikz,
   xparse
@@ -44,17 +42,15 @@
     \kern-.08em%
     \-\TeX}
 
-\def\l@section#1#2{ % this is not neat, but seemingly the only way to reduce the space between sections in toc. % Actually, it's a good reason to think about a plain TeX solution for this package …
-\ifnum \c@tocdepth >\z@ \ifnum \lastpenalty <20009 \addpenalty {\@secpenalty }\fi \addvspace {.3em \@plus \p@ }\setlength \@tempdima {1.5em}\if@tocleft \ifx \toc@l@number \@empty \else \setlength \@tempdima {0\toc@l@number }\fi \fi \begingroup \raggedsectionentry \parindent \z@ \advance \rightskip \@pnumwidth \parfillskip -\@pnumwidth \interlinepenalty \@M \leavevmode \advance \leftskip \@tempdima \null \nobreak \hskip -\leftskip \usekomafont {sectionentry}{#1\nobreak \usekomafont {sectionentrypagenumber}{\hfill \nobreak \hb@xt@ \@pnumwidth {\hss #2}}}\par \endgroup \ifnum \scr@compatibility >\@nameuse {scr@v@2.96}\relax \penalty 20008 \fi \fi 
+\newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}
+\addtocontents{toc}{\protect\noaddvspace}
+
+\renewcommand*{\addparttocentry}[2]{%
+  \addtocentrydefault{part}{#1}{\Large #2 \normalsize}
 }
 
 \microtypesetup{stretch=35} %% allow for a bit more expansion to improve typesetting of the columns.
 \frenchspacing
-
-%% for circumventing a bug in cooltooltips
-\makeatletter
-  \let\topdfescapestring\pdf@escapestring
-\makeatother
 
 %% define the look-and-feel of the document
 \setmainfont{TeX Gyre Pagella}
@@ -67,6 +63,7 @@
   linkcolor=DarkRed,
   urlcolor=blue
 }
+\hyperbaseurl{.}
 
 %% page layout, headings
 \pagestyle{empty}
@@ -137,37 +134,32 @@
   \end{tikzpicture}
 }
 
-  \ExplSyntaxOff
 %% Style of the nodes: shade from a light 
 \tikzstyle{coolnode} = [
 	draw=\nodecolor!50!black!70,
-	top color=\nodecolor!10!white!105,
-	bottom color= \nodecolor!50!black!50
+	top~color=\nodecolor!10!white!105,
+	bottom~color= \nodecolor!50!black!50
 ]
-  \ExplSyntaxOn
 
 %% set the first default node style (will change to \distro or \program in the document)
 \cs_set_eq:NN\tonodestyle\normalimportant
 
 %% tonode ⇒ tex-overview node, now with better argument specifier
 \NewDocumentCommand\tonode{O{\tonodestyle}D(){no label given}D(){no position given}D<>{no description given}m}{
-%% save the content pdfescaped
-  \tl_set:No\tonodecontent{\topdfescapestring{#4}}
 
 %% test if we are in the short or full view
   \tl_gset:Nn\nodecolor{#1}
   \bool_if:NTF\to_short{
   %% short view
     \tl_if_eq:NNT#1{\vip}{   %% then check if this is an important node
-      \node[coolnode]
-	(#2) at (#3) {
-        \cooltooltip{#2}{\tonodecontent}{\tonodecontent}{}{#5\strut}
+      \node[coolnode] (#2) at (#3) {
+	  \href{#4}{\color{black}#5\strut}
       };
     }
   }{
   %% long view
     \node[coolnode] (#2) at (#3) {
-      \cooltooltip{#2}{\tonodecontent}{\tonodecontent}{}{#5\strut}
+	  \href{#4}{\color{black}#5\strut}
     };
   %% and the text view, to be added only once!
   \addtotextviews:f{\subsubsection*{\color{blue}#5}\parbox{\columnwidth}{#4}}
@@ -197,19 +189,23 @@
 }
 
 \NewDocumentCommand\topart{m}{
-  \clearpage
-  \dim_set:Nn\pdfpagewidth{9cm}       %% make a smaller paper so the header won’t feel so alone on the big, cold paper
-  \dim_set:Nn\pdfpageheight{4cm}
-  \newgeometry{margin=1cm}
+%  \clearpage
+% \pdfpagewidth is not available in LuaTeX > 0.85. So we skip this gimmick, might come back later.
+%%  \dim_set:Nn\pdfpagewidth{9cm}       %% make a smaller paper so the header won’t feel so alone on the big, cold paper
+%%  \dim_set:Nn\pdfpageheight{4cm}
+%  \newgeometry{margin=1cm}
 	\part{#1}
 	\newpage
-  \restoregeometry
-  \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
-  \dim_set:Nn\pdfpageheight{29.7cm}
+%  \restoregeometry
+%%  \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
+%%  \dim_set:Nn\pdfpageheight{29.7cm}
 }
 
 %% the following code is made to avoid code doubling on cost of readability. Seems to be stable enough to work here.
-%% the first argument, given in (), determines the level (sub/sub/section) of the entry. The rest is totally unreadable ☹
+%% the first argument, given in (), determines the level (sub/sub/section) of the entry.
+% second argument: Short name of the struct for toc
+% third argument: Full name of the struct
+% forth argument: default node style for this struct. Default for the default is the default style.
 \NewDocumentCommand\tostruct{D(){0}omO{\tonodestyle}}{
   \tl_set:Nn\to_disp{section}
   \int_compare:nT{#1 > 0}{\tl_put_left:Nn\to_disp{sub}}
@@ -218,14 +214,14 @@
   {
     \int_compare:nT{#1 = 0}{\stepcounter{section}}
     \tl_gset:cn{\to_disp mand}{\cs:w the\to_disp\cs_end:.\hspace{.175em} #3\newline short~view}
-    \IfNoValueTF{#2}{\tl_gset:cn{\to_disp opt}{\tl_use:c{\to_disp mand}}}{\tl_gset:cn{\to_disp opt}{#2, short~view}}
+    \IfNoValueTF{#2}{\tl_gset:cn{\to_disp opt}{\tl_use:c{\to_disp mand}}}{\tl_gset:cn{\to_disp opt}{~#2, short~view}}
     \cs:w \to_disp \cs_end:*{\cs:w\to_disp mand\cs_end:}
     \int_compare:nT{#1 = 0}{\addtocounter{section}{-1}}
   }
   {
     \tl_gset:cn{\to_disp mand}{#3}
-    \IfNoValueTF{#2}{\tl_gset:cn{\to_disp opt}{\cs:w \to_disp mand\cs_end:}}{\tl_gset:cn{\to_disp opt}{#2}}
-    \addtotextviews:f{\cs:w \to_disp\cs_end:[#2]{#3}}
+    \IfNoValueTF{#2}{\tl_gset:cn{\to_disp opt}{\cs:w \to_disp mand\cs_end:}}{\tl_gset:cn{\to_disp opt}{~#2}}
+    \addtotextviews:f{\cs:w \to_disp\cs_end:[~#2]{#3}}
     \cs:w \to_disp\cs_end:[\cs:w \to_disp opt\cs_end:]{\cs:w \to_disp mand\cs_end:}
   }
   \cs_gset_eq:NN\tonodestyle#4
