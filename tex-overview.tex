@@ -1,8 +1,8 @@
-%% Engine needed: LuaTeX ≥ 0.90.0
+%% Engine needed: LuaTeX ≥ 1.12.0
 %% Format needed: LaTeX2ε
-%% use an up-to-date TeX Live2016 to be sure
+%% use an up-to-date TeX Live2020 to be sure
 
-% this document has version number 0.2-ish.
+% this document has version number 0.2-something-ish.
 \input{tex-overview-aux} %% everything that is not content-related
 
 \begin{document}
@@ -134,7 +134,7 @@ In case you wonder why the typesetting is so ugly, especially the margins: Those
 	\tonode(jtex)(15,\layer)<An extension of TeX for typesetting Japanese. (1987, Yasuki Saito)>{j\TeX}
 		\todraw(tex)(jtex)
 
-	\steplayer[-2]
+	\steplayer[-1.5]
 
 	\tonode(tex--xet)(4,\layer)<TeX--XeT was able to really put the glyphs on the right place in the DVI.>{\TeX-{}-\XeT}
 		\todraw(tex-xet)(tex--xet)
@@ -144,21 +144,22 @@ In case you wonder why the typesetting is so ugly, especially the margins: Those
 
 	\steplayer[-1.5]
 
-	\tonode(ptex)(12,\layer)<Extension of Nihongo TeX to enable vertical typesetting. (“p” for “publishing”)  Distributed as WEB change files. Primary author is D. E. Knuth, latest version (TeX Live 2016) is pTeX 3.14159265-p3.7.>{p\TeX}
+	\tonode(ptex)(12,\layer)<Extension of Nihongo TeX to enable vertical typesetting. (“p” for “publishing”)  Distributed as WEB change files. Primary author is D. E. Knuth, latest version (TeX Live 2020) is pTeX 3.14159265-p3.8.3.>{p\TeX}
 		\todraw(nihongo)(ptex)
 		\todraw(tex3)(ptex)
 
-	\steplayer[-1.5]
+	\steplayer[-1]
 	
 	\tonode(enctex)(5.9,\layer)<A small extension to TeX, started 1997. Adds 10 new primitives relating input re-encoding>{enc\TeX}
 	\todraw(tex3)(enctex)
 	
 	\tonode(mltex)(8,\layer)<Extension to TeX (started 1990) that allows hyphenation of words with accented letters. (Therefore the name, MultiLingual TeX.) Distributed as a change file to the original WEB sources of TeX.>{ML\TeX}
 	\todraw(tex3)(mltex)
+	\steplayer[-.5]	
 	
-	\tonode[\experimental](uptex)(14,\layer)<Unicode-aware version of pTeX – “Unicode-publishing”-TeX. Current version in TeX Live 2015 is 3.14159265-p3.7-u1.21.>{up\TeX}
+	\tonode[\experimental](uptex)(14,\layer)<Unicode-aware version of pTeX – “Unicode-publishing”-TeX. Current version in TeX Live 2020 is 3.14159265-p3.8.3-u1.26.>{up\TeX}
 		\todraw(ptex)(uptex)
-	\steplayer[-2]
+	\steplayer[-1.5]
 
 	\tonode[\experimental](omega)(1,\layer)<Support for 16bit-Unicode-input. Still constrained on the output encoding. Started 1994.>{$\Omega$}
 		\todraw(tex3)(omega)
@@ -191,17 +192,16 @@ In case you wonder why the typesetting is so ugly, especially the margins: Those
 
 	\steplayer[-0.5]
 
-	\tonode(eptex)(13.7,\layer)<A merge of e-TeX with pTeX written by Hironori Kitagawa. Additional support for 256 math fonts, and some pdfTeX functionality. Latest Version (TeX Live 2016) is 3.14159265-p3.7-160201-2.6.>{ε-p\TeX}
+	\tonode(eptex)(13.7,\layer)<A merge of e-TeX with pTeX written by Hironori Kitagawa. Additional support for 256 math fonts, and some pdfTeX functionality. Latest Version (TeX Live 2020) is 3.14159265-p3.83-160201-2.6.>{ε-p\TeX}
 		\todraw(ptex)(eptex)
 		\todraw(etex)(eptex)
 
 	\steplayer[-1.5]
 
-	\tonode(euptex)(15.2,\layer)<Merger of e-TeX and upTeX features. Current Version (TeX Live 2016) 3.14159265-p3.7-u1.21-160201-2.6.>{ε-up\TeX}
+	\tonode(euptex)(15.2,\layer)<Merger of e-TeX and upTeX features. Current Version (TeX Live 2020) 3.14159265-p3.8.3-u1.26-191112-2.6.>{ε-up\TeX}
+
 		\todraw(etex)(euptex)
 		\todraw(uptex)(euptex)
-
-	\steplayer[-.5]
 
 	\tonode(aleph)(1,\layer)<Originally named epsilon-Omega, an attempt to stabilize Omega while merging epsilon extensions. Authors are John Plaice and Yannis Haralambous, now maintained for severe bugfixes by Taco Hoekwater. Latest version number is 3.14159265-1.15-2.1-0.1.>{$\aleph$ (Aleph)}
 		\todraw(omega)(aleph)
@@ -221,43 +221,59 @@ In case you wonder why the typesetting is so ugly, especially the margins: Those
 
 	\steplayer[-1]
 	
-	\tonode[\vip](pdfetex)(6,\layer)<Merging the pdfTeX engine with the eTeX-extensions. This engine can produce DVI (with or without the eTeX-extensions) as well as PDF (again, with or without extensions). Current Version number 3.14159265-2.6-1.40.17.>{pdf($\epsilon$)-\TeX}
+	\tonode[\vip](pdfetex)(6,\layer)<Merging the pdfTeX engine with the eTeX-extensions. This engine can produce DVI (with or without the eTeX-extensions) as well as PDF (again, with or without extensions). Current Version number 3.14159265-2.6-1.40.21.>{pdf($\epsilon$)-\TeX}
 		\todraw*(etex)(pdfetex)
 		\todraw*(pdftex)(pdfetex)
 
-	\tonode[\vip](XeTeX)(10,\layer)<This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. Unicode encoding is fully supported (utf8 as native encoding). XeTeX also features support for OpenType, AAT, TrueType and Graphite-fonts (via the operation system). In contrary to pdfTeX or LuaTeX, no external configuration file is needed to use fonts. Since version 3.1415926-2.2-0.9997.4, code from pdf(e)TeX for margin kerning has been added. Latest version number is 3.14159265-2.6-0.99996. XeTeX version numbers will converge to 1.>{\XeTeX}
+	\tonode[\vip](XeTeX)(10,\layer)<This extension enables full multilingual support for left-to-right typesetting, right-to-left and almost any other possible direction. Unicode encoding is fully supported (utf8 as native encoding). XeTeX also features support for OpenType, AAT, TrueType and Graphite-fonts (via the operation system), using Harfbuzz. In contrary to pdfTeX or LuaTeX, no external configuration file is needed to use fonts. Since version 3.1415926-2.2-0.9997.4, code from pdf(e)TeX for margin kerning has been added. Latest version number is 3.14159265-2.6-0.999992. XeTeX version numbers will converge to 1.>{\XeTeX}
 		\todraw(texgx)(XeTeX)
 		\todraw*(etex)(XeTeX)
 		\todraw'(pdfetex)(XeTeX)
 	
-	\steplayer[-2]
+	\steplayer[-1.5]
 
 	\tonode[\experimental](eetex)(8,\layer)<Experimental extension to pdfeTeX by Taco Hoekwater, created 2000. Distributed as change file. Now dead due to his development of LuaTeX.>{ee\TeX}
 		\todraw(pdfetex)(eetex)
 	
-	\steplayer[-1]
+	\steplayer[-0.5]
 
 	\tonode[\program](lua)(0,\layer)<A script language; has nothing to do with TeX.>{Lua}
 	
-	\tonode[\vip](luatex)(4,\layer)<LuaTeX supports utf8, OpenType and many more things. TeX Live 2016 ships version beta-0.95.0. LuaTeX features an embedded scripting language, Lua, making it easy to extend and to change the TeX interna, so most of the programming can be done in Lua instead of TeX-hackery.>{Lua\TeX}
+	\tonode[\vip](luatex)(4,\layer)<LuaTeX supports utf8, OpenType and many more things. TeX Live 2020 ships version 1.20. LuaTeX features an embedded scripting language, Lua, making it easy to extend and to change the TeX interna, so most of the programming can be done in Lua instead of TeX-hackery.>{Lua\TeX}
 		\todraw(aleph)(luatex)
 		\todraw*(pdfetex)(luatex)
 		\todraw[dashed](lua)(luatex)
+	\steplayer[-1]
+		
+	\tonode[\experimental](harftex)(10,\layer)<"HarfTeX is a TeX engine based on LuaTeX, extending it with HarfBuzz, ICU and possibly other libraries for Unicode text layout and modern fonts support." according to TUG Development Fund Grant 32. Superseeded by LuaHBTeX)>{Harf\TeX}
+		\todraw(harftex)(luatex)		
 
-	\steplayer[-2]
+	\steplayer[-1.5]
 	\tonode[\program](luajit)(0,\layer)<A just-in-time compiler for Lua.>{LuaJIT}
 		\todraw(lua)(luajit)
 
-	\tonode[\experimental](luajittex)(4,\layer)<LuaJITTeX is a LuaTeX based on LuaJIT.>{LuaJIT\TeX}
+	\tonode[\experimental](luajittex)(6,\layer)<LuaJITTeX is a LuaTeX based on LuaJIT.>{LuaJIT\TeX}
 		\todraw(luajittex)(luatex)
 		\todraw[dashed](luajit)(luajittex)
+
+	\tonode[\vip](luahbtex)(10,\layer)<LuahbTeX is a LuaTeX including harfbuzz for glyph shaping.)>{LuaHB\TeX}
+		\todraw*(luahbtex)(luatex)
+		\todraw(harftex)(luahbtex)			
+		
+	\steplayer[-1.5]
+	\tonode[\experimental](luajithbtex)(9,\layer)<Combines both LuaTeX variants.)>{LuajitHB\TeX}
+		\todraw(luajithbtex)(luahbtex)
+		\todraw(luajithbtex)(luajittex)
+
+	\tonode[\experimental](luametatex)(4,\layer)<LuaMETATeX is a "minimalistic" LuaTeX; identifying itself as LuaTeX 2.0 according to Hans Hagen's article in TugBoat 40.1)>{LuaMETA\TeX}
+		\todraw(luametatex)(luatex)			
 
 	\steplayer[-2.5]
 	\tonode[\experimental](itex)(7,\layer)<iTeX is the official successor of TeX3, announced by Don Knuth at the TUG conference 2010. (It was a joke, ok.) Not to be confused with William Cheswick's application for the iPad.>{i\TeX}
 }
 \vfill
 
-{\flushleft The chronological order may not be exact in this graph. I had to work hard on the arrangement to show both chronological order and code dependence, and for now only the code dependence is (should be) correct.
+{\flushleft The chronological order may not be exact in this graph. I had to work hard on the arrangement to show both chronological order and code dependence, and for now only the code dependence is (hopefully) correct.
 
 } 
 
@@ -420,9 +436,19 @@ In case you wonder why the typesetting is so ugly, especially the margins: Those
 	\tonode[\vip](MKiv)(0,\layer)<Specially designed for LuaTeX. MKIII was “skipped” for “practical reasons”, as Hans Hagens says, and “MKii, MKvi, MKvi all have 4 chars (which is why I skipped the v, but who knows if MKv will show up some day”)>{\ConTeXt\ MKIV}
 	\todraw*(MKii)(MKiv)
 	\steplayer[-2]
+	
+	\tonode[\experimental](LMTX)(-2,\layer)<Based on LuaMetaTeX.>{\ConTeXt\ LMTX}
+	\todraw(MKiv)(LMTX)
+	\steplayer[-2]
 
-	\tonode[\experimental](MKvi)(0,\layer)<Latest experimental version of ConTeXt.>{\ConTeXt\ MKVI}
+	\tonode[\experimental](MKvi)(2,\layer)<Latest experimental version of ConTeXt.>{\ConTeXt\ MKVI}
 	\todraw(MKiv)(MKvi)
+	
+	\tonode[\experimental](MKix)(2,\layer)<Special variant of MkIV.>{\ConTeXt\ MKIX}
+	\todraw(MKiv)(MKix)
+	
+	\tonode[\experimental](MKxi)(2,\layer)<Special variant of MkIV.>{\ConTeXt\ MKXI}
+	\todraw(MKiv)(MKxi)
 }
 
 %% go on with the rare formats
@@ -482,6 +508,11 @@ AMS}{AMS}-\TeX]{AMS-\TeX}){
 %%% MEX %%%
 \tograph(\tostruct(1)[MeX]{MeX}){
 	\tonode(mex)(0,0)<Polish-based format based on PlainTeX. Different versions exist called mex, pdfmex, htmex and utf8mex. All are based on pdfTeX. Contained in TeX Live.>{MeX}
+}
+
+%%% OpTeX %%%
+\tograph(\tostruct(1)[OpTeX]{OpTeX}){
+	\tonode(mex)(0,0)<OpTeX: the LuaTeX format based on Plain TeX and OPmac. On CTAN and contained in TeX Live.>{OpTeX}
 }
 
 %%% PHYS(E) %%%
@@ -608,11 +639,11 @@ This section will feature the main distributions of \TeX\ and related programs. 
 
 \steplayer
 
-	\tonode(tl20132016)(0,\layer)<Ongoing yearly releases for 2013, 2014, 2015, 2016, without dramatic changes.>{\TeX~Live 2013\,–\,2016}
-	\todraw(tl2012)(tl20132016)
+	\tonode(tl20132020)(0,\layer)<Ongoing yearly releases for 2013 to 2020, without dramatic changes.>{\TeX~Live 2013\,–\,2020}
+	\todraw(tl2012)(tl20132020)
 
 	\tonode(mactex)(5,\layer)<Once based on teTeX, MacTeX is now TeX Live-based. For Mac OS X only, it provides a native installer, the TeXShop editor and Mac-specific tools.>{Mac\TeX}
-	\todraw(tl20132016)(mactex)
+	\todraw(tl20132020)(mactex)
 
 	\tonode(basictex)(8,\layer)<“BasicTeX is a subset of TeX Live of size 100 megabytes instead of 2 gigabytes.”>{Basic\TeX}
 	\todraw(mactex)(basictex)
@@ -634,17 +665,22 @@ This section will feature the main distributions of \TeX\ and related programs. 
 	\todraw(mt28)(mt27)
 	\steplayer
 
-	\tonode(mt29)(0,\layer)<Windows only (stable version). Beta version for GNU/Linux available. Featuring XeTeX 0.9997.4, pdftex 1.40.11, LuaTeX 0.60.2, mpost 1.211. Offers both LaTeX and ConTeXt (MK IV) formats.>{MiK\TeX\ 2.9}
+	\tonode(mt29)(0,\layer)<Now available for Windows, Linux, Max, and Docker. Featuring pdftex 1.40.21, LuaTeX 1.12.0. Offers both LaTeX and ConTeXt (MK IV) formats.>{MiK\TeX\ 2.9}
 	\todraw(mt29)(mt28)
 	\steplayer
 	
 	\tonode(protext)(3,\layer)<A distribution based on MiKTeX (since 2004) with a comfortable install procedure, Editor etc. Provides an easy installation for a full (La)TeX environment.>{ProTeXt}
 	\todraw(protext)(mt29)
 
-\steplayer
+\steplayer[-0.5]
 
-	\tonode[\experimental](mt30)(0,\layer)<Planned version, no fixed release date yet.>{MiK\TeX\ 3.0}
+	\tonode[\experimental](mt30)(-2,\layer)<Planned version, no fixed release date yet.>{MiK\TeX\ 3.0}
 	\todraw(mt30)(mt29)
+	
+\steplayer
+	\tonode(mt20x)(0,\layer)<Naming scheme was changed in july 2020 to follow a "YY.M[.D]" scheme.>{MiK\TeX\ 20.6}
+	\todraw(mt29)(mt20x)
+
 }
 
 \tograph(\tostruct(1)[\TeX\ collection]{\TeX\ collection}){
@@ -682,21 +718,10 @@ This section will feature the main distributions of \TeX\ and related programs. 
 }
 
 \newpage
-%\ExplSyntaxOn
-%  \dim_set:Nn\pdfpagewidth{13cm}       %% make a smaller paper so the header won’t feel so alone on the big, cold paper
-%  \dim_set:Nn\pdfpageheight{6cm}
-%\newgeometry{left=1cm,top=1cm,width=11cm}
-\ExplSyntaxOff
-\newpage
 \tostruct[Pandora's Box]{Pandora's Box}
 \parbox{\textwidth}{\normalsize
 The following pages will be a hodge-podge of many things that are related to \TeX\ and used in the process of generating documents in different file formats, i.\,e. conversion tools, bibliography tools etc. Feel free to contribute, I'll choose case-by-case if I'll add something or won't include it. Text editors or viewers will \emph{not} be included!
 }
-  \restoregeometry
-\ExplSyntaxOn
-  \dim_set:Nn\pdfpagewidth{21cm}     %% back to a4
-  \dim_set:Nn\pdfpageheight{29.7cm}
-\ExplSyntaxOff
 
 %%% META* %%%
 \tograph(\tostruct(1)[META*]{META*}[\program]){
@@ -965,6 +990,7 @@ The preliminary nomenclature is:
 \flushleft  %% centering was still active until here
 The following list tries to explain what happens if a programm is called by a given name. E.\,g. calling the command \texttt{latex} on the command line will start the PDFε-\TeX\ engine\footnote{Actually it's only called PDF\TeX\ now, but it is always the version that includes ε-\TeX\ extensions. Here, always the full name is used for clearness.} in DVI mode with the format \LaTeX\,2\raisebox{-.5ex}ε. This will list the names used in the \emph{official} (upstream) \TeX~Live~2016 distribution, which should mostly (but not necessarily all) be the same in MiK\TeX.
 
+\iffalse
 \begin{longtabu}{>{\ttfamily\large}lX}
 \rowcolor[gray]{0.8}\LARGE \bfseries program \strut & \LARGE  meaning\\
 \\[-2ex]
@@ -974,7 +1000,7 @@ inimf & INIMF (same as \texttt{mf --ini}\\
 texlua & Lua\TeX\ in Lua mode\\
 texluac & Lua\TeX\ as byte compiler\\
 texluajit & LuaJIT\TeX\ in Lua mode\\
-texluac & LuaJIT\TeX\ as byte compiler\\
+texluajitc & LuaJIT\TeX\ as byte compiler\\
 
 \totablesec{plain formats}
 tex & \TeX\ with the plain format\\
@@ -987,7 +1013,9 @@ eptex & ε-p\TeX\ with the plain format\\
 euptex & ε-up\TeX\ with the plain format\\
 etex & PDFε-\TeX\ with the plain format and DVI output\\
 luatex & Lua\TeX\ with the plain format and PDF output\\
+luahbtex & LuaHB\TeX\ with the plain format and PDF output\\
 luajittex & LuaJIT\TeX\ with the plain format and PDF output\\
+luajithbtex & LuajitHB\TeX\ with the plain format and PDF output\\
 mltex & PDFε-\TeX\ with ML\TeX\ extensions enabled, DVI output\\
 pdfcsplain & PDFε-\TeX\ with the csplain format and PDF output\\
 pdfetex & PDFε-\TeX\ with the plain format and PDF output\\
@@ -999,7 +1027,7 @@ xetex & \XeTeX\ with the plain format\\
 latex & PDFε-\TeX\ with the \LaTeXe\ format and DVI output\\
 dvilualatex & Lua\TeX\ with the \LaTeXe\ format and DVI output\\
 lamed & Aleph with the Lamed format\\
-lualatex & Lua\TeX\ with the \LaTeXe\ format and PDF output\\
+lualatex & LuaHB\TeX\ with the \LaTeXe\ format and PDF output\\
 mllatex & PDFε-\TeX\ with ML\TeX\ extensions enabled, \LaTeXe\ format and DVI output\\
 pdflatex & PDFε-\TeX\ with the \LaTeXe\ format and PDF output\\
 
@@ -1037,7 +1065,8 @@ mfluajit & MFLuaJIT \\
 mp & the METAPOST program\\
 mptopdf & PDFε-\TeX\ with the mptopdf format and PDF output\\
 \end{longtabu}
-
+\fi
+\end{document}
 \normalsize
 \addtocontents{toc}{\string\vspace{.2cm}}
 \appendix
@@ -1100,6 +1129,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{\LaTeX2.2 – mail from Philipp Stephani on LuaLaTeX-dev list (last paragraph)}<http://tug.org/pipermail/lualatex-dev/2011-January/001033.html>
 	\tobib{\LaTeX3 project}<http://www.latex-project.org/latex3.html>
 	\tobib{\ConTeXt\ wiki}<http://wiki.contextgarden.net>
+	\tobib{\ConTeXt\ LMTX description}<TUGboat, Volume 40 (2019), No. 1>
 	\tobib{A\LaTeX: Discussion in TUGboat Vol. 16 (1995), No. 3, p. 269ff.}<http://www.tug.org/TUGboat/Articles/tb16-3/tb48swif.pdf>
 	\tobib{BLUe on CTAN}<http://www.ctan.org/pkg/blue>
 	\tobib{\AMS\TeX\ on CTAN}<http://www.ctan.org/pkg/amstex>
@@ -1128,6 +1158,7 @@ The references are in order of occurance in the above document. i.\,e. if you wa
 	\tobib{\TeX Android project page}<https://github.com/anhoavu/TeXAndroid>
 	\tobib{MiKTeX project page}<http://miktex.org/>
 	\tobib{Christian Schenk about the name of MiKTeX (mailing list archive)}<http://sourceforge.net/mailarchive/message.php?msg_id=26826076>
+\tobib{Christian Schenk about changing the MiKTeX release versioning (github issue)}<https://github.com/MiKTeX/miktex/issues/554>	
 	\tobib{Pro\TeX t project page}<http://www.tug.org/protext>
 	\tobib{\TeX Collection page}<http://www.tug.org/texcollection>
 	\tobib{Con\TeX t minimals on Con\TeX t garden wiki}<http://wiki.contextgarden.net/ConTeXt_Minimals>

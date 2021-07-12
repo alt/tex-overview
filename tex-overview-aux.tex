@@ -110,7 +110,8 @@
   \to_textviews
   \tl_set:Nn\to_textviews{}
 }
-\cs_gset:Nn\addtotextviews:f{\tl_gput_right:No\to_textviews{#1}}
+\cs_set:Npn\addtotextviews:n#1{\tl_gput_right:No\to_textviews{#1}}
+\cs_generate_variant:Nn \addtotextviews:n{f}
 
 %% environment to set the graphs
 \NewDocumentCommand\tograph{s+D(){}+m}
